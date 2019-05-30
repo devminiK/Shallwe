@@ -22,6 +22,8 @@
         var textarea = document.getElementById("messageWindow");
         var webSocket = new WebSocket('ws://localhost/hmjm/broadcasting');
         var inputMessage = document.getElementById('inputMessage');
+     
+        
     webSocket.onerror = function(event) {
       onError(event)
     };
