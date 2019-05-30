@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page session="true"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
     <title>Testing websockets</title>
 </head>
+<%
+	String id = (String)session.getAttribute("loginId");
+%>
+
 <body>
     <fieldset>
-        <textarea id="messageWindow" rows="10" cols="50" readonly="true"></textarea>
-        <br/>
+        <textarea id="messageWindow" rows="10" cols="50" readonly="true"></textarea><br/>
         <input id="inputMessage" type="text" onkeyup="enterkey()"/>
         <input type="submit" value="send" onclick="send()"/>
     </fieldset>
@@ -42,7 +47,7 @@
     }
 
     function send() {
-        textarea.value += "나 : " + inputMessage.value + "\n";
+    	textarea.value += "나 : " + inputMessage.value + "\n";
         webSocket.send(inputMessage.value);
         inputMessage.value = "";
     }
@@ -52,5 +57,10 @@
             send();
         }
     }
+//  채팅이 많아져 스크롤바가 넘어가더라도 자동적으로 스크롤바가 내려가게함
+    window.setInterval(function() {
+        var elem = document.getElementById('messageWindow');
+        elem.scrollTop = elem.scrollHeight;
+    }, 0);
   </script>
 </html>
