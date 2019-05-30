@@ -1,6 +1,6 @@
 <%@ page contentType = "text/html; charset=UTF-8" %>
 <%@ page import = "hmjm.bean.dao.reviewDAO" %>
-<%@ page import = "hmjm.bean.vo.reviewVO" %>
+<%@ page import = "java.sql.Timestamp" %>
 
 <% request.setCharacterEncoding("UTF-8");%>
 
@@ -13,6 +13,6 @@
 
   if(check==1){
 %>
-	<meta http-equiv="Refresh" content="0;url=review.jsp?pageNum=<%=pageNum%>" >
+	<meta http-equiv="Refresh" content="0;url=review.jsp" >
   
 <%} %>
