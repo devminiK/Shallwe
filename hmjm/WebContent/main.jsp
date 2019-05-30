@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 	
 <!DOCTYPE html>
-
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,7 +90,7 @@
 </style>
 </head>
 <body>
-	<%--상단 카테고리 bar --%>
+	<%--상단 카테고리bar: header --%>
 	<jsp:include page="header.jsp"/>
 
 	<div class="slideshow-container">
@@ -123,34 +122,37 @@
   	<span class="dot" onclick="currentSlide(4)"></span>
 	</div>
 
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
+	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
+		function showSlides(n) {
+  		var i;
+ 		 var slides = document.getElementsByClassName("mySlides");
+ 		 var dots = document.getElementsByClassName("dot");
+ 		 if (n > slides.length) {slideIndex = 1}    
+ 		if (n < 1) {slideIndex = slides.length}
+  		for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-</script>
+ 		 }
+ 		 for (i = 0; i < dots.length; i++) {
+   		   dots[i].className = dots[i].className.replace(" active", "");
+ 			 }
+ 		 slides[slideIndex-1].style.display = "block";  
+  		dots[slideIndex-1].className += " active";
+		}
+	</script>
+
+	<%--footer --%>
+	<jsp:include page="footer.jsp"/>
 
 </body>
 </html> 
