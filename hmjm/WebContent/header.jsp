@@ -20,7 +20,7 @@
 	/* 좌측 아이콘 */
 	.topnav .icon {
   		float: left;
-  		margin-left:100px;
+  		margin-left:400px;
 	}
 	.topnav .icon img {
 		width:120px;
@@ -30,7 +30,7 @@
 	/* 우측 카테고리 */
 	.topnav .category {
 	  float: right;
-	  margin-right:100px;
+	  margin-right:400px;
 	}
 	.topnav .category a {
 		float: left;
