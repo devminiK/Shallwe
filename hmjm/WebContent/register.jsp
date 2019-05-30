@@ -17,7 +17,7 @@
 		var regPwcheck = member.pwcheck.value;
 		
 		if(!regPhone.test(member.m_phone.value)){
-			alert("010-0000-0000형식으로 입력하세요");
+			alert("010-0000-0000형식으로 입력하세요^^");
 			member.m_phone.focus();
 			return false;
 			}
