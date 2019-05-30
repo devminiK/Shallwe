@@ -62,7 +62,7 @@
 				      onclick="javascript:window.location='./register.jsp'"></TD></TR>
 				</TABLE>
 			</form>
-			<%}else{ //로그아웃시 index.jsp로 이동
+			<%}else{ //로그아웃시 main.jsp로 이동
 				session.invalidate();
 			%>
 					<script>
