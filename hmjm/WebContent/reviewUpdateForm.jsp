@@ -6,14 +6,14 @@
 <html>
 <head>
 <link href="style.css" rel="stylesheet" type="text/css">
-<script language="JavaScript" src="script.js"></script>
+
 </head>
 
 <% 
 	int num = Integer.parseInt(request.getParameter("num"));
 	String pageNum = request.getParameter("pageNum");
 	String id = (String)session.getAttribute("loginId");
-	//int num=0;
+	
 	try{  
     	if(request.getParameter("r_num")!=null){
 		num=Integer.parseInt(request.getParameter("r_num"));
@@ -39,40 +39,40 @@
 	</tr>
 </table>
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
-	<tr><td align="center">커리큘럼:<%=article.getR_s_curr()%></br>
-					1<input type="radio" name="r_s_curr" value="1"/></br>
-					2<input type="radio" name="r_s_curr" value="2"/></br>
-					3<input type="radio" name="r_s_curr" value="3"/></br>
-					4<input type="radio" name="r_s_curr" value="4"/></br>
-					5<input type="radio" name="r_s_curr" value="5"/></br>
+	<tr><td align="center">커리큘럼:<%=article.getR_s_curr()%><br/>
+					1<input type="radio" name="r_s_curr" value="1"/><br/>
+					2<input type="radio" name="r_s_curr" value="2"/><br/>
+					3<input type="radio" name="r_s_curr" value="3"/><br/>
+					4<input type="radio" name="r_s_curr" value="4"/><br/>
+					5<input type="radio" name="r_s_curr" value="5"/><br/>
 		</td>
-		<td align="center">준비성:<%=article.getR_s_pre()%></br>
-				    1<input type="radio" name="r_s_pre" value="1"/></br>
-					2<input type="radio" name="r_s_pre" value="2"/></br>
-					3<input type="radio" name="r_s_pre" value="3"/></br>
-					4<input type="radio" name="r_s_pre" value="4"/></br>
-					5<input type="radio" name="r_s_pre" value="5"/></br>
+		<td align="center">준비성:<%=article.getR_s_pre()%><br/>
+				    1<input type="radio" name="r_s_pre" value="1"/><br/>
+					2<input type="radio" name="r_s_pre" value="2"/><br/>
+					3<input type="radio" name="r_s_pre" value="3"/><br/>
+					4<input type="radio" name="r_s_pre" value="4"/><br/>
+					5<input type="radio" name="r_s_pre" value="5"/><br/>
 		</td>
-		<td align="center">시간준수:<%=article.getR_s_tk()%></br>
-					1<input type="radio" name="r_s_tk" value="1"/></br>
-					2<input type="radio" name="r_s_tk" value="2"/></br>
-					3<input type="radio" name="r_s_tk" value="3"/></br>
-					4<input type="radio" name="r_s_tk" value="4"/></br>
-					5<input type="radio" name="r_s_tk" value="5"/></br>
+		<td align="center">시간준수:<%=article.getR_s_tk()%><br/>
+					1<input type="radio" name="r_s_tk" value="1"/><br/>
+					2<input type="radio" name="r_s_tk" value="2"/><br/>
+					3<input type="radio" name="r_s_tk" value="3"/><br/>
+					4<input type="radio" name="r_s_tk" value="4"/><br/>
+					5<input type="radio" name="r_s_tk" value="5"/><br/>
 		</td>
-		<td align="center">전달력:<%=article.getR_s_deli()%></br>
-					1<input type="radio" name="r_s_deli" value="1"/></br>
-					2<input type="radio" name="r_s_deli" value="2"/></br>
-					3<input type="radio" name="r_s_deli" value="3"/></br>
-					4<input type="radio" name="r_s_deli" value="4"/></br>
-					5<input type="radio" name="r_s_deli" value="5"/></br>
+		<td align="center">전달력:<%=article.getR_s_deli()%><br/>
+					1<input type="radio" name="r_s_deli" value="1"/><br/>
+					2<input type="radio" name="r_s_deli" value="2"/><br/>
+					3<input type="radio" name="r_s_deli" value="3"/><br/>
+					4<input type="radio" name="r_s_deli" value="4"/><br/>
+					5<input type="radio" name="r_s_deli" value="5"/><br/>
 		</td>
-		<td align="center">친절도:<%=article.getR_s_kind()%></br>
-					1<input type="radio" name="r_s_kind" value="1"/></br>
-					2<input type="radio" name="r_s_kind" value="2"/></br>
-					3<input type="radio" name="r_s_kind" value="3"/></br>
-					4<input type="radio" name="r_s_kind" value="4"/></br>
-					5<input type="radio" name="r_s_kind" value="5"/></br>
+		<td align="center">친절도:<%=article.getR_s_kind()%><br/>
+					1<input type="radio" name="r_s_kind" value="1"/><br/>
+					2<input type="radio" name="r_s_kind" value="2"/><br/>
+					3<input type="radio" name="r_s_kind" value="3"/><br/>
+					4<input type="radio" name="r_s_kind" value="4"/><br/>
+					5<input type="radio" name="r_s_kind" value="5"/><br/>
 		</td></tr>
 </table>
 <table>  
