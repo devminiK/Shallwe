@@ -24,7 +24,7 @@
 		<th><input type ="file" autofocus name="t_selfimg"required/></th>
 	</tr>
 	<tr height ="50">
-		<th>별명^^</th>
+		<th>별명</th>
 		<th><input type ="text" name ="t_nick" required/></th>	
 	</tr>
 	<tr height ="50">
