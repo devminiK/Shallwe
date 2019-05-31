@@ -16,7 +16,7 @@
 .header_new {
 	width: 1080;
 	height: 80px;
-	margin: 0 180px;
+	margin: 0 180px;	/*중간으로 배열하기위한값을 줌*/
 }
 
 .topnav {
@@ -27,7 +27,6 @@
 /* 좌측 아이콘 */
 .topnav .icon {
 	float: left;
-	/*margin-left: 300px;*/
 }
 
 .topnav .icon img {
@@ -38,7 +37,6 @@
 /* 우측 카테고리 */
 .topnav .category {
 	float: right;
-	/*margin-right: 300px;*/
 }
 
 .topnav .category a {
@@ -48,7 +46,7 @@
 	text-align: center;
 	padding-top: 20px;
 	padding-right: 20px;
-	margin-left: 10px; /*글자 사이간격*/
+	margin-left: 10px; 	/*글자 사이간격*/
 	text-decoration: none;
 	font-size: 15px;
 	font-weight: bold;
@@ -73,16 +71,12 @@
 
 .topnav .search-container button {
 	float: left;
-	padding: 6px 10px; /*버튼의 사이즈*/
-	margin-top: 18px; /*버튼 배치*/
+	padding: 6px 10px; 	/*버튼의 사이즈*/
+	margin-top: 18px; 	/*버튼 배치*/
 	margin-left: 10px;
 	margin-right: 8px;
 	font-size: 17px;
 	border: none;
-}
-
-.topnav .search-container button:hover { /*나중에 삭제할것: 불필요*/
-	background: #ccc;
 }
 
 @media screen and (max-width: 600px) {
@@ -110,6 +104,27 @@
 		}
 	</script>
 </head>
+<%
+	String loginbarName;	//로그인바	
+	String logURL;
+	
+	String statebarName;	//로그인 여부에 따른 상태바
+	String stateURL;
+	
+	if(session.getAttribute("loginId") == null){
+		loginbarName="로그인";		
+		logURL="loginForm.jsp";
+		
+  		statebarName ="회원가입";	
+  		stateURL="register.jsp";
+	}else{
+		loginbarName="실시간 톡";	//로그아웃기능은, 수업신청서안에서 사용할것_by.sm
+		logURL="My/Qnatutee.jsp";
+		
+		statebarName ="수업신청서";	
+		stateURL="My/Application.jsp";
+	}
+%>
 <body id="header">
 	<div class="header_new">
 		<div class="topnav">
@@ -129,8 +144,20 @@
 			</div>
 
 			<div class="category">
-				<a href="#serviceinfo">서비스소개</a> <a href="#becometutor">튜터등록</a> <a
-					href="register.jsp">회원가입</a> <a href="loginForm.jsp">로그인</a>
+					<%
+					//My/Application.jsp에 로그아웃기능 추가하면 삭제할것.
+					if(session.getAttribute("loginId")!= null){%>
+						<a href="logout.jsp">로그아웃</a>
+				<%}%>
+				<a href="#becometutor">튜터등록</a> 
+				<a href="<%=stateURL%>"><%=statebarName%></a>
+				<%
+					if(session.getAttribute("loginId")== null){%>
+						<a href="<%=logURL%>"><%=loginbarName %></a>
+					<%}else{%>
+						<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a>
+						<a href="My/Application.jsp"><img src="images/user.png" width="35px"/></a> 
+					<%}%>
 			</div>
 
 		</div>
