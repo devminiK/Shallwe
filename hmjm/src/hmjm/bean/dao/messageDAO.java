@@ -56,10 +56,12 @@ public class messageDAO {
 		int x=0;
 		try {
 			conn = getConnection();
+			pstmt = conn.prepareStatement("update message set s_count=s_count+1"); 
+			rs = pstmt.executeQuery();
+			
 			pstmt = conn.prepareStatement("select count(*) from message");
 			rs = pstmt.executeQuery();
-			pstmt = conn.prepareStatement("update message set s_count=s_count+1"); 
-			pstmt.executeQuery();
+			
 			if (rs.next()) {
 				x= rs.getInt(1);
 			}
