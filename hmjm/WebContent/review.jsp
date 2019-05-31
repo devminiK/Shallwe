@@ -51,36 +51,31 @@
 		<tr>
 			<td align="center">커리큘럼<br/>
 			<%int curr = article.getR_s_curr();
-			for(int cu=0; cu<curr; cu++){
-			%>
+			for(int cu=0; cu<curr; cu++){%>
 				<img src="./images/star.jpg">	
 			<%}%> </td>
 
 			<td align="center">준비성<br/>
 			<%int pre = article.getR_s_pre();
-			for(int pr=0; pr<pre; pr++){
-			%>
+			for(int pr=0; pr<pre; pr++){%>
 				<img src="./images/star.jpg">	
 			<%}%> </td>
 
 			<td align="center">시간준수<br/>
 			<%int tk = article.getR_s_tk();
-			for(int t=0; t<tk; t++){
-			%>
+			for(int t=0; t<tk; t++){%>
 				<img src="./images/star.jpg">	
 			<%}%> </td>
 
 			<td align="center">전달력<br/>
 			<%int deli = article.getR_s_deli();
-			for(int de=0; de<deli; de++){
-			%>
+			for(int de=0; de<deli; de++){%>
 				<img src="./images/star.jpg">	
 			<%}%> </td>
 
 			<td align="center">친절도<br/>
 			<%int kind = article.getR_s_kind();
-			for(int ki=0; ki<kind; ki++){
-			%>
+			for(int ki=0; ki<kind; ki++){%>
 				<img src="./images/star.jpg">
 			<%}%> </td>
 			
@@ -92,31 +87,28 @@
 						onclick="document.location.href='reviewUpdateForm.jsp?num=<%=article.getR_num()%>&pageNum=<%=pageNum%>'"/>
 					<input type="button" value="글삭제" 
 						onclick="document.location.href='reviewDeleteForm.jsp?num=<%=article.getR_num()%>'">
-					
 			<%}}%> </td>
 		</tr>
 	<%}%>
 </table>
 	<%}
-    if (count > 0) {
-        int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
-        int startPage = (int)(currentPage/10)*10+1;
-		int pageBlock=10;
-        int endPage = startPage + pageBlock-1;
-        if (endPage > pageCount) endPage = pageCount;
-
-        if (startPage > 10) {%>
-        	<a href="review.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
-		<%}
-        for (int i = startPage ; i <= endPage ; i++) {  %>
-        	<a href="review.jsp?pageNum=<%= i %>">[<%= i %>]</a>
-		<%}
-        if (endPage < pageCount) {%>
-        <a href="review.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
-		<%}
-    }%>
+if (count > 0) {
+	int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
+    int startPage = (int)(currentPage/10)*10+1;
+	int pageBlock=10;
+    int endPage = startPage + pageBlock-1;
+    if (endPage > pageCount) endPage = pageCount;
+	if (startPage > 10) {%>
+		<a href="review.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+	<%}
+	for (int i = startPage ; i <= endPage ; i++) {  %>
+		<a href="review.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+	<%}
+	if (endPage < pageCount) {%>
+		<a href="review.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+	<%}
+}%>
 <br/><br/>
-
 <%if(session.getAttribute("loginId")!=null){ %>
 	<jsp:include page="reviewWriteForm.jsp" />
 <%}%>
