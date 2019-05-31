@@ -14,6 +14,8 @@ public class productVO {
 	private String p_cost;
 	private int p_student;
 	private String p_memo;
+	private String imgsrc;	//이미지파일을 가져오기위한 변수 추가 작성
+	
 	public int getP_num() {
 		return p_num;
 	}
@@ -93,5 +95,11 @@ public class productVO {
 		this.p_memo = p_memo;
 	}
 	
-	
+	//파일에 관련된 .setter, getter 추가 작성
+	public String getImgsrc() {
+		return imgsrc;
+	}
+	public void setImgsrc(String imgsrc) { 
+	this.imgsrc = imgsrc;
+	}
 }
