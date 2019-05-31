@@ -140,7 +140,7 @@ public class messageDAO {
 		return article;
 	}
 	
-	public messageVO updateGetArticle(int num) throws Exception {
+/*	public messageVO updateGetArticle(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -169,7 +169,7 @@ public class messageDAO {
 		}
 		return article;
 	}
-	
+*/	
 /*
 	public int updateArticle(messageVO article) throws Exception {
 		Connection conn = null;

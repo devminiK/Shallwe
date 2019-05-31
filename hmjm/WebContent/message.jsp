@@ -11,6 +11,8 @@
 <%
 	String id = (String)session.getAttribute("loginId");
 	String pageNum = request.getParameter("pageNum");
+	String sender = (String)session.getAttribute("s_send");
+	session.setAttribute("sender",sender);	
 	
     if (pageNum == null) { pageNum = "1"; }
 
@@ -45,13 +47,13 @@
 		if(id.equals(login)) {%>
 		<tr>
 		    <td align="center" width="50" ><%=number--%></td>
-		    <td align="center" width="100">from <%=article.getS_send()%></td>
-		    <td align="center" width="100">to <%=article.getS_receive()%></td>
-		    <td align="center" width="100"><%=article.getS_reg()%></td><br/>
-		    <td align="left" width="375" colspan="3"><%=article.getS_content()%></td>
+		    <td align="center" width="100" name="s_send">from <%=article.getS_send()%></td>
+		    <td align="center" width="100" name="s_receive">to <%=article.getS_receive()%></td>
+		    <td align="center" width="100" name="s_reg"><%=article.getS_reg()%></td><br/>
+		    <td align="left" width="375" colspan="3" name="s_content"><%=article.getS_content()%></td>
 		    <td align="center">
 				<input type="button" value="답장" 
-					onclick="document.location.href='messageWriteForm.jsp?num=<%=article.getS_num()%>&pageNum=<%=pageNum%>'"/>
+					onclick="document.location.href='messageReplyForm.jsp?num=<%=article.getS_num()%>&pageNum=<%=pageNum%>'"/>
 				<input type="button" value="삭제" 
 					onclick="document.location.href='messageDeleteForm.jsp?num=<%=article.getS_num()%>'"></td>
 		</tr>
