@@ -42,7 +42,7 @@
 
 
 <div>
-<form action ="tutorRegisterPro" name="tutor" method="post" align="center">
+<form action ="tutorRegisterPro.jsp" name="tutor" method="post" align="center">
 	
  	<br><br>
 	<div >		
@@ -81,12 +81,12 @@
 
 </div><br/>
 <div id="CertAdd"></div>
- <a onclick="addFile();" class="addbtn">추가 +</a>
+ 	<a onclick="addFile();" class="addbtn">추가 +</a>
 	<input type="hidden" id="fileCnt" name="fileCnt" value="0"><br><br><br>
-	
-<input type ="submit" value="가입하기" >
 
-</form>
+	<input type ="submit" value="가입하기" >
+</form>	
+
 
 
 </div>

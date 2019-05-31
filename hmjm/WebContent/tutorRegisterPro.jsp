@@ -17,6 +17,6 @@
 %>
 
 			<script>
-	    		alert("가입을 축하합니다!");
+	    		alert("튜터 등록이 완료되었습니다");
 	    	</script>
 	    	<META http-equiv=refresh content="0;url=loginForm.jsp">
