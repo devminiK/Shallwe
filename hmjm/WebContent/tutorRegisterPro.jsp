@@ -37,14 +37,14 @@
 	
 	
 	String t_nick = imageUp.getParameter("t_nick");
-	String t_selfimg = imageUp.getParameter("t_selfimg");
+	//String t_selfimg = imageUp.getParameter("t_selfimg");
 	String t_school = imageUp.getParameter("t_school");
 	String t_major = imageUp.getParameter("t_major");
 	String t_idcard = imageUp.getParameter("t_idcard");
 	String t_c = imageUp.getParameter("t_c");
 	
 	vo.setT_nick(t_nick);
-	vo.setT_selfimg(t_selfimg);
+	vo.setT_selfimg(filename);
 	vo.setT_school(t_school);
 	vo.setT_major(t_major);
 	vo.setT_idcard(t_idcard);
@@ -65,4 +65,4 @@
 			<script>
 	    		alert("튜터 등록이 완료되었습니다");
 	    	</script>
-	    	<META http-equiv=refresh content="0;url=loginForm.jsp">
+	    	<META http-equiv=refresh content="0;url=test.jsp">

@@ -89,7 +89,27 @@ public class tutorDAO {
 		        }
 				return vo;
 		    }
-	
+	public boolean tutorCheck(String t_nick) {
+		boolean result = false;
+		try {
+			conn = getConnection();
+			String sql = "select * from tutor where t_nick=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, t_nick);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = true;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs != null) {try {rs.close();}catch(SQLException e) {}}
+			if(pstmt != null) {try {pstmt.close();}catch(SQLException e) {}}
+			if(conn != null) {try {conn.close();}catch(SQLException e) {}}
+		}
+		return result;
+	}
 }
 
 
