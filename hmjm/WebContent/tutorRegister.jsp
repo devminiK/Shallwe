@@ -53,7 +53,7 @@
 		<input type ="file" autofocus name="t_selfimg"required/>
 	</ul>
 	<ul>
-		별명^^
+		별명^_^
 		<input type ="text" name ="t_nick" required/>
 	</ul>
 	
