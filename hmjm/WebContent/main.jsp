@@ -92,6 +92,7 @@
 <body id="main">
 	<%--상단 카테고리bar: header --%>
 	<jsp:include page="header.jsp"/>
+	
 
 	<div class="slideshow-container">
 		<div class="mySlides fade">
