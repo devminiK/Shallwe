@@ -19,6 +19,6 @@
 		response.sendRedirect("main.jsp");
 	}else{
 	
-		response.sendRedirect("tutorRegiter.jsp");
+		response.sendRedirect("loginForm.jsp");
 		
 	}%>

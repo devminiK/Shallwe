@@ -55,7 +55,7 @@
 	
 
 %>
-<img scr="selfimg/<%=vo.getImge() %>">
+
 <%
 		tutorDAO manager = tutorDAO.getInstance();
 		manager.insertTutor(vo);

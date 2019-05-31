@@ -60,7 +60,7 @@ enctype="multipart/form-data">
 	<ul>
 	
 			학교인증
-			<input id="univ" type="radio" name="t_idcard" value="1"  checked onclick="checkLayer(1);">
+			<input id="univ" type="radio" name="t_idcard" value="1" checked onclick="checkLayer(1);">
 	 		<div id="schoolmajor">
 				<input type ="text" name ="t_school" 
 				placeholder ="학교 예)서울대학교" />
@@ -70,7 +70,7 @@ enctype="multipart/form-data">
 	</ul>
 
 	<ul>
-		신분인증<input id="univ"  type="radio" name="t_idcard" value="1" onclick="checkLayer(2);">
+		신분인증<input id="univ"  type="radio" name="t_idcard" value="2" onclick="checkLayer(2);">
 	</ul>
 	<ul>
 		자격증
