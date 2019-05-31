@@ -156,7 +156,7 @@
 						<a href="<%=logURL%>"><%=loginbarName %></a>
 					<%}else{%>
 						<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a>
-						<a href="" onclick="openRealtimetalk()"><img src="images/user.png" width="35px"/></a> 
+						<a href="My/Application.jsp"><img src="images/user.png" width="35px"/></a> 
 					<%}%>
 			</div>
 
