@@ -44,7 +44,7 @@ public class tutorDAO {
 			pstmt.setString(2, vo.getT_selfimg());
 			pstmt.setString(3, vo.getT_school());
 			pstmt.setString(4, vo.getT_major());
-			pstmt.setInt(5, vo.getT_idcard());
+			pstmt.setString(5, vo.getT_idcard());
 			pstmt.setString(6, vo.getT_c());
 			pstmt.executeUpdate();
 		}catch(Exception e) {
@@ -75,7 +75,7 @@ public class tutorDAO {
 						vo.setT_selfimg(rs.getString("t_selfimg"));
 						vo.setT_school(rs.getString("t_school"));
 						vo.setT_major(rs.getString("t_major"));
-						vo.setT_idcard(rs.getInt("t_idcard"));
+						vo.setT_idcard(rs.getString("t_idcard"));
 						vo.setT_c(rs.getString("t_c"));
 						vo.setT_reg(rs.getTimestamp("t_reg"));
 						

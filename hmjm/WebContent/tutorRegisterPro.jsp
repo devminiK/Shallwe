@@ -13,7 +13,7 @@
 </jsp:useBean>
 <%
 	String realFolder ="";
-	String t_selfimg ="";
+	String filename ="";
 	MultipartRequest imageUp =null;
 	
 	String saveFolder ="/selfimg";
@@ -29,11 +29,30 @@
 		
 		while(files.hasMoreElements()){
 			String name =(String)files.nextElement();
-			t_selfimg = imageUp.getFilesystemName(name);
+			filename = imageUp.getFilesystemName(name);
 		}
 	}catch(Exception e){
 		e.printStackTrace();
 	}
+	
+	
+	String t_nick = imageUp.getParameter("t_nick");
+	String t_selfimg = imageUp.getParameter("t_selfimg");
+	String t_school = imageUp.getParameter("t_school");
+	String t_major = imageUp.getParameter("t_major");
+	String t_idcard = imageUp.getParameter("t_idcard");
+	String t_c = imageUp.getParameter("t_c");
+	
+	vo.setT_nick(t_nick);
+	vo.setT_selfimg(t_selfimg);
+	vo.setT_school(t_school);
+	vo.setT_major(t_major);
+	vo.setT_idcard(t_idcard);
+	vo.setT_c(t_c);
+	vo.setT_reg(new Timestamp(System.currentTimeMillis()));
+	
+	
+	
 
 %>
 

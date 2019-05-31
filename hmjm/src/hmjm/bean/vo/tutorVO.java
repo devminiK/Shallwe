@@ -8,7 +8,7 @@ public class tutorVO {
 	private String t_selfimg;
 	private String t_school;
 	private String t_major;
-	private int t_idcard;
+	private String t_idcard;
 	private String t_c;
 	private Timestamp t_reg;
 	
@@ -43,10 +43,10 @@ public class tutorVO {
 	public void setT_major(String t_major) {
 		this.t_major = t_major;
 	}
-	public int getT_idcard() {
+	public String getT_idcard() {
 		return t_idcard;
 	}
-	public void setT_idcard(int t_idcard) {
+	public void setT_idcard(String t_idcard) {
 		this.t_idcard = t_idcard;
 	}
 	public String getT_c() {
