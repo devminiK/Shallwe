@@ -42,12 +42,12 @@
 
 
 <div>
-<form action ="tutorRegisterPro.jsp" name="tutor" method="post" align="center">
+<form action ="tutorRegisterPro.jsp" name="tutor" method="post" align="center"
+enctype="multipart/form-data">
 	
  	<br><br>
 	<div >		
 	<ul>튜터 등록</ul>
-	 
 	<ul>
 		프로필사진
 		<input type ="file" autofocus name="t_selfimg"required/>
@@ -56,7 +56,7 @@
 		별명^_^
 		<input type ="text" name ="t_nick" required/>
 	</ul>
-	
+	 
 	<ul>
 	
 			학교인증

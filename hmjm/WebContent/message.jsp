@@ -11,11 +11,12 @@
 <%
 	String id = (String)session.getAttribute("loginId");
 	String pageNum = request.getParameter("pageNum");
-	String sender = (String)session.getAttribute("s_send");
-	session.setAttribute("sender",sender);	
+	
+	//String sender = (String)session.getAttribute("s_send");
+	//session.setAttribute("sender",sender);	
 	
     if (pageNum == null) { pageNum = "1"; }
-
+    
     int currentPage = Integer.parseInt(pageNum);
     int startRow = (currentPage - 1) * pageSize + 1;
     int endRow = currentPage * pageSize;
@@ -28,11 +29,16 @@
     if (count > 0) {
     	articleList = dbPro.getArticles(startRow, endRow);
     }
-	number=count-(currentPage-1)*pageSize;
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
 <body align="center">
+<%--
+if(s_count == 0){}
+alert("NEW MSG");
+--%>
+
+
 <%if(id != null){%> 
 <b>쪽지목록(전체 쪽지:<%=count%>)</b>
 <%if (count == 0) {%>

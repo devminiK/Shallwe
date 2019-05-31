@@ -9,7 +9,7 @@
 
 <% 
 	String id = (String)session.getAttribute("loginId");
-	String sender = (String)session.getAttribute("sender");
+	//String sender = (String)session.getAttribute("sender");
 	int num=0;
 	try{  
     	if(request.getParameter("s_num")!=null){
@@ -23,7 +23,7 @@
 	<tr><td width="100" align="center">보내는사람</td>
     	<td width="330"><%=id %></td>
     	<td width="100" align="center">받는사람</td>
-    	<td width="330"><%=sender%></td>
+    	<td width="330"><%=%></td>
 	</tr>
   
 	<tr><td width="70" align="center" >내 용</td>
