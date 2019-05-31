@@ -12,8 +12,9 @@
 	String id = (String)session.getAttribute("loginId");
 	String pageNum = request.getParameter("pageNum");
 	
-	//String sender = (String)session.getAttribute("s_send");
-	//session.setAttribute("sender",sender);	
+	String send = request.getParameter("s_send");
+	String sender = (String)session.getAttribute("s_send");
+	session.setAttribute("sender",sender);	
 	
     if (pageNum == null) { pageNum = "1"; }
     
@@ -22,6 +23,7 @@
     int endRow = currentPage * pageSize;
     int count = 0;
     int number= 0;
+    int mc=0;
 
     List articleList = null;
     messageDAO dbPro = messageDAO.getInstance();
@@ -29,15 +31,11 @@
     if (count > 0) {
     	articleList = dbPro.getArticles(startRow, endRow);
     }
+    
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
 <body align="center">
-<%--
-if(s_count == 0){}
-alert("NEW MSG");
---%>
-
 
 <%if(id != null){%> 
 <b>쪽지목록(전체 쪽지:<%=count%>)</b>
@@ -59,7 +57,7 @@ alert("NEW MSG");
 		    <td align="left" width="375" colspan="3" name="s_content"><%=article.getS_content()%></td>
 		    <td align="center">
 				<input type="button" value="답장" 
-					onclick="document.location.href='messageReplyForm.jsp?num=<%=article.getS_num()%>&pageNum=<%=pageNum%>'"/>
+					onclick="document.location.href='messageReplyForm.jsp?num=<%=article.getS_num()%>&pageNum=<%=pageNum%>&s_send=<%=article.getS_send()%>'"/>
 				<input type="button" value="삭제" 
 					onclick="document.location.href='messageDeleteForm.jsp?num=<%=article.getS_num()%>'"></td>
 		</tr>
