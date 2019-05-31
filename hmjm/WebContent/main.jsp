@@ -4,10 +4,10 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>쉘잉- 나만의 튜터를 만들어보세요.</title>
+	<title>쉘위?- 나만의 튜터를 만들어보세요.</title>
 	<style>
 	* {box-sizing: border-box}
-	body {font-family: Verdana, sans-serif; margin:0}
+	#main {font-family: Verdana, sans-serif; margin:0}
 	.mySlides {display: none}
 	img {vertical-align: middle;}
 
@@ -89,7 +89,7 @@
 }
 </style>
 </head>
-<body>
+<body id="main">
 	<%--상단 카테고리bar: header --%>
 	<jsp:include page="header.jsp"/>
 
