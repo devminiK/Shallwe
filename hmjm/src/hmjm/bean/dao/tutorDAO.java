@@ -38,14 +38,16 @@ public class tutorDAO {
 	public void insertTutor(tutorVO vo) {
 		try {
 			conn = getConnection();
-			String sql = "insert into tutor values (tutor_seq.nextval,?,?,?,?,?,?,sysdate)";
+			String sql = "insert into tutor values (tutor_seq.nextval,?,?,?,?,?,sysdate,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getT_selfimg());
-			pstmt.setString(2, vo.getT_selfimg());
-			pstmt.setString(3, vo.getT_school());
-			pstmt.setString(4, vo.getT_major());
-			pstmt.setString(5, vo.getT_idcard());
-			pstmt.setString(6, vo.getT_c());
+			pstmt.setString(2, vo.getT_school());
+			pstmt.setString(3, vo.getT_major());
+			pstmt.setString(4, vo.getT_idcard());
+			pstmt.setString(5, vo.getT_c());
+			pstmt.setString(6, vo.getT_email());
+			pstmt.setString(7, vo.getT_nick());
+		
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -123,7 +125,7 @@ public class tutorDAO {
 		        }
 				return result;
 			}
-	/*
+	
 	public boolean tutorCheck(String t_nick) {
 		boolean result = false;
 		try {
@@ -145,7 +147,7 @@ public class tutorDAO {
 		}
 		return result;
 	}
-	*/
+	
 }
 
 

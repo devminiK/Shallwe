@@ -10,9 +10,19 @@ public class tutorVO {
 	private String t_major;
 	private String t_idcard;
 	private String t_c;
+	private String t_email;
 	private Timestamp t_reg;
 	
 	
+	public String getT_email() {
+		return t_email;
+	}
+	public void setT_email(String t_email) {
+		this.t_email = t_email;
+	}
+	public void setT_nick(String t_nick) {
+		this.t_nick = t_nick;
+	}
 	public int getT_num() {
 		return t_num;
 	}

@@ -25,8 +25,6 @@
 	    		history.go(-1);
 	    	</script><% 
 		
-=======
-		response.sendRedirect("loginForm.jsp");
->>>>>>> refs/remotes/origin/master
+
 		
 	}%>
