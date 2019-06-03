@@ -11,12 +11,14 @@
 	
 	String preUser = (String)session.getAttribute("loginId");//현재 세션,이메일이 들어감
 
-	memberDAO mdao = memberDAO.getInstance();	//일반유저 정보
+	//일반유저 정보
+	memberDAO mdao = memberDAO.getInstance();	
 	memberVO mvo = mdao.getMember(preUser);	
 	
-	//필요하지 않은것 같아 일단 주석처리
-	//tutorDAO tdao = tutorDAO.getInstance();		//튜터 등록 정보
-	//tutorVO tvo = tdao.getMember(preUser);
+	//튜터 등록 정보
+	//nick값 받아오기위함
+	tutorDAO tdao = tutorDAO.getInstance();		
+	tutorVO tvo = tdao.getMember(preUser);
 %>
 
 
@@ -72,7 +74,7 @@ private String imgsrc;	//이미지파일을 가져오기위한 변수 추가 작성
 		<label>이름</label><%=mvo.getM_name() %>
 	</div>
 	<div>
-		<label>닉네임</label><%=mvo.getM_nick()%>
+		<label>닉네임</label><%=tvo.getT_nick()%>
 	</div>
 	<div>
 		<label>이메일</label><%=mvo.getM_email() %>
