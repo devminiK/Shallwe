@@ -44,7 +44,6 @@ public class memberDAO {
 			//pstmt.setInt(4, vo.getM_usertype());
 			//pstmt.setTimestamp(5, vo.getM_reg());
 			pstmt.setString(4, vo.getM_pw());
-			pstmt.setString(5, vo.getM_nick());
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
