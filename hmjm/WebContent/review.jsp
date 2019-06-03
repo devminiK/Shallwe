@@ -48,36 +48,27 @@
 		    <td align="center"  width="100"><%=article.getR_name()%></td>
 		    <td align="center"  width="100"><%=article.getR_reg()%></td>
 		</tr>
+		
 		<tr>
 			<td align="center">커리큘럼<br/>
 			<%int curr = article.getR_s_curr();
-			for(int cu=0; cu<curr; cu++){%>
-				<img src="./images/star.jpg">	
-			<%}%> </td>
+			for(int cu=0; cu<curr; cu++){%>	<img src="./images/star.jpg"> <%}%> </td>
 
 			<td align="center">준비성<br/>
 			<%int pre = article.getR_s_pre();
-			for(int pr=0; pr<pre; pr++){%>
-				<img src="./images/star.jpg">	
-			<%}%> </td>
+			for(int pr=0; pr<pre; pr++){%> <img src="./images/star.jpg"> <%}%> </td>
 
 			<td align="center">시간준수<br/>
 			<%int tk = article.getR_s_tk();
-			for(int t=0; t<tk; t++){%>
-				<img src="./images/star.jpg">	
-			<%}%> </td>
+			for(int t=0; t<tk; t++){%> <img src="./images/star.jpg"> <%}%> </td>
 
 			<td align="center">전달력<br/>
 			<%int deli = article.getR_s_deli();
-			for(int de=0; de<deli; de++){%>
-				<img src="./images/star.jpg">	
-			<%}%> </td>
+			for(int de=0; de<deli; de++){%>	<img src="./images/star.jpg"> <%}%> </td>
 
 			<td align="center">친절도<br/>
 			<%int kind = article.getR_s_kind();
-			for(int ki=0; ki<kind; ki++){%>
-				<img src="./images/star.jpg">
-			<%}%> </td>
+			for(int ki=0; ki<kind; ki++){%> <img src="./images/star.jpg"> <%}%> </td>
 			
 			<td align="center">
 			<%String login = article.getR_name();

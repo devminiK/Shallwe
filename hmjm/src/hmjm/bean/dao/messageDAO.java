@@ -143,64 +143,6 @@ public class messageDAO {
 		return article;
 	}
 	
-/*	public messageVO updateGetArticle(int num) throws Exception {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		messageVO article=null;
-		try {
-			conn = getConnection();
-			pstmt = conn.prepareStatement(
-			"select * from message where s_num = ?"); 
-			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				article = new messageVO();
-				article.setS_num(rs.getInt("s_num"));
-				article.setS_count(rs.getInt("s_count"));
-				article.setS_content(rs.getString("s_content"));
-				article.setS_reg(rs.getTimestamp("s_reg"));
-				article.setS_send(rs.getString("s_send"));
-				article.setS_receive(rs.getString("s_receive"));
-			}
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-		}
-		return article;
-	}
-*/	
-/*
-	public int updateArticle(messageVO article) throws Exception {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs= null;
-		String sql="";
-		int x=-1;
-		try {
-			conn = getConnection();
-			sql="update message set r_re=?, r_s_curr=?, r_s_pre=?, r_s_tk=?, r_s_deli=?, r_s_kind=? where s_num=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, article.getS_count());
-			pstmt.setString(2, article.getS_content());
-			pstmt.setString(3, article.getS_send());
-			pstmt.setString(4, article.getS_receive());
-			pstmt.executeUpdate();
-			x= 1;
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-		}
-		return x;
-	}
-*/	
-
 	public int deleteArticle(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
