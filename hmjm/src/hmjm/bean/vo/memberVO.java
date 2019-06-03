@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class memberVO {
 	private int m_num;
+	private String m_nick;	//0603 tutor에 있던 정보 삭제후 member에 추가_성민
 	private String m_name;
 	private String m_phone;
 	private String m_email;
@@ -16,6 +17,12 @@ public class memberVO {
 	}
 	public void setM_num(int m_num) {
 		this.m_num = m_num;
+	}
+	public String getM_nick() {
+		return m_nick;
+	}
+	public void setM_nick(String m_nick) {
+		this.m_nick = m_nick;
 	}
 	public String getM_name() {
 		return m_name;

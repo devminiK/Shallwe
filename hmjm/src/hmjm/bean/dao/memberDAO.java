@@ -20,7 +20,7 @@ public class memberDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-	
+
 	private Connection getConnection() {
 		try {
 			Context ctx = new InitialContext(); //context.xml. 정보 획득
@@ -36,14 +36,16 @@ public class memberDAO {
 	public void insertMember(memberVO vo) {
 		try {
 			conn = getConnection();
-			String sql = "insert into member values(member_seq.nextval,?,?,?,1,sysdate,?)";
+			String sql = "insert into member values(member_seq.nextval,?,?,?,?,1,sysdate,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getM_name());
 			pstmt.setString(2, vo.getM_phone());
 			pstmt.setString(3, vo.getM_email());
+			pstmt.setString(4, vo.getM_nick());
 			//pstmt.setInt(4, vo.getM_usertype());
 			//pstmt.setTimestamp(5, vo.getM_reg());
-			pstmt.setString(4, vo.getM_pw());
+			pstmt.setString(5, vo.getM_pw());
+			pstmt.setString(6, vo.getM_nick());
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -52,7 +54,7 @@ public class memberDAO {
 			if(conn != null) {try {conn.close();}catch(SQLException s) {}}
 		}
 	}
-	
+
 	public boolean loginCheck(String m_email, String m_pw) {
 		boolean result = false;
 		try {
@@ -74,95 +76,98 @@ public class memberDAO {
 		}
 		return result;
 	}
-	
+
 	public int confirmId(String m_email)
 			throws Exception {
-				Connection conn = null;
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-				String dbpw="";
-				int x=-1;
-				
-				try {
-		            conn = getConnection();
-		            
-		            pstmt = conn.prepareStatement(
-		            	"select m_email from member where m_email = ?");
-		            pstmt.setString(1,m_email);
-		            rs= pstmt.executeQuery();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String dbpw="";
+		int x=-1;
 
-					if(rs.next())
-						x= 1; //해당 아이디 있음
-					else
-						x= -1;//해당 아이디 없음		
-		        } catch(Exception ex) {
-		            ex.printStackTrace();
-		        } finally {
-					if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-		            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-		            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-		        }
-				return x;
-			}
+		try {
+			conn = getConnection();
+
+			pstmt = conn.prepareStatement(
+					"select m_email from member where m_email = ?");
+			pstmt.setString(1,m_email);
+			rs= pstmt.executeQuery();
+
+			if(rs.next())
+				x= 1; //해당 아이디 있음
+			else
+				x= -1;//해당 아이디 없음		
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return x;
+	}
+
 	public memberVO getMember(String m_email)
 			throws Exception{
-				Connection conn = null;
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-				memberVO vo = null;
-				try {
-					conn = getConnection();
-					pstmt = conn.prepareStatement(
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		memberVO vo = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
 					"select * from member where m_email = ?");
-					pstmt.setString(1, m_email);
-					rs = pstmt.executeQuery();
-					
-					if(rs.next()) {
-						vo = new memberVO();
-						vo.setM_num(rs.getInt("m_num"));
-						vo.setM_email(rs.getString("m_email"));
-						vo.setM_pw(rs.getString("m_pw"));
-						vo.setM_name(rs.getString("m_name"));
-						vo.setM_phone(rs.getString("m_phone"));
-						vo.setM_reg(rs.getTimestamp("m_reg"));
-						vo.setM_usertype(rs.getInt("m_usertype"));
-					}
-				} catch(Exception ex) {
-		            ex.printStackTrace();
-		        } finally {
-		            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-		            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-		            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-		        }
-				return vo;
-		    }
-			
-			public void updateMember(memberVO vo)// 회원정보수정 05.28create
-					throws Exception {
-						Connection conn = null;
-				        PreparedStatement pstmt = null;
-				        
-				        try {
-				            conn = getConnection();
-				            pstmt = conn.prepareStatement(
-				              "update member set m_name=?,m_phone=?,m_pw=? "+
-				              "where m_email=?");
-				            pstmt.setString(1, vo.getM_name());
-				            pstmt.setString(2, vo.getM_phone());
-				            pstmt.setString(3, vo.getM_pw());
-				            pstmt.setString(4, vo.getM_email());
-				            pstmt.executeUpdate();
-				            
-				        } catch(Exception ex) {
-				            ex.printStackTrace();
-				        } finally {
-				        	
-				            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-				            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-				        }
-				    }
+			pstmt.setString(1, m_email);
+			rs = pstmt.executeQuery();
 
-/*	public ArrayList<memberVO> getAllMember(){
+			if(rs.next()) {
+				vo = new memberVO();
+				vo.setM_num(rs.getInt("m_num"));
+				vo.setM_nick(rs.getString("m_nick"));
+				vo.setM_email(rs.getString("m_email"));
+				vo.setM_pw(rs.getString("m_pw"));
+				vo.setM_name(rs.getString("m_name"));
+				vo.setM_phone(rs.getString("m_phone"));
+				vo.setM_reg(rs.getTimestamp("m_reg"));
+				vo.setM_usertype(rs.getInt("m_usertype"));
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return vo;
+	}
+
+	public void updateMember(memberVO vo)// 회원정보수정 05.28create
+			throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"update member set m_name=?,m_phone=?,m_pw=?,m_nick=? "+
+					"where m_email=?");
+			pstmt.setString(1, vo.getM_name());
+			pstmt.setString(2, vo.getM_phone());
+			pstmt.setString(3, vo.getM_pw());
+			pstmt.setString(4, vo.getM_nick());
+			pstmt.setString(5, vo.getM_email());
+			pstmt.executeUpdate();
+
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
+
+	/*	public ArrayList<memberVO> getAllMember(){
 		ArrayList<memberVO> list = null;
 		try {
 			conn = getConnection();
@@ -195,12 +200,12 @@ public class memberDAO {
         PreparedStatement pstmt = null;
         try {
             conn = getConnection();
-            
+
             pstmt = conn.prepareStatement(
               "update member set m_usertype=2 where m_email=?");
-              
+
             pstmt.setString(1, member.getM_email());
-            
+
             pstmt.executeUpdate();
         } catch(Exception e) {
             e.printStackTrace();
@@ -209,8 +214,8 @@ public class memberDAO {
             if (conn != null) try { conn.close(); } catch(SQLException e) {}
         }
     }
-    
-    
+
+
     public int deleteMember(String m_email, String m_pw) //회원탈퇴1 (계정삭제)
     throws Exception {
         Connection conn = null;
@@ -224,7 +229,7 @@ public class memberDAO {
             pstmt = conn.prepareStatement("select m_pw from member where m_email=?");
             pstmt.setString(1, m_email);
             rs = pstmt.executeQuery();
-            
+
 			if(rs.next()){
 				dbpasswd= rs.getString("pw"); 
 				if(dbpasswd.equals(pw)){
@@ -253,12 +258,12 @@ public class memberDAO {
         PreparedStatement pstmt = null;
         try {
             conn = getConnection();
-            
+
             pstmt = conn.prepareStatement(
               "update member set m_usertype=0 where m_email=?");
-              
+
             pstmt.setString(1, member.getM_email());
-            
+
             pstmt.executeUpdate();
         } catch(Exception e) {
             e.printStackTrace();
@@ -268,10 +273,10 @@ public class memberDAO {
         }
     }
 
-*/
-	
-	
-	
+	 */
+
+
+
 }
 
 
