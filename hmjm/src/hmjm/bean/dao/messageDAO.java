@@ -57,8 +57,6 @@ public class messageDAO {
 		int x=0;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update message set s_count=s_count+1");
-			pstmt.executeUpdate();
 			pstmt = conn.prepareStatement("select count(*) from message where s_receive=?");
 			pstmt.setString(1, receiver);
 			rs = pstmt.executeQuery();
@@ -83,10 +81,10 @@ public class messageDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select s_num,s_count,s_content,s_reg,s_send,s_receive,r\r\n" + 
-					"   from (select s_num,s_count,s_content,s_reg,s_send,s_receive,rownum r\r\n" + 
-					"	from (select s_num,s_count,s_content,s_reg,s_send,s_receive\r\n" + 
-					"	from message order by s_reg desc) order by s_reg desc) where r >= ? and r <= ? and s_receive=?");
+					"select s_num,s_count,s_content,s_reg,s_send,s_receive,r " + 
+					"   from (select s_num,s_count,s_content,s_reg,s_send,s_receive,rownum r " + 
+					"	from (select s_num,s_count,s_content,s_reg,s_send,s_receive " + 
+					"	from message order by s_reg desc) order by s_reg desc) where r>=? and r<=? and s_receive=?");
 					pstmt.setInt(1, start);
 					pstmt.setInt(2, end);
 					pstmt.setString(3, receiver);
@@ -121,6 +119,8 @@ public class messageDAO {
 		messageVO article=null;
 		try {
 			conn = getConnection();
+			pstmt = conn.prepareStatement("update message set s_count=s_count+1");
+			pstmt.executeUpdate();
 			pstmt = conn.prepareStatement("select * from message where s_num = ?"); 
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
