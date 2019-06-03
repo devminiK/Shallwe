@@ -17,8 +17,16 @@
 	if(result){
 		session.setAttribute("registedTutor",t_nick);
 		response.sendRedirect("main.jsp");
-	}else{
+	}else{%>
 	
+<<<<<<< HEAD
+		<script>
+	    		alert("이거나오면 오류인..데");
+	    		history.go(-1);
+	    	</script><% 
+		
+=======
 		response.sendRedirect("loginForm.jsp");
+>>>>>>> refs/remotes/origin/master
 		
 	}%>

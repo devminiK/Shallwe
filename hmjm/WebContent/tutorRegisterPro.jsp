@@ -51,18 +51,36 @@
 	vo.setT_c(t_c);
 	vo.setT_reg(new Timestamp(System.currentTimeMillis()));
 	
-	
-	
-
 %>
 
 <%
 		tutorDAO manager = tutorDAO.getInstance();
 		manager.insertTutor(vo);
-
-%>
-
+		
+		//String t_nick= request.getParameter("t_nick");
+		
+		tutorDAO dao = tutorDAO.getInstance();
+		
+		boolean result = dao.tutorCheck(t_nick);
+		
+		if(result){
+			session.setAttribute("registedTutor",t_nick);
+			response.sendRedirect("sessionTest.jsp");
+		}else{%>
+		
 			<script>
+		    		alert("이거나오면 오류인데");
+		    		history.go(-1);
+		    		</script>
+		
+		<%}%>
+		
+
+
+
+			<%-- <script>
 	    		alert("튜터 등록이 완료되었습니다");
 	    	</script>
-	    	<META http-equiv=refresh content="0;url=test.jsp">
+	    	 <META http-equiv=refresh content="0;url=test.jsp"> --%>
+	    	
+	    	
