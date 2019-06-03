@@ -2,6 +2,7 @@ package hmjm.bean.dao;
 
 import java.sql.*;
 import javax.sql.*;
+
 import javax.naming.*;
 import java.util.*; 
 import hmjm.bean.vo.messageVO;
@@ -49,19 +50,18 @@ public class messageDAO {
 		}
 	}
 	
-	public int getArticleCount() throws Exception {
+	public int getArticleCount(String receiver) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int x=0;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update message set s_count=s_count+1"); 
+			pstmt = conn.prepareStatement("update message set s_count=s_count+1");
+			pstmt.executeUpdate();
+			pstmt = conn.prepareStatement("select count(*) from message where s_receive=?");
+			pstmt.setString(1, receiver);
 			rs = pstmt.executeQuery();
-			
-			pstmt = conn.prepareStatement("select count(*) from message");
-			rs = pstmt.executeQuery();
-			
 			if (rs.next()) {
 				x= rs.getInt(1);
 			}
@@ -75,7 +75,7 @@ public class messageDAO {
 		return x; 
 	}
 
-	public List getArticles(int start, int end) throws Exception {
+	public List getArticles(int start, int end, String receiver) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -83,15 +83,16 @@ public class messageDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select s_num, s_count, s_content, s_reg, s_send, s_receive, r "+
-					"from (select s_num, s_count, s_content, s_reg, s_send, s_receive, rownum r " +
-					"from (select s_num, s_count, s_content, s_reg, s_send, s_receive " +
-					"from message order by s_reg desc) order by s_reg desc) where r >= ? and r <= ? ");
-					pstmt.setInt(1, start); 
-					pstmt.setInt(2, end); 
+					"select s_num,s_count,s_content,s_reg,s_send,s_receive,r\r\n" + 
+					"   from (select s_num,s_count,s_content,s_reg,s_send,s_receive,rownum r\r\n" + 
+					"	from (select s_num,s_count,s_content,s_reg,s_send,s_receive\r\n" + 
+					"	from message order by s_reg desc) order by s_reg desc) where r >= ? and r <= ? and s_receive=?");
+					pstmt.setInt(1, start);
+					pstmt.setInt(2, end);
+					pstmt.setString(3, receiver);
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
-						articleList = new ArrayList(end); 
+						articleList = new ArrayList(); 
 						do{ 
 							messageVO article= new messageVO();
 							article.setS_num(rs.getInt("s_num"));
@@ -120,7 +121,6 @@ public class messageDAO {
 		messageVO article=null;
 		try {
 			conn = getConnection();
-
 			pstmt = conn.prepareStatement("select * from message where s_num = ?"); 
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
