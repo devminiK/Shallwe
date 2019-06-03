@@ -22,7 +22,7 @@ public class tutorVO {
 	public String getT_nick() {
 		return t_nick;
 	}
-	public void setT_nick(String t_nick) {
+	public void setT_num(String t_nick) {
 		this.t_nick = t_nick;
 	}
 	public String getT_selfimg() {

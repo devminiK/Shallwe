@@ -40,7 +40,7 @@ public class tutorDAO {
 			conn = getConnection();
 			String sql = "insert into tutor values (tutor_seq.nextval,?,?,?,?,?,?,sysdate)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getT_nick());
+			pstmt.setString(1, vo.getT_selfimg());
 			pstmt.setString(2, vo.getT_selfimg());
 			pstmt.setString(3, vo.getT_school());
 			pstmt.setString(4, vo.getT_major());
@@ -71,7 +71,6 @@ public class tutorDAO {
 					if(rs.next()) {
 						vo = new tutorVO();
 						vo.setT_num(rs.getInt("t_num"));
-						vo.setT_nick(rs.getString("t_nick"));
 						vo.setT_selfimg(rs.getString("t_selfimg"));
 						vo.setT_school(rs.getString("t_school"));
 						vo.setT_major(rs.getString("t_major"));
@@ -89,6 +88,42 @@ public class tutorDAO {
 		        }
 				return vo;
 		    }
+	
+	//현재 자용자가 튜터등록을 했는지 안했는지 체크를 위함, 테스트 아직 못함_성민
+	public boolean userCheck(String email) 
+			throws Exception {
+				Connection conn = null;
+		        PreparedStatement pstmt = null;
+				ResultSet rs= null;
+				boolean result=false;
+		        
+				try {
+		            conn = getConnection();
+		            
+		            pstmt = conn.prepareStatement(
+		            	"select passwd from TUTOR where email = ?");
+		            pstmt.setString(1, email);
+		            rs= pstmt.executeQuery();
+
+					if(rs.next()){
+						String estr= rs.getString("t_email"); 
+						if(estr!= null)//이메일이 tutor테이블에 존재하지않을때, null값
+							result=true;
+						//else
+							//result= false; //비밀번호 틀림
+					}else
+						result= false;//해당 아이디 없음
+					
+		        } catch(Exception ex) {
+		            ex.printStackTrace();
+		        } finally {
+					if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+		            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+		            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		        }
+				return result;
+			}
+	/*
 	public boolean tutorCheck(String t_nick) {
 		boolean result = false;
 		try {
@@ -110,6 +145,7 @@ public class tutorDAO {
 		}
 		return result;
 	}
+	*/
 }
 
 
