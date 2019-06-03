@@ -5,7 +5,7 @@
 <%@ page import = "java.text.SimpleDateFormat" %>
 
 <%!
-    int pageSize = 5; //한 화면에 보여줄 리스트 갯수
+    int pageSize = 10; //한 화면에 보여줄 리스트 갯수
 %>
 
 <%
