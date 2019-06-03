@@ -149,7 +149,7 @@
 					if(session.getAttribute("loginId")!= null){%>
 						<a href="logout.jsp">로그아웃</a>
 				<%}%>
-				<a href="#becometutor">튜터등록</a> 
+				<a href="tutorMenu.jsp">튜터등록</a><!-- 등록페이지로 이동하게 수정 -->
 				<a href="<%=stateURL%>"><%=statebarName%></a>
 				<%
 					if(session.getAttribute("loginId")== null){%>

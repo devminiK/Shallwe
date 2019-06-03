@@ -42,6 +42,7 @@
 
 
 <div>
+<%if(session.getAttribute("loginId") != null){%>
 <form action ="tutorRegisterPro.jsp" name="tutor" method="post" align="center"
 enctype="multipart/form-data">
 	
@@ -70,7 +71,7 @@ enctype="multipart/form-data">
 	</ul>
 
 	<ul>
-		신분인증<input id="univ"  type="radio" name="t_idcard" value="1" onclick="checkLayer(2);">
+		신분인증<input id="univ"  type="radio" name="t_idcard" value="2" onclick="checkLayer(2);">
 	</ul>
 	<ul>
 		자격증
@@ -86,6 +87,15 @@ enctype="multipart/form-data">
 
 	<input type ="submit" value="가입하기" >
 </form>	
+<%}else{ //로그아웃시 main.jsp로 이동
+				//session.invalidate();
+			%>
+					<script>
+					alert("로그인부터");
+					window.location='./loginForm.jsp';
+						
+					</script>
+			<%}%>
 
 
 
