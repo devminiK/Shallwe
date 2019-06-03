@@ -62,10 +62,10 @@
 		
 		tutorDAO dao = tutorDAO.getInstance();
 		
-		boolean result = dao.tutorCheck(t_nick);
+		boolean result = dao.tutorCheck(t_email);
 		
 		if(result){
-			session.setAttribute("registedTutor",t_nick);
+			session.setAttribute("registedTutor",t_email);
 			response.sendRedirect("sessionTest.jsp");
 		}else{%>
 		

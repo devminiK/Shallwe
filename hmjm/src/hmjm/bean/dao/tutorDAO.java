@@ -57,7 +57,7 @@ public class tutorDAO {
 		}
 	}
 	
-	public tutorVO getMember(String t_nick)
+	public tutorVO getMember(String t_email)
 			throws Exception{
 				Connection conn = null;
 				PreparedStatement pstmt = null;
@@ -66,8 +66,8 @@ public class tutorDAO {
 				try {
 					conn = getConnection();
 					pstmt = conn.prepareStatement(
-					"select * from tutor where t_nick = ?");
-					pstmt.setString(1, t_nick);
+					"select * from tutor where t_email = ?");
+					pstmt.setString(1, t_email);
 					rs = pstmt.executeQuery();
 					
 					if(rs.next()) {
@@ -79,6 +79,8 @@ public class tutorDAO {
 						vo.setT_idcard(rs.getString("t_idcard"));
 						vo.setT_c(rs.getString("t_c"));
 						vo.setT_reg(rs.getTimestamp("t_reg"));
+						vo.setT_email(rs.getString("t_email"));
+						vo.setT_nick(rs.getString("t_nick"));
 						
 					}
 				} catch(Exception ex) {
@@ -126,13 +128,13 @@ public class tutorDAO {
 				return result;
 			}
 	
-	public boolean tutorCheck(String t_nick) {
+	public boolean tutorCheck(String t_email) {
 		boolean result = false;
 		try {
 			conn = getConnection();
-			String sql = "select * from tutor where t_nick=?";
+			String sql = "select * from tutor where t_email=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, t_nick);
+			pstmt.setString(1, t_email);
 			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
