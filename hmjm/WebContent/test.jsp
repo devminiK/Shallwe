@@ -8,25 +8,23 @@
 </jsp:useBean>
 
 <%
-	String t_nick= request.getParameter("t_nick");
+	String t_email= request.getParameter("t_email");
 	
 	tutorDAO dao = tutorDAO.getInstance();
 	
-	boolean result = dao.tutorCheck(t_nick);
+	boolean result = dao.tutorCheck(t_email);
 	
 	if(result){
-		session.setAttribute("registedTutor",t_nick);
+		session.setAttribute("registedTutor",t_email);
 		response.sendRedirect("main.jsp");
 	}else{%>
 	
-<<<<<<< HEAD
+
 		<script>
 	    		alert("이거나오면 오류인..데");
 	    		history.go(-1);
 	    	</script><% 
 		
-=======
-		response.sendRedirect("loginForm.jsp");
->>>>>>> refs/remotes/origin/master
+
 		
 	}%>

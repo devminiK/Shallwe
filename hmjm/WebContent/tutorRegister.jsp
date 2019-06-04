@@ -50,6 +50,10 @@ enctype="multipart/form-data">
 	<div >		
 	<ul>튜터 등록</ul>
 	<ul>
+		이메일
+		<input type ="text" name ="t_email" value="<%=(String)session.getAttribute("loginId") %>" >
+	</ul>
+	<ul>
 		프로필사진
 		<input type ="file" autofocus name="t_selfimg"required/>
 	</ul>
@@ -85,7 +89,7 @@ enctype="multipart/form-data">
  	<a onclick="addFile();" class="addbtn">추가 +</a>
 	<input type="hidden" id="fileCnt" name="fileCnt" value="0"><br><br><br>
 
-	<input type ="submit" value="가입하기" >
+	<input type ="submit" value="튜터등록" >
 </form>	
 <%}else{ //로그아웃시 main.jsp로 이동
 				//session.invalidate();

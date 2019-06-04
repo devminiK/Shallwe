@@ -37,13 +37,14 @@
 	
 	
 	String t_nick = imageUp.getParameter("t_nick");
-	//String t_selfimg = imageUp.getParameter("t_selfimg");
+	String t_email = imageUp.getParameter("t_email");
 	String t_school = imageUp.getParameter("t_school");
 	String t_major = imageUp.getParameter("t_major");
 	String t_idcard = imageUp.getParameter("t_idcard");
 	String t_c = imageUp.getParameter("t_c");
 	
 	vo.setT_nick(t_nick);
+	vo.setT_email(t_email);
 	vo.setT_selfimg(filename);
 	vo.setT_school(t_school);
 	vo.setT_major(t_major);
@@ -61,10 +62,10 @@
 		
 		tutorDAO dao = tutorDAO.getInstance();
 		
-		boolean result = dao.tutorCheck(t_nick);
+		boolean result = dao.tutorCheck(t_email);
 		
 		if(result){
-			session.setAttribute("registedTutor",t_nick);
+			session.setAttribute("registedTutor",t_email);
 			response.sendRedirect("sessionTest.jsp");
 		}else{%>
 		
