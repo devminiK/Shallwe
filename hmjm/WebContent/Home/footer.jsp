@@ -146,10 +146,10 @@ span{
 			</div>
 			
 			<div class="bot_logo">
-                <a href="https://www.facebook.com/taling.me"><img src="/hmjm/Images/Icon/facebook.png" width="29px"/></a>
-                <a href="https://www.instagram.com/"><img src="/hmjm/Images/Icon/instagram.png" width="29px"/></a>
-                <a href="https://www.youtube.com/channel/UCuFmmpVLaNNFoy-cHqELl_A"><img src="/hmjm/Images/Icon/youtube.png" width="29px"/></a>
-                <a href="https://post.naver.com/taling_me"><img src="/hmjm/Images/Icon/naver.png" width="29px"/></a>
+                <a href="https://www.facebook.com/taling.me" target="_blank"><img src="/hmjm/Images/Icon/facebook.png" width="29px"/></a>
+                <a href="https://www.instagram.com/" target="_blank"><img src="/hmjm/Images/Icon/instagram.png" width="29px"/></a>
+                <a href="https://www.youtube.com/channel/UCuFmmpVLaNNFoy-cHqELl_A" target="_blank"><img src="/hmjm/Images/Icon/youtube.png" width="29px"/></a>
+                <a href="https://post.naver.com/taling_me" target="_blank"><img src="/hmjm/Images/Icon/naver.png" width="29px"/></a>
 			</div>
 
 		</div>
