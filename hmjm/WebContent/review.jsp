@@ -35,7 +35,7 @@
 <b>글목록(전체 글:<%=count%>)</b>
 <%if (count == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
-		<tr><td align="center">게시판에 저장된 글이 없습니다.</td></tr>
+		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
 	</table>
 
 <%}else{%>
@@ -43,7 +43,7 @@
 	<%for (int i = 0 ; i < articleList.size() ; i++) {
 		reviewVO article = (reviewVO)articleList.get(i);%>
 		<tr>
-		    <td align="center"  width="50" > <%=number--%></td>
+		    <td align="center"  width="50" ><%=number--%></td>
 		    <td align="left" width="375" colspan="3"><%=article.getR_re()%></td>
 		    <td align="center"  width="100"><%=article.getR_name()%></td>
 		    <td align="center"  width="100"><%=article.getR_reg()%></td>
