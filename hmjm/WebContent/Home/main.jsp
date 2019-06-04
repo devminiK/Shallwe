@@ -114,7 +114,7 @@ to {
 </head>
 <body id="main">
 	<%--상단 카테고리bar: header --%>
-	<jsp:include page="Header.jsp" />
+	<jsp:include page="header.jsp" />
 	
 
 
@@ -175,10 +175,10 @@ to {
 		}
 	</script>
 	<%--중간 카테고리bar: category --%>
-	<jsp:include page="Category.jsp" />
+	<jsp:include page="category.jsp" />
 
 	<%--footer --%>
-	<jsp:include page="Footer.jsp" />
+	<jsp:include page="footer.jsp" />
 	
 
 </body>
