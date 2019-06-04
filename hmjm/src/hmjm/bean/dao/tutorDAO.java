@@ -159,7 +159,7 @@ public class tutorDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"update tutor set T_selfimg=?,T_school,"
+					"update tutor set T_selfimg=?,T_school=?,T_major=?,T_idcard=?"
 					)
 			pstmt.setString(1, vo.getT_selfimg());
 			pstmt.setString(2, vo.getT_school());
@@ -169,7 +169,7 @@ public class tutorDAO {
 			pstmt.setString(6, vo.getT_email());
 			pstmt.setString(7, vo.getT_nick());
 			
-			jhhjjhjh
+			
 		}
 	}
 	
