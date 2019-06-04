@@ -150,7 +150,7 @@ public class tutorDAO {
 		return result;
 	}
 	
-}
+
 	public void updateTutor(tutorVO vo)//튜터 정보 수정
 			throws Exception{
 		Connection conn = null;
@@ -159,8 +159,8 @@ public class tutorDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"update tutor set T_selfimg=?,T_school=?,T_major=?,T_idcard=?"
-					)
+					"update tutor set t_selfimg=?,t_school=?,t_major=?,t_idcard=?"+
+					"t_c=?,t_nick=? where t_email=?");
 			pstmt.setString(1, vo.getT_selfimg());
 			pstmt.setString(2, vo.getT_school());
 			pstmt.setString(3, vo.getT_major());
@@ -168,11 +168,16 @@ public class tutorDAO {
 			pstmt.setString(5, vo.getT_c());
 			pstmt.setString(6, vo.getT_email());
 			pstmt.setString(7, vo.getT_nick());
+			pstmt.executeUpdate();
+		}catch(Exception ex) {
+			ex.printStackTrace();
 			
-			
+		}finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 	}
-	
+}
 	
 	
 	
