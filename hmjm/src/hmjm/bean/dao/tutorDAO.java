@@ -169,7 +169,7 @@ public class tutorDAO {
 			pstmt.setString(6, vo.getT_email());
 			pstmt.setString(7, vo.getT_nick());
 			
-			
+			jhhjjhjh
 		}
 	}
 	
