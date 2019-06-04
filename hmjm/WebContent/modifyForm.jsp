@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원정보수정</title>
+<title>회원정보수정^^</title>
 </head>
 <body>
 	<script type="text/javascript"></script>

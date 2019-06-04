@@ -95,7 +95,7 @@ public class tutorDAO {
 		    }
 	
 	//현재 자용자가 튜터등록을 했는지 안했는지 체크를 위함, 테스트 아직 못함_성민
-	public boolean userCheck(String email) 
+	public boolean userCheck(String t_email) 
 			throws Exception {
 				Connection conn = null;
 		        PreparedStatement pstmt = null;
@@ -106,8 +106,8 @@ public class tutorDAO {
 		            conn = getConnection();
 		            
 		            pstmt = conn.prepareStatement(
-		            	"select passwd from TUTOR where email = ?");
-		            pstmt.setString(1, email);
+		            	"select passwd from TUTOR where t_email = ?");
+		            pstmt.setString(1, t_email);
 		            rs= pstmt.executeQuery();
 
 					if(rs.next()){
@@ -151,6 +151,42 @@ public class tutorDAO {
 		return result;
 	}
 	
+
+	public void updateTutor(tutorVO vo)//튜터 정보 수정
+			throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"update tutor set t_selfimg=?,t_school=?,t_major=?,t_idcard=?"+
+					"t_c=?,t_nick=? where t_email=?");
+			pstmt.setString(1, vo.getT_selfimg());
+			pstmt.setString(2, vo.getT_school());
+			pstmt.setString(3, vo.getT_major());
+			pstmt.setString(4, vo.getT_idcard());
+			pstmt.setString(5, vo.getT_c());
+			pstmt.setString(6, vo.getT_email());
+			pstmt.setString(7, vo.getT_nick());
+			pstmt.executeUpdate();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			
+		}finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
 }
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
