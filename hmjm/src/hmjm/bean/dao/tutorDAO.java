@@ -23,6 +23,7 @@ public class tutorDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	
 	private Connection getConnection() {
 		try {
 			Context ctx = new InitialContext(); //context.xml. Á¤º¸ È¹µæ
