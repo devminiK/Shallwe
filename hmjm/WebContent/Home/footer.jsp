@@ -129,7 +129,7 @@ span{
             
             <div class="info_cell_kko" style="float:right;">
 				<b>shallweing center</b>
-				<ul><li><img src="images/kakao.jpg" width="18px"/>&nbsp;&nbsp;KAKAO 플러스친구 / @쉘위센터</li>
+				<ul><li><img src="/hmjm/Images/Icon/kakao.jpg" width="18px"/>&nbsp;&nbsp;KAKAO 플러스친구 / @쉘위센터</li>
 					<li>운영시간 / 평일 10:00 ~ 18:00</li>
 					<li><span>ㅁㅁㅁㅁ</span>/점심 13:00 ~ 14:00</li></ul>
 			</div>
@@ -146,10 +146,10 @@ span{
 			</div>
 			
 			<div class="bot_logo">
-                <a href="https://www.facebook.com/taling.me"><img src="images/facebook.png" width="29px"/></a>
-                <a href="https://www.instagram.com/"><img src="images/instagram.png" width="29px"/></a>
-                <a href="https://www.youtube.com/channel/UCuFmmpVLaNNFoy-cHqELl_A"><img src="images/youtube.png" width="29px"/></a>
-                <a href="https://post.naver.com/taling_me"><img src="images/naver.png" width="29px"/></a>
+                <a href="https://www.facebook.com/taling.me"><img src="/hmjm/Images/Icon/facebook.png" width="29px"/></a>
+                <a href="https://www.instagram.com/"><img src="/hmjm/Images/Icon/instagram.png" width="29px"/></a>
+                <a href="https://www.youtube.com/channel/UCuFmmpVLaNNFoy-cHqELl_A"><img src="/hmjm/Images/Icon/youtube.png" width="29px"/></a>
+                <a href="https://post.naver.com/taling_me"><img src="/hmjm/Images/Icon/naver.png" width="29px"/></a>
 			</div>
 
 		</div>

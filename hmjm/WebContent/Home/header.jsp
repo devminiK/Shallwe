@@ -98,9 +98,9 @@
 </style>
 <script language="javascript">
 		function openRealtimetalk(){
-			url="My/Qnatutee.jsp";
+			url="/hmjm/My/qnatutee.jsp";
 			//새로운 윈도우로 열기
-			open(url, "Qnatutee",  "toolbar=no, location=no,status=no,menubar=no,resizable=no,width=400, height=660");
+			open(url, "qnatutee",  "toolbar=no, location=no,status=no,menubar=no,resizable=no,width=400, height=660");
 		}
 	</script>
 </head>
@@ -113,23 +113,23 @@
 	
 	if(session.getAttribute("loginId") == null){
 		loginbarName="로그인";		
-		logURL="loginForm.jsp";
+		logURL="/hmjm/Log/loginForm.jsp";
 		
   		statebarName ="회원가입";	
-  		stateURL="register.jsp";
+  		stateURL="/hmjm/Register/register.jsp";
 	}else{
 		loginbarName="실시간 톡";	//로그아웃기능은, 수업신청서안에서 사용할것_by.sm
-		logURL="My/Qnatutee.jsp";
+		logURL="/hmjm/My/qnatutee.jsp";
 		
 		statebarName ="수업신청서";	
-		stateURL="My/Application.jsp";
+		stateURL="/hmjm/My/application.jsp";
 	}
 %>
 <body id="header">
 	<div class="header_new">
 		<div class="topnav">
 			<div class="icon">
-				<a href="/hmjm/Home/Main.jsp"><img src="/hmjm/Images/logo.png" /></a>
+				<a href="/hmjm/Home/main.jsp"><img src="/hmjm/Images/logo.png" /></a>
 			</div>
 
 			<div class="search-container">
@@ -147,16 +147,16 @@
 					<%
 					//My/Application.jsp에 로그아웃기능 추가하면 삭제할것.
 					if(session.getAttribute("loginId")!= null){%>
-						<a href="logout.jsp">로그아웃</a>
+						<a href="/hmjm/Log/logout.jsp">로그아웃</a>
 				<%}%>
-				<a href="tutorMenu.jsp">튜터등록</a><!-- 등록페이지로 이동하게 수정 -->
+				<a href="/hmjm/Tutor/Register/menu.jsp">튜터등록</a><!-- 등록페이지로 이동하게 수정 -->
 				<a href="<%=stateURL%>"><%=statebarName%></a>
 				<%
 					if(session.getAttribute("loginId")== null){%>
 						<a href="<%=logURL%>"><%=loginbarName %></a>
 					<%}else{%>
 						<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a>
-						<a href="/hmjm/My/Application.jsp"><img src="/hmjm/Images/Icon/user.png" width="35px"/></a> 
+						<a href="/hmjm/My/application.jsp"><img src="/hmjm/Images/Icon/user.png" width="35px"/></a> 
 					<%}%>
 			</div>
 

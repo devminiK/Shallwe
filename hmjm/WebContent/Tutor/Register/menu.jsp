@@ -5,22 +5,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>튜터등록 메뉴</title>
 </head>
 								 
 
 <body>
-<jsp:include page="/WebContent/Header.jsp" />
+<jsp:include page="/Home/header.jsp"/>
 	
-<%if(session.getAttribute("loginId") == null){%>
-
-		
+<%if(session.getAttribute("loginId") == null){%>	
 	<script>
-	alert("로그인부터");
-	window.location='./loginForm.jsp';
-		
+		alert("로그인부터");
+		window.location='/hmjm/Log/loginForm.jsp';
 	</script>
+	
 	<%}else{
 	
 	String m_email = (String)session.getAttribute("loginId");
@@ -58,5 +55,6 @@
 	<input type="button" value="강의등록" 
 				      onclick="javascript:window.location='./main.jsp'">
 	</div>
+	<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
