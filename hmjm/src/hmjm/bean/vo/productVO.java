@@ -9,10 +9,14 @@ public class productVO {
 	private String p_selfimg;
 	private String p_name;
 	private String p_self;
-	private String p_class;
+	private String p_class1;	//상품소개, 세분화 하여 변수 추가
+	private String p_class2;
+	private String p_class3;
+	private String p_class4;
 	private String p_time;
 	private String p_cost;
-	private int p_student;
+	private int p_count_min;	//인원 최대
+	private int p_count_max;	//인원 최소
 	private String p_memo;
 	private String imgsrc;	//이미지파일을 가져오기위한 변수 추가 작성
 	
@@ -64,11 +68,29 @@ public class productVO {
 	public void setP_self(String p_self) {
 		this.p_self = p_self;
 	}
-	public String getP_class() {
-		return p_class;
+	public String getP_class1() {
+		return p_class1;
 	}
-	public void setP_class(String p_class) {
-		this.p_class = p_class;
+	public void setP_class1(String p_class1) {
+		this.p_class1 = p_class1;
+	}
+	public String getP_class2() {
+		return p_class2;
+	}
+	public void setP_class2(String p_class2) {
+		this.p_class2 = p_class2;
+	}
+	public String getP_class3() {
+		return p_class3;
+	}
+	public void setP_class3(String p_class3) {
+		this.p_class3 = p_class3;
+	}
+	public String getP_class4() {
+		return p_class4;
+	}
+	public void setP_class4(String p_class4) {
+		this.p_class4 = p_class4;
 	}
 	public String getP_time() {
 		return p_time;
@@ -82,11 +104,17 @@ public class productVO {
 	public void setP_cost(String p_cost) {
 		this.p_cost = p_cost;
 	}
-	public int getP_student() {
-		return p_student;
+	public int getP_count_min() {
+		return p_count_min;
 	}
-	public void setP_student(int p_student) {
-		this.p_student = p_student;
+	public void setP_count_min(int p_count_min) {
+		this.p_count_min = p_count_min;
+	}
+	public int getP_count_max() {
+		return p_count_max;
+	}
+	public void setP_count_max(int p_count_max) {
+		this.p_count_max = p_count_max;
 	}
 	public String getP_memo() {
 		return p_memo;
