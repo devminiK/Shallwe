@@ -27,33 +27,28 @@
 	memberDAO manager = memberDAO.getInstance();
 	memberVO c = manager.getMember(m_email);
 	
-	String t_email = (String)session.getAttribute("loginId");
-	//String t_email = request.getParameter("t_email");
-	tutorDAO tt = tutorDAO.getInstance();
-	tutorVO e = tt.getMember(t_email);
-	
-	System.out.println("====="+m_email);
-	System.out.println("====="+t_email);
-%>
+	//String t_email = (String)session.getAttribute("loginId");
+	//String t_email = request.getParameter((String)session.getAttribute("loginId"));
+	tutorDAO vo = tutorDAO.getInstance();
+	tutorVO e = vo.getMember(m_email);
 
+%>
 
 	<div>
 	<%=c.getM_email()%>
 	<%=c.getM_name()%>
 
-	
-
-	
 	<%
-		if(e != null){%>
 		
-			<input type="button" value="튜터수정" 
-				      onclick="javascript:window.location='./test.jsp'">
+		if(e==null){%>
+		
+			<input type="button" value="튜터등록" 
+				      onclick="javascript:window.location='./tutorRegister.jsp'">
 			
 			
 			<%}else{ %>
-			<input type="button" value="튜터등록" 
-				      onclick="javascript:window.location='./tutorRegister.jsp'">
+			<input type="button" value="튜터수정" 
+				      onclick="javascript:window.location='./test.jsp'">
 			
 			
 	<%}%>
