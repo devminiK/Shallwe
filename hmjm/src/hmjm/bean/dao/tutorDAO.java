@@ -159,7 +159,7 @@ public class tutorDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"update tutor set T_selfimg=?,"
+					"update tutor set T_selfimg=?,T_school,"
 					)
 			pstmt.setString(1, vo.getT_selfimg());
 			pstmt.setString(2, vo.getT_school());
