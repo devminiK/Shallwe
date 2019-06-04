@@ -7,10 +7,6 @@
 	<meta charset="UTF-8">
     <title>Testing websockets</title>
 </head>
-<%
-	String id = (String)session.getAttribute("loginId");
-%>
-
 <body>
     <fieldset>
         <textarea id="messageWindow" rows="10" cols="50" readonly="true"></textarea><br/>
@@ -22,7 +18,6 @@
         var textarea = document.getElementById("messageWindow");
         var webSocket = new WebSocket('ws://localhost/hmjm/broadcasting');
         var inputMessage = document.getElementById('inputMessage');
-     
         
     webSocket.onerror = function(event) {
       onError(event)
