@@ -48,7 +48,7 @@
 			
 			<%}else{ %>
 			<input type="button" value="튜터수정" 
-				      onclick="javascript:window.location='./test.jsp'">
+				      onclick="javascript:window.location='./tutorModifyForm.jsp'">
 			
 			
 	<%}%>

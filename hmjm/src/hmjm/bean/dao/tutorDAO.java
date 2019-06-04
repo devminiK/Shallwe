@@ -159,16 +159,13 @@ public class tutorDAO {
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(
-					"update tutor set t_selfimg=?,t_school=?,t_major=?,t_idcard=?"+
-					"t_c=?,t_nick=? where t_email=?");
-			pstmt.setString(1, vo.getT_selfimg());
-			pstmt.setString(2, vo.getT_school());
-			pstmt.setString(3, vo.getT_major());
-			pstmt.setString(4, vo.getT_idcard());
-			pstmt.setString(5, vo.getT_c());
+			pstmt = conn.prepareStatement("update tutor set t_school=?, t_major=?, t_idcard=?, t_c=?, t_nick=? where t_email=?");		
+			pstmt.setString(1, vo.getT_school());
+			pstmt.setString(2, vo.getT_major());
+			pstmt.setString(3, vo.getT_idcard());
+			pstmt.setString(4, vo.getT_c());
+			pstmt.setString(5, vo.getT_nick());
 			pstmt.setString(6, vo.getT_email());
-			pstmt.setString(7, vo.getT_nick());
 			pstmt.executeUpdate();
 		}catch(Exception ex) {
 			ex.printStackTrace();

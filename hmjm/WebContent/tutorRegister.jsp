@@ -51,7 +51,7 @@ enctype="multipart/form-data">
 	<ul>튜터 등록</ul>
 	<ul>
 		이메일
-		<input type ="text" name ="t_email" value="<%=(String)session.getAttribute("loginId") %>" >
+		<input type="text" name="t_email" value="<%=(String)session.getAttribute("loginId")%>" />
 	</ul>
 	<ul>
 		프로필사진

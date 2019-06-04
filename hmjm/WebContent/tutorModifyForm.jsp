@@ -43,7 +43,7 @@ function checkLayer(val){
 		tutorVO e = vo.getMember(m_email);
 %>
 <div>
-<form action ="tutorRegisterPro.jsp" name="tutor" method="post" align="center"
+<form action ="tutorModifyPro.jsp" name="tutor" method="post" align="center"
 enctype="multipart/form-data">
 	
  	<br><br>
@@ -53,8 +53,8 @@ enctype="multipart/form-data">
 		이메일 <%=e.getT_email()%>
 	</ul>
 	<ul>
-		프로필사진
-		<input type ="file"  name="t_selfimg" value="<%=e.getT_selfimg()%>" />
+		프로필사진<img src="./selfimg/<%=e.getT_selfimg()%>">
+		
 	</ul>
 	<ul>
 		별명^_^
@@ -67,9 +67,9 @@ enctype="multipart/form-data">
 			<input id="univ" type="radio" name="t_idcard" value="1" checked onclick="checkLayer(1);">
 	 		<div id="schoolmajor">
 				<input type ="text" name ="t_school" 
-				placeholder ="학교 예)서울대학교" />
+				placeholder ="학교 예)서울대학교" value="<%=e.getT_school()%>"/>
 				<input type ="text" name ="t_major" 
-				placeholder ="전공 예)경영학과" />
+				placeholder ="전공 예)경영학과" value="<%=e.getT_major() %>" />
      		</div>
 	</ul>
 
@@ -79,7 +79,7 @@ enctype="multipart/form-data">
 	<ul>
 		자격증
 		<input id= "Cert0" type ="text" name ="t_c" placeholder="예)정보처리기사"
-		value class ="input_txt01" />
+		value="<%=e.getT_c() %>" class ="input_txt01" />
 	</ul>	
 	
 
@@ -88,7 +88,8 @@ enctype="multipart/form-data">
  	<a onclick="addFile();" class="addbtn">추가 +</a>
 	<input type="hidden" id="fileCnt" name="fileCnt" value="0"><br><br><br>
 
-	<input type ="submit" value="튜터 정보 수정" >
+	<input type ="submit" value="튜터 정보 수정" ><br>
+	<input type ="button" value="취소" onclick="javascript:window.location='tutorMenu.jsp'">
 </form>
 
 </div>
