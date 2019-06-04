@@ -108,6 +108,9 @@
 input[type=number] {
 	width: 80px;
 }
+
+
+
 </style>
 </head>
 
@@ -117,6 +120,7 @@ input[type=number] {
 	private String imgsrc;	//이미지파일을 가져오기위한 변수 추가 작성   
 --%>
 <body>
+	<jsp:include page="Header.jsp"/>
 	<b>수업등록</b>
 	<br>
 	<div class="container">
@@ -232,5 +236,6 @@ input[type=number] {
 			<input type="button" value="목록보기" OnClick="window.location='list.jsp'">
 		</form>
 	</div>
+	<jsp:include page="Footer.jsp"/>
 </body>
 </html>

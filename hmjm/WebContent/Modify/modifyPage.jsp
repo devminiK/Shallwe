@@ -113,7 +113,7 @@
 
 <body class="front">
 <div id="main">
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="Header.jsp"/>
 <%--상단 카테고리 bar --%>
 </div>
 <div class="banners">

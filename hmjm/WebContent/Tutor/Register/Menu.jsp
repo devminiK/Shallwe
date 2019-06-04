@@ -11,7 +11,7 @@
 								 
 
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="/WebContent/Header.jsp" />
 	
 <%if(session.getAttribute("loginId") == null){%>
 

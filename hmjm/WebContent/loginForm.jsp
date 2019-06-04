@@ -9,7 +9,7 @@
 <body class="not-front">
 <div id="main">
 	<%--상단 카테고리--%>
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="Header.jsp"/>
 
 
 <div id="inner">
@@ -83,6 +83,6 @@
 </div>	
 </div>
 
-<jsp:include page="footer.jsp" />
+<jsp:include page="Footer.jsp" />
 </body>
 </html>

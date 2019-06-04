@@ -114,24 +114,25 @@ to {
 </head>
 <body id="main">
 	<%--상단 카테고리bar: header --%>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="Header.jsp" />
+	
 
 
 	<div class="slideshow-container">
 		<div class="mySlides fade">
-			<a href="#"><img src="images/main1.jpg" style="width: 100%"></a>
+			<a href="#"><img src="/WebContent/Images/main1.jpg" style="width: 100%"></a>
 		</div>
 
 		<div class="mySlides fade">
-			<a href="#"><img src="images/main2.jpg" style="width: 100%"></a>
+			<a href="#"><img src="/WebContent/Images/main2.jpg" style="width: 100%"></a>
 		</div>
 
 		<div class="mySlides fade">
-			<a href="#"><img src="images/main3.jpg" style="width: 100%"></a>
+			<a href="#"><img src="/WebContent/Images/main3.jpg" style="width: 100%"></a>
 		</div>
 
 		<div class="mySlides fade">
-			<a href="#"><img src="images/main4.jpg" style="width: 100%"></a>
+			<a href="#"><img src="/WebContent/Images/main4.jpg" style="width: 100%"></a>
 		</div>
 
 		<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
@@ -174,10 +175,11 @@ to {
 		}
 	</script>
 	<%--중간 카테고리bar: category --%>
-	<jsp:include page="category.jsp" />
+	<jsp:include page="Category.jsp" />
 
 	<%--footer --%>
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="Footer.jsp" />
+	
 
 </body>
 </html>

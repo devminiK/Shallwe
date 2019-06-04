@@ -88,10 +88,10 @@ public void insertArticle(reviewVO article) throws Exception {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg, r "+
-					"from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,rownum r " +
-					"from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg " +
-					"from review order by r_reg desc) order by r_reg desc) where r >= ? and r <= ? ");
+					" select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg, r "+
+					" from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,rownum r " +
+					" from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg " +
+					" from review order by r_reg desc) order by r_reg desc) where r >= ? and r <= ? ");
 		
 					pstmt.setInt(1, start); 
 					pstmt.setInt(2, end); 

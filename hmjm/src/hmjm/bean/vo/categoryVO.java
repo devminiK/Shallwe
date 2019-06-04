@@ -1,9 +1,10 @@
 package hmjm.bean.vo;
 
 public class categoryVO {
-	private int c_num;
-	private String c_name;
-	private int c_parentnum;
+	private int c_num; //
+	private String c_name; //
+	private int c_parentnum; //
+	
 	public int getC_num() {
 		return c_num;
 	}

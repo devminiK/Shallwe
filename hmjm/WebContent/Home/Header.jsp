@@ -129,7 +129,7 @@
 	<div class="header_new">
 		<div class="topnav">
 			<div class="icon">
-				<a href="main.jsp"><img src="images/logo.png" /></a>
+				<a href="/WebContent/Home/Main.jsp"><img src="/WebContent/Images/logo.png" /></a>
 			</div>
 
 			<div class="search-container">
