@@ -18,15 +18,17 @@
     int endRow = currentPage * pageSize;
     int count = 0;
     int number= 0;
-    int mc=0;
-
+    
+    
     List articleList = null;
     messageDAO dbPro = messageDAO.getInstance();
     count = dbPro.getArticleCount(id);
+    
     if (count > 0) {
     	articleList = dbPro.getArticles(startRow, endRow, id);
     }
     number=count-(currentPage-1)*pageSize;
+    
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
