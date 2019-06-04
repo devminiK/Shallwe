@@ -129,7 +129,7 @@
 	<div class="header_new">
 		<div class="topnav">
 			<div class="icon">
-				<a href="/WebContent/Home/Main.jsp"><img src="/WebContent/Images/logo.png" /></a>
+				<a href="/hmjm/Home/Main.jsp"><img src="/hmjm/Images/logo.png" /></a>
 			</div>
 
 			<div class="search-container">
@@ -156,7 +156,7 @@
 						<a href="<%=logURL%>"><%=loginbarName %></a>
 					<%}else{%>
 						<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a>
-						<a href="My/Application.jsp"><img src="images/user.png" width="35px"/></a> 
+						<a href="/hmjm/My/Application.jsp"><img src="/hmjm/Images/Icon/user.png" width="35px"/></a> 
 					<%}%>
 			</div>
 
