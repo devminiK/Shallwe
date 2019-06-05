@@ -33,7 +33,7 @@ public class productDAO {
 		return conn;
 	}
 	/*
-	private int p_num;			//수업 고유번호
+	private int p_num;			//수업 고유번호(순서)
 	private String p_email;		//튜터의 이메일	-가져올것
 	private String p_category;	//등록 상품(수업)의 카테고리
 	private String p_classname;	//등록 상품(수업)의 이름
@@ -53,12 +53,9 @@ public class productDAO {
 	//작성한 정보로 수업상품등록(product), db삽입
 	//작성한 게시글을 db에 삽입
 		 public void insertProduct(productVO product) {	    
-		    
-		      int num=article.getNum();
-		      int ref=article.getRef();
-		      int re_step=article.getRe_step();
-		      int re_level=article.getRe_level();
 		      
+			 int num=product.getP_num();
+			 
 		      int number=0;
 		      String sql="";
 		      try {
@@ -88,11 +85,11 @@ public class productDAO {
 		         sql = "insert into board(num,writer,email,subject,passwd,reg_date,";
 		         sql+="ref,re_step,re_level,content,ip) values(board_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?)";
 		            pstmt = conn.prepareStatement(sql);
-		         pstmt.setString(1, article.getWriter());
-		         pstmt.setString(2, article.getEmail());
-		         pstmt.setString(3, article.getSubject());
-		         pstmt.setString(4, article.getPasswd());
-		         pstmt.setTimestamp(5, article.getReg_date());
+		         pstmt.setString(1, product.getWriter());
+		         pstmt.setString(2, product.getEmail());
+		         pstmt.setString(3, product.getSubject());
+		         pstmt.setString(4, product.getPasswd());
+		         pstmt.setTimestamp(5, product.getReg_date());
 		         pstmt.setInt(6, ref);
 		         pstmt.setInt(7, re_step);
 		         pstmt.setInt(8, re_level);
