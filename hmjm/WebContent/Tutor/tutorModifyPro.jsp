@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ page import = "hmjm.bean.dao.*"%>
+<%@ page import = "hmjm.bean.tutor.*"%>
 
 
 <% request.setCharacterEncoding("utf-8"); %>
 
-<jsp:useBean id="vo" class="hmjm.bean.vo.tutorVO">
+<jsp:useBean id="vo" class="hmjm.bean.tutor.tutorVO">
 	<jsp:setProperty name="vo" property="*" />
 </jsp:useBean>
 <%
@@ -16,8 +16,11 @@
 		manager.updateTutor(vo);
 		
 %>
-
-<p>수정이 된건가?</p>
 	<form>
-	    <input type="button" value="메인으로" onclick="window.location='./Register/menu.jsp'">
-    </form>
+		<script>
+			alert("수정이 완료되었습니다");
+			window.location = './Register/menu.jsp';
+		</script>
+	</form>
+		
+	   
