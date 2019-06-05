@@ -17,6 +17,8 @@
 	//nick값 받아오기위함
 	//tutorDAO tdao = tutorDAO.getInstance();		
 	//tutorVO tvo = tdao.getMember(preUser);
+	
+	
 %>
 <html>
 <head>
@@ -69,6 +71,11 @@
 			return false;
 		}
 		if (form.p_cost.value == "") {
+			alert("지불해야할 가격을 지정해주세요.");
+			form.p_cost.focus();
+			return false;
+		}
+		if (form.p_cost.value == "") {/*이미지*/
 			alert("지불해야할 가격을 지정해주세요.");
 			form.p_cost.focus();
 			return false;
@@ -251,7 +258,7 @@ input[type=number] {
 					
 					<div id="con" style="display: none">
 						최소인원: <input type="number" name="p_count_min" min=1><br>
-						최대인원: <input type="number" name="p_count_max" min=2>
+						최대인원: <input type="number" name="p_count_max" min=1>
 					</div>
 				</div>
 			</div>

@@ -15,13 +15,13 @@ public class productDAO {
 	public static productDAO getInstance() {
 		return instance;
 	}
-	
+
 	private productDAO() {};
-	
+
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-	
+
 	private Connection getConnection() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -49,62 +49,40 @@ public class productDAO {
 	private String p_memo;		//덧 붙이는 말
 	private String imgsrc;		//이미지파일을 가져오기위한 변수 추가 작성
 	 */
-	
-	//작성한 정보로 수업상품등록(product), db삽입
-	//작성한 게시글을 db에 삽입
-		 public void insertProduct(productVO product) {	    
-		      
-			 int num=product.getP_num();
-			 
-		      int number=0;
-		      String sql="";
-		      try {
-		         conn = getConnection(); 
-		         pstmt = conn.prepareStatement("select max(num) from board");
-		         rs = pstmt.executeQuery();
-		         if (rs.next()) 
-		            number=rs.getInt(1)+1;   
-		         else
-		            number=1; 
-		         
-		         if (num!=0) 
-		         { 
-		            sql="update board set re_step=re_step+1 where ref= ? and re_step> ?";
-		            pstmt = conn.prepareStatement(sql);
-		            pstmt.setInt(1, ref);
-		            pstmt.setInt(2, re_step);
-		            pstmt.executeUpdate();
-		            re_step=re_step+1;
-		            re_level=re_level+1;
-		         }else{ 
-		            ref=number;
-		            re_step=0;
-		            re_level=0;
-		         }
-		 
-		         sql = "insert into board(num,writer,email,subject,passwd,reg_date,";
-		         sql+="ref,re_step,re_level,content,ip) values(board_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?)";
-		            pstmt = conn.prepareStatement(sql);
-		         pstmt.setString(1, product.getWriter());
-		         pstmt.setString(2, product.getEmail());
-		         pstmt.setString(3, product.getSubject());
-		         pstmt.setString(4, product.getPasswd());
-		         pstmt.setTimestamp(5, product.getReg_date());
-		         pstmt.setInt(6, ref);
-		         pstmt.setInt(7, re_step);
-		         pstmt.setInt(8, re_level);
-		         pstmt.setString(9, article.getContent());
-		         
-		         pstmt.setString(10, article.getIp());
-		         pstmt.executeUpdate();
-		      } catch(Exception ex) {
-		         ex.printStackTrace();
-		      } finally {
-		         if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-		         if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-		         if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-		      }
-		   }
-	
+
+	//작성한 수업 등록 글 DB에 삽입
+	public void insertProduct(productVO product) {	    
+
+		String sql="";
+		try {
+			conn = getConnection(); 
+			pstmt = conn.prepareStatement("select max(num) from board");
+			rs = pstmt.executeQuery();
+
+			sql = "insert into product values(product_seq.nextval,?,?,?,?,?,?,?,?,?,?,? ?,?)"; 
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, product.getP_email());
+			pstmt.setString(2, product.getP_category());
+			pstmt.setString(3, product.getP_classname());
+			pstmt.setString(4, product.getP_self());
+			pstmt.setString(5, product.getP_time());
+			pstmt.setInt(6, product.getP_cost());
+			pstmt.setString(7, product.getP_memo());
+			pstmt.setInt(8, product.getP_count_min());
+			pstmt.setInt(9, product.getP_count_max());
+			pstmt.setString(10, product.getP_class1());
+			pstmt.setString(11, product.getP_class1());
+			pstmt.setString(12, product.getP_class3());
+			pstmt.setString(13, product.getP_class4());
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
+
 
 }
