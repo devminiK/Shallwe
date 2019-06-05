@@ -1,14 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import = "hmjm.bean.dao.*" %>
+<%@ page import = "hmjm.bean.vo.*" %>
+
 <!DOCTYPE html>
+<% request.setCharacterEncoding("UTF-8");%>
 <html>
 <head>
-<title>탈잉 - 배움이 쉽고 즐거워진다</title>
+<meta charset="UTF-8">
+<title>회원정보수정^^</title>
 </head>
 <body>
-<h1>정보를 입력하세요_프로필, 번호 등</h1>
-<h1>기본정보 입력</h1>
-<h3>프로필 사진: 프로필 사진을 업로드 해 주세요(없을경우)</h3>
-<h3>휴대폰 번호 [번호 인증]</h3>
-<h3>등록 완료</h3>
+	<script type="text/javascript"></script>
+
+<%										
+	String m_email = (String)session.getAttribute("loginId");
+	//System.out.println("====="+m_email);
+	memberDAO manager = memberDAO.getInstance();
+	memberVO c = manager.getMember(m_email);
+	
+%>
+
+<form action ="profilePro.jsp" name="member" method="post" align ="center">
+	
+ <table width ="550" align ="center">
+	<tr height ="80" bgcolor ="333F48">
+		<th colspan ="3"><font color ="white">회원정보 수정</th>
+	</tr>
+	<tr height ="50">
+		<th>이메일</th>
+		<th><%=c.getM_email() %></th>
+	</tr>
+	<tr height ="50">
+		<th>이 름</th>
+		<th><input type="text" autofosus name="m_name" value="<%=c.getM_name()%>"></th>
+	</tr>
+	<tr height ="50">
+		<th>전화번호</th>
+		<th><input type="text" name="m_phone" value="<%=c.getM_phone()%>"></th>
+	</tr>
+	<tr height ="50">
+		<th>비밀번호</th>
+		<th><input type ="password" name ="m_pw" value="<%=c.getM_pw()%>"></th>
+	</tr>
+ </table><br>
+	<input type ="submit" name="modify" value ="회원정보 수정" " style ="height:30px;width:100px;"><br><br>
+	<input type ="button" value ="취소" " style ="height:30px;width:100px;"
+	onclick="javascript:window.location='application.jsp'">
+
+
+</form>
+
+
 </body>
 </html>
