@@ -1,4 +1,4 @@
-package hmjm.bean.vo;
+package hmjm.bean.message;
 import java.sql.Timestamp;
 public class messageVO {
 	private int s_num;

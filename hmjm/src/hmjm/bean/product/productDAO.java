@@ -1,4 +1,4 @@
-package hmjm.bean.dao;
+package hmjm.bean.product;
 /* º∫πŒ ¿€º∫ */
 import java.sql.Connection;
 

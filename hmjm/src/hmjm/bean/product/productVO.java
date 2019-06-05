@@ -1,4 +1,4 @@
-package hmjm.bean.vo;
+package hmjm.bean.product;
 
 public class productVO {
 	private int p_num;

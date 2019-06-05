@@ -1,4 +1,4 @@
-package hmjm.bean.dao;
+package hmjm.bean.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

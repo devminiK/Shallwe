@@ -1,4 +1,4 @@
-package hmjm.bean.dao;
+package hmjm.bean.review;
 
 import java.sql.*;
 import javax.sql.*;

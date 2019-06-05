@@ -1,4 +1,4 @@
-package hmjm.bean.vo;
+package hmjm.bean.category;
 
 public class categoryVO {
 	private int c_num; //

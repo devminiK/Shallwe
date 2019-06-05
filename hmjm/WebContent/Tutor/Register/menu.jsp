@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ page import="hmjm.bean.dao.*"%>
-<%@ page import="hmjm.bean.vo.*"%>
+<%@ page import="hmjm.bean.member.*"%>
+<%@ page import="hmjm.bean.tutor.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,7 +86,7 @@
 				
 				<div class="eachButton">
 					<input type="button" value="강의등록"
-				onclick="javascript:window.location='./hmjm/Home/main.jsp'">
+				onclick="javascript:window.location='/hmjm/Product/addProduct.jsp'">
 				</div>
 			</div>		
 		</div>

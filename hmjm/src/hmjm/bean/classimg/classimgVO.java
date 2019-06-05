@@ -1,4 +1,4 @@
-package hmjm.bean.vo;
+package hmjm.bean.classimg;
 
 public class classimgVO {
 	private int ci_num;

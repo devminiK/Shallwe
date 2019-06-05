@@ -1,4 +1,4 @@
-package hmjm.chat;
+package hmjm.bean.chat;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;

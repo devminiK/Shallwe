@@ -1,4 +1,4 @@
-package hmjm.bean.vo;
+package hmjm.bean.review;
 
 import java.sql.Timestamp;
 

@@ -1,4 +1,4 @@
-package hmjm.bean.dao;
+package hmjm.bean.classimg;
 
 public class classimgDAO {
 

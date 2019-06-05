@@ -1,4 +1,4 @@
-package hmjm.bean.vo;
+package hmjm.bean.classtime;
 
 public class classtimeVO {
 	private int ct_num;
