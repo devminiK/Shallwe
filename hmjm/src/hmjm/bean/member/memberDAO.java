@@ -9,7 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import hmjm.bean.vo.*;
+import hmjm.bean.member.memberVO;
 
 public class memberDAO {
 	private static memberDAO instance = new memberDAO();

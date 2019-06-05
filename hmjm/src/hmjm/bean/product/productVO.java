@@ -1,24 +1,25 @@
 package hmjm.bean.product;
 
 public class productVO {
-	private int p_num;
-	private String p_email;
-	private String p_category;
-	private String p_classname;
-	private String p_nick;
-	private String p_selfimg;
-	private String p_name;
-	private String p_self;
-	private String p_class1;	//상품소개, 세분화 하여 변수 추가
-	private String p_class2;
-	private String p_class3;
-	private String p_class4;
-	private String p_time;
-	private String p_cost;
-	private int p_count_min;	//인원 최대
-	private int p_count_max;	//인원 최소
-	private String p_memo;
-	private String imgsrc;	//이미지파일을 가져오기위한 변수 추가 작성
+	private int p_num;			//수업 고유번호
+	private String p_email;		//튜터의 이메일	-가져올것
+	private String p_category;	//등록 상품(수업)의 카테고리
+	private String p_classname;	//등록 상품(수업)의 이름
+	private String p_self;		//튜터의 자기 소개
+	private String p_class1;	//소개_튜터소개
+	private String p_class2;	//소개_튜터소개
+	private String p_class3;	//소개_튜터소개
+	private String p_class4;	//소개_튜터소개
+	private String p_time;		//수업 소요 시간
+	private String p_cost;		//가격
+	private int p_count_min;	//인원 최소 인원
+	private int p_count_max;	//인원 최대 인원
+	private String p_memo;		//덧 붙이는 말
+	private String imgsrc;		//이미지파일을 가져오기위한 변수 추가 작성
+	
+	//private String p_nick;		//튜터의 닉네임	-가져올것
+	//private String p_selfimg;	//등록 상품의 튜어 사진	-가져올것
+	//private String p_name;		//튜터의 이름		-가져올것
 	
 	public int getP_num() {
 		return p_num;
@@ -44,6 +45,7 @@ public class productVO {
 	public void setP_classname(String p_classname) {
 		this.p_classname = p_classname;
 	}
+	/*
 	public String getP_nick() {
 		return p_nick;
 	}
@@ -62,6 +64,7 @@ public class productVO {
 	public void setP_name(String p_name) {
 		this.p_name = p_name;
 	}
+	*/
 	public String getP_self() {
 		return p_self;
 	}

@@ -7,8 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import hmjm.bean.vo.*;
-import web.bean.vo.BoardVO;
+import hmjm.bean.product.*;
 
 
 public class productDAO {
@@ -34,46 +33,62 @@ public class productDAO {
 		return conn;
 	}
 	/*
-	 * private int p_num;
-		private String p_email;
-		private String p_category;
-		private String p_classname;
-		private String p_nick;
-		private String p_selfimg;
-		private String p_name;
-		private String p_self;
-		private String p_class;
-		private String p_time;
-		private String p_cost;
-		private int p_student;
-		private String p_memo;
-		private String imgsrc;	//이미지파일을 가져오기위한 변수 추가 작성
-	 * 
-	 * 
-	 * */
-	//어떠한 기능이 필요한지 파악중 .2019.05.31
+	private int p_num;			//수업 고유번호
+	private String p_email;		//튜터의 이메일	-가져올것
+	private String p_category;	//등록 상품(수업)의 카테고리
+	private String p_classname;	//등록 상품(수업)의 이름
+	private String p_self;		//튜터의 자기 소개
+	private String p_class1;	//소개_튜터소개
+	private String p_class2;	//소개_튜터소개
+	private String p_class3;	//소개_튜터소개
+	private String p_class4;	//소개_튜터소개
+	private String p_time;		//수업 소요 시간
+	private String p_cost;		//가격
+	private int p_count_min;	//인원 최소 인원
+	private int p_count_max;	//인원 최대 인원
+	private String p_memo;		//덧 붙이는 말
+	private String imgsrc;		//이미지파일을 가져오기위한 변수 추가 작성
+	 */
 	
 	//작성한 정보로 수업상품등록(product), db삽입
 	//작성한 게시글을 db에 삽입
-	/*
-		 public void insertArticle(productVO product) {	      
+		 public void insertProduct(productVO product) {	    
+		    
+		      int num=article.getNum();
+		      int ref=article.getRef();
+		      int re_step=article.getRe_step();
+		      int re_level=article.getRe_level();
 		      
 		      int number=0;
 		      String sql="";
 		      try {
 		         conn = getConnection(); 
-		         pstmt = conn.prepareStatement("select max(num) from product");
+		         pstmt = conn.prepareStatement("select max(num) from board");
 		         rs = pstmt.executeQuery();
 		         if (rs.next()) 
 		            number=rs.getInt(1)+1;   
 		         else
 		            number=1; 
 		         
+		         if (num!=0) 
+		         { 
+		            sql="update board set re_step=re_step+1 where ref= ? and re_step> ?";
+		            pstmt = conn.prepareStatement(sql);
+		            pstmt.setInt(1, ref);
+		            pstmt.setInt(2, re_step);
+		            pstmt.executeUpdate();
+		            re_step=re_step+1;
+		            re_level=re_level+1;
+		         }else{ 
+		            ref=number;
+		            re_step=0;
+		            re_level=0;
+		         }
 		 
-		         sql = "insert into product(num,writer,email,subject,passwd,reg_date,";
+		         sql = "insert into board(num,writer,email,subject,passwd,reg_date,";
 		         sql+="ref,re_step,re_level,content,ip) values(board_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?)";
 		            pstmt = conn.prepareStatement(sql);
-		         pstmt.setString(1, product.getWriter());
+		         pstmt.setString(1, article.getWriter());
 		         pstmt.setString(2, article.getEmail());
 		         pstmt.setString(3, article.getSubject());
 		         pstmt.setString(4, article.getPasswd());
@@ -93,9 +108,6 @@ public class productDAO {
 		         if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		      }
 		   }
-	
-	
-	*/
 	
 
 }

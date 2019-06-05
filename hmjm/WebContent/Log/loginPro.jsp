@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ page import="hmjm.bean.dao.memberDAO" %>
+<%@ page import="hmjm.bean.member.memberDAO" %>
 
 <%
 	String m_email= request.getParameter("m_email");
