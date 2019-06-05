@@ -113,7 +113,7 @@
 
 <body class="front">
 <div id="main">
-	<jsp:include page="Header.jsp"/>
+	<jsp:include page="/Home/header.jsp"/>
 <%--상단 카테고리 bar --%>
 </div>
 <div class="banners">
@@ -259,7 +259,7 @@
 </div>	
 </div>
 <%--footer.jsp로 적용해야하는 부분 END --%> 
-
+	<jsp:include page="/Home/footer.jsp"/>
 </div>	
 </div>
 <script type="text/javascript" src="js/bootstrap.js"></script>
