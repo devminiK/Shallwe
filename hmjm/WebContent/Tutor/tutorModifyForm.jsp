@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ page import = "hmjm.bean.dao.*" %>
-<%@ page import = "hmjm.bean.vo.*" %>
+<%@ page import = "hmjm.bean.tutor.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>

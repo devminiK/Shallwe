@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" %>
-<%@ page import ="hmjm.bean.dao.*" %>
-<%@ page import ="hmjm.bean.vo.memberVO" %>
+<%@ page import ="hmjm.bean.member.*" %>
+<%@ page import ="hmjm.bean.member.memberVO" %>
 
 <html>
 <head><title> 탈잉 ID 중복확인</title>

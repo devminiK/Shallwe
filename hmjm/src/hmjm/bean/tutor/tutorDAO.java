@@ -12,7 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-import hmjm.bean.vo.*;
+import hmjm.bean.tutor.tutorVO;
 
 public class tutorDAO {
 	private static tutorDAO instance = new tutorDAO();

@@ -3,12 +3,12 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import ="java.sql.*" %>
-<%@ page import ="hmjm.bean.dao.*" %>
-<%@ page import ="hmjm.bean.vo.tutorVO" %>
+<%@ page import ="hmjm.bean.tutor.*" %>
+<%@ page import ="hmjm.bean.tutor.tutorVO" %>
 
 <% request.setCharacterEncoding("utf-8");%>
 
-<jsp:useBean id="vo" class="hmjm.bean.vo.tutorVO">
+<jsp:useBean id="vo" class="hmjm.bean.tutor.tutorVO">
 	<jsp:setProperty name="vo" property="*" />
 </jsp:useBean>
 <%
