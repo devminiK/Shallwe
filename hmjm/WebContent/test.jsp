@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.*" %>    
-<%@ page import ="hmjm.bean.dao.*" %>
-<%@ page import ="hmjm.bean.vo.tutorVO" %>
-<jsp:useBean id="vo" class="hmjm.bean.vo.tutorVO">
+<%@ page import ="hmjm.bean.member.*" %>
+<%@ page import ="hmjm.bean.tutor.*" %>
+<jsp:useBean id="vo" class="hmjm.bean.tutor.tutorVO">
 	<jsp:setProperty name="vo" property="*" />
 </jsp:useBean>
 

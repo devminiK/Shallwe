@@ -30,66 +30,63 @@
 			document.getElementById('schoolmajor').style.display="none";
 		}
 	}
-
 	</script>
 	
 
 </head>
+<jsp:include page="/Home/header.jsp"/>
 <body>
+	
 <%
 	request.setCharacterEncoding("utf-8");
 %>
 
 
-<div>
+
 <%if(session.getAttribute("loginId") != null){%>
 <form action ="tutorRegisterPro.jsp" name="tutor" method="post" align="center"
 enctype="multipart/form-data">
 	
- 	<br><br>
-	<div >		
-	<ul>튜터 등록</ul>
-	<ul>
-		이메일
+ 
+<div class="container">		
+	<h1>튜터 등록</h1>
+	<hr>
+	<label><b>이메일</b></label>
 		<input type="text" name="t_email" value="<%=(String)session.getAttribute("loginId")%>" />
-	</ul>
-	<ul>
-		프로필사진
+		<br>
+		
+	<label><b>프로필 사진</b></label>
 		<input type ="file" autofocus name="t_selfimg"required/>
-	</ul>
-	<ul>
-		별명^_^
+		<br>
+		
+	<label><b>별__명</b></label>
 		<input type ="text" name ="t_nick" required/>
-	</ul>
-	 
-	<ul>
-	
-			학교인증
-			<input id="univ" type="radio" name="t_idcard" value="1" checked onclick="checkLayer(1);">
+		<br>
+		
+	<label><b>학교인증</b></label>
+		<input id="univ" type="radio" name="t_idcard" value="1" checked onclick="checkLayer(1);">
 	 		<div id="schoolmajor">
 				<input type ="text" name ="t_school" 
 				placeholder ="학교 예)서울대학교" />
 				<input type ="text" name ="t_major" 
 				placeholder ="전공 예)경영학과" />
      		</div>
-	</ul>
-
-	<ul>
-		신분인증<input id="univ"  type="radio" name="t_idcard" value="2" onclick="checkLayer(2);">
-	</ul>
-	<ul>
-		자격증
-		<input id= "Cert0" type ="text" name ="t_c" placeholder="예)정보처리기사"
-		value class ="input_txt01" />
-	</ul>	
+     		<br>
 	
-
+		<label><b>신분인증</b></label>
+			<input id="univ"  type="radio" name="t_idcard" value="2" onclick="checkLayer(2);">
+			<br>
+			
+		<label><b>자격증</b></label>
+			<input id= "Cert0" type ="text" name ="t_c" placeholder="예)정보처리기사"
+			value class ="input_txt01" />
 </div><br/>
-<div id="CertAdd"></div>
- 	<a onclick="addFile();" class="addbtn">추가 +</a>
-	<input type="hidden" id="fileCnt" name="fileCnt" value="0"><br><br><br>
-
-	<input type ="submit" value="튜터등록" >
+	<div id="CertAdd"></div>
+ 		<a onclick="addFile();" class="addbtn">추가 +</a>
+		<input type="hidden" id="fileCnt" name="fileCnt" value="0"><br><br><br>
+		<div class="container signin">
+			<input type ="submit" value="튜터등록" class="registerbtn">
+		</div>
 </form>	
 <%}else{ //로그아웃시 main.jsp로 이동
 				//session.invalidate();
@@ -101,11 +98,7 @@ enctype="multipart/form-data">
 					</script>
 			<%}%>
 
-
-
-</div>
+	<jsp:include page="/Home/footer.jsp" />
 </body>
 	
-
-
 </html>

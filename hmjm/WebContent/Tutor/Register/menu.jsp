@@ -8,7 +8,7 @@
 <style>
 #menu {
 	margin: 0 auto;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 나눔고딕;
 }
 
 .menu_new {
@@ -17,11 +17,9 @@
 
 }
 .twoButton {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 400;
-	hegith: 300;
+	
+	width: 800px;
+	hegith: 300px;
 	background: yellow;
 	margin: -50px 0 0 -50px;
 	display:table-row;
@@ -35,7 +33,9 @@
 
 
 <body id="menu">
+	<header>
 	<jsp:include page="/Home/header.jsp" />
+	</header>
 	
 	<div class="menu_new">
 		<div class="twoButton">
@@ -61,8 +61,8 @@
 		%>
 
 		<div>
-			확인용 이메일: <%=c.getM_email()%><br>
-			확인용 이름:<%=c.getM_name()%><br>
+			<b>확인용 이메일: <%=c.getM_email()%></b><br>
+			<b>확인용 이름:<%=c.getM_name()%></b><br>
 			<hr>
 			
 				<div class="eachButton">
@@ -70,7 +70,7 @@
 				if (e == null) {
 			%>
 			<input type="button" value="튜터등록"
-				onclick="javascript:window.location='/hmjm/Tutor/tutorRegister.jsp'">
+				onclick="javascript:window.location='/hmjm/Tutor/tutorRegister2.jsp'">
 
 
 			<%
@@ -91,6 +91,7 @@
 			</div>		
 		</div>
 	</div>
-	<jsp:include page="/Home/footer.jsp" />
+	
+	<div><jsp:include page="/Home/footer.jsp" /></div>
 </body>
 </html>
