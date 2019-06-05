@@ -19,7 +19,7 @@
 			<script>
 	    	alert("가입을 축하합니다!");
 	    	</script>
-	    	<META http-equiv=refresh content="0;url=loginForm.jsp">
+	    	<META http-equiv=refresh content="0;url=./Log/loginForm.jsp">
 	
 	
 

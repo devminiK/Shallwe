@@ -27,70 +27,50 @@ function checkLayer(val){
 		document.getElementById('schoolmajor').style.display="none";
 	}
 }
-
-
 </script>
 </head>
 <body>
-
-
 <%
-
 		String m_email = (String)session.getAttribute("loginId");
-		memberDAO manager = memberDAO.getInstance();
-		memberVO c = manager.getMember(m_email);
+		//memberDAO manager = memberDAO.getInstance();
+		//memberVO c = manager.getMember(m_email);
 		tutorDAO vo = tutorDAO.getInstance();
 		tutorVO e = vo.getMember(m_email);
 %>
 <div>
-<form action ="tutorModifyPro.jsp" name="tutor" method="post" align="center"
-enctype="multipart/form-data">
+<form action ="tutorModifyPro.jsp" name="tutor" method="post" align="center">
 	
  	<br><br>
 	<div >		
-	<ul>*****튜터 정보 수정*****</ul>
-	<ul>
-		이메일 <%=e.getT_email()%>
-	</ul>
-	<ul>
-		프로필사진<img src="./selfimg/<%=e.getT_selfimg()%>">
-		
-	</ul>
-	<ul>
-		별명^_^
-		<input type ="text" name ="t_nick" value="<%=e.getT_nick()%>"/>
-	</ul>
-	 
-	<ul>
-	
-			학교인증
-			<input id="univ" type="radio" name="t_idcard" value="1" checked onclick="checkLayer(1);">
-	 		<div id="schoolmajor">
-				<input type ="text" name ="t_school" 
+	<ul><h1>*****튜터 정보 수정*****</h1></ul>
+	<ul><h5>이메일 <%=e.getT_email()%></h5></ul>
+	<ul><h5>프로필사진</h5><img src="../Images/TutorImg/<%=e.getT_selfimg()%>"></ul>
+	<ul><h5>별명^_^</h5><input type="text" name="t_nick" value="<%=e.getT_nick()%>"/></ul>
+	 <ul><h5>학교인증
+		<input id="univ" type="radio" name="t_idcard" value="1" checked onclick="checkLayer(1);">
+	 	<div id="schoolmajor">
+			<input type ="text" name ="t_school" 
 				placeholder ="학교 예)서울대학교" value="<%=e.getT_school()%>"/>
-				<input type ="text" name ="t_major" 
+			<input type ="text" name ="t_major" 
 				placeholder ="전공 예)경영학과" value="<%=e.getT_major() %>" />
-     		</div>
+			</h5>
+     	</div>
 	</ul>
-
-	<ul>
-		신분인증<input id="univ"  type="radio" name="t_idcard" value="2" onclick="checkLayer(2);">
+	<ul><h5>신분인증
+		<input id="univ"  type="radio" name="t_idcard" value="2" onclick="checkLayer(2);"></h5>
 	</ul>
-	<ul>
-		자격증
+	<ul><h5>자격증</h5>
 		<input id= "Cert0" type ="text" name ="t_c" placeholder="예)정보처리기사"
 		value="<%=e.getT_c() %>" class ="input_txt01" />
 	</ul>	
+	</div><br/>
+	<div id="CertAdd"></div>
 	
-
-</div><br/>
-<div id="CertAdd"></div>
- 	<a onclick="addFile();" class="addbtn">추가 +</a>
-	<input type="hidden" id="fileCnt" name="fileCnt" value="0"><br><br><br>
-
-	<input type ="submit" value="튜터 정보 수정" ><br>
-	<input type ="button" value="취소" onclick="javascript:window.location='tutorMenu.jsp'">
-</form>
+ 	<a onclick="addFile();" class="addbtn"><h5>추가 +</h5></a>
+	<input type="hidden" id="fileCnt" name="fileCnt" value="0"><br>
+	<input type ="submit" name ="modify" value="튜터 정보 수정" ><br>
+	<input type ="button" value="취소" onclick="javascript:window.location='Register/menu.jsp'">
+	</form>
 
 </div>
 </body>

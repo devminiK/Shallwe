@@ -16,7 +16,7 @@
 	String filename ="";
 	MultipartRequest imageUp =null;
 	
-	String saveFolder ="/selfimg";
+	String saveFolder ="Images/TutorImg";
 	String encType ="utf-8";
 	int maxSize =2*1024*1024;
 	
@@ -66,7 +66,7 @@
 		
 		if(result){
 			session.setAttribute("registedTutor",t_email);
-			response.sendRedirect("sessionTest.jsp");
+			response.sendRedirect("../sessionTest.jsp");
 		}else{%>
 		
 			<script>

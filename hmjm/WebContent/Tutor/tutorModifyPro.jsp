@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import = "hmjm.bean.dao.*"%>
-<%@ page import = "hmjm.bean.vo.*" %>
+
 
 <% request.setCharacterEncoding("utf-8"); %>
 
@@ -15,10 +15,9 @@
 		tutorDAO manager = tutorDAO.getInstance();
 		manager.updateTutor(vo);
 		
-
 %>
 
 <p>수정이 된건가?</p>
 	<form>
-	    <input type="button" value="메인으로" onclick="window.location='tutorMenu.jsp'">
+	    <input type="button" value="메인으로" onclick="window.location='./Register/menu.jsp'">
     </form>

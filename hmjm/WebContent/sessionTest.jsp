@@ -12,7 +12,7 @@
 <%=(String)session.getAttribute("loginId") %>
 
 <input type="button" value="세션테스트" 
-				      onclick="javascript:window.location='./tutorMenu.jsp'">
+				      onclick="javascript:window.location='Tutor/Register/menu.jsp'">
 
 
 </body>

@@ -93,7 +93,7 @@
 
 <input type ="submit" value ="가입하기" " style ="height:50px;width:500px;"
 onclick = "return checkReg()"/><br/><br/>
- 	<a href="./loginForm.jsp">회원이세요?</a>   
+ 	<a href="../Log/loginForm.jsp">회원이세요?</a>   
 	
 	
 	
