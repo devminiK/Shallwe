@@ -38,10 +38,9 @@ public class classimgDAO {	/*성민 작성*/
 	}
 	
 	//이미지 삽입
-	public void insertArticle(classimgDAO classimg) {	      
+	public void insertArticle(classimgVO classimg) {	      
 	   
-	      String sql="";
-	      
+	      String sql="";  
 	      try {
 	         conn = getConnection(); 
 	        
