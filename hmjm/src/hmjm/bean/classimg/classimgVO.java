@@ -1,9 +1,11 @@
 package hmjm.bean.classimg;
+/* 성민 */
 
 public class classimgVO {
-	private int ci_num;
-	private int ci_classnum;
-	private String ci_img;
+	private int ci_num;			//고유넘버(순서를 위함)
+	private int ci_classnum;	//수업번호(p_num)	
+	private String ci_img;		//이미지 경로
+	
 	public int getCi_num() {
 		return ci_num;
 	}
