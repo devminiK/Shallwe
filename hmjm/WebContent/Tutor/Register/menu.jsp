@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ page import="hmjm.bean.dao.*"%>
 <%@ page import="hmjm.bean.vo.*"%>
 <!DOCTYPE html>
@@ -49,7 +48,7 @@
 			</script>
 
 		<%
-			} else {
+			} else {   
 
 				String m_email = (String) session.getAttribute("loginId");
 				memberDAO manager = memberDAO.getInstance();
@@ -89,16 +88,9 @@
 					<input type="button" value="강의등록"
 				onclick="javascript:window.location='./hmjm/Home/main.jsp'">
 				</div>
-			</div>
-		
-			
-			
-
-			
+			</div>		
 		</div>
 	</div>
-
-
 	<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
