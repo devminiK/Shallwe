@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +89,7 @@
 		background-color: white; 
 		padding: 1rem 1.5rem; 
 		width: 500px; 
-		height: 350px; 
+		height: 450px; 
 		border-radius: 0.5rem; 
 	} 
 	.close-button { 
@@ -125,6 +124,10 @@
         	<span class="close-button">&times;</span> 
             <h1>나도잘몰러...</h1>
             <p>진짜루</p>
+            <!-- 테스트로 넣어봄 -->
+            <a href="http://www.google.com">google</a>
+            <jsp:include page="/snsShare.jsp"/>
+            <img src="/hmjm/Images/TutorImg/user.png"/>
 		</div> 
 	</div>
 
