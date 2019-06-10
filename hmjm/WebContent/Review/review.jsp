@@ -32,7 +32,6 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body align="center">
-<jsp:include page="/sideMenu.jsp"/>
 <b>글목록(전체 글:<%=count%>)</b>
 <%if (count == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
