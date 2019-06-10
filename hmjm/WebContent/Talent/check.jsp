@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page import ="hmjm.bean.product.*"
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,10 +58,18 @@
 		
 	}
 
-</script>	
-<body>
-	
+</script>
 
+
+<%
+
+
+%>
+	
+<body>
+	<!-- 세션값 일단 반대로 세팅하고 작업하는 중 -->
+	<%if(session.getAttribute("loginId") == null){%>
+	
 	<!--  넘어온 수업정보를 넘기는 폼인것 같은데 아직 확실히 잘 모르겠음
 	<form id="StartInfo" name="form" action="/Talent/Apply/6466" method="POST">
 			<input type="hidden" id="StartRegion" name="StartRegion" value="강남">
@@ -89,21 +98,18 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	<div class="btn_red" onclick="setMode()">결제하기</div>
 	<input type="hidden" id="optionCount" name="optionCount" value="1">
+	<%}else{ //로그아웃시 main.jsp로 이동
+				//session.invalidate();
+			%>
+					<script>
+					alert("로그인부터");
+					window.location='../Log/loginForm.jsp';
+						
+					</script>
+			<%}%>
 </body>
 </html>
