@@ -104,7 +104,7 @@ public class productVO {
 	public int getP_cost() {
 		return p_cost;
 	}
-	public void setP_cost(String p_cost) {
+	public void setP_cost(int p_cost) {
 		this.p_cost = p_cost;
 	}
 	public int getP_count_min() {

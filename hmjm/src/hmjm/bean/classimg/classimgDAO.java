@@ -37,16 +37,17 @@ public class classimgDAO {	/*성민 작성*/
 		return conn;
 	}
 	
-	//이미지 삽입
-	public void insertArticle(classimgVO classimg) {	      
-	   
+	//(상품 등록 내에서)이미지 등록하기_미완성
+	public void insertClassimg(classimgVO classimg) {	      
+		
+		  //nt num = classimg.getCi_num(); //검사 불필요..?
 	      String sql="";  
 	      try {
 	         conn = getConnection(); 
 	        
 	         sql = "insert into classimg values(classimg_seq.NEXTVAL,?,?)";
 	            pstmt = conn.prepareStatement(sql);
-	         pstmt.setInt(1, classimg.getCi_classnum());
+	         pstmt.setInt(1, classimg.getCi_classnum());//수업번호를 가져와서 적용시키기.
 	         pstmt.setString(2, classimg.getCi_img());
 	         
 	         pstmt.executeUpdate();
@@ -58,5 +59,12 @@ public class classimgDAO {	/*성민 작성*/
 	         if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	      }
 	   }
+	
+	//(해당 상품번호의) 이미지 정보(상품번호,이미지경로) 꺼내기_미완성
+	
+	
+	//이미지 삭제
+	
+	//이미지 수정
 
 }

@@ -3,9 +3,7 @@
 <%@ page import="hmjm.bean.tutor.*"%>
 
 <%-- 19.06.04성민 작성 , 미완성, --%>
-<%--
 
- --%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String preUser = (String) session.getAttribute("loginId");//현재 세션,이메일이 들어감

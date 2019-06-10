@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import hmjm.bean.product.*;
+import web.bean.vo.MemberVO;
 
 
 public class productDAO {
@@ -56,10 +57,8 @@ public class productDAO {
 		String sql="";
 		try {
 			conn = getConnection(); 
-			pstmt = conn.prepareStatement("select max(num) from board");
-			rs = pstmt.executeQuery();
-
-			sql = "insert into product values(product_seq.nextval,?,?,?,?,?,?,?,?,?,?,? ?,?)"; 
+			
+			sql = "insert into product values(product_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, product.getP_email());
 			pstmt.setString(2, product.getP_category());
@@ -67,13 +66,14 @@ public class productDAO {
 			pstmt.setString(4, product.getP_self());
 			pstmt.setString(5, product.getP_time());
 			pstmt.setInt(6, product.getP_cost());
-			pstmt.setString(7, product.getP_memo());
-			pstmt.setInt(8, product.getP_count_min());
-			pstmt.setInt(9, product.getP_count_max());
+			pstmt.setInt(7, product.getP_count_min());
+			pstmt.setInt(8, product.getP_count_max());
+			pstmt.setString(9, product.getP_memo());
 			pstmt.setString(10, product.getP_class1());
-			pstmt.setString(11, product.getP_class1());
+			pstmt.setString(11, product.getP_class2());
 			pstmt.setString(12, product.getP_class3());
 			pstmt.setString(13, product.getP_class4());
+			
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -83,6 +83,45 @@ public class productDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 	}
+	
+	//해당 번호의 수업 정보를 가져온다. _현재는 이메일로 함
+	public productVO getProduct(String p_email) {
+		productVO vo = null;
+		
+		try {
+				conn = getConnection();
+				String sql= "select * from product where p_email = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, p_email);
+				rs = pstmt.executeQuery();
+				
+				rs.next();
+				vo = new productVO();
+				vo.setP_num(rs.getInt("p_num"));
+				vo.setP_email(rs.getString("p_email"));
+				vo.setP_category(rs.getString("p_category"));
+				vo.setP_classname(rs.getString("p_classname"));
+				vo.setP_self(rs.getString("p_self"));
+				vo.setP_time(rs.getString("p_time"));
+				vo.setP_cost(rs.getInt("p_cost"));
+				vo.setP_memo(rs.getString("p_memo"));
+				vo.setP_count_min(rs.getInt("p_count_min"));
+				vo.setP_count_max(rs.getInt("p_count_max"));
+				vo.setP_class1(rs.getString("p_class1"));
+				vo.setP_class2(rs.getString("p_class2"));
+				vo.setP_class3(rs.getString("p_class3"));
+				vo.setP_class4(rs.getString("p_class4"));
+				
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+				if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+				if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+			}
+			return vo;
+			}
+	
 
 
 }
