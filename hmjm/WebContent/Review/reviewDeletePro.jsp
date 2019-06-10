@@ -1,5 +1,5 @@
 <%@ page contentType = "text/html; charset=UTF-8" %>
-<%@ page import = "hmjm.bean.dao.reviewDAO" %>
+<%@ page import = "hmjm.bean.review.reviewDAO" %>
 <%@ page import = "java.sql.Timestamp" %>
 
 <% request.setCharacterEncoding("UTF-8");%>

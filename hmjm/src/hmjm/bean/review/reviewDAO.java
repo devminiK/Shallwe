@@ -4,7 +4,7 @@ import java.sql.*;
 import javax.sql.*;
 import javax.naming.*;
 import java.util.*; 
-import hmjm.bean.vo.reviewVO;
+import hmjm.bean.review.reviewVO;
 
 public class reviewDAO {
 	private static reviewDAO instance = new reviewDAO();

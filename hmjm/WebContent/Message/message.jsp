@@ -1,6 +1,6 @@
 <%@ page contentType = "text/html; charset=UTF-8" %>
-<%@ page import = "hmjm.bean.dao.messageDAO" %>
-<%@ page import = "hmjm.bean.vo.messageVO" %>
+<%@ page import = "hmjm.bean.message.messageDAO" %>
+<%@ page import = "hmjm.bean.message.messageVO" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 

@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@ page import = "hmjm.bean.dao.reviewDAO" %>
+<%@ page import = "hmjm.bean.review.reviewDAO" %>
 <%@ page import = "java.sql.Timestamp" %>
 
 <% request.setCharacterEncoding("UTF-8");%>
 
-<jsp:useBean id="article" scope="page" class="hmjm.bean.vo.reviewVO">
+<jsp:useBean id="article" scope="page" class="hmjm.bean.review.reviewVO">
    <jsp:setProperty name="article" property="*"/>
 </jsp:useBean>
 

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@ page import="hmjm.bean.dao.messageDAO" %>
-<%@ page import="hmjm.bean.vo.messageVO" %>
+<%@ page import="hmjm.bean.message.messageDAO" %>
+<%@ page import="hmjm.bean.message.messageVO" %>
 <html>
 <head>
 <link href="style.css" rel="stylesheet" type="text/css">
