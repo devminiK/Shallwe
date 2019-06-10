@@ -73,7 +73,7 @@
 			form.p_cost.focus();
 			return false;
 		}
-		if (form.p_cost.value == "") {/*이미지*/
+		if (form.p_cost.value == "") { /*이미지*/
 			alert("지불해야할 가격을 지정해주세요.");
 			form.p_cost.focus();
 			return false;
@@ -105,6 +105,22 @@
 		else
 			document.getElementById(id).style.display = "none";//숨김		
 	}
+	
+	/*사진 여러 개 삽일하기 위함*/
+	function addImageFile(){
+		fileCnt = document.getElementById('fileCnt').value;							
+		fileCnt++;
+		html = '';
+		html += '<input id="ClassImage'+fileCnt+'" name="p_classimg'+fileCnt+'" type="file" value="" class="form-control"/>';
+		
+		var div = document.createElement('div');
+        div.innerHTML = html;
+        document.getElementById('CertAdd').appendChild(div);							
+		document.getElementById('fileCnt').value = fileCnt;
+	}
+	
+	
+	
 </script>
 
 <style>
@@ -127,8 +143,10 @@ input[type=number] {
 	</div>
 
 	<div class="container">
+	<%-- enctype="multipart/form-data"이기때문에 데이터 하나씩 삽입해야함--%>
 		<form method="post" name="addProductForm"
-			action="addProductPro.jsp" onsubmit="return writeSave()">
+			action="addProductPro.jsp" onsubmit="return writeSave()" 
+			enctype="multipart/form-data" >
 
 			<div class="form-group row">
 				<label class="col-sm-2">이름</label>
@@ -161,7 +179,7 @@ input[type=number] {
 					<%--목록 그룹:select로 고를 수 있도록 구현할것 --%>
 					<select id="p_category" name="p_category">
 						<optgroup label="인기수업">
-							<option value="archi">ㅇㅇ</option>
+							<option value="archi">인기1</option>
 							<option value="computer" selected>ㅇㅇ</option>
 						</optgroup>
 						<optgroup label="디자인">
@@ -271,9 +289,16 @@ input[type=number] {
 			<div class="form-group row">
 				<label class="col-sm-2">수업 사진</label>
 				<div class="col-sm-5">
-					<input type="file" name="" class="form-control">
+					<input id="ClassImage0" type="file" name="p_classimg" value class="form-control">
+					
+					<div id="CertAdd"></div>
+ 					<a onclick="addImageFile();" class="addbtn"><b>추가 +</b></a>
+					<input type="hidden" id="fileCnt" name="fileCnt" value="0">
 				</div>
 			</div>
+			
+	
+		
 
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10 ">
