@@ -118,12 +118,13 @@
 </head>
 <body>
 <!-- 버튼 -->
-<img src="/hmjm/Images/twitter_small.png" class="trigger"/>
+<img src="/hmjm/Images/faq_small.png" class="trigger"/>
 <!-- 팝업 될 레이어 --> 
 	<div class="modal"> 
     	<div class="modal-content"> 
         	<span class="close-button">&times;</span> 
-            <h1>안녕!</h1>
+            <h1>나도잘몰러...</h1>
+            <p>진짜루</p>
 		</div> 
 	</div>
 
