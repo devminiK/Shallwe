@@ -42,15 +42,13 @@
 	<table border="2" width="800" cellpadding="0" cellspacing="0" align="center"> 
 	<%for (int i = 0 ; i < articleList.size() ; i++) {
 		reviewVO article = (reviewVO)articleList.get(i);%>
-		<tr>
-		    <td align="center"  width="50" ><%=number--%></td>
+		<tr><td align="center"  width="50" ><%=number--%></td>
 		    <td align="left" width="375" colspan="3"><%=article.getR_re()%></td>
 		    <td align="center"  width="100"><%=article.getR_name()%></td>
 		    <td align="center"  width="100"><%=article.getR_reg()%></td>
 		</tr>
 		
-		<tr>
-			<td align="center">커리큘럼<br/>
+		<tr><td align="center">커리큘럼<br/>
 			<%int curr = article.getR_s_curr();
 			for(int cu=0; cu<curr; cu++){%>	<img src="/hmjm/Images/star.jpg"> <%}%> </td>
 
@@ -100,9 +98,18 @@ if (count > 0) {
 	<%}
 }%>
 <br/><br/>
-<%if(session.getAttribute("loginId")!=null){ %>
-	<jsp:include page="reviewWriteForm.jsp" />
-<%}%>
+<%
+reviewDAO chk = reviewDAO.getInstance();
+int check = chk.checkArticle(id);
+if(id!=null){
+	if(check!=1){%> 
+		<jsp:include page="reviewWriteForm.jsp"/>
+	<%}else{%>
+		<p>리뷰는 한번만...</p>
+<%}}else{%>
+	<p>로그인 좀...</p>
+<%} %>
+
 </body>
 </html>
 

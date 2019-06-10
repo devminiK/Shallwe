@@ -18,12 +18,10 @@ public class reviewDAO {
 		return ds.getConnection();
 	}
 	
-public void insertArticle(reviewVO article) throws Exception {
-		
+	public void insertArticle(reviewVO article) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
 		int number=0;
 		String sql="";
 		try {
@@ -37,7 +35,6 @@ public void insertArticle(reviewVO article) throws Exception {
 			sql = "insert into review(r_num, r_name, r_s_curr, r_s_pre, r_s_tk, r_s_deli, r_s_kind, r_re, r_reg) "
 					+ "values(review_seq.NEXTVAL,?,?,?,?,?,?,?,sysdate)";
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setString(1, article.getR_name());
 			pstmt.setInt(2, article.getR_s_curr());
 			pstmt.setInt(3, article.getR_s_pre());
@@ -45,7 +42,6 @@ public void insertArticle(reviewVO article) throws Exception {
 			pstmt.setInt(5, article.getR_s_deli());
 			pstmt.setInt(6, article.getR_s_kind());
 			pstmt.setString(7, article.getR_re());
-
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -55,7 +51,6 @@ public void insertArticle(reviewVO article) throws Exception {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 	}
-	
 	
 	public int getArticleCount() throws Exception {
 		Connection conn = null;
@@ -78,7 +73,6 @@ public void insertArticle(reviewVO article) throws Exception {
 		}
 		return x; 
 	}
-	
 
 	public List getArticles(int start, int end) throws Exception {
 		Connection conn = null;
@@ -92,10 +86,8 @@ public void insertArticle(reviewVO article) throws Exception {
 					" from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,rownum r " +
 					" from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg " +
 					" from review order by r_reg desc) order by r_reg desc) where r >= ? and r <= ? ");
-		
 					pstmt.setInt(1, start); 
 					pstmt.setInt(2, end); 
-
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
 						articleList = new ArrayList(end); 
@@ -110,7 +102,6 @@ public void insertArticle(reviewVO article) throws Exception {
 							article.setR_s_kind(rs.getInt("r_s_kind"));
 							article.setR_re(rs.getString("r_re"));
 							article.setR_reg(rs.getTimestamp("r_reg"));
-							
 							articleList.add(article); 
 						}while(rs.next());
 					}
@@ -121,8 +112,6 @@ public void insertArticle(reviewVO article) throws Exception {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-
-		
 		return articleList;
 	}
 	
@@ -133,8 +122,6 @@ public void insertArticle(reviewVO article) throws Exception {
 		reviewVO article=null;
 		try {
 			conn = getConnection();
-			pstmt.setInt(1, num);
-			pstmt.executeUpdate();
 			pstmt = conn.prepareStatement("select * from review where r_num = ?"); 
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
@@ -157,10 +144,8 @@ public void insertArticle(reviewVO article) throws Exception {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-		
 		return article;
 	}
-	
 	
 	public reviewVO updateGetArticle(int num) throws Exception {
 		Connection conn = null;
@@ -169,8 +154,7 @@ public void insertArticle(reviewVO article) throws Exception {
 		reviewVO article=null;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(
-			"select * from review where r_num = ?"); 
+			pstmt = conn.prepareStatement("select * from review where r_num = ?"); 
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -192,10 +176,8 @@ public void insertArticle(reviewVO article) throws Exception {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-
 		return article;
 	}
-	
 
 	public int updateArticle(reviewVO article) throws Exception {
 		Connection conn = null;
@@ -225,30 +207,18 @@ public void insertArticle(reviewVO article) throws Exception {
 		}
 		return x;
 	}
-	
 
 	public int deleteArticle(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs= null;
-		//String dbpasswd="";
 		int x=-1;
 		try {
 			conn = getConnection();
-			//pstmt = conn.prepareStatement("select passwd from review where num = ?");
-			//pstmt.setInt(1, num);
-			//rs = pstmt.executeQuery();
-			//if(rs.next()){
-			//	dbpasswd= rs.getString("passwd");
-			//	if(dbpasswd.equals(passwd) || (passwd == null)){
-			//rs.next();
 					pstmt = conn.prepareStatement("delete from review where r_num=?");
 					pstmt.setInt(1, num);
 					pstmt.executeUpdate();
 					x= 1; 
-				//}else
-				//	x= 0; 
-			//}
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -258,7 +228,28 @@ public void insertArticle(reviewVO article) throws Exception {
 		}
 		return x;
 	}
-
 	
+	public int checkArticle(String id) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = -1;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count (*) from review where r_name=?"); 
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				check = rs.getInt(1);
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return check;
+	}
 	
 }
