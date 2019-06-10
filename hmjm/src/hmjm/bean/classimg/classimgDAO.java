@@ -40,13 +40,13 @@ public class classimgDAO {	/*성민 작성*/
 	//(상품 등록 내에서)이미지 등록하기_미완성
 	public void insertClassimg(classimgVO classimg) {	      
 		
-		  //nt num = classimg.getCi_num(); //검사 불필요..?
+
 	      String sql="";  
 	      try {
 	         conn = getConnection(); 
 	        
 	         sql = "insert into classimg values(classimg_seq.NEXTVAL,?,?)";
-	            pstmt = conn.prepareStatement(sql);
+	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setInt(1, classimg.getCi_classnum());//수업번호를 가져와서 적용시키기.
 	         pstmt.setString(2, classimg.getCi_img());
 	         
