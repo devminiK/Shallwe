@@ -2,19 +2,15 @@
 <%@ page import="hmjm.bean.member.*"%>
 <%@ page import="hmjm.bean.tutor.*"%>
 
-<%-- 19.06.04성민 작성 , 미완성, --%>
-<%--
-
- --%>
-
+<%-- 19.06.11성민 작성  완성/ 이미지, 시간 추가하기--%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String preUser = (String) session.getAttribute("loginId");//현재 세션,이메일이 들어감
+	
 	//일반유저 정보
 	memberDAO mdao = memberDAO.getInstance();
 	memberVO mvo = mdao.getMember(preUser);
 
-	//튜터 등록 정보, 주석풀면 에러발생. 우선 주석달아둠
 	//nick값 받아오기위함
 	tutorDAO tdao = tutorDAO.getInstance();		
 	tutorVO tvo = tdao.getMember(preUser);

@@ -11,15 +11,18 @@
 <%
 	productDAO pdao = productDAO.getInstance();
 	pdao.insertProduct(pvo); /*작성한 정보를 삽입*/
-	
-	
-
-	
-
 %>
 
+<%--상품등록이 완료되었을경우의 확인절차 알고리즘..? : 보류 --%>
+
 <script>
-	alert("수업이 등록되었습니다.(수정 중이에용)");
-	
+	alert("[알림]수업 등록이 완료되었습니다. 추가적인 정보를 입력해주세요.");
 </script>
-<META http-equiv=refresh content="0;url=/hmjm/Tutor/Register/menu.jsp">
+
+
+<META http-equiv=refresh content="0; url=/hmjm/Tutor/menu.jsp">
+
+<%--시간 등록from으로 넘어가기 --%>
+<%-- 
+<META http-equiv=refresh content="0; url=/hmjm/Product/addClasstime.jsp">
+--%>
