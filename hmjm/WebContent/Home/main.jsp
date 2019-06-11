@@ -115,7 +115,7 @@ to {
 <body id="main">
 	<%--상단 카테고리bar: header --%>
 	<jsp:include page="header.jsp" />
-	
+	<jsp:include page="/SideMenu/sideMenu.jsp"/>
 
 
 	<div class="slideshow-container">

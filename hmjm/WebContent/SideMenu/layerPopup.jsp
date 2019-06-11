@@ -122,12 +122,9 @@
 	<div class="modal"> 
     	<div class="modal-content"> 
         	<span class="close-button">&times;</span> 
-            <h1>나도잘몰러...</h1>
-            <p>진짜루</p>
-            <!-- 테스트로 넣어봄 -->
-            <a href="http://www.google.com">google</a>
-            <jsp:include page="/snsShare.jsp"/>
-            <img src="/hmjm/Images/TutorImg/user.png"/>
+            <h1>FAQ</h1>
+            <jsp:include page="sideContent.jsp"/>
+            
 		</div> 
 	</div>
 

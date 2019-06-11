@@ -6,7 +6,6 @@ import javax.naming.*;
 import java.util.*;
 
 import hmjm.bean.product.productVO;
-import hmjm.bean.search.searchVO;
 
 public class searchDAO {
 	private static searchDAO instance = new searchDAO();
@@ -30,13 +29,13 @@ public class searchDAO {
 	}
 	
 	public ArrayList<productVO> getAllProduct(String search){
-		ArrayList<productVO> list = null;
+		ArrayList<productVO> list = new ArrayList<productVO>();
 		try {
 			conn = getConnection();
 			String sql =
-				" select * from product where "
-				+ " (p_classname || p_class1 || p_class2 || p_class3 || p_class4 || p_category || p_self) "
-				+ " like=? ";
+				"select * from product where"
+				+ " (p_classname || p_class1 || p_class2 || p_class3 || p_class4 || p_category || p_self)"
+				+ " like ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
 			rs = pstmt.executeQuery();
