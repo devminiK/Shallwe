@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ page import ="hmjm.bean.product.*"
+<%@ page import ="hmjm.bean.product.*"%>
+<%@ page import = "hmjm.bean.tutor.*" %>
+<%@ page import = "hmjm.bean.member.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,13 +64,16 @@
 
 
 <%
-
+	int num = Integer.parseInt(request.getParameter("p_num"));
+	String pageNum = request.getParameter("pageNum");
+	productDAO dbPro = productDAO.getInstance();
+	productVO vo = dbPro.getProduct(num);
 
 %>
 	
 <body>
-	<!-- 세션값 일단 반대로 세팅하고 작업하는 중 -->
-	<%if(session.getAttribute("loginId") == null){%>
+	
+	<%if(session.getAttribute("loginId") != null){%>
 	
 	<!--  넘어온 수업정보를 넘기는 폼인것 같은데 아직 확실히 잘 모르겠음
 	<form id="StartInfo" name="form" action="/Talent/Apply/6466" method="POST">
@@ -77,7 +82,11 @@
 	</form>-->
 	<div>
 		<h1>수업에서 수강신청하기 누르면 나옴</h1>
+		<p>수업번호: <%=vo.getP_num() %></p>
+		<p>^^^위에 수업번호를 선택해서 넘어왔다고 생각하고^^^</p>
+		<p>클래스명: <%=vo.getP_classname() %></p>
 	</div>
+		<br>
 	<div>
 		<div>
 			<p>위치</p>

@@ -175,6 +175,7 @@ to {
 		}
 	</script>
 	<%--중간 카테고리bar: category --%>
+	<jsp:include page="listTest.jsp" />
 	<jsp:include page="category.jsp" />
 
 	<%--footer --%>

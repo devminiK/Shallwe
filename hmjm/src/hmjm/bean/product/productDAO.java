@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import hmjm.bean.product.*;
 
@@ -84,42 +86,87 @@ public class productDAO {
 	}
 	
 	//해당 번호의 수업 정보를 가져온다. _현재  파라미터 이메일로 함, 추후 p_num으로 변경할 것 
-	public productVO getProduct(String p_email) {
-		productVO vo = null;
-		
-		try {
+	public productVO getProduct2(String p_mail)
+			throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				productVO vo = null;
+				try {
+					conn = getConnection();
+					pstmt = conn.prepareStatement(
+					"select * from product where p_mail = ?");
+					pstmt.setString(1, p_mail);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						vo = new productVO();
+						vo.setP_num(rs.getInt("p_num"));
+						vo.setP_email(rs.getString("p_email"));
+						vo.setP_category(rs.getString("p_category"));
+						vo.setP_classname(rs.getString("p_classname"));
+						vo.setP_self(rs.getString("p_self"));
+						vo.setP_time(rs.getInt("p_time"));
+						vo.setP_cost(rs.getInt("p_cost"));
+						vo.setP_memo(rs.getString("p_memo"));
+						vo.setP_count_min(rs.getInt("p_count_min"));
+						vo.setP_count_max(rs.getInt("p_count_max"));
+						vo.setP_class1(rs.getString("p_class1"));
+						vo.setP_class2(rs.getString("p_class2"));
+						vo.setP_class3(rs.getString("p_class3"));
+						vo.setP_class4(rs.getString("p_class4"));
+						
+					}
+				} catch(Exception ex) {
+		            ex.printStackTrace();
+		        } finally {
+		            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+		            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+		            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		        }
+				return vo;
+		    }
+
+public productVO getProduct(int p_num)
+		throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			productVO vo = null;
+			try {
 				conn = getConnection();
-				String sql= "select * from product where p_email = ?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, p_email);
+				pstmt = conn.prepareStatement(
+				"select * from product where p_num = ?");
+				pstmt.setInt(1, p_num);
 				rs = pstmt.executeQuery();
 				
-				rs.next();
-				vo = new productVO();
-				vo.setP_num(rs.getInt("p_num"));
-				vo.setP_email(rs.getString("p_email"));
-				vo.setP_category(rs.getString("p_category"));
-				vo.setP_classname(rs.getString("p_classname"));
-				vo.setP_self(rs.getString("p_self"));
-				vo.setP_time(rs.getInt("p_time"));
-				vo.setP_cost(rs.getInt("p_cost"));
-				vo.setP_memo(rs.getString("p_memo"));
-				vo.setP_count_min(rs.getInt("p_count_min"));
-				vo.setP_count_max(rs.getInt("p_count_max"));
-				vo.setP_class1(rs.getString("p_class1"));
-				vo.setP_class2(rs.getString("p_class2"));
-				vo.setP_class3(rs.getString("p_class3"));
-				vo.setP_class4(rs.getString("p_class4"));
-				
+				if(rs.next()) {
+					vo = new productVO();
+					vo.setP_num(rs.getInt("p_num"));
+					vo.setP_email(rs.getString("p_email"));
+					vo.setP_category(rs.getString("p_category"));
+					vo.setP_classname(rs.getString("p_classname"));
+					vo.setP_self(rs.getString("p_self"));
+					vo.setP_time(rs.getInt("p_time"));
+					vo.setP_cost(rs.getInt("p_cost"));
+					vo.setP_memo(rs.getString("p_memo"));
+					vo.setP_count_min(rs.getInt("p_count_min"));
+					vo.setP_count_max(rs.getInt("p_count_max"));
+					vo.setP_class1(rs.getString("p_class1"));
+					vo.setP_class2(rs.getString("p_class2"));
+					vo.setP_class3(rs.getString("p_class3"));
+					vo.setP_class4(rs.getString("p_class4"));
+					
+				}
 			} catch(Exception ex) {
-				ex.printStackTrace();
-			} finally {
-				if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-				if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-				if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-			}
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
 			return vo;
-			}
+	    }
 	
 	//해당 번호의 상품이 존재하는지 여부를 확인하기 위함 , 파라미터 추후에  p_num 으로 변경할것
 	public boolean productCheck(int p_num) {
@@ -149,5 +196,75 @@ public class productDAO {
 	}
 	
 
+//저장된 전체 글의 수를 얻어냄 0611건훈수정
+	public int getProductCount() throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x=0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*) from product");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); //0번아니고 1번부터 시작
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return x; 
+	}
+	
+	
+	
+	
+	
+public List getProduct(int start, int end) throws Exception {
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	List productList=null;
+	try {
+		conn = getConnection();
+		pstmt = conn.prepareStatement(
+				"select * from product order by p_num desc,?,?");
+		pstmt.setInt(1, start); 
+		pstmt.setInt(2, end);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					productList = new ArrayList(end); 
+					do{ 
+						productVO vo= new productVO();
+						vo.setP_num(rs.getInt("p_num"));
+						vo.setP_email(rs.getString("p_email"));
+						vo.setP_category(rs.getString("p_category"));
+						vo.setP_classname(rs.getString("p_classname"));
+						vo.setP_self(rs.getString("p_self"));
+						vo.setP_time(rs.getInt("p_time"));
+						vo.setP_cost(rs.getInt("p_cost"));
+						vo.setP_memo(rs.getString("p_memo"));
+						vo.setP_count_min(rs.getInt("p_count_min"));
+						vo.setP_count_max(rs.getInt("p_count_max"));
+						vo.setP_class1(rs.getString("p_class1"));
+						vo.setP_class2(rs.getString("p_class2"));
+						vo.setP_class3(rs.getString("p_class3"));
+						vo.setP_class4(rs.getString("p_class4"));
+						productList.add(vo);
+					}while(rs.next());
+				}
+	} catch(Exception ex) {
+		ex.printStackTrace();
+	} finally {
+		if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+		if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+		if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	}
 
+	
+	return productList;
+	}
 }
