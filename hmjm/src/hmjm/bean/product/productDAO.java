@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import hmjm.bean.product.*;
-import web.bean.vo.MemberVO;
 
 
 public class productDAO {
@@ -64,7 +63,7 @@ public class productDAO {
 			pstmt.setString(2, product.getP_category());
 			pstmt.setString(3, product.getP_classname());
 			pstmt.setString(4, product.getP_self());
-			pstmt.setString(5, product.getP_time());
+			pstmt.setInt(5, product.getP_time());
 			pstmt.setInt(6, product.getP_cost());
 			pstmt.setInt(7, product.getP_count_min());
 			pstmt.setInt(8, product.getP_count_max());
@@ -84,7 +83,7 @@ public class productDAO {
 		}
 	}
 	
-	//해당 번호의 수업 정보를 가져온다. _현재는 이메일로 함
+	//해당 번호의 수업 정보를 가져온다. _현재  파라미터 이메일로 함, 추후 p_num으로 변경할 것 
 	public productVO getProduct(String p_email) {
 		productVO vo = null;
 		
@@ -102,7 +101,7 @@ public class productDAO {
 				vo.setP_category(rs.getString("p_category"));
 				vo.setP_classname(rs.getString("p_classname"));
 				vo.setP_self(rs.getString("p_self"));
-				vo.setP_time(rs.getString("p_time"));
+				vo.setP_time(rs.getInt("p_time"));
 				vo.setP_cost(rs.getInt("p_cost"));
 				vo.setP_memo(rs.getString("p_memo"));
 				vo.setP_count_min(rs.getInt("p_count_min"));
@@ -121,6 +120,33 @@ public class productDAO {
 			}
 			return vo;
 			}
+	
+	//해당 번호의 상품이 존재하는지 여부를 확인하기 위함 , 파라미터 추후에  p_num 으로 변경할것
+	public boolean productCheck(String p_email) {
+		boolean result = false;
+		
+		try {
+				conn = getConnection();
+				String sql ="select * from product where p_email=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, p_email);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					result = true;
+				}else {
+					result = false;
+				}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs != null) {try {rs.close();}catch(SQLException e) {}}
+			if(pstmt != null) {try {pstmt.close();}catch(SQLException e) {}}
+			if(conn != null) {try {conn.close();}catch(SQLException e) {}}			
+		}
+		return result;		
+	}
 	
 
 

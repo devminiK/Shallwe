@@ -58,6 +58,7 @@ public class tutorDAO {
 		}
 	}
 	
+	//튜터 정보를 가져오기 위함
 	public tutorVO getMember(String t_email)
 			throws Exception{
 				Connection conn = null;

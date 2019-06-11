@@ -6,15 +6,15 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
-	String preUser = (String) session.getAttribute("loginId");//현재 세션,이메일이 들어감
-	//일반유저 정보
+	String preUser = (String) session.getAttribute("loginId"); //현재 세션,이메일이 들어감
+	
+	//일반유저 정보 가져오기
 	memberDAO mdao = memberDAO.getInstance();
 	memberVO mvo = mdao.getMember(preUser);
 
-	//튜터 등록 정보, 주석풀면 에러발생. 우선 주석달아둠
-	//nick값 받아오기위함
-	//tutorDAO tdao = tutorDAO.getInstance();		
-	//tutorVO tvo = tdao.getMember(preUser);
+	//튜터 등록 정보 가져오기
+	tutorDAO tdao = tutorDAO.getInstance();		
+	tutorVO tvo = tdao.getMember(preUser);
 	
 	
 %>
@@ -24,6 +24,7 @@
 <title>수업 등록</title>
 <script language="javascript" src="script.js"></script>
 <script language="javascript" type="text/javascript">
+	
 	/*모든 요소 유효성 검사*/
 	function writeSave() {
 		var form = document.addProductForm;
@@ -73,18 +74,14 @@
 			form.p_cost.focus();
 			return false;
 		}
-		if (form.p_cost.value == "") { /*이미지*/
-			alert("지불해야할 가격을 지정해주세요.");
-			form.p_cost.focus();
-			return false;
-		}
-		/*id값으로 체크 여부 확인*/
+		// id값으로 체크 여부 확인
 		if (document.getElementById("oto").checked != true
 				&& document.getElementById("otm").checked != true) {
 			alert("참여 인원에 대한 정보를 체크해주세요.");
 			return false;
 		}
-		if (document.getElementById("otm").checked == true) {//1:N 체크되었을때
+		
+		if (document.getElementById("otm").checked == true) { //1:N 체크되었을때
 			if (form.p_count_min.value == "") {
 				alert("수업에 참여가능한 최소 인원을 지정해주세요.");
 				form.p_count_min.focus();
@@ -95,15 +92,27 @@
 				form.p_count_max.focus();
 				return false;
 			}
+		}else{//1:1체크되었을때..진행중2019.06.11
+			html ='<input id="p_count_min" name="p_count_min" type="number" />';
+			
+			var div = document.createElement('div');
+			div.innerHTML = html;
+			document.getElement('CountOne').appendChild(div);
+		}
+		//이미지로 변경할 것. 
+		if (form.p_cost.value == "") { 
+			alert("수업 이미지를 등록해주세요.");
+			form.p_cost.focus();
+			return false;
 		}
 	}
 
-	/*라디오 버튼 value값 조건비교로, 보여주기/숨김*/
+	/*라디오 버튼 value값 조건비교로, 보여주기 & 숨김  */
 	function div_onoff(v, id) {
 		if (v == "2")
-			document.getElementById(id).style.display = "";//보여줌
+			document.getElementById(id).style.display = "";	//보여줌
 		else
-			document.getElementById(id).style.display = "none";//숨김		
+			document.getElementById(id).style.display = "none";	//숨김		
 	}
 	
 	/*사진 여러 개 삽일하기 위함*/
@@ -118,8 +127,6 @@
         document.getElementById('CertAdd').appendChild(div);							
 		document.getElementById('fileCnt').value = fileCnt;
 	}
-	
-	
 	
 </script>
 
@@ -143,6 +150,7 @@ input[type=number] {
 	</div>
 
 	<div class="container">
+	
 	<%-- enctype="multipart/form-data"이기때문에 데이터 하나씩 삽입해야함--%>
 		<form method="post" name="addProductForm"
 			action="addProductPro.jsp" onsubmit="return writeSave()" 
@@ -159,9 +167,8 @@ input[type=number] {
 			<div class="form-group row">
 				<label class="col-sm-2">닉네임</label>
 				<div class="col-sm-3">
-					<%--tvo.getT_nick()--%>
 					<input type="text" readonly name="p_nick" class="form-control"
-						value="">
+						value="<%=tvo.getT_nick() %>">
 				</div>
 			</div>
 
@@ -268,7 +275,8 @@ input[type=number] {
 				<label class="col-sm-2">인원</label>
 				<div class="col-sm-3">
 					<input type="radio" name="howmany"
-						id="oto" value="1" onclick="div_onoff(this.value,'con');">1:1강습<br> 
+						id="oto" value="1" onclick="div_onoff(this.value,'con');">1:1강습<br>
+						<div id="CountOne"></div>					
 					<input type="radio" name="howmany" id="otm" value="2"
 						onclick="div_onoff(this.value,'con');">1:N 강습<br>
 					
@@ -285,7 +293,7 @@ input[type=number] {
 					<textarea name="p_memo" rows="2" cols="50"></textarea>
 				</div>
 			</div>
-
+			<%--
 			<div class="form-group row">
 				<label class="col-sm-2">수업 사진</label>
 				<div class="col-sm-5">
@@ -296,7 +304,18 @@ input[type=number] {
 					<input type="hidden" id="fileCnt" name="fileCnt" value="0">
 				</div>
 			</div>
+			--%>
 			
+			<%--
+			<div class="form-group row">
+				<label class="col-sm-2">수업시간</label>
+				<div class="col-sm-3">
+					<textarea name="p_memo" rows="2" cols="50"></textarea>
+				</div>
+			</div>
+			 --%>
+			
+			 
 	
 		
 
