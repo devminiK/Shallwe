@@ -133,7 +133,7 @@
 			</div>
 
 			<div class="search-container">
-				<form action="/search.jsp">
+				<form action="search.jsp">
 					<!--/*input 창 양옆넓이 늘릴것*/  -->
 					<input type="text" style="width: 400px;"
 						placeholder="배우고 싶은 수업 또는 튜너를 검색해보세요!" name="search">
