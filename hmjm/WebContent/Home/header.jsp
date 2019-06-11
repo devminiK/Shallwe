@@ -102,6 +102,13 @@
 			//새로운 윈도우로 열기
 			open(url, "qnatutee",  "toolbar=no, location=no,status=no,menubar=no,resizable=no,width=400, height=660");
 		}
+		function searchCheck(){
+			if(document.searchBar.search.value=="" || document.searchBar.search.value==" "){
+				alert("검색어를 입력하세요");
+				document.searchBar.search.focus();
+				return false;
+			}
+		}
 	</script>
 </head>
 <%
@@ -133,7 +140,7 @@
 			</div>
 
 			<div class="search-container">
-				<form action="search.jsp">
+				<form name="searchBar" action="search.jsp" onSubmit="return searchCheck();">
 					<!--/*input 창 양옆넓이 늘릴것*/  -->
 					<input type="text" style="width: 400px;"
 						placeholder="배우고 싶은 수업 또는 튜너를 검색해보세요!" name="search">

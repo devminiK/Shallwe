@@ -8,6 +8,7 @@
 		margin: 0pt;
 		padding: 0pt;
 		position: absolute;
+		z-index:100;
 		right: 0px;
 		top: 0px;
 	}

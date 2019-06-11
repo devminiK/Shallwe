@@ -26,6 +26,6 @@
 <% 
  }catch(Exception e){} 
 %>
-	
+<jsp:include page="/Review/review.jsp"/>	
 </body>
 </html>
