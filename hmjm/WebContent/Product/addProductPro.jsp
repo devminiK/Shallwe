@@ -12,9 +12,14 @@
 	productDAO pdao = productDAO.getInstance();
 	pdao.insertProduct(pvo); /*작성한 정보를 삽입*/
 	
-	int classNum = pvo.getP_num();
-	out.println(classNum);
 	
-	boolean result = pdao.productCheck(classNum); 
+
+	
 
 %>
+
+<script>
+	alert("수업이 등록되었습니다.(수정 중이에용)");
+	
+</script>
+<META http-equiv=refresh content="0;url=/hmjm/Tutor/Register/menu.jsp">
