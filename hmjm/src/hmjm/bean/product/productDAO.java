@@ -65,9 +65,9 @@ public class productDAO {
 			pstmt.setString(4, product.getP_self());
 			pstmt.setInt(5, product.getP_time());
 			pstmt.setInt(6, product.getP_cost());
-			pstmt.setInt(7, product.getP_count_min());
-			pstmt.setInt(8, product.getP_count_max());
-			pstmt.setString(9, product.getP_memo());
+			pstmt.setString(7, product.getP_memo());
+			pstmt.setInt(8, product.getP_count_min());
+			pstmt.setInt(9, product.getP_count_max());
 			pstmt.setString(10, product.getP_class1());
 			pstmt.setString(11, product.getP_class2());
 			pstmt.setString(12, product.getP_class3());
@@ -122,14 +122,14 @@ public class productDAO {
 			}
 	
 	//해당 번호의 상품이 존재하는지 여부를 확인하기 위함 , 파라미터 추후에  p_num 으로 변경할것
-	public boolean productCheck(String p_email) {
+	public boolean productCheck(int p_num) {
 		boolean result = false;
 		
 		try {
 				conn = getConnection();
-				String sql ="select * from product where p_email=?";
+				String sql ="select * from product where p_num=?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, p_email);
+				pstmt.setInt(1, p_num);
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
