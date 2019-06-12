@@ -29,6 +29,7 @@
 	function writeSave() {
 		var form = document.addClassTimeForm;
 		/*
+		
 		if (form.ct_place.value == "") {
 			alert("수업 장소를 입력하세요.");
 			form.ct_place.focus();
@@ -70,13 +71,13 @@
 			return false;
 		}
 		
-		*/
+		
 		if (form.ct_day.value == "") {
 			alert("가능한 날짜를 입력해주세요");
 			form.ct_day.focus();
 			return false;
 		}
-		
+		*/
 	}
 </script>
 
