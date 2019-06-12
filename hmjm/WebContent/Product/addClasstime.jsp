@@ -69,6 +69,7 @@
 			form.ct_sun.focus();
 			return false;
 		}
+		
 		*/
 		if (form.ct_day.value == "") {
 			alert("가능한 날짜를 입력해주세요");
