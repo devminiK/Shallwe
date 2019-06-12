@@ -76,7 +76,6 @@
 		}
 		
 	}
-
 </script>
 
 <style>
@@ -99,150 +98,76 @@ input[type=number] {
 	<div class="container">
 		<form method="post" name="addClassTimeForm"
 			action="addClasstimePro.jsp" onsubmit="return writeSave()">
-
+			
+			<input type="hidden" name="ct_classnum" value="<%=productNum %>" />
+			
 			<div class="form-group row">
 				<label class="col-sm-2">수업 장소</label>
 				<div class="col-sm-3">
-					<input type="text" name="p_classname" class="form-control">
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label class="col-sm-2">닉네임</label>
-				<div class="col-sm-3">
-					<%--tvo.getT_nick()--%>
-					<input type="text" readonly name="p_nick" class="form-control"
-						value="<%=tvo.getT_nick()%>">
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label class="col-sm-2">이메일</label>
-				<div class="col-sm-3">
-					<input type="text" readonly name="p_email" class="form-control"
-						value="<%=mvo.getM_email()%>">
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label class="col-sm-2">카테고리</label>
-				<div class="col-sm-3">
-					<%--목록 그룹:select로 고를 수 있도록 구현할것 --%>
-					<select id="p_category" name="p_category">
-						<optgroup label="인기수업">
-							<option value="archi">1</option>
-							<option value="computer" selected>2</option>
-						</optgroup>
-						<optgroup label="디자인">
-							<option value="history">3</option>
-							<option value="lang">4</option>
-						</optgroup>
-						<optgroup label="실무역량">
-							<option value="history">5</option>
-							<option value="lang">6</option>
-						</optgroup>
-						<optgroup label="뷰티">
-							<option value="history">7</option>
-							<option value="lang">8</option>
-						</optgroup>
-						<optgroup label="영상">
-							<option value="history">9</option>
-							<option value="lang">10</option>
-						</optgroup>
-						<optgroup label="외국어">
-							<option value="history">11</option>
-							<option value="lang">12</option>
-						</optgroup>
-						<optgroup label="음악">
-							<option value="history">13</option>
-							<option value="lang">14</option>
-						</optgroup>
-						<optgroup label="라이프스일">
-							<option value="history">15</option>
-							<option value="lang">16</option>
-						</optgroup>
-						<optgroup label="기타">
-							<option value="history">17</option>
-							<option value="lang">18</option>
-						</optgroup>
+					<select id="ct_place" name="ct_place">
+						<option value="1">강남</option>
+						<option value="2">신촌홍대</option>
+						<option value="3">잠실</option>
 					</select>
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-2">강사 소개</label>
-				<div class="col-sm-5">
-					<textarea name="p_self" rows="2" cols="50"></textarea>
+				<label class="col-sm-2">월</label>
+				<div class="col-sm-3">
+					<input type="text" name="ct_mon" class="form-control">
 				</div>
 			</div>
-			<h2>강의 소개</h2>
 			
 			<div class="form-group row">
-				<label class="col-sm-2">튜터 정보</label>
+				<label class="col-sm-2">화</label>
 				<div class="col-sm-3">
-					<textarea name="p_class1" rows="2" cols="50"></textarea>
+					<input type="text" name="ct_tue" class="form-control">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2">수</label>
+				<div class="col-sm-3">
+					<input type="text" name="ct_wed" class="form-control">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2">수업 소개</label>
+				<label class="col-sm-2">목</label>
 				<div class="col-sm-3">
-					<textarea name="p_class2" rows="2" cols="50"></textarea>
+					<input type="text" name="ct_thu" class="form-control">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2">수업 대상</label>
+				<label class="col-sm-2">금</label>
 				<div class="col-sm-3">
-					<textarea name="p_class3" rows="2" cols="50"></textarea>
+					<input type="text" name="ct_fri" class="form-control">
+				</div>
+			</div>
+						<div class="form-group row">
+				<label class="col-sm-2">토</label>
+				<div class="col-sm-3">
+					<input type="text" name="ct_sta" class="form-control">
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-sm-2">커리큘럼</label>
+				<label class="col-sm-2">일</label>
 				<div class="col-sm-3">
-					<textarea name="p_class4" rows="2" cols="50"></textarea>
+					<input type="text" name="ct_sun" class="form-control">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2">날짜</label>
+				<div class="col-sm-3">
+					<input type="date" name="ct_day" class="form-control">
 				</div>
 			</div>
 
-			<div class="form-group row">
-				<label class="col-sm-2">소요시간</label>
-				<div class="col-sm-3">
-					<input type="number" name="p_time" min=1>
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label class="col-sm-2">가격</label>
-				<div class="col-sm-3">
-					<input type="number" name="p_cost" step="1000" min=0>원
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label class="col-sm-2">인원</label>
-				<div class="col-sm-3">
-					<input type="radio" name="howmany"
-						id="oto" value="1" onclick="div_onoff(this.value,'con');">1:1강습<br> 
-					<input type="radio" name="howmany" id="otm" value="2"
-						onclick="div_onoff(this.value,'con');">1:N 강습<br>
-					
-					<div id="con" style="display: none">
-						최소인원: <input type="number" name="p_count_min" min=1><br>
-						최대인원: <input type="number" name="p_count_max" min=1>
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label class="col-sm-2">PS</label>
-				<div class="col-sm-3">
-					<textarea name="p_memo" rows="2" cols="50"></textarea>
-				</div>
-			</div>
-		
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10 ">
-					<input type="submit" value="수업 등록">&nbsp;&nbsp;&nbsp; <input
-						type="reset" value="모든 내용 취소"> &nbsp;&nbsp;&nbsp; <input
-						type="button" value="목록보기" OnClick="window.location='list.jsp'">
+					<input type="submit" value="시간 등록">&nbsp;&nbsp;&nbsp; <input
+						type="reset" value="모든 내용 취소">
 				</div>
 			</div>
 	</form>
