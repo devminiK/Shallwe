@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hmjm.bean.product.*;
-import web.bean.vo.MemberVO;
 
 public class classtimeDAO {
 	public static classtimeDAO instance = new classtimeDAO();
@@ -53,7 +52,7 @@ public class classtimeDAO {
 
 	//삽입
 
-	//작성한 수업 시간  DB에 삽입, 테스트봄 
+	//작성한 수업 시간  DB에 삽입, -ing
 	public void insertClasstime(classtimeVO classtime) {	    
 
 		String sql="";
