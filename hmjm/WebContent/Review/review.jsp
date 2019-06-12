@@ -31,13 +31,15 @@
 	number=count-(currentPage-1)*pageSize;
 	int pr_num = 0;
 	pr_num = dbPro.getArticleCount();
+	int rcount = 0;
+	rcount = dbPro.reviewCount(pnum);
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body align="center">
 <b>사용자 후기</b>
-<%if (count == 0) {%>
+<%if (rcount == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
 	</table>
