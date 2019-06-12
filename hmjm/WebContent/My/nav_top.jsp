@@ -45,6 +45,11 @@ a {
 <%
 	request.setCharacterEncoding("utf-8");
 	String preUser =(String)session.getAttribute("loginId");//이메일 값
+	memberDAO manager = memberDAO.getInstance();
+	memberVO c = manager.getMember(preUser);
+	
+	tutorDAO vo = tutorDAO.getInstance();
+	tutorVO e = vo.getMember(preUser);
 	
 	productDAO product = productDAO.getInstance();
 	productVO p = product.getProduct2(preUser);
@@ -59,9 +64,14 @@ a {
 	<table id="top" border="1">
 		<tr>
 			<td class="section">
-				<%--등록한 이미지사진 불러오기 --%> <img src="/hmjm/Images/Icon/user.png"
-				width="90px" /> <%--해당 이메일의 닉네임 --%> <%=preUser%> 님<br> <a
-				href="/hmjm/My/profile.jsp">정보 수정</a>&nbsp;<a>튜터 정보 수정</a><br>
+			<%if(e == null){ %>
+				<%--등록한 이미지사진 불러오기 --%> <img src="../Images/TutorImg/user.png"
+				width="40%"/>
+				<%} else {%>
+				<%--등록한 이미지사진 불러오기 --%> <img src="../Images/TutorImg/<%=e.getT_selfimg()%>"
+				width="40%"/> <%--해당 이메일의 닉네임 --%> <%=c.getM_name()%> 님<br>
+				<%}%>
+			    <a href="/hmjm/My/profile.jsp">정보 수정</a>&nbsp;<a>튜터 정보 수정</a><br>
 				<a href="/hmjm/Log/logout.jsp">로그아웃</a>
 			</td>
 			
