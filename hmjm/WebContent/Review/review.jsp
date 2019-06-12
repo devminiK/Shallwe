@@ -23,21 +23,23 @@
 
     List articleList = null;
     reviewDAO dbPro = reviewDAO.getInstance();
-    count = dbPro.getArticleCount();
+    count = dbPro.getArticleCount(pnum);
 
     if (count > 0) {
         articleList = dbPro.getArticles(pnum, startRow, endRow);
     }
 	number=count-(currentPage-1)*pageSize;
-	int pr_num = 0;
-	pr_num = dbPro.getArticleCount();
+	//int pr_num = 0;
+	//pr_num = dbPro.getArticleCount(pnum);
+	int rcount = 0;
+	rcount = dbPro.reviewCount(pnum);
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body align="center">
 <b>사용자 후기</b>
-<%if (count == 0) {%>
+<%if (rcount == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
 	</table>
@@ -104,9 +106,9 @@ if (count > 0) {
 <br/><br/>
 <%
 reviewDAO chk = reviewDAO.getInstance();
-int check = chk.checkArticle(id);
+int check = chk.checkArticle(pnum, id);
 if(id!=null){
-	if(check!=1){%> 
+	if(check == 0){%> 
 		<jsp:include page="/Review/reviewWriteForm.jsp"/>
 	<%}else{%>
 		<p>리뷰는 한번만...</p>

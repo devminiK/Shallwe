@@ -53,14 +53,15 @@ public class reviewDAO {
 		}
 	}
 	
-	public int getArticleCount() throws Exception {
+	public int getArticleCount(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int x=0;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select count(*) from review");
+			pstmt = conn.prepareStatement("select count(*) from review where pr_num=?");
+			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x= rs.getInt(1); //첫번째 컬럼 값
@@ -82,15 +83,6 @@ public class reviewDAO {
 		List articleList=null;
 		try {
 			conn = getConnection();
-/*
-			pstmt = conn.prepareStatement(
-					" select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg, pr_num, r "+
-					" from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,pr_num,rownum r " +
-					" from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,pr_num " +
-					" from review order by r_reg desc) order by r_reg desc) where r >= ? and r <= ? ");
-					pstmt.setInt(1, start); 
-					pstmt.setInt(2, end); 
-*/
 			pstmt = conn.prepareStatement(
 					" select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,pr_num,r "
 					+ " from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,pr_num,rownum r "
@@ -243,15 +235,18 @@ public class reviewDAO {
 		return x;
 	}
 	
-	public int checkArticle(String id) throws Exception {
+	public int checkArticle(int prnum, String id) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int check = -1;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select count (*) from review where r_name=?"); 
-			pstmt.setString(1, id);
+			pstmt = conn.prepareStatement(
+					" select count (*) from (select * from review where pr_num=?) "
+					+ " where r_name=? "); 
+			pstmt.setInt(1, prnum);
+			pstmt.setString(2, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				check = rs.getInt(1);
@@ -264,6 +259,29 @@ public class reviewDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return check;
+	}
+	
+	public int reviewCount(int num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int rcount = -1;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count (*) from review where pr_num=?"); 
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				rcount = rs.getInt(1);
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return rcount;
 	}
 	
 }
