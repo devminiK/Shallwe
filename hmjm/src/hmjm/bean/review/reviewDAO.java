@@ -75,37 +75,48 @@ public class reviewDAO {
 		return x; 
 	}
 
-	public List getArticles(int start, int end) throws Exception {
+	public List getArticles(int prnum, int start, int end) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List articleList=null;
 		try {
 			conn = getConnection();
+/*
 			pstmt = conn.prepareStatement(
-					" select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg, r "+
-					" from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,rownum r " +
-					" from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg " +
+					" select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg, pr_num, r "+
+					" from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,pr_num,rownum r " +
+					" from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,pr_num " +
 					" from review order by r_reg desc) order by r_reg desc) where r >= ? and r <= ? ");
 					pstmt.setInt(1, start); 
 					pstmt.setInt(2, end); 
-					rs = pstmt.executeQuery();
-					if (rs.next()) {
-						articleList = new ArrayList(end); 
-						do{ 
-							reviewVO article= new reviewVO();
-							article.setR_num(rs.getInt("r_num"));
-							article.setR_name(rs.getString("r_name"));
-							article.setR_s_curr(rs.getInt("r_s_curr"));
-							article.setR_s_pre(rs.getInt("r_s_pre"));
-							article.setR_s_tk(rs.getInt("r_s_tk"));
-							article.setR_s_deli(rs.getInt("r_s_deli"));
-							article.setR_s_kind(rs.getInt("r_s_kind"));
-							article.setR_re(rs.getString("r_re"));
-							article.setR_reg(rs.getTimestamp("r_reg"));
-							articleList.add(article); 
-						}while(rs.next());
-					}
+*/
+			pstmt = conn.prepareStatement(
+					" select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,pr_num,r "
+					+ " from (select r_num,r_name,r_s_curr,r_s_pre,r_s_tk,r_s_deli,r_s_kind,r_re,r_reg,pr_num,rownum r "
+					+ " from (select * from review where pr_num=? order by r_reg desc)"
+					+ " order by r_reg desc) where r>=? and r<=? ");
+			pstmt.setInt(1, prnum);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+					articleList = new ArrayList(end); 
+					do{ 
+						reviewVO article= new reviewVO();
+						article.setR_num(rs.getInt("r_num"));
+						article.setR_name(rs.getString("r_name"));
+						article.setR_s_curr(rs.getInt("r_s_curr"));
+						article.setR_s_pre(rs.getInt("r_s_pre"));
+						article.setR_s_tk(rs.getInt("r_s_tk"));
+						article.setR_s_deli(rs.getInt("r_s_deli"));
+						article.setR_s_kind(rs.getInt("r_s_kind"));
+						article.setR_re(rs.getString("r_re"));
+						article.setR_reg(rs.getTimestamp("r_reg"));
+						article.setPr_num(rs.getInt("pr_num"));
+						articleList.add(article); 
+					}while(rs.next());
+				}
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -137,6 +148,7 @@ public class reviewDAO {
 				article.setR_s_kind(rs.getInt("r_s_kind"));
 				article.setR_re(rs.getString("r_re"));
 				article.setR_reg(rs.getTimestamp("r_reg"));
+				article.setPr_num(rs.getInt("pr_num"));
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -169,6 +181,7 @@ public class reviewDAO {
 				article.setR_s_kind(rs.getInt("r_s_kind"));
 				article.setR_re(rs.getString("r_re"));
 				article.setR_reg(rs.getTimestamp("r_reg"));
+				article.setPr_num(rs.getInt("pr_num"));
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();

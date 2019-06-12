@@ -24,20 +24,19 @@
     List articleList = null;
     reviewDAO dbPro = reviewDAO.getInstance();
     count = dbPro.getArticleCount();
-    
-    productDAO prnum = productDAO.getInstance();
-	productVO vo = prnum.getProduct(pnum);
 
     if (count > 0) {
-        articleList = dbPro.getArticles(startRow, endRow);
+        articleList = dbPro.getArticles(pnum, startRow, endRow);
     }
 	number=count-(currentPage-1)*pageSize;
+	int pr_num = 0;
+	pr_num = dbPro.getArticleCount();
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body align="center">
-<b>사용자 후기(전체 글:<%=count%>)</b>
+<b>사용자 후기</b>
 <%if (count == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
@@ -83,9 +82,9 @@
 						onclick="document.location.href='/hmjm/Review/reviewDeleteForm.jsp?num=<%=article.getR_num()%>&p_num=<%=pnum%>'">
 			<%}}%> </td>
 		</tr>
-	<%}%>
+	<%}}%>
 </table>
-	<%}
+<%
 if (count > 0) {
 	int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
     int startPage = (int)(currentPage/10)*10+1;
