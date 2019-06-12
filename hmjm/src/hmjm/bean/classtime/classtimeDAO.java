@@ -46,7 +46,6 @@ public class classtimeDAO {
 	private String ct_sta;
 	private String ct_sun;
 	private String ct_day;
-	 * 
 	 * */
 
 

@@ -31,6 +31,7 @@
 			form.ci_img.focus();
 			return false;
 		}
+	}
 		
 	
 	
@@ -54,7 +55,8 @@ input[type=number] {
 	<div class="container">
 
 		<%-- enctype="multipart/form-data"이기때문에 데이터 하나씩 삽입해야함--%>
-		<form method="post" name="addClassimgForm" action="addClassimgPro.php"
+		<%-- 
+		<form method="post" name="addClassimgForm" action="addClassimgPro.jsp"
 			enctype="multipart/form-data">
 
 			<div class="form-group row">
@@ -73,6 +75,7 @@ input[type=number] {
 			</div>
 
 		</form>
+		--%>
 	</div>
 </body>
 </html>
