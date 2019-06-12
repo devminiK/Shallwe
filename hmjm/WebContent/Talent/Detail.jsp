@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>강의 상세페이지</title>
 </head>
 
@@ -17,6 +17,7 @@
 %>
 
 <body>
+<jsp:include page="/Home/header.jsp" />
 	<h1>강의 상세 페이지</h1>
 	<p><%=vo.getP_num() %>:::::::::::::이거 강의번호를 신청할때 넘겨야한다</p><br>
 	강의제목:::::::: <%=vo.getP_classname() %><br>
@@ -30,5 +31,6 @@
 %>
 <br/><br/>
 <jsp:include page="/Review/review.jsp?p_num=<%=num%> %>"/>
+<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>

@@ -35,7 +35,7 @@ public class classtimeDAO {
 	}
 	//삽입, 수정, 삭제, 조회 기능 필요
 	/*
-	 * private int ct_num;
+	private int ct_num;
 	private int ct_classnum;
 	private String ct_place;
 	private String ct_mon;
@@ -111,9 +111,42 @@ public class classtimeDAO {
 	}
 	
 	//삭제
-	//조회
+	//조회 우선 제가 작성할게요 by건훈 
+	
+	public classtimeVO getClasstime(int ct_classnum)
+			throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		classtimeVO vo = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from classtime where ct_classnum = ?");
+			pstmt.setInt(1, ct_classnum);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo = new classtimeVO();
+				vo.setCt_num(rs.getInt("ct_num"));
+				vo.setCt_classnum(rs.getInt("ct_classnum"));
+				vo.setCt_place(rs.getString("ct_place"));
+				vo.setCt_mon(rs.getString("ct_mon"));
+				vo.setCt_tue(rs.getString("ct_tue"));
+				vo.setCt_wed(rs.getString("ct_wed"));
+				vo.setCt_thu(rs.getString("ct_thu"));
+				vo.setCt_fri(rs.getString("ct_fri"));
+				vo.setCt_sta(rs.getString("ct_sta"));
+				vo.setCt_sun(rs.getString("ct_sun"));
+				vo.setCt_day(rs.getString("ct_day"));
 
-
-
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return vo;
+	}
 
 }

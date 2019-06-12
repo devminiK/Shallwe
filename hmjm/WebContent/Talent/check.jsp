@@ -2,6 +2,9 @@
 <%@ page import ="hmjm.bean.product.*"%>
 <%@ page import = "hmjm.bean.tutor.*" %>
 <%@ page import = "hmjm.bean.member.*" %>
+<%@ page import = "hmjm.bean.classtime.*" %>
+<%@ page import = "hmjm.bean.classimg.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,11 +84,16 @@
 	String pageNum = request.getParameter("pageNum");
 	productDAO dbPro = productDAO.getInstance();
 	productVO vo = dbPro.getProduct(num);
+	//시간이랑 위치 불러오기
+	classtimeDAO time = classtimeDAO.getInstance();
+	classtimeVO t = time.getClasstime(num);
 	
 	String t_email = vo.getP_email();//강사 닉네임을 불러오기위해
 	
 	tutorDAO m =tutorDAO.getInstance();
 	tutorVO v = m.getMember(t_email);
+	
+	
 
 %>
 	
@@ -113,6 +121,7 @@
 		<p>내아이디:
 		<input type="text" readonly name="b_email" 
 		 value="<%=(String)session.getAttribute("loginId") %>"></p><br>
+		<p>수업번호: <%=vo.getP_num() %>
 		<!-- product number값을 넘긴다 -->
 		<input type="hidden" readonly name="b_productnumber" 
 		 value="<%=vo.getP_num() %>">
@@ -129,9 +138,45 @@
 		<br>
 	<div>
 		<div>
-			<p>위치<input type="text"  name="b_place" ></p>
+			<p>위치<input type="text"  name="b_place" value="<%=t.getCt_place()%>" ></p>
 		</div>
 		<div>
+			<%if(t.getCt_mon()==null){%>
+			<%}else{%>
+			월: <%=t.getCt_mon() %>
+			<%} %><br>
+			<%if(t.getCt_tue()==null){%>
+			<%}else{%>
+			화: <%=t.getCt_tue() %>
+			<%} %><br>
+			<%if(t.getCt_wed()==null){%>
+			<%}else{%>
+			수: <%=t.getCt_wed() %>
+			<%} %><br>
+			<%if(t.getCt_thu()==null){%>
+			<%}else{%>
+			목: <%=t.getCt_thu() %>
+			<%} %><br>
+			<%if(t.getCt_fri()==null){%>
+			<%}else{%>
+			금: <%=t.getCt_fri() %>
+			<%} %><br>
+			<%if(t.getCt_sta()==null){%>
+			<%}else{%>
+			토: <%=t.getCt_sta() %>
+			<%} %><br>
+			
+			<%if(t.getCt_sun()==null){%>
+			<%}else{%>
+			일: <%=t.getCt_sun() %>
+			<%} %><br>
+			
+			<%if(t.getCt_day()==null){%>
+			<%}else{%>
+			데이수업<%=t.getCt_day() %>
+			<%} %>
+			
+					
 			<p>요일<input type="text"  name="b_day" ></p>
 		</div>
 		
