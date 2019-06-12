@@ -100,18 +100,26 @@
 	</form>-->
 	<div>
 	  <form method="post" name="checkForm"
-	  action="checkPro" >
+	  action="checkPro.jsp" >
+	  <!-- buy테이블에 입력 될 값
+	  	b_num(시퀀스)
+	  	b_email
+	  	b_productnumber
+	  	b_classname
+	  	b_place
+	  	b_day
+	   -->
 		<h1>수업에서 수강신청하기 누르면 나옴</h1>
 		<p>내아이디:
 		<input type="text" readonly name="b_email" 
-		 value=" <%=(String)session.getAttribute("loginId") %>"></p><br>
-		
+		 value="<%=(String)session.getAttribute("loginId") %>"></p><br>
+		<!-- product number값을 넘긴다 -->
 		<input type="hidden" readonly name="b_productnumber" 
-		 value="  <%=vo.getP_num() %>">
+		 value="<%=vo.getP_num() %>">
 		 
 		<p>수업이름:
-		<input type="text" readonly name="b_class" 
-		 value=" <%=vo.getP_classname() %>"></p><br>
+		<input type="text" readonly name="b_classname" 
+		 value="<%=vo.getP_classname() %>"></p><br>
 		
 		<p>선생님 별명: <%=v.getT_nick() %><p>
 		<p>선생님 이메일: <%=vo.getP_email() %></p>
@@ -131,7 +139,9 @@
 	
 
 	
-	<div class="btn_red" onclick="setMode()">결제하기</div>
+	<div class="btn_red" >
+	<input type ="submit" value="수업신청하기"></div>
+	
 	<input type="hidden" id="optionCount" name="optionCount" value="1">
 	<div class="btn_b" onclick="javascript:window.location='../Home/main.jsp'">일단 취소</div>
 	<%}else{ //로그아웃시 main.jsp로 이동

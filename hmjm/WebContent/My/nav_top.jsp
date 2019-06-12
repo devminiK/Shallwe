@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import = "hmjm.bean.tutor.*" %>
+<%@ page import = "hmjm.bean.member.*" %>
+<%@ page import = "hmjm.bean.product.*" %>
+<%@ page import = "hmjm.bean.buy.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,9 +43,19 @@ a {
 </style>
 </head>
 <%
+	request.setCharacterEncoding("utf-8");
 	String preUser =(String)session.getAttribute("loginId");//이메일 값
+	
+	productDAO product = productDAO.getInstance();
+	productVO p = product.getProduct2(preUser);
+	
+	buyDAO buyer = buyDAO.getInstance();
+	buyVO b = buyer.getBuy(preUser);
+	
+	
 %>
 <body>
+
 	<table id="top" border="1">
 		<tr>
 			<td class="section">
@@ -60,12 +75,24 @@ a {
 					<div class="sec_box_ele">
 						<img class="icon" alt="" src="/hmjm/Images/Icon/kakao.jpg">
 						<p>신청한 수업</p>
-						<p>0건</p>
+						<%if(b == null){ %>
+							<p>수업을 신청하세요^^</p>
+							<%}else{ %>
+						<p>수업이름: <%=b.getB_classname() %></p>
+						<p>수업번호: <%=b.getB_productnumber() %></p>
+							<%}%>
 					</div>
 					<div class="sec_box_ele">
 						<img class="icon" alt="" src="/hmjm/Images/Icon/kakao.jpg">
-						<p>위시리스트</p>
-						<p>0건</p>
+						<p>내 수업</p>
+						<%if(p == null){ %>
+							<p>아직 나의 수업이 없어요</p>
+							<%}else{ %>
+							
+							<p>수업이름: <%=p.getP_classname() %></p>
+							<p>수업번호: <%=p.getP_num() %></p>
+							
+							<%}%>
 					</div>
 
 				</div>
