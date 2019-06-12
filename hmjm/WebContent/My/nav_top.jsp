@@ -93,7 +93,7 @@ a {
 							<p>수업을 신청하세요^^</p>
 							<%}else{ %>
 						<p>수업이름: <%=b.getB_classname() %></p>
-						<p>수업번호: <%=b.getB_productnumber() %></p>
+						<p>수업번호: <a href ="../Talent/Detail.jsp?p_num=<%=b.getB_productnumber() %>"><%=b.getB_productnumber() %></a> </p>
 							<%}%>
 					</div>
 					<div class="sec_box_ele">
@@ -101,11 +101,9 @@ a {
 						<p>내 수업</p>
 						<%if(p == null){ %>
 							<p>아직 나의 수업이 없어요</p>
-							<%}else{ %>
-							
+							<%}else{%>
 							<p>수업이름: <%=p.getP_classname() %></p>
-							<p>수업번호: <%=p.getP_num() %></p>
-							
+							<p>수업번호: <a href ="../Talent/Detail.jsp?p_num=<%=p.getP_num() %>"><%=p.getP_num() %></a> </p>
 							<%}%>
 					</div>
 
