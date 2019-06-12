@@ -243,15 +243,18 @@ public class reviewDAO {
 		return x;
 	}
 	
-	public int checkArticle(String id) throws Exception {
+	public int checkArticle(int prnum, String id) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int check = -1;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select count (*) from review where r_name=?"); 
-			pstmt.setString(1, id);
+			pstmt = conn.prepareStatement(
+					" select count (*) from (select * from review where pr_num=?) "
+					+ " where r_name=? "); 
+			pstmt.setInt(1, prnum);
+			pstmt.setString(2, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				check = rs.getInt(1);

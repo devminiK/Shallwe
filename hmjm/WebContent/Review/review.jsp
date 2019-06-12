@@ -106,9 +106,9 @@ if (count > 0) {
 <br/><br/>
 <%
 reviewDAO chk = reviewDAO.getInstance();
-int check = chk.checkArticle(id);
+int check = chk.checkArticle(pnum, id);
 if(id!=null){
-	if(check!=1){%> 
+	if(check == 0){%> 
 		<jsp:include page="/Review/reviewWriteForm.jsp"/>
 	<%}else{%>
 		<p>리뷰는 한번만...</p>
