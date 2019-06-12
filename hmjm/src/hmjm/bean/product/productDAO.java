@@ -93,6 +93,7 @@ public class productDAO {
 					vo.setP_class2(rs.getString("p_class2"));
 					vo.setP_class3(rs.getString("p_class3"));
 					vo.setP_class4(rs.getString("p_class4"));
+
 				}
 			} catch(Exception ex) {
 				ex.printStackTrace();
@@ -104,13 +105,8 @@ public class productDAO {
 			return vo;
 		}
 
-
-
-	
-
 	//해당 번호의 수업 정보를 가져온다. _현재  파라미터 이메일로 함, 추후 p_num으로 변경할 것 -..?
 	public productVO getProduct2(String p_mail)
-
 			throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -119,7 +115,7 @@ public class productDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select * from product where p_email = ?");
+					"select * from product where p_mail = ?");
 			pstmt.setString(1, p_mail);
 			rs = pstmt.executeQuery();
 

@@ -52,7 +52,7 @@ public class classtimeDAO {
 
 	//삽입
 
-	//작성한 수업 시간  DB에 삽입, -ing
+	//작성한 수업 시간  DB에 삽입, -ok
 	public void insertClasstime(classtimeVO classtime) {	    
 
 		String sql="";
@@ -83,7 +83,7 @@ public class classtimeDAO {
 	}
 
 
-	//수정, 테스트 안해봄
+	//수정, -not yet
 	public void updateClasstime(classtimeVO vo) {
 		try {
 			conn = getConnection();
@@ -109,6 +109,7 @@ public class classtimeDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 	}
+	
 	//삭제
 	//조회
 

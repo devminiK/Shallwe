@@ -37,9 +37,8 @@ public class classimgDAO {	/*성민 작성*/
 		return conn;
 	}
 	
-	//(상품 등록 내에서)이미지 등록하기_미완성
+	//(상품 등록 내에서)이미지 등록하기_ing
 	public void insertClassimg(classimgVO classimg) {	      
-		
 
 	      String sql="";  
 	      try {

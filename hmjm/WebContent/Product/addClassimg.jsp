@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
-<%--상품 번호를 가져오기위함 --%>
-<%@ page import="hmjm.bean.product.productDAO" %>
-<%@ page import="hmjm.bean.product.productVO" %>
+<%@ page import="hmjm.bean.product.productDAO"%>
+<%@ page import="hmjm.bean.product.productVO"%>
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -11,31 +10,69 @@
 	//productDAO dao = productDAO.getInstance();
 	//productVO vo = //dao.getProduct();//상품번호 가져와야함.
 %>
-
-<!DOCTYPE html>
 <html>
 <head>
-<title>상품 등록_ 이미지 등록</title>
-</head>
-<%
-	int num = 0;	//이미지 순서 번호
-	int productNum=0;	//상품 번호
-	
-	if(request.getParameter("num")!= null){
-		num = Integer.parseInt(request.getParameter("num"));
-	}
-	//productNum =Integer.parseInt(vo.get);//상품 번호 받아오기
+<link rel="stylesheet" href="/hmjm/css/bootstrap.min.css" />
+<title>수업 등록</title>
+<script language="javascript" src="script.js"></script>
+<script language="javascript" type="text/javascript">
+/*
+    private int ci_num;			//고유넘버(순서를 위함)_시퀀스
+	private int ci_classnum;	//수업번호(p_num)	
+	private String ci_img;		//이미지 경로  
+ */	
+ 
+	/*유효성 검사*/
+	function writeSave() {
+		var form = document.addClassimgForm;
 
-%>
+		if (form.ci_img.value == "") {
+			alert("하나 이상의 수업 사진을 등록 하세요.");
+			form.ci_img.focus();
+			return false;
+		}
+		
+	
+	
+</script>
+
+<style>
+input[type=number] {
+	width: 80px;
+}
+</style>
+
+</head>
+
 <body>
-	<form method="post" name="imgform" action="addClassimgPro.jsp">
-		<%--ci_num,p_classnum hidden으로 할것 --%>
-		이미지순서번호<input type="number" name="ci_num" value="<%=num%>"><br>
-		상품번호<input type="number" name="p_classnum" value="<%=productNum%>"><br>
-		이미지 주소<input type="text" name="ci_img" placeholder="이미지주소입력"><br>
-		<br>
-		<input type="submit" value="사진 등록" >  
-  		<input type="reset" value="다시작성">
-	</form>
+	<jsp:include page="/Home/header.jsp" />
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-3">수업 사진 등록</h1>
+		</div>
+	</div>
+	<div class="container">
+
+		<%-- enctype="multipart/form-data"이기때문에 데이터 하나씩 삽입해야함--%>
+		<form method="post" name="addClassimgForm" action="addClassimgPro.php"
+			enctype="multipart/form-data">
+
+			<div class="form-group row">
+				<label class="col-sm-2">수업 사진 등록하기</label>
+				<div class="col-sm-5">
+					 <input multiple="multiple" type="file" name="filename[]"  class="form-control"/> 
+					
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-offset-2 col-sm-10 ">
+					<input type="submit" value="사진 등록">&nbsp;&nbsp;&nbsp; <input
+						type="reset" value="모든 내용 취소">
+				</div>
+			</div>
+
+		</form>
+	</div>
 </body>
 </html>
