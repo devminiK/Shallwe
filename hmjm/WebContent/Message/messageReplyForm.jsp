@@ -16,7 +16,7 @@
 		}
 %>
 <body>
-<form method="post" name="messageReplyForm" action="messageWritePro.jsp" onsubmit="return writeSave()">
+<form method="post" name="messageReplyForm" action="/hmjm/Message/messageWritePro.jsp" onsubmit="return writeSave()">
 	<input type="hidden" name="s_num" value="<%=num%>">
 	<table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
 		<tr><td width="100" align="center">보내는사람</td>

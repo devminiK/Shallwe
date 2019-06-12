@@ -32,8 +32,8 @@ public class reviewDAO {
 				number=rs.getInt(1)+1;	
 			else
 				number=1; 
-			sql = "insert into review(r_num, r_name, r_s_curr, r_s_pre, r_s_tk, r_s_deli, r_s_kind, r_re, r_reg) "
-					+ "values(review_seq.NEXTVAL,?,?,?,?,?,?,?,sysdate)";
+			sql = "insert into review(r_num, r_name, r_s_curr, r_s_pre, r_s_tk, r_s_deli, r_s_kind, r_re, r_reg, pr_num) "
+					+ "values(review_seq.NEXTVAL,?,?,?,?,?,?,?,sysdate,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getR_name());
 			pstmt.setInt(2, article.getR_s_curr());
@@ -42,6 +42,7 @@ public class reviewDAO {
 			pstmt.setInt(5, article.getR_s_deli());
 			pstmt.setInt(6, article.getR_s_kind());
 			pstmt.setString(7, article.getR_re());
+			pstmt.setInt(8, article.getPr_num());
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();

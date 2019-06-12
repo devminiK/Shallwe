@@ -67,7 +67,7 @@
 		    <td align="center">
 				<input type="submit" value="답장">
 				<input type="button" value="삭제" 
-					onclick="document.location.href='messageDeleteForm.jsp?num=<%=article.getS_num()%>'"></td>
+					onclick="document.location.href='/hmjm/Message/messageDeleteForm.jsp?num=<%=article.getS_num()%>'"></td>
 		</tr>
 	<%}}}%>
 	</table>

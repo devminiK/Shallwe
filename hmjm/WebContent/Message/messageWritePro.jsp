@@ -12,5 +12,5 @@
 	String id = (String)session.getAttribute("loginId");
 	messageDAO dbPro = messageDAO.getInstance();
     dbPro.insertArticle(message);
-    response.sendRedirect("message.jsp");
+    response.sendRedirect("/hmjm/Message/message.jsp");
 %>

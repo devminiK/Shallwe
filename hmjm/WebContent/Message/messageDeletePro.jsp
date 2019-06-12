@@ -13,6 +13,6 @@
 
   if(check==1){
 %>
-	<meta http-equiv="Refresh" content="0;url=message.jsp" >
+	<meta http-equiv="Refresh" content="0;url=/hmjm/Message/message.jsp" >
   
 <%} %>

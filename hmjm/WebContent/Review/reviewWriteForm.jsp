@@ -18,11 +18,12 @@
 %>
    
 <body>
-<form method="post" name="writeform" action="/hmjm/Review/reviewWritePro.jsp?p_num=<%=pnum %>" onsubmit="return writeSave()">
+<form method="post" name="writeform" action="/hmjm/Review/reviewWritePro.jsp?p_num=<%=pnum%>" onsubmit="return writeSave()">
 	<input type="hidden" name="r_num" value="<%=num%>">
+	<input type="hidden" name="pr_num" value="<%=pnum%>">
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
 	<tr><td width="100" align="center">이 름</td>
-    	<td width="330"><input type="text" size="10" maxlength="10" name="r_name" value="<%=id %>" readonly></td></tr>
+    	<td width="330"><input type="text" size="10" maxlength="10" name="r_name" value="<%=id%>" readonly></td></tr>
   
 	<tr><td width="70" align="center" >내 용</td>
 	  	<td width="330" ><textarea name="r_re" rows="10" cols="100"></textarea></td></tr>

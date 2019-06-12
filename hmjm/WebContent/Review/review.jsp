@@ -24,6 +24,9 @@
     List articleList = null;
     reviewDAO dbPro = reviewDAO.getInstance();
     count = dbPro.getArticleCount();
+    
+    productDAO prnum = productDAO.getInstance();
+	productVO vo = prnum.getProduct(pnum);
 
     if (count > 0) {
         articleList = dbPro.getArticles(startRow, endRow);

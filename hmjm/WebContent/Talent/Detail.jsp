@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ page import = "hmjm.bean.product.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>°­ÀÇ »ó¼¼ÆäÀÌÁö</title>
+<title>ê°•ì˜ ìƒì„¸íŽ˜ì´ì§€</title>
 </head>
 
 <%
@@ -14,23 +14,21 @@
 	try{
 		productDAO dbPro = productDAO.getInstance();
 		productVO vo = dbPro.getProduct(num);
-	
-
 %>
 
 <body>
-	<h1>°­ÀÇ »ó¼¼ ÆäÀÌÁö</h1>
-	<p><%=vo.getP_num() %>:::::::::::::ÀÌ°Å °­ÀÇ¹øÈ£¸¦ ½ÅÃ»ÇÒ¶§ ³Ñ°Ü¾ßÇÑ´Ù</p><br>
-	°­ÀÇÁ¦¸ñ:::::::: <%=vo.getP_classname() %><br>
-	°­»ç¼Ò°³:::::::: <%=vo.getP_self() %><br>
-	Ä«Å×°í¸®:::::::: <%=vo.getP_category() %><br>
-	°­»çÀÌ¸ÞÀÏ:::::::: <%=vo.getP_email() %><br><br>
-	<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">°­ÀÇ½ÅÃ»</a>
+	<h1>ê°•ì˜ ìƒì„¸ íŽ˜ì´ì§€</h1>
+	<p><%=vo.getP_num() %>:::::::::::::ì´ê±° ê°•ì˜ë²ˆí˜¸ë¥¼ ì‹ ì²­í• ë•Œ ë„˜ê²¨ì•¼í•œë‹¤</p><br>
+	ê°•ì˜ì œëª©:::::::: <%=vo.getP_classname() %><br>
+	ê°•ì‚¬ì†Œê°œ:::::::: <%=vo.getP_self() %><br>
+	ì¹´í…Œê³ ë¦¬:::::::: <%=vo.getP_category() %><br>
+	ê°•ì‚¬ì´ë©”ì¼:::::::: <%=vo.getP_email() %><br><br>
+	<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">ê°•ì˜ì‹ ì²­</a>
 	
 <% 
 	}catch(Exception e){} 
 %>
 <br/><br/>
-<jsp:include page="/Review/review.jsp"/>
+<jsp:include page="/Review/review.jsp?p_num=<%=num%> %>"/>
 </body>
 </html>

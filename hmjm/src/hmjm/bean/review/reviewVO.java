@@ -12,6 +12,7 @@ public class reviewVO {
 	private int r_s_kind;
 	private String r_re;
 	private Timestamp r_reg;
+	private int pr_num;
 	
 	public int getR_num() {
 		return r_num;
@@ -66,6 +67,12 @@ public class reviewVO {
 	}
 	public void setR_reg(Timestamp r_reg) {
 		this.r_reg = r_reg;
+	}
+	public int getPr_num() {
+		return pr_num;
+	}
+	public void setPr_num(int pr_num) {
+		this.pr_num = pr_num;
 	}
 	
 	
