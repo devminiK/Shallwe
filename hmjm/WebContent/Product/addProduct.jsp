@@ -13,10 +13,9 @@
 
 	//nick값 받아오기위함
 	tutorDAO tdao = tutorDAO.getInstance();		
-	tutorVO tvo = tdao.getMember(preUser);
-	
-	
+	tutorVO tvo = tdao.getMember(preUser);	
 %>
+
 <html>
 <head>
 <link rel="stylesheet" href="/hmjm/css/bootstrap.min.css" />
