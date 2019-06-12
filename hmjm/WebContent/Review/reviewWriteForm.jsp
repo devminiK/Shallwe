@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-
+<% request.setCharacterEncoding("UTF-8");%>
 <html>
 <head>
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -8,15 +8,17 @@
 
 <% 
 	String id = (String)session.getAttribute("loginId");
+	int pnum = Integer.parseInt(request.getParameter("p_num"));
+    
 	int num=0;
 	try{  
     	if(request.getParameter("r_num")!=null){
 		num=Integer.parseInt(request.getParameter("r_num"));
-		}
+	}
 %>
    
 <body>
-<form method="post" name="writeform" action="reviewWritePro.jsp" onsubmit="return writeSave()">
+<form method="post" name="writeform" action="/hmjm/Review/reviewWritePro.jsp?p_num=<%=pnum %>" onsubmit="return writeSave()">
 	<input type="hidden" name="r_num" value="<%=num%>">
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
 	<tr><td width="100" align="center">이 름</td>
@@ -64,7 +66,7 @@
 </table>
 <table align="center">  
 	<tr><td colspan=2 align="center"> 
-			<input type="submit" value="글쓰기"/>  
+			<input type="submit" value="후기 작성하기"/>  
 		</td>
 	</tr>
 </table>    

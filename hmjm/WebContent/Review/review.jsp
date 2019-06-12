@@ -1,16 +1,17 @@
 <%@ page contentType = "text/html; charset=UTF-8" %>
-<%@ page import = "hmjm.bean.review.reviewDAO" %>
-<%@ page import = "hmjm.bean.review.reviewVO" %>
+<%@ page import = "hmjm.bean.review.*" %>
+<%@ page import = "hmjm.bean.product.*" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
-
+<% request.setCharacterEncoding("UTF-8");%>
 <%!
-    int pageSize = 5; //한 화면에 보여줄 리스트 갯수
+    int pageSize = 10; //한 화면에 보여줄 리스트 갯수
 %>
 
 <%
 	String id = (String)session.getAttribute("loginId");
 	String pageNum = request.getParameter("pageNum");
+	int pnum = Integer.parseInt(request.getParameter("p_num"));
 	
     if (pageNum == null) { pageNum = "1"; }
 
@@ -23,6 +24,7 @@
     List articleList = null;
     reviewDAO dbPro = reviewDAO.getInstance();
     count = dbPro.getArticleCount();
+
     if (count > 0) {
         articleList = dbPro.getArticles(startRow, endRow);
     }
@@ -32,7 +34,7 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body align="center">
-<b>글목록(전체 글:<%=count%>)</b>
+<b>사용자 후기(전체 글:<%=count%>)</b>
 <%if (count == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
@@ -72,10 +74,10 @@
 			<%String login = article.getR_name();
 			if (id!=null){
 				if(id.equals(login)) {%>
-					<input type="button" value="글수정" 
-						onclick="document.location.href='reviewUpdateForm.jsp?num=<%=article.getR_num()%>&pageNum=<%=pageNum%>'"/>
-					<input type="button" value="글삭제" 
-						onclick="document.location.href='reviewDeleteForm.jsp?num=<%=article.getR_num()%>'">
+					<input type="button" value="리뷰수정" 
+						onclick="document.location.href='/hmjm/Review/reviewUpdateForm.jsp?num=<%=article.getR_num()%>&pageNum=<%=pageNum%>&p_num=<%=pnum%>'"/>
+					<input type="button" value="리뷰삭제" 
+						onclick="document.location.href='/hmjm/Review/reviewDeleteForm.jsp?num=<%=article.getR_num()%>&p_num=<%=pnum%>'">
 			<%}}%> </td>
 		</tr>
 	<%}%>
@@ -88,13 +90,13 @@ if (count > 0) {
     int endPage = startPage + pageBlock-1;
     if (endPage > pageCount) endPage = pageCount;
 	if (startPage > 10) {%>
-		<a href="review.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+		<a href="/hmjm/Talent/Detail.jsp?p_num=<%=pnum%>&pageNum=<%=startPage-10%>">[이전]</a>
 	<%}
 	for (int i = startPage ; i <= endPage ; i++) {  %>
-		<a href="review.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+		<a href="/hmjm/Talent/Detail.jsp?p_num=<%=pnum%>&pageNum=<%=i%>">[<%=i%>]</a>
 	<%}
 	if (endPage < pageCount) {%>
-		<a href="review.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+		<a href="/hmjm/Talent/Detail.jsp?p_num=<%=pnum%>&pageNum=<%=startPage+10%>">[다음]</a>
 	<%}
 }%>
 <br/><br/>
@@ -103,7 +105,7 @@ reviewDAO chk = reviewDAO.getInstance();
 int check = chk.checkArticle(id);
 if(id!=null){
 	if(check!=1){%> 
-		<jsp:include page="reviewWriteForm.jsp"/>
+		<jsp:include page="/Review/reviewWriteForm.jsp"/>
 	<%}else{%>
 		<p>리뷰는 한번만...</p>
 <%}}else{%>

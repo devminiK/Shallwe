@@ -3,6 +3,7 @@
 <%@ page import = "hmjm.bean.review.reviewVO" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
+<% request.setCharacterEncoding("UTF-8");%>
 <html>
 <head>
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -11,6 +12,7 @@
 
 <% 
 	int num = Integer.parseInt(request.getParameter("num"));
+	int pnum = Integer.parseInt(request.getParameter("p_num"));
 	String pageNum = request.getParameter("pageNum");
 	String id = (String)session.getAttribute("loginId");
 	
@@ -23,7 +25,7 @@
 %>
    
 <body>  
-<form method="post" name="writeform" action="reviewUpdatePro.jsp?pageNum=<%=pageNum%>" onsubmit="return writeSave()">
+<form method="post" name="writeform" action="/hmjm/Review/reviewUpdatePro.jsp?pageNum=<%=pageNum%>&p_num=<%=pnum %>" onsubmit="return writeSave()">
 	<input type="hidden" name="r_num" value="<%=num%>">
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
 	

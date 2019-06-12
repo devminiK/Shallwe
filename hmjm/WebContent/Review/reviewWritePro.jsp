@@ -10,7 +10,9 @@
  
 <%
 	String id = (String)session.getAttribute("loginId");
+	int pnum = Integer.parseInt(request.getParameter("p_num"));
+	
 	reviewDAO dbPro = reviewDAO.getInstance();
     dbPro.insertArticle(article);
-    response.sendRedirect("review.jsp");
+    response.sendRedirect("/hmjm/Talent/Detail.jsp?p_num="+pnum);
 %>
