@@ -22,12 +22,14 @@
 	<input type="hidden" name="r_num" value="<%=num%>">
 	<input type="hidden" name="pr_num" value="<%=pnum%>">
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
+	<!-- 리뷰 작성자 이름은 아이디 자동입력 -->
 	<tr><td width="100" align="center">이 름</td>
     	<td width="330"><input type="text" size="10" maxlength="10" name="r_name" value="<%=id%>" readonly></td></tr>
   
 	<tr><td width="70" align="center" >내 용</td>
 	  	<td width="330" ><textarea name="r_re" rows="10" cols="100"></textarea></td></tr>
 </table>
+<!-- 점수 5점 기본선택 -->
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
 	<tr><td align="center">커리큘럼<br/>
 					1<input type="radio" name="r_s_curr" value="1"/><br/>

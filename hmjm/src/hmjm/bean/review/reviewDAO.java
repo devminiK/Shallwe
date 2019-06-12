@@ -1,3 +1,4 @@
+/* 판매글에 남기는 리뷰게시판 DAO */
 package hmjm.bean.review;
 
 import java.sql.*;
@@ -18,6 +19,7 @@ public class reviewDAO {
 		return ds.getConnection();
 	}
 	
+	//리뷰 작성
 	public void insertArticle(reviewVO article) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -53,6 +55,7 @@ public class reviewDAO {
 		}
 	}
 	
+	//해단 판매글의 리뷰 갯수 카운트
 	public int getArticleCount(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -75,7 +78,8 @@ public class reviewDAO {
 		}
 		return x; 
 	}
-
+	
+	//판매글의 리뷰목록 불러오기
 	public List getArticles(int prnum, int start, int end) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -119,6 +123,7 @@ public class reviewDAO {
 		return articleList;
 	}
 	
+	//리뷰 내용 불러오기
 	public reviewVO getArticle(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -152,6 +157,7 @@ public class reviewDAO {
 		return article;
 	}
 	
+	//리뷰글 불러오기
 	public reviewVO updateGetArticle(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -185,6 +191,7 @@ public class reviewDAO {
 		return article;
 	}
 
+	//리뷰 수정하기
 	public int updateArticle(reviewVO article) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -213,7 +220,8 @@ public class reviewDAO {
 		}
 		return x;
 	}
-
+	
+	//리뷰 삭제하기
 	public int deleteArticle(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -235,6 +243,7 @@ public class reviewDAO {
 		return x;
 	}
 	
+	//판매글에 특정 계정이 리뷰를 작성했는지 확인
 	public int checkArticle(int prnum, String id) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -261,6 +270,7 @@ public class reviewDAO {
 		return check;
 	}
 	
+	//판매글의 리뷰 갯수 확인 (페이지설정용)
 	public int reviewCount(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

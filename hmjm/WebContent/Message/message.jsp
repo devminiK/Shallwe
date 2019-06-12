@@ -51,6 +51,7 @@
 	<%for(int i = 0 ; i < articleList.size() ; i++) {
 		messageVO article = (messageVO)articleList.get(i);
 		String login = article.getS_receive();
+		//새 쪽지 알림
 		int newm = article.getS_count();
 		if(newm == 2){%>
 			<script>
@@ -75,25 +76,20 @@
 <%
     if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
-		 
         int startPage = (int)(currentPage/10)*10+1;
 		int pageBlock=10;
         int endPage = startPage + pageBlock-1;
         if (endPage > pageCount) endPage = pageCount;
-        
         if (startPage > 10) {    %>
-        <a href="message.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+        	<a href="message.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        <a href="message.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+        	<a href="message.jsp?pageNum=<%= i %>">[<%= i %>]</a>
 <%
         }
         if (endPage < pageCount) {  %>
-        <a href="message.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
-<%
-        }
-    }
-%>
+        	<a href="message.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+<%}}%>
 <br/><br/>
 </form>
 <jsp:include page="messageWriteForm.jsp" />

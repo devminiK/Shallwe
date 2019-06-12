@@ -1,3 +1,4 @@
+<!-- 레이어팝업 클릭시 새 창이 아닌 현재 창 내에 팝업 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -88,8 +89,8 @@
 		transform: translate(-50%, -50%); 
 		background-color: white; 
 		padding: 1rem 1.5rem; 
-		width: 500px; 
-		height: 450px; 
+		width: 900px; 
+		height: 850px; 
 		border-radius: 0.5rem; 
 	} 
 	.close-button { 

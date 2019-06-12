@@ -1,18 +1,19 @@
+/* 판매글에 남기는 리뷰게시판 VO */
 package hmjm.bean.review;
 
 import java.sql.Timestamp;
 
 public class reviewVO {
-	private int r_num;
-	private String r_name;
-	private int r_s_curr;
-	private int r_s_pre;
-	private int r_s_tk;
-	private int r_s_deli;
-	private int r_s_kind;
-	private String r_re;
-	private Timestamp r_reg;
-	private int pr_num;
+	private int r_num; //리뷰글의 고유번호
+	private String r_name; //리뷰 작성자 이름
+	private int r_s_curr; //별점: 커리큘럼
+	private int r_s_pre; //별점: 준비성
+	private int r_s_tk; //별점: 시간준수
+	private int r_s_deli; //별점: 전달력
+	private int r_s_kind; //별점: 친절함
+	private String r_re; //리뷰 본문
+	private Timestamp r_reg; //리뷰작성시간
+	private int pr_num; //상품 판매글의 시퀀스 번호를 저장
 	
 	public int getR_num() {
 		return r_num;

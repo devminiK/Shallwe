@@ -29,9 +29,8 @@
         articleList = dbPro.getArticles(pnum, startRow, endRow);
     }
 	number=count-(currentPage-1)*pageSize;
-	//int pr_num = 0;
-	//pr_num = dbPro.getArticleCount(pnum);
-	int rcount = 0;
+
+	int rcount = 0; //판매글 리뷰 갯수 초기화
 	rcount = dbPro.reviewCount(pnum);
 %>
 <html>
@@ -53,7 +52,7 @@
 		    <td align="center"  width="100"><%=article.getR_name()%></td>
 		    <td align="center"  width="100"><%=article.getR_reg()%></td>
 		</tr>
-		
+			<!-- 점수에 따라 별 갯수 1~5개 -->
 		<tr><td align="center">커리큘럼<br/>
 			<%int curr = article.getR_s_curr();
 			for(int cu=0; cu<curr; cu++){%>	<img src="/hmjm/Images/star.jpg"> <%}%> </td>
@@ -74,6 +73,7 @@
 			<%int kind = article.getR_s_kind();
 			for(int ki=0; ki<kind; ki++){%> <img src="/hmjm/Images/star.jpg"> <%}%> </td>
 			
+			<!-- 로그인을 한상태 + 작성글의 아이디와 로그인 아이디가 일치할때만 수정/삭제 가능-->
 			<td align="center">
 			<%String login = article.getR_name();
 			if (id!=null){
@@ -105,6 +105,7 @@ if (count > 0) {
 }%>
 <br/><br/>
 <%
+// 로그인한 상태 + 해당 판매글의 리뷰 중 로그인한 아이디와 일치하는 아이디가 없으면 리뷰 작성폼을 보여줌
 reviewDAO chk = reviewDAO.getInstance();
 int check = chk.checkArticle(pnum, id);
 if(id!=null){

@@ -24,7 +24,8 @@
     	reviewVO article =  dbPro.updateGetArticle(num);
 %>
    
-<body>  
+<body>
+<!-- 리뷰를 수정할 때는 이름, 내용, 점수를 이전에 작성한 그대로 불러옴 -->
 <form method="post" name="writeform" action="/hmjm/Review/reviewUpdatePro.jsp?pageNum=<%=pageNum%>&p_num=<%=pnum %>" onsubmit="return writeSave()">
 	<input type="hidden" name="r_num" value="<%=num%>">
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
@@ -38,6 +39,7 @@
 	  	<td width="330" ><textarea name="r_re" rows="10" cols="100"><%=article.getR_re()%></textarea></td>
 	</tr>
 </table>
+<!-- 저장된 점수를 불러와서 이전 점수 그대로 체크 -->
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
 	<tr><td align="center">커리큘럼:<br/>
 			<%int curr = article.getR_s_curr();

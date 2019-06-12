@@ -1,3 +1,8 @@
+/* 
+ * 검색기능 DAO, productVO사용
+ * hmjm/Home/header.jsp
+ * hmjm/Home/search.jsp
+ */
 package hmjm.bean.search;
 
 import java.sql.*;
@@ -28,6 +33,11 @@ public class searchDAO {
 		return conn;
 	}
 	
+	/*
+	 *  product 테이블의 
+	 * classname/class1/class2/class3/class4/category/self 컬럼의 내용에서
+	 * 입력한 글자와 일치하는 내용을 전부 표시
+	 */
 	public ArrayList<productVO> getAllProduct(String search){
 		ArrayList<productVO> list = new ArrayList<productVO>();
 		try {
