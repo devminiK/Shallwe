@@ -66,12 +66,16 @@ a {
 			<td class="section">
 			<%if(e == null){ %>
 				<%--등록한 이미지사진 불러오기 --%> <img src="../Images/TutorImg/user.png"
-				width="40%"/>
+				width="50%"/><%=preUser %><br>
+				튜터: 미등록<br>
 				<%} else {%>
 				<%--등록한 이미지사진 불러오기 --%> <img src="../Images/TutorImg/<%=e.getT_selfimg()%>"
-				width="40%"/> <%--해당 이메일의 닉네임 --%> <%=c.getM_name()%> 님<br>
+				width="50%"/> <%--해당 이메일의 닉네임 --%> <%=c.getM_name()%> 님<br>
+				 <a href="/hmjm/Tutor/Register/menu.jsp">튜터 정보 수정</a><br>
 				<%}%>
-			    <a href="/hmjm/My/profile.jsp">정보 수정</a>&nbsp;<a>튜터 정보 수정</a><br>
+			    <a href="/hmjm/My/profile.jsp">정보 수정</a>&nbsp;<br>
+			    
+			   
 				<a href="/hmjm/Log/logout.jsp">로그아웃</a>
 			</td>
 			
