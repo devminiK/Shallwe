@@ -1,12 +1,13 @@
+/* 개인 메시지기능 VO */
 package hmjm.bean.message;
 import java.sql.Timestamp;
 public class messageVO {
-	private int s_num;
-	private int s_count;
-	private String s_content;
-	private Timestamp s_reg;
-	private String s_send;
-	private String s_receive;
+	private int s_num; //쪽지 고유 번호
+	private int s_count; //쪽지 조회 수 -> 새 쪽지 알림용
+	private String s_content; //쪽지의 내용
+	private Timestamp s_reg; //쪽지를 보낸 시간 sysdate
+	private String s_send; //보낸사람
+	private String s_receive; //받는사람
 	
 	public int getS_num() {
 		return s_num;

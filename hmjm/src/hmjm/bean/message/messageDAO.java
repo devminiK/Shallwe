@@ -1,3 +1,4 @@
+/* 개인 메시지기능 DAO*/
 package hmjm.bean.message;
 
 import java.sql.*;
@@ -19,6 +20,7 @@ public class messageDAO {
 		return ds.getConnection();
 	}
 	
+	//쪽지 보내기
 	public void insertArticle(messageVO article) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -50,6 +52,7 @@ public class messageDAO {
 		}
 	}
 	
+	//전체 쪽지 갯수 확인
 	public int getArticleCount(String receiver) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -72,7 +75,8 @@ public class messageDAO {
 		}
 		return x; 
 	}
-
+	
+	//쪽지목록 + 읽기
 	public List getArticles(int start, int end, String receiver) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -114,6 +118,7 @@ public class messageDAO {
 		return articleList;
 	}
 	
+	//쪽지 내용 가져오기
 	public messageVO getArticle(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -143,6 +148,7 @@ public class messageDAO {
 		return article;
 	}
 	
+	//쪽지 삭제
 	public int deleteArticle(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

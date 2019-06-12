@@ -17,6 +17,7 @@
 <form method="post" name="messageWriteForm" action="/hmjm/Message/messageWritePro.jsp" onsubmit="return writeSave()">
 		<input type="hidden" name="s_num" value="<%=num%>">
 	<table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
+		<!-- 보내는 사람은 로그인한 아이디, 받는사람 아이디는 수동입력 -->
 		<tr><td width="100" align="center">보내는사람</td>
 	    	<td width="330"><input type="text" size="10" name="s_send" value="<%=id%>" readonly>
 	    	<td width="100" align="center">받는사람</td>

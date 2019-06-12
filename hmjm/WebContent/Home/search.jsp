@@ -4,6 +4,7 @@
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <!-- 검색결과 확인을 위한 페이지 -->
+<!-- 입력한 글자가 포함된 모든 판매글을 불러옴 -->
 카테고리 // 클래스네임 // 셀프 // 강의내용1 // 강의내용2 // 강의내용3 // 강의내용4<br/><br/>
 <%
 String search = request.getParameter("search");
