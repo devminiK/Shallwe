@@ -23,14 +23,14 @@
 
     List articleList = null;
     reviewDAO dbPro = reviewDAO.getInstance();
-    count = dbPro.getArticleCount();
+    count = dbPro.getArticleCount(pnum);
 
     if (count > 0) {
         articleList = dbPro.getArticles(pnum, startRow, endRow);
     }
 	number=count-(currentPage-1)*pageSize;
-	int pr_num = 0;
-	pr_num = dbPro.getArticleCount();
+	//int pr_num = 0;
+	//pr_num = dbPro.getArticleCount(pnum);
 	int rcount = 0;
 	rcount = dbPro.reviewCount(pnum);
 %>
