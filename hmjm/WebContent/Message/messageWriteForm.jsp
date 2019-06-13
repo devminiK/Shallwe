@@ -3,7 +3,7 @@
 <html>
 <head>
 <link href="style.css" rel="stylesheet" type="text/css">
-<script language="JavaScript" src="script.js"></script>
+
 </head>
 <% 
 	String id = (String)session.getAttribute("loginId");
@@ -14,18 +14,20 @@
 		}
 %>
 <body>
-<form method="post" name="messageWriteForm" action="/hmjm/Message/messageWritePro.jsp" onsubmit="return writeSave()">
+<form method="post" name="messageWriteForm" action="/hmjm/Message/messageWritePro.jsp">
 		<input type="hidden" name="s_num" value="<%=num%>">
 	<table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
 		<!-- 보내는 사람은 로그인한 아이디, 받는사람 아이디는 수동입력 -->
 		<tr><td width="100" align="center">보내는사람</td>
-	    	<td width="330"><input type="text" size="10" name="s_send" value="<%=id%>" readonly>
+	    	<td width="330"><%=id%>
+	    		<input type="hidden" name="s_send" value="<%=id%>">
 	    	<td width="100" align="center">받는사람</td>
-	    	<td width="330"><input type="text" size="10" name="s_receive" required></td>
+	    	<td width="330"><input type="email" size="10" name="s_receive" required></td>
 		</tr>
 	  
 		<tr><td width="70" align="center">내 용</td>
-		  	<td width="330"><textarea name="s_content" rows="5" cols="50" required></textarea></td>
+		  	<td width="330" colspan="3">
+		  		<textarea name="s_content" rows="5" cols="100" required></textarea></td>
 		</tr>
 	</table>
 	
