@@ -3,7 +3,9 @@
 <%@ page import = "hmjm.bean.message.messageVO" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
-
+<head>
+<title>Message</title>
+</head>
 <%!
     int pageSize = 10; //한 화면에 보여줄 리스트 갯수
 %>
@@ -27,6 +29,8 @@
     	articleList = dbPro.getArticles(startRow, endRow, id);
     }
     number=count-(currentPage-1)*pageSize;
+    
+    
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -66,7 +70,8 @@
 		    <td align="center" width="90"><%=article.getS_reg()%></td>
 		    <td align="left" width="375"><%=article.getS_content()%></td>
 		    <td align="center">
-				<input type="submit" value="답장"/>
+				<input type="button" value="답장"
+					onclick="document.location.href='/hmjm/Message/messageReplyForm.jsp?s_num=<%=article.getS_num()%>&sender=<%=article.getS_send()%>'"/>
 				<input type="button" value="삭제" 
 					onclick="document.location.href='/hmjm/Message/messageDeleteForm.jsp?num=<%=article.getS_num()%>'"/></td>
 		</tr>

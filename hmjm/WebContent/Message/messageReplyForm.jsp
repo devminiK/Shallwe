@@ -14,9 +14,13 @@
     	if(request.getParameter("s_num")!=null){
 		num=Integer.parseInt(request.getParameter("s_num"));
 		}
+    int snum = Integer.parseInt(request.getParameter("s_num"));
+    messageDAO dbPro = messageDAO.getInstance();
+    messageVO vo = dbPro.getArticle(snum);
 %>
 <jsp:include page="/Home/header.jsp"/>
 <body>
+<h2>쪽지 답장하기</h2>
 <form method="post" name="messageReplyForm" action="/hmjm/Message/messageWritePro.jsp">
 	<input type="hidden" name="s_num" value="<%=num%>">
 	<!-- 답장하기를 누르면 받는사람 아이디에 보내는 사람 아이디 자동입력 -->
@@ -31,7 +35,7 @@
   
 		<tr><td width="70" align="center">내 용</td>
 		  	<td width="330" colspan="3">
-		  		<textarea name="s_content" rows="5" cols="100" required>re:</textarea></td>
+		  		<textarea name="s_content" rows="5" cols="100" required><%=vo.getS_content() %> 의 답장: </textarea></td>
 		</tr>
 	</table>
 	
