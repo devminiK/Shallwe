@@ -86,5 +86,37 @@ public class buyDAO {
 	return vo;
 	}
 	
+	//상품번호로 검색하기 위해
+	public buyVO getBuy2(int b_productnumber)
+			throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			buyVO vo = null;
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(
+						"select * from buy where b_productnumber = ?");
+				pstmt.setInt(1, b_productnumber);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					vo = new buyVO();
+					vo.setB_num(rs.getInt("b_num"));
+					vo.setB_email(rs.getString("b_email"));
+					vo.setB_productnumber(rs.getInt("b_productnumber"));
+					vo.setB_classname(rs.getString("b_classname"));
+					vo.setB_place(rs.getString("b_place"));
+					vo.setB_day(rs.getString("b_day"));
+				}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return vo;
+		}
 	
 }

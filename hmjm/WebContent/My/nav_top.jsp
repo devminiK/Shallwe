@@ -41,6 +41,8 @@ a {
 	width: 50px;
 }
 </style>
+
+
 </head>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -104,6 +106,8 @@ a {
 							<%}else{%>
 							<p>수업이름: <%=p.getP_classname() %></p>
 							<p>수업번호: <a href ="../Talent/Detail.jsp?p_num=<%=p.getP_num() %>"><%=p.getP_num() %></a> </p>
+							
+							<p>상세보기: <a href ="/hmjm/My/myClass.jsp?p_num=<%=p.getP_num() %>">테스트경로</a> </p>
 							<%}%>
 					</div>
 
@@ -111,14 +115,19 @@ a {
 			</td>
 			<td class="section">
 				<div>
-					<span>등록된 전화번호:</span> <a href="/hmjm/My/profile.jsp">번호 수정</a>
+					<span>등록된 전화번호:</span> <a href="/hmjm/My/profile.jsp"><%=c.getM_phone() %></a>
 				</div>
 				<div>
 					<span>등록 된 이메일:</span>
 					<%=preUser%>
 				</div>
 				<div>
-					<span>학교 정보:</span> 인증 안 됨
+					<%
+				if (e == null) {%>
+				<span>학교 정보:</span> 등록안됨
+				<%} else {%>
+					<span>학교 정보:</span> <%=e.getT_school() %>
+					<%}%>
 				</div>
 				<div>
 					<span>계정 정보:</span> <a href="/hmjm/Account/resetPassword.jsp">비밀번호변경</a>
