@@ -96,18 +96,28 @@
 	}
 }
 </style>
-<script language="javascript">
+<script type="text/javascript">
 		function openRealtimetalk(){
 			url="/hmjm/My/qnatutee.jsp";
 			//새로운 윈도우로 열기
 			open(url, "qnatutee",  "toolbar=no, location=no,status=no,menubar=no,resizable=no,width=400, height=660");
 		}
 		function searchCheck(){
-			if(document.searchBar.search.value=="" || document.searchBar.search.value==" "){
-				alert("검색어를 입력하세요");
-				document.searchBar.search.focus();
+			var str = document.getElementById('search');
+			var blank = /^[\s]/g;
+			
+			//검색어 입력필수
+			if(str.value == '' || str.value == null){
+				alert("검색어를 입력하세요.");
 				return false;
 			}
+			
+			//공백금지
+			if(blank.test(str.value)==true){
+				alert("제대로 좀 입력하세요.")
+				return false;
+			}
+			
 		}
 	</script>
 </head>
@@ -140,10 +150,10 @@
 			</div>
 
 			<div class="search-container">
-				<form name="searchBar" action="search.jsp" onSubmit="return searchCheck();">
+				<form name="searchBar" action="/hmjm/Home/search.jsp" onSubmit="return searchCheck();">
 					<!--/*input 창 양옆넓이 늘릴것*/  -->
 					<input type="text" style="width: 400px;"
-						placeholder="배우고 싶은 수업 또는 튜너를 검색해보세요!" name="search">
+						placeholder="배우고 싶은 수업 또는 튜너를 검색해보세요!" name="search" id="search">
 					<button type="submit">
 						<i class="fa fa-search"></i>
 					</button>
