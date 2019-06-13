@@ -14,9 +14,9 @@
 }
 
 .header_new {
-	width: 1080;
+	width: 1050;
 	height: 80px;
-	margin: 0 180px;	/*중간으로 배열하기위한값을 줌*/
+	margin: 0 250px;	/*중간으로 배열하기위한값을 줌*/
 }
 
 .topnav {

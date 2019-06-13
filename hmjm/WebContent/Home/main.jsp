@@ -24,12 +24,12 @@ img {
 
 /* Slideshow container */
 .slideshow-container {
-	width: 1920px;
-	height: 450px;
+	width: 1050px;
+	height: 350px;
 	overflow-x: hidden;
 	overflow-y: hidden;
 	position: relative;
-	margin: auto;
+	margin:auto;
 }
 
 /* Next & previous buttons */
@@ -114,10 +114,14 @@ to {
 </head>
 <body id="main">
 	<%--상단 카테고리bar: header --%>
+	
 	<jsp:include page="header.jsp" />
 	<jsp:include page="/SideMenu/sideMenu.jsp"/>
-
-
+	<%--중간 카테고리bar: category --%>
+	
+	<jsp:include page="category.jsp" />
+	
+ 	<jsp:include page="listTest.jsp" />
 	<div class="slideshow-container">
 		<div class="mySlides fade">
 			<a href="#"><img src="/hmjm/Images/main1.jpg" style="width: 100%"></a>
@@ -174,9 +178,7 @@ to {
   		dots[slideIndex-1].className += " active";
 		}
 	</script>
-	<%--중간 카테고리bar: category --%>
-	<jsp:include page="listTest.jsp" />
-	<jsp:include page="category.jsp" />
+	
 
 	<%--footer --%>
 	<jsp:include page="footer.jsp" />

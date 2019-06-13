@@ -96,6 +96,7 @@ a {
 							<%}else{ %>
 						<p>수업이름: <%=b.getB_classname() %></p>
 						<p>수업번호: <a href ="../Talent/Detail.jsp?p_num=<%=b.getB_productnumber() %>"><%=b.getB_productnumber() %></a> </p>
+						<p>상세보기: <a href ="/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber() %>">테스트경로</a> </p>
 							<%}%>
 					</div>
 					<div class="sec_box_ele">
@@ -122,10 +123,9 @@ a {
 					<%=preUser%>
 				</div>
 				<div>
-					<%
-				if (e == null) {%>
-				<span>학교 정보:</span> 등록안됨
-				<%} else {%>
+					<%if (e == null) {%>
+					<span>학교 정보:</span> 등록안됨
+					<%} else {%>
 					<span>학교 정보:</span> <%=e.getT_school() %>
 					<%}%>
 				</div>

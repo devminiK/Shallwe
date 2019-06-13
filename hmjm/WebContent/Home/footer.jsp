@@ -7,8 +7,8 @@
 <style>
 
 #footer{
-	width:1200px;
-	height:383px;
+	width:1050px;
+	height:300px;
 	margin: 0 auto;
 }
 .footer_cont {
