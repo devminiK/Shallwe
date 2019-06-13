@@ -48,9 +48,6 @@ public class classtimeDAO {
 	private String ct_day;
 	 * */
 
-
-	//삽입
-
 	//작성한 수업 시간  DB에 삽입, -ok
 	public void insertClasstime(classtimeVO classtime) {	    
 
@@ -110,8 +107,8 @@ public class classtimeDAO {
 	}
 	
 	//삭제
-	//조회 우선 제가 작성할게요 by건훈 
 	
+	//조회 우선 제가 작성할게요 by건훈 
 	public classtimeVO getClasstime(int ct_classnum)
 			throws Exception{
 		Connection conn = null;
@@ -136,7 +133,6 @@ public class classtimeDAO {
 				vo.setCt_sta(rs.getString("ct_sta"));
 				vo.setCt_sun(rs.getString("ct_sun"));
 				vo.setCt_day(rs.getString("ct_day"));
-
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();

@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="hmjm.bean.product.*"%>
 
-<%@ page import="hmjm.bean.product.productDAO"%>
-<%@ page import="hmjm.bean.product.productVO"%>
-
-<%
-	request.setCharacterEncoding("UTF-8");
-
-	//상품등록후 그곳에서 시권스값(상품번호)를 가져와야한다.
-	//productDAO dao = productDAO.getInstance();
-	//productVO vo = //dao.getProduct();//상품번호 가져와야함.
-%>
+<%	request.setCharacterEncoding("UTF-8"); %>
 <html>
 <head>
 <link rel="stylesheet" href="/hmjm/css/bootstrap.min.css" />
@@ -17,7 +9,7 @@
 <script language="javascript" src="script.js"></script>
 <script language="javascript" type="text/javascript">
 /*
-    private int ci_num;			//고유넘버(순서를 위함)_시퀀스
+    private int ci_num;			//고유넘버(순서를 위함)_시퀀스 
 	private int ci_classnum;	//수업번호(p_num)	
 	private String ci_img;		//이미지 경로  
  */	
@@ -32,8 +24,6 @@
 			return false;
 		}
 	}
-		
-	
 	
 </script>
 
@@ -54,7 +44,26 @@ input[type=number] {
 	</div>
 	<div class="container">
 
-		<%-- enctype="multipart/form-data"이기때문에 데이터 하나씩 삽입해야함--%>
+		<%-- enctype="multipart/form-data" 파일이나 대용량 데이터 보낼때 데이터 전송 방식 --%>
+		
+		<form action="addClassimgPro.jsp" name="addClassimgForm" method="post"
+									enctype="multipart/form-data">
+
+			<div class="form-group row">
+				<label class="col-sm-2">수업 사진 등록하기</label>
+				<div class="col-sm-5">
+					<input type="file" name="filename[]" class="form-control" multiple required />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-offset-2 col-sm-10 ">
+					<input type="submit" value="사진 등록">&nbsp;&nbsp;&nbsp; <input
+						type="reset" value="모든 내용 취소">
+				</div>
+			</div>
+
+		</form>
 		<%-- 
 		<form method="post" name="addClassimgForm" action="addClassimgPro.jsp"
 			enctype="multipart/form-data">
@@ -77,5 +86,7 @@ input[type=number] {
 		</form>
 		--%>
 	</div>
+	
+	<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
