@@ -19,7 +19,6 @@
     int count = 0;
     int number= 0;
     
-    
     List articleList = null;
     messageDAO dbPro = messageDAO.getInstance();
     count = dbPro.getArticleCount(id);
@@ -28,15 +27,16 @@
     	articleList = dbPro.getArticles(startRow, endRow, id);
     }
     number=count-(currentPage-1)*pageSize;
-    
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
+<jsp:include page="/Home/header.jsp"/>
 <body align="center">
 
 <%if(id == null){%>
 	<script>
-		alert("로그인필요");
+		alert("로그인이 필요합니다.");
+		window.location="/hmjm/Log/loginForm.jsp";
 	</script>
 <%} %> 
 
@@ -63,12 +63,12 @@
 		    <td align="center" width="100">from <%=article.getS_send()%>
 		    	<input type="hidden" name="sender" value="<%=article.getS_send() %>"/></td>
 		    <td align="center" width="100">to <%=article.getS_receive()%></td>
-		    <td align="center" width="100"><%=article.getS_reg()%></td>
-		    <td align="left" width="375" colspan="3"><%=article.getS_content()%></td>
+		    <td align="center" width="90"><%=article.getS_reg()%></td>
+		    <td align="left" width="375"><%=article.getS_content()%></td>
 		    <td align="center">
-				<input type="submit" value="답장">
+				<input type="submit" value="답장"/>
 				<input type="button" value="삭제" 
-					onclick="document.location.href='/hmjm/Message/messageDeleteForm.jsp?num=<%=article.getS_num()%>'"></td>
+					onclick="document.location.href='/hmjm/Message/messageDeleteForm.jsp?num=<%=article.getS_num()%>'"/></td>
 		</tr>
 	<%}}}%>
 	</table>
@@ -93,6 +93,7 @@
 <br/><br/>
 </form>
 <jsp:include page="messageWriteForm.jsp" />
+<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
 

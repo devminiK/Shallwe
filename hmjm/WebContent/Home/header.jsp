@@ -168,6 +168,7 @@
 				<%}%>
 				<a href="/hmjm/Tutor/Register/menu.jsp">튜터등록</a><!-- 등록페이지로 이동하게 수정 -->
 				<a href="<%=stateURL%>"><%=statebarName%></a>
+				<a href="/hmjm/Message/message.jsp">쪽지</a>
 				<%
 					if(session.getAttribute("loginId")== null){%>
 						<a href="<%=logURL%>"><%=loginbarName %></a>

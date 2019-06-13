@@ -89,8 +89,8 @@
 		transform: translate(-50%, -50%); 
 		background-color: white; 
 		padding: 1rem 1.5rem; 
-		width: 900px; 
-		height: 850px; 
+		width: 800px; 
+		height: 700px; 
 		border-radius: 0.5rem; 
 	} 
 	.close-button { 

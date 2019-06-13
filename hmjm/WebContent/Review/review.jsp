@@ -44,7 +44,7 @@
 	</table>
 
 <%}else{%>
-	<table border="2" width="800" cellpadding="0" cellspacing="0" align="center"> 
+	<table border="2" width="900" cellpadding="0" cellspacing="0" align="center"> 
 	<%for (int i = 0 ; i < articleList.size() ; i++) {
 		reviewVO article = (reviewVO)articleList.get(i);%>
 		<tr><td align="center"  width="50" ><%=number--%></td>
@@ -53,23 +53,23 @@
 		    <td align="center"  width="100"><%=article.getR_reg()%></td>
 		</tr>
 			<!-- 점수에 따라 별 갯수 1~5개 -->
-		<tr><td align="center">커리큘럼<br/>
+		<tr><td align="center" width="150">커리큘럼<br/>
 			<%int curr = article.getR_s_curr();
 			for(int cu=0; cu<curr; cu++){%>	<img src="/hmjm/Images/star.jpg"> <%}%> </td>
 
-			<td align="center">준비성<br/>
+			<td align="center" width="150">준비성<br/>
 			<%int pre = article.getR_s_pre();
 			for(int pr=0; pr<pre; pr++){%> <img src="/hmjm/Images/star.jpg"> <%}%> </td>
 
-			<td align="center">시간준수<br/>
+			<td align="center" width="150">시간준수<br/>
 			<%int tk = article.getR_s_tk();
 			for(int t=0; t<tk; t++){%> <img src="/hmjm/Images/star.jpg"> <%}%> </td>
 
-			<td align="center">전달력<br/>
+			<td align="center" width="150">전달력<br/>
 			<%int deli = article.getR_s_deli();
 			for(int de=0; de<deli; de++){%>	<img src="/hmjm/Images/star.jpg"> <%}%> </td>
 
-			<td align="center">친절도<br/>
+			<td align="center" width="150">친절도<br/>
 			<%int kind = article.getR_s_kind();
 			for(int ki=0; ki<kind; ki++){%> <img src="/hmjm/Images/star.jpg"> <%}%> </td>
 			
@@ -78,9 +78,9 @@
 			<%String login = article.getR_name();
 			if (id!=null){
 				if(id.equals(login)) {%>
-					<input type="button" value="리뷰수정" 
+					<input type="button" value="수정" 
 						onclick="document.location.href='/hmjm/Review/reviewUpdateForm.jsp?num=<%=article.getR_num()%>&pageNum=<%=pageNum%>&p_num=<%=pnum%>'"/>
-					<input type="button" value="리뷰삭제" 
+					<input type="button" value="삭제" 
 						onclick="document.location.href='/hmjm/Review/reviewDeleteForm.jsp?num=<%=article.getR_num()%>&p_num=<%=pnum%>'">
 			<%}}%> </td>
 		</tr>

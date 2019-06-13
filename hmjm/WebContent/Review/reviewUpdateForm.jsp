@@ -26,22 +26,22 @@
    
 <body>
 <!-- 리뷰를 수정할 때는 이름, 내용, 점수를 이전에 작성한 그대로 불러옴 -->
-<form method="post" name="writeform" action="/hmjm/Review/reviewUpdatePro.jsp?pageNum=<%=pageNum%>&p_num=<%=pnum %>" onsubmit="return writeSave()">
+<form method="post" name="writeform" action="/hmjm/Review/reviewUpdatePro.jsp?pageNum=<%=pageNum%>&p_num=<%=pnum %>">
 	<input type="hidden" name="r_num" value="<%=num%>">
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
 	
 	<tr><td  width="100" align="center">이 름</td>
-    	<td width="330"><input type="text" size="10" maxlength="10" name="r_name" value="<%=article.getR_name() %>" readonly>
+    	<td width="330"><%=article.getR_name()%>
     					<input type="hidden" name="r_num" value="<%=article.getR_num()%>"></td>
 	</tr>
   
 	<tr><td width="70" align="center" >내 용</td>
-	  	<td width="330" ><textarea name="r_re" rows="10" cols="100"><%=article.getR_re()%></textarea></td>
+	  	<td width="330" ><textarea name="r_re" rows="7" cols="100"><%=article.getR_re()%></textarea></td>
 	</tr>
 </table>
 <!-- 저장된 점수를 불러와서 이전 점수 그대로 체크 -->
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
-	<tr><td align="center">커리큘럼:<br/>
+	<tr><td align="center" width="160">커리큘럼:<br/>
 			<%int curr = article.getR_s_curr();
 			if (curr == 1){	%>
 				1<input type="radio" name="r_s_curr" value="1" checked="checked"/><br/>
@@ -76,7 +76,7 @@
 			<%} %>
 		</td>
 		
-		<td align="center">준비성:<br/>
+		<td align="center" width="160">준비성:<br/>
 			<%int pre = article.getR_s_pre();
 			if (pre == 1){	%>
 			    1<input type="radio" name="r_s_pre" value="1" checked="checked"/><br/>
@@ -111,7 +111,7 @@
 			<%} %>
 		</td>	
 		
-		<td align="center">시간준수:<br/>
+		<td align="center" width="160">시간준수:<br/>
 			<%int tk = article.getR_s_tk();
 			if (tk == 1){	%>
 				1<input type="radio" name="r_s_tk" value="1" checked="checked"/><br/>
@@ -146,7 +146,7 @@
 			<%} %>
 		</td>
 		
-		<td align="center">전달력:<br/>
+		<td align="center" width="160">전달력:<br/>
 			<%int deli = article.getR_s_deli();
 			if (deli == 1){	%>
 				1<input type="radio" name="r_s_deli" value="1" checked="checked"/><br/>
@@ -181,7 +181,7 @@
 			<%} %>
 		</td>
 		
-		<td align="center">친절도:<br/>
+		<td align="center" width="160">친절도:<br/>
 			<%int kind = article.getR_s_kind();
 			if (kind == 1){	%>
 				1<input type="radio" name="r_s_kind" value="1" checked="checked"/><br/>
