@@ -7,6 +7,7 @@
 </head>
 <% 
 	String id = (String)session.getAttribute("loginId");
+	String p_email = request.getParameter("p_email");
 	int num=0;
 	try{  
     	if(request.getParameter("s_num")!=null){
@@ -22,7 +23,8 @@
 	    	<td width="330"><%=id%>
 	    		<input type="hidden" name="s_send" value="<%=id%>">
 	    	<td width="100" align="center">받는사람</td>
-	    	<td width="330"><input type="email" size="10" name="s_receive" required></td>
+	    	<td width="330"><%=p_email%>
+	    		<input type="hidden" name="s_receive" value="<%=p_email%>"></td>
 		</tr>
 	  
 		<tr><td width="70" align="center">내 용</td>

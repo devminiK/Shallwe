@@ -30,8 +30,9 @@
 	강의제목:::::::: <%=vo.getP_classname() %><br>
 	강사소개:::::::: <%=vo.getP_self() %><br>
 	카테고리:::::::: <%=vo.getP_category() %><br>
-	강사이메일:::::::: <%=vo.getP_email() %><br><br>
-	<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">강의신청</a>		
+	<input type="hidden" name="p_email" value="<%=vo.getP_email()%>"/>
+	강사이메일:::::::: <a href="/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>"><%=vo.getP_email() %></a><br><br>
+	<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">강의신청</a>
 
 	
 	

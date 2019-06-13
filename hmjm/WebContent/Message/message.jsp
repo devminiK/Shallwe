@@ -92,7 +92,7 @@
 <%}}%>
 <br/><br/>
 </form>
-<jsp:include page="messageWriteForm.jsp" />
+
 <jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
