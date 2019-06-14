@@ -12,12 +12,14 @@
 	productDAO pdao = productDAO.getInstance();
 	pdao.insertProduct(pvo); /*작성한 정보를 삽입*/
 	
-	//최종 시퀀스 값이 얼마인지 구해야한다.
-	int productNum = pdao.getProductNum();
+	//최종 시퀀스 값이 얼마인지 구해야한다.(세션은 string형으로 받고,주어야하기때문에 형변환)
+	String productNum = String.valueOf(pdao.getProductNum());
 	
 	//세션set(상품 고유 번호(시퀀스)를 넘긴다.)
-	//int형을 곧바로 String 으로 캐스트 변환하려고하기때문에 에러발생 ->String.valueOf()로 해결
-	session.setAttribute("productNum",String.valueOf(productNum));	
+	session.setAttribute("productNum",productNum);	
+	
+	//session.setAttribute("productNum","5");와 같이 적용.
+	System.out.println("addProdcutPro.jsp: 세션상품번호"+productNum);
 %>
 <%--상품등록이 완료되었을경우의 확인절차 알고리즘..? : 보류 --%>
 
@@ -25,12 +27,4 @@
 	var num ="<%=productNum%>";
 	alert("[알림] 수업번호:"+num+" 상품이 등록 완료되었습니다.\n추가적인 정보를 입력해주세요.");
 </script>
-
-<a href="/hmjm/Product/addClasstime.jsp">시간 등록하기</a>
-
-
-<%--시간 등록from으로 넘어가기 --%>
-<%-- 
 <META http-equiv=refresh content="0; url=/hmjm/Product/addClasstime.jsp">
-<META http-equiv=refresh content="0; url=/hmjm/Tutor/menu.jsp">
---%>

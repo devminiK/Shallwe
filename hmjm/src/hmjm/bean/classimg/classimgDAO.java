@@ -21,7 +21,6 @@ public class classimgDAO {	/*성민 작성*/
 	
 	}
 	private classimgDAO() {}
-	
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
@@ -36,28 +35,28 @@ public class classimgDAO {	/*성민 작성*/
 		catch(Exception e){ e.printStackTrace(); }
 		return conn;
 	}
-	
-	//(상품 등록 내에서)이미지 등록하기_ing
-	public void insertClassimg(classimgVO classimg) {	      
+	//(상품 등록 내에서)이미지 등록하기_ok(version1)
+		public void insertClassimg1(int classnum, String filename, String filerealname) {	      
 
-	      String sql="";  
-	      try {
-	         conn = getConnection(); 
-	        
-	         sql = "insert into classimg values(classimg_seq.NEXTVAL,?,?)";
-	         pstmt = conn.prepareStatement(sql);
-	         pstmt.setInt(1, classimg.getCi_classnum());//수업번호를 가져와서 적용시키기.
-	         pstmt.setString(2, classimg.getCi_img());
-	         
-	         pstmt.executeUpdate();
-	      } catch(Exception ex) {
-	         ex.printStackTrace();
-	      } finally {
-	         if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-	         if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-	         if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-	      }
-	   }
+		      String sql="";  
+		      try {
+		         conn = getConnection(); 
+		        
+		         sql = "insert into classimg values(classimg_seq.NEXTVAL,?,?,?)";
+		         pstmt = conn.prepareStatement(sql);
+		         pstmt.setInt(1, classnum);
+		         pstmt.setString(2, filename);
+		         pstmt.setString(3, filerealname);
+		         
+		         pstmt.executeUpdate();
+		      } catch(Exception ex) {
+		         ex.printStackTrace();
+		      } finally {
+		         if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+		         if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+		         if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		      }
+		   }
 	
 	//(해당 상품번호의) 이미지 정보(상품번호,이미지경로) 꺼내기_미완성
 	

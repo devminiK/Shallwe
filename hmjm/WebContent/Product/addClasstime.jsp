@@ -169,8 +169,8 @@ input[type=number] {
 
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10 ">
-					<input type="submit" value="시간 등록">&nbsp;&nbsp;&nbsp; <input
-						type="reset" value="모든 내용 취소">
+					<input type="submit" value="다음으로">&nbsp;&nbsp;&nbsp; 
+					<input type="reset" value="모든 내용 취소">
 				</div>
 			</div>
 	</form>

@@ -21,8 +21,7 @@
 	var num ="<%=productNum%>";
 	alert("[알림] 수업번호:"+num+" 상품의 시간 등록이  완료되었습니다.\n사진을 등록해주세요.");
 </script>
-
-<a href="/hmjm/Product/addClassimg.jsp">사진 등록하기</a>
+<META http-equiv=refresh content="0; url=/hmjm/Product/addClassimg.jsp">
 
 
 <%--사진 등록from으로 넘어가기 --%>
