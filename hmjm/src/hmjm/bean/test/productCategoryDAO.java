@@ -14,10 +14,10 @@ import javax.sql.DataSource;
 import hmjm.bean.test.productCategoryVO;
 
 public class productCategoryDAO {
-	public static produtctCategoryDAO instance = new produtctCategoryDAO();
-	public static produtctCategoryDAO getInstance() { return instance;}
+	public static productCategoryDAO instance = new productCategoryDAO();
+	public static productCategoryDAO getInstance() { return instance;}
 	
-	private produtctCategoryDAO() {};
+	private productCategoryDAO() {};
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
@@ -35,12 +35,12 @@ public class productCategoryDAO {
 		}
 	
 
-	public ArrayList<productCategoryVO> getAllCategory(String c_code) {
+	public ArrayList<productCategoryVO> getAllCategory(String c_coderef) {
 		ArrayList<productCategoryVO> alist = new ArrayList<productCategoryVO>();
 		try { conn = getConnection();
-		String sql = "select * from product_category where c_code = ?";
+		String sql = "select * from product_category where c_coderef = ?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1,c_code);
+		pstmt.setString(1,c_coderef);
 		rs= pstmt.executeQuery();
 		while(rs.next()) {
 			productCategoryVO vo = new productCategoryVO();
