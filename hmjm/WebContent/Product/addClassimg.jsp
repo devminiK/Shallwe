@@ -11,7 +11,8 @@
 /*
     private int ci_num;			//고유넘버(순서를 위함)_시퀀스 
 	private int ci_classnum;	//수업번호(p_num)	
-	private String ci_img;		//이미지 경로  
+	private String ci_name;		//이미지 경로  
+	private String ci_realname;		//이미지 경로  
  */	
  
 	/*유효성 검사*/
@@ -52,7 +53,11 @@ input[type=number] {
 			<div class="form-group row">
 				<label class="col-sm-2">수업 사진 등록하기</label>
 				<div class="col-sm-5">
-					<input type="file" name="filename[]" class="form-control" multiple required />
+				<%--<input type="file" name="filename[]" class="form-control" multiple required /> --%>
+					1. 추가버튼 눌러서 사진 여러개 등록할 수 있도록 구현 하기(추 후)
+					<input type="file" name="file1" class="form-control" />
+					<input type="file" name="file2" class="form-control" />
+					<input type="file" name="file3" class="form-control" />
 				</div>
 			</div>
 
