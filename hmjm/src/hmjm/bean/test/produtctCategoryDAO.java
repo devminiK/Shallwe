@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 import hmjm.bean.test.productCategoryVO;
 
-public class produtctCategoryDAO {
+public class productCategoryDAO {
 	public static produtctCategoryDAO instance = new produtctCategoryDAO();
 	public static produtctCategoryDAO getInstance() { return instance;}
 	
