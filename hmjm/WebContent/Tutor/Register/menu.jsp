@@ -7,69 +7,116 @@
 <title>튜터등록 메뉴</title>
 <style>
 #menu {
-	
-	font-family: 나눔고딕;
-	padding: 100px 100px 100px 100px;
-}
+    background: #e3e3e3;
+    padding: 100px 100px 100px 100px;}
+
 .menu_new {width: 500;}
 
 .eachButton {
-	display:table-cell;
-}
+	display:table-cell;}
+
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 50%;}
+
+.tablink:hover {
+  background-color: #777;}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;}
+
+#Home {background-color: red;}
+#News {background-color: green;}
+#Contact {background-color: blue;}
+#About {background-color: orange;}
 </style>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
 </head>
 <body id="menu">
-	<header>
-	<jsp:include page="/Home/header.jsp" />
-	</header>
 	
-	<div class="menu_new">
-		<div class="twoButton">
-		<%
-			if (session.getAttribute("loginId") == null) {
-		%>
+	<jsp:include page="/Home/header.jsp" />
+	<button class="tablink" onclick="openPage('Home', this, 'red')">튜터</button>
+	<button class="tablink" onclick="openPage('About', this, 'orange')">수강</button>
+	
+	<div >
+		<div >
+		<%if (session.getAttribute("loginId") == null) {%>
 			<script>
 				alert("로그인 후 이용바랍니다.");
 				window.location = '/hmjm/Log/loginForm.jsp';
 			</script>
 
-		<%
-			} else {   
+		<%} else {   
 
 				String m_email = (String) session.getAttribute("loginId");
 				memberDAO manager = memberDAO.getInstance();
 				memberVO c = manager.getMember(m_email);
-
-				//String t_email = (String)session.getAttribute("loginId");
-				//String t_email = request.getParameter((String)session.getAttribute("loginId"));
 				tutorDAO vo = tutorDAO.getInstance();
 				tutorVO e = vo.getMember(m_email);
 		%>
 
 		<div>
-			<b>확인용 이메일: <%=c.getM_email()%></b><br>
-			<b>확인용 이름:<%=c.getM_name()%></b><br>
-			<hr>	
-				<div class="eachButton">
-					<%
-				if (e == null) {
-			%>
+				
+			<div id="Home" class="tabcontent">
+			<%if (e == null) {%>
+					
 			<input type="button" value="튜터등록"
 				onclick="javascript:window.location='/hmjm/Tutor/tutorRegister2.jsp'">
 
-			<%
-				} else {
-			%>
+			<%} else {%>
 			<input type="button" value="튜터수정"
 				onclick="javascript:window.location='/hmjm/Tutor/tutorModifyForm.jsp'">
 
-			<%}
-			}%>
+			<%}%>
 				</div>
-				
-				<div class="eachButton">
+				<div id="About" class="tabcontent">
+				<% if( e == null){%>
+				<input type="button" value="튜터 등록 먼저 하세요"
+				onclick="javascript:window.location='/hmjm/Tutor/tutorRegister2.jsp'">
+				<%} else {%>
 					<input type="button" value="강의등록"
 				onclick="javascript:window.location='/hmjm/Product/addProduct.jsp'">
+					<%} 
+				}%>
 				</div>
 			</div>		
 		</div>
