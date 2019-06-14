@@ -13,7 +13,10 @@
 	classtimeDAO ctdao = classtimeDAO.getInstance();
 	ctdao.insertClasstime(ctvo); /*작성한 정보를 삽입*/
 	
-	String productNum = request.getParameter("productNum");
+	String productNum =(String)session.getAttribute("productNum");
+	
+	//test용, 추후 삭제할것
+	System.out.println("addClasstimePro.jsp: 세션상품번호"+productNum);
 	
 %>
 
@@ -22,11 +25,3 @@
 	alert("[알림] 수업번호:"+num+" 상품의 시간 등록이  완료되었습니다.\n사진을 등록해주세요.");
 </script>
 <META http-equiv=refresh content="0; url=/hmjm/Product/addClassimg.jsp">
-
-
-<%--사진 등록from으로 넘어가기 --%>
-<%-- 
-<META http-equiv=refresh content="0; url=/hmjm/Product/addClassimg.jsp">
-
-<META http-equiv=refresh content="0; url=/hmjm/Tutor/menu.jsp">
---%>
