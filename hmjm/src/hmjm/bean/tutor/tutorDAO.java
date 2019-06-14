@@ -16,9 +16,7 @@ import hmjm.bean.tutor.tutorVO;
 
 public class tutorDAO {
 	private static tutorDAO instance = new tutorDAO();
-	public static tutorDAO getInstance() {
-		return instance;
-	}
+	public static tutorDAO getInstance() {return instance;}
 	private tutorDAO() {}
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;

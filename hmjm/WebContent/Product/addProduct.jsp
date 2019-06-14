@@ -165,42 +165,20 @@ input[type=number] {
 				<div class="col-sm-3">
 					<%--목록 그룹:select로 고를 수 있도록 구현할것 --%>
 					<select id="p_category" name="p_category">
-						<optgroup label="인기수업">
-							<option value="archi">1</option>
-							<option value="computer" selected>2</option>
-						</optgroup>
+						
 						<optgroup label="디자인">
-							<option value="history">3</option>
-							<option value="lang">4</option>
-						</optgroup>
-						<optgroup label="실무역량">
-							<option value="history">5</option>
-							<option value="lang">6</option>
-						</optgroup>
-						<optgroup label="뷰티">
-							<option value="history">7</option>
-							<option value="lang">8</option>
+							<option value="101">포토샵</option>
+							<option value="102">일러스트</option>
 						</optgroup>
 						<optgroup label="영상">
-							<option value="history">9</option>
-							<option value="lang">10</option>
+							<option value="201">프리미어</option>
+							<option value="202">에프터이펙트</option>
 						</optgroup>
 						<optgroup label="외국어">
-							<option value="history">11</option>
-							<option value="lang">12</option>
+							<option value="301">영어</option>
+							<option value="302">중국어</option>
 						</optgroup>
-						<optgroup label="음악">
-							<option value="history">13</option>
-							<option value="lang">14</option>
-						</optgroup>
-						<optgroup label="라이프스일">
-							<option value="history">15</option>
-							<option value="lang">16</option>
-						</optgroup>
-						<optgroup label="기타">
-							<option value="history">17</option>
-							<option value="lang">18</option>
-						</optgroup>
+					
 					</select>
 				</div>
 			</div>
