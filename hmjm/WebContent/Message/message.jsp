@@ -34,7 +34,7 @@
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
-<jsp:include page="/Home/header.jsp"/>
+
 <body align="center">
 
 <%if(id == null){%>
@@ -46,12 +46,12 @@
 
 <b>쪽지목록(전체 쪽지:<%=count%>)</b>
 <%if(count == 0){%>
-	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
+	<table width="600" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">쪽지가 없습니다.</td></tr>
 	</table>
 <%}else{%>
 <form method="post" name="message" action="messageReplyForm.jsp">
-	<table border="2" width="800" cellpadding="0" cellspacing="0" align="center"> 
+	<table border="2" width="600" cellpadding="0" cellspacing="0" align="center"> 
 	<%for(int i = 0 ; i < articleList.size() ; i++) {
 		messageVO article = (messageVO)articleList.get(i);
 		String login = article.getS_receive();
@@ -67,7 +67,7 @@
 		    <td align="center" width="100">from <%=article.getS_send()%>
 		    	<input type="hidden" name="sender" value="<%=article.getS_send() %>"/></td>
 		    <td align="center" width="100">to <%=article.getS_receive()%></td>
-		    <td align="center" width="90"><%=article.getS_reg()%></td>
+		    <td align="center" width="100"><%=article.getS_reg()%></td>
 		    <td align="left" width="375"><%=article.getS_content()%></td>
 		    <td align="center">
 				<input type="button" value="답장"
@@ -98,7 +98,6 @@
 <br/><br/>
 </form>
 
-<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
 
