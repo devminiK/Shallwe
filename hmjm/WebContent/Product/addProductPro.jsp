@@ -27,12 +27,4 @@
 	var num ="<%=productNum%>";
 	alert("[알림] 수업번호:"+num+" 상품이 등록 완료되었습니다.\n추가적인 정보를 입력해주세요.");
 </script>
-
-<a href="/hmjm/Product/addClasstime.jsp">시간 등록하기</a>
-
-
-<%--시간 등록from으로 넘어가기 --%>
-<%-- 
 <META http-equiv=refresh content="0; url=/hmjm/Product/addClasstime.jsp">
-<META http-equiv=refresh content="0; url=/hmjm/Tutor/menu.jsp">
---%>

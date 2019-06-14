@@ -276,9 +276,8 @@ input[type=number] {
 		
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10 ">
-					<input type="submit" value="수업 등록">&nbsp;&nbsp;&nbsp; <input
-						type="reset" value="모든 내용 취소"> &nbsp;&nbsp;&nbsp; <input
-						type="button" value="목록보기" OnClick="window.location='list.jsp'">
+					<input type="submit" value="다음으로">&nbsp;&nbsp;&nbsp; <input
+						type="reset" value="모든 내용 취소">
 				</div>
 			</div>
 	</form>

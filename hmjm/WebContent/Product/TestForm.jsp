@@ -5,12 +5,31 @@
 <head>
 <meta charset="EUC-KR">
 <title>jsp파일 업로드</title>
+<script type="text/JavaScript">
+
+	function addImageFile(){
+		fileCnt = document.getElementById('fileCnt').value;							
+		fileCnt++;
+		html = '';
+		html += '<input id="file'+fileCnt+'" name="file'+fileCnt+'" type="file" value=""/>';
+		
+		var div = document.createElement('div');
+        div.innerHTML = html;
+        document.getElementById('FileAdd').appendChild(div);							
+		document.getElementById('fileCnt').value = fileCnt;
+	}
+	</script>
 </head>
-<body>
+<body> 
 	<form action="TestPro.jsp" name="testForm" method="post" align="center"
 		enctype="multipart/form-data">
-		파일:<input type="file" name="file"> <input type="submit"
-			vlaue="전송" />
+		<label><b>자격증</b></label>
+			<input id= "file0" type ="file" name ="file" value/>
+	<br>
+	<div id="FileAdd"></div>
+ 		<a onclick="addImageFile();" class="addbtn"><b>추가 +</b></a>
+		<input type="hidden" id="fileCnt" name="fileCnt" value="0">
+		<input type="submit" value="전송" />
 	</form>
 </body>
 </html>
