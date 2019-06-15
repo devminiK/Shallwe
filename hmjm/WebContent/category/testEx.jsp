@@ -9,24 +9,26 @@ function categoryChange(e) {
 	  var good_a = ["포토샵", "일러스트레이터", "UI/UX"];
 	  var good_b = ["프리미어", "에프터이펙트"];
 	  var good_c = ["영어", "중국어", "일본어", "베트남어"];
+	  var cc = ["101","102","103"];
+	  var dd = ["201","202","203"];
+	  var ee = ["301","302","303"];
+	  
+	  
 	  var target = document.getElementById("good");
 	 
-	  if(e.value == "a") var d = good_a;
-	  else if(e.value == "b") var d = good_b;
-	  else if(e.value == "c") var d = good_c;
-	 
+	  if(e.value == "a") {var d = good_a; var ss = cc;}
+	  
+	  else if(e.value == "b"){ var d = good_b; var ss = dd;}
+	  else if(e.value == "c"){ var d = good_c; var ss = ee;}
 	  target.options.length = 0;
 	 
-	  for (x in d) {
+	  for (x in d&&ss ) {
 	    var opt = document.createElement("option");
-	    opt.value = d[x];
+	    opt.value = ss[x];
 	    opt.innerHTML = d[x];
 	    target.appendChild(opt);
-	  } 
+	  } 	  
 	}
-
-
-	
 </script>
 </head>
 <body>
@@ -38,7 +40,7 @@ function categoryChange(e) {
 </select>
  
 <select id="good">
-<option value="">세부 카테고리를 선택해주세요</option>
+<option name="c_code">세부 카테고리를 선택해주세요</option>
 </select>
 
 

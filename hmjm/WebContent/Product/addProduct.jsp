@@ -110,6 +110,34 @@
 		else
 			document.getElementById(id).style.display = "none";//숨김		
 	}
+	/***************카테고리 정하기*************************/
+	function categoryChange(e) {
+		//상품이름	
+		  var good_a = ["포토샵", "일러스트레이터"];
+		  var good_b = ["프리미어", "에프터이펙트"];
+		  var good_c = ["영어", "중국어"];
+		  //value값
+		  var cc = ["101","102"];
+		  var dd = ["201","202"];
+		  var ee = ["301","302"];
+		  
+		  
+		  var target = document.getElementById("p_category");
+		 
+		  if(e.value == "a") {var d = good_a; var ss = cc;}
+		  
+		  else if(e.value == "b"){ var d = good_b; var ss = dd;}
+		  else if(e.value == "c"){ var d = good_c; var ss = ee;}
+		  target.options.length = 0;
+		 
+		  for (x in d&&ss ) {
+		    var opt = document.createElement("option");
+		    opt.value = ss[x];
+		    opt.innerHTML = d[x];
+		    target.appendChild(opt);
+		  } 	  
+		}
+	
 </script>
 
 <style>
@@ -159,7 +187,20 @@ input[type=number] {
 						value="<%=mvo.getM_email()%>">
 				</div>
 			</div>
-
+			<div class="form-group row">
+			<label class="col-sm-2">카테고리</label>
+				<select onchange="categoryChange(this)">
+  					<option>카테고리를 선택해주세요</option>
+  					<option value="a">디자인</option>
+  					<option value="b">영상</option>
+  					<option value="c">외국어</option>
+			</select>
+			<select id="p_category" name="p_category">
+					<option  vlaue="" name="p_category">세부 카테고리를 선택해주세요</option>
+			</select>
+		
+			</div>
+<!--  
 			<div class="form-group row">
 				<label class="col-sm-2">카테고리</label>
 				<div class="col-sm-3">
@@ -182,7 +223,7 @@ input[type=number] {
 					</select>
 				</div>
 			</div>
-
+-->
 			<div class="form-group row">
 				<label class="col-sm-2">강사 소개</label>
 				<div class="col-sm-5">
