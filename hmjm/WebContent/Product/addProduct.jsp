@@ -2,7 +2,7 @@
 <%@ page import="hmjm.bean.member.*"%>
 <%@ page import="hmjm.bean.tutor.*"%>
 
-<%-- 19.06.11성민 작성  완성/ 이미지, 시간 추가하기--%>
+<%-- 19.06.11성민 작성 --%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String preUser = (String) session.getAttribute("loginId");//현재 세션,이메일이 들어감
@@ -43,22 +43,22 @@
 			return false;
 		}
 		if (form.p_class1.value == "") {
-			alert("수업에 대한 소개를 해주세요.");
+			alert("수업에 대한 소개(튜터정보)를 해주세요.");
 			form.p_class1.focus();
 			return false;
 		}
 		if (form.p_class2.value == "") {
-			alert("수업에 대한 소개를 해주세요.");
+			alert("수업에 대한 소개(수업소개)를 해주세요.");
 			form.p_class2.focus();
 			return false;
 		}
 		if (form.p_class3.value == "") {
-			alert("수업에 대한 소개를 해주세요.");
+			alert("수업에 대한 소개(수업 대상)를 해주세요.");
 			form.p_class3.focus();
 			return false;
 		}
 		if (form.p_class4.value == "") {
-			alert("수업에 대한 소개를 해주세요.");
+			alert("수업에 대한 소개(커리큘럼)를 해주세요.");
 			form.p_class4.focus();
 			return false;
 		}
@@ -72,11 +72,7 @@
 			form.p_cost.focus();
 			return false;
 		}
-		if (form.p_cost.value == "") {/*이미지*/
-			alert("지불해야할 가격을 지정해주세요.");
-			form.p_cost.focus();
-			return false;
-		}
+		
 		/*id값으로 체크 여부 확인*/
 		if (document.getElementById("oto").checked != true
 				&& document.getElementById("otm").checked != true) {
@@ -95,21 +91,20 @@
 				return false;
 			}
 		}else{//1:1체크되었을때..진행중2019.06.11
-			html ='<input id="p_count_min" name="p_count_min" type="number" />';
 			
-			var div = document.createElement('div');
-			div.innerHTML = html;
-			document.getElement('CountOne').appendChild(div);
+			var sample = document.getElementsByName('howMany');
 		}
 	}
 
 	/*라디오 버튼 value값 조건비교로, 보여주기/숨김*/
-	function div_onoff(v, id) {
-		if (v == "2")
-			document.getElementById(id).style.display = "";//보여줌
-		else
+	function divChoice(v, id) {
+		if (v == "1")
 			document.getElementById(id).style.display = "none";//숨김		
+		else
+			document.getElementById(id).style.display = "";//보여줌
+			
 	}
+	
 	/***************카테고리 정하기*************************/
 	function categoryChange(e) {
 		//상품이름	
@@ -124,7 +119,9 @@
 		  
 		  var target = document.getElementById("p_category");
 		 
-		  if(e.value == "a") {var d = good_a; var ss = cc;}
+		  if(e.value == "a") {
+			  var d = good_a; var ss = cc;
+		}
 		  
 		  else if(e.value == "b"){ var d = good_b; var ss = dd;}
 		  else if(e.value == "c"){ var d = good_c; var ss = ee;}
@@ -147,10 +144,6 @@ input[type=number] {
 
 </style>
 </head>
-<%--
-	p_num 수업번호는 자동으로 생성 후 부여할 것(input="hidden"..?)
-	private String imgsrc;	//이미지파일을 가져오기위한 변수 추가 작성   
---%>
 <body>
 
 	<jsp:include page="/Home/header.jsp" />
@@ -174,7 +167,6 @@ input[type=number] {
 			<div class="form-group row">
 				<label class="col-sm-2">닉네임</label>
 				<div class="col-sm-3">
-					<%--tvo.getT_nick()--%>
 					<input type="text" readonly name="p_nick" class="form-control"
 						value="<%=tvo.getT_nick()%>">
 				</div>
@@ -274,15 +266,16 @@ input[type=number] {
 			<div class="form-group row">
 				<label class="col-sm-2">인원</label>
 				<div class="col-sm-3">
-					<input type="radio" name="howmany"
-						id="oto" value="1" onclick="div_onoff(this.value,'con');">1:1강습<br> 
-					<input type="radio" name="howmany" id="otm" value="2"
-						onclick="div_onoff(this.value,'con');">1:N 강습<br>
+					<input type="radio" name="howMany"
+						id="oto" value="1" onclick="divChoice(this.value,'con');">1:1강습<br> 
+					<input type="radio" name="howMany"
+						id="otm" value="2"	onclick="divChoice(this.value,'con');">1:N 강습<br>
 					
 					<div id="con" style="display: none">
 						최소인원: <input type="number" name="p_count_min" min=1><br>
 						최대인원: <input type="number" name="p_count_max" min=1>
 					</div>
+					
 				</div>
 			</div>
 
@@ -302,8 +295,6 @@ input[type=number] {
 	</form>
 		
 	</div>
-	
 		<jsp:include page="/Home/footer.jsp" />
-	
 </body>
 </html>
