@@ -2,7 +2,7 @@
 <%@ page import ="hmjm.bean.test.*" %>
 <%@ page import ="java.util.*" %>
 <%
-	String c_code = request.getParameter("c_coderef");
+	String c_code = request.getParameter("c_code");
 	productCategoryDAO serch = productCategoryDAO.getInstance();
 	ArrayList <productCategoryVO> alist = serch.getAllCategory(c_code);
 

@@ -35,12 +35,12 @@ public class productCategoryDAO {
 		}
 	
 
-	public ArrayList<productCategoryVO> getAllCategory(String c_coderef) {
+	public ArrayList<productCategoryVO> getAllCategory(String c_code) {
 		ArrayList<productCategoryVO> alist = new ArrayList<productCategoryVO>();
 		try { conn = getConnection();
-		String sql = "select * from product_category where c_coderef = ?";
+		String sql = "select * from product_category where c_code = ?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1,c_coderef);
+		pstmt.setString(1,c_code);
 		rs= pstmt.executeQuery();
 		while(rs.next()) {
 			productCategoryVO vo = new productCategoryVO();

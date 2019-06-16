@@ -9,7 +9,7 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript">
-function get_area(ano) {
+function get_area(c_code) {
 
 	$.ajax({
 
@@ -17,7 +17,7 @@ function get_area(ano) {
 
 	url : "pCategory.jsp",
 
-	data : { no : c_coderef }, 
+	data : { no : c_code }, 
 
 	success : test1
 
@@ -25,17 +25,20 @@ function get_area(ano) {
 
 	}
 
-	function test1(data){ $("#area2").html(data); }
+	function test1(data){
+		$("#area2").html(data); 
+		}
 
 </script>
 <body>
 	<form role="form" method="post" autocomplete="off">
 		<label>1차분류</label>
-		<select class="category1">
-			<option value="">전체</option>
+		<select class="category1" onchange="get_area(c_code)">
+			<option>전체</option>
+			<option value="100">100</option>
 		</select>
 		<label>2차분류</label>
-		<select class="category2">
+		<select class="area2" onchange="test1(data)">
 			<option value="">전체</option>
 		</select>
 	
