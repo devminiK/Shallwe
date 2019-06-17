@@ -104,6 +104,7 @@
 			document.getElementById(id).style.display = "";//보여줌
 			
 	}
+	
 	/***************카테고리 정하기*************************/
 	function categoryChange(e) {
 		//상품이름	
@@ -119,7 +120,8 @@
 		  var target = document.getElementById("p_category");
 		 
 		  if(e.value == "a") {
-			  var d = good_a; var ss = cc;
+			  var d = good_a; 
+			  var ss = cc;
 		}
 		  
 		  else if(e.value == "b"){ var d = good_b; var ss = dd;}
@@ -186,7 +188,7 @@ input[type=number] {
   					<option value="c">외국어</option>
 				</select>
 			<select id="p_category" name="p_category">
-					<option  vlaue="" name="p_category">세부 카테고리를 선택해주세요</option>
+					<option  value="" name="p_category">세부 카테고리를 선택해주세요</option>
 			</select>
 		
 			</div>
@@ -282,14 +284,9 @@ input[type=number] {
 				<%------------radio 방법 > select로 바꾸기 --%>
 					<input type="radio" name="howMany"
 						id="oto" value="1" onclick="divChoice(this.value,'con');">1:1강습<br> 
-						<script>
-							var value= $(#howMany).val();
-							System.out.println(value);
-						</script>
-						
+						<%--이 방법은, 1:n을 체크할시 중복되어 에러가 발생함.. --%>
 						<%-- <input type="hidden" name="p_count_min" value=1>
 						<input type="hidden" name="p_count_max" value=1>--%>
-						
 					<input type="radio" name="howMany"
 						id="otm" value="2"	onclick="divChoice(this.value,'con');">1:N 강습<br>
 					

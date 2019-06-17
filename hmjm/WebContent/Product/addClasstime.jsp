@@ -21,7 +21,7 @@
 <head>
 <link rel="stylesheet" href="/hmjm/css/bootstrap.min.css" />
 <meta charset="UTF-8">
-<title>수업  시간 등록</title>
+<title>수업 시간 등록</title>
 <script language="javascript" src="script.js"></script>
 <script language="javascript" type="text/javascript">
 	
@@ -54,13 +54,61 @@
 		*/
 
 	}
+	
+	/*지역별 카테고리 정하기*/
+	function regionCategory(r){
+		//대분류 > 소분류 지역 이름
+		var regName_a = ["강남","신촌홍대","건대"]
+		var regName_b = ["수원","분당","죽전"]
+		var regName_c = ["부산서면","부산해운대","부산사상"]
+		
+		// 지역에 따른따른 value값
+		var regNum_a = ["1","2","3"]
+		var regNum_b = ["11","12","13"]
+		var regNum_c = ["21","22","23"]
+		
+					/* 	,"분당","성북","영등포","온라인",
+						  "목동","부평","마포","혜화",
+						  "일산","용산","구로","노원",
+						  "대구중앙","부산서면","왕십리","부산해운대",
+						  "의정부","신사","구월동","동작",
+						  "회기","계양","수유","부산대",
+						  "송도","충무로","부산부경대","대전역",
+						  "부산동래","전주","부산사상","서현",
+						  "제주","청주","전남대","천안",
+						  "청량리","은평","미아","창원"  */
+
+		var target = document.getElementById("ct_place");
+		var rname ='';
+		var rnum = 0;
+		
+		  if(r.value == "a") {
+			  rname = regName_a;		
+			  rnum = regNum_a;
+		}
+		  else if(r.value == "b"){
+			  rname = regName_b;
+			  rnum = regNum_b;
+			}
+			else if(r.value == "c"){
+			  rname = regName_c;
+			  rnum = regNum_c;
+			}
+		  target.options.length = 0;
+		 
+		  for (x in rname&&rnum ) {
+		    var opt = document.createElement("option");
+		    opt.value = rnum[x];
+		    opt.innerHTML = rname[x];
+		    target.appendChild(opt);
+		  } 	  	
+	}
 </script>
 
 <style>
 input[type=number] {
 	width: 80px;
 }
-
 </style>
 </head>
 
@@ -69,41 +117,47 @@ input[type=number] {
 	<jsp:include page="/Home/header.jsp" />
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3"> "<%=pvo.getP_classname()%>" :수업 시간 등록</h1>
+			<h1 class="display-3">
+				"<%=pvo.getP_classname()%>" :수업 시간 등록
+			</h1>
 		</div>
 	</div>
 
 	<div class="container">
 		<form method="post" name="addClassTimeForm"
 			action="addClasstimePro.jsp" onsubmit="return writeSave()">
-			
+
 			<input type="hidden" name="ct_classnum" value="<%=productNum %>" />
-			
+
+
+
 			<div class="form-group row">
-				<label class="col-sm-2">수업 장소</label>
-				<div class="col-sm-3">
-					<select id="ct_place" name="ct_place">
-						<option value="강남">강남</option>
-						<option value="신촌홍대">신촌홍대</option>
-						<option value="잠실">잠실</option>
-					</select>
-				</div>
+				<label class="col-sm-2">지역 별 카테고리</label> <select
+					onchange="regionCategory(this)">
+					<option>지역을 선택해주세요</option>
+					<option value="a">서울특별시</option>
+					<option value="b">경기도</option>
+					<option value="c">부산</option>
+				</select> <select id="ct_place" name="ct_place">
+					<option value="" name="ct_place">세부 지역을 선택해주세요</option>
+				</select>
 			</div>
 
+			<%----- --%>
 			<div class="form-group row">
 				<label class="col-sm-2">월</label>
 				<div class="col-sm-3">
 					<input type="text" name="ct_mon" class="form-control">
 				</div>
 			</div>
-			
+
 			<div class="form-group row">
 				<label class="col-sm-2">화</label>
 				<div class="col-sm-3">
 					<input type="text" name="ct_tue" class="form-control">
 				</div>
 			</div>
-			
+
 			<div class="form-group row">
 				<label class="col-sm-2">수</label>
 				<div class="col-sm-3">
@@ -122,7 +176,7 @@ input[type=number] {
 					<input type="text" name="ct_fri" class="form-control">
 				</div>
 			</div>
-						<div class="form-group row">
+			<div class="form-group row">
 				<label class="col-sm-2">토</label>
 				<div class="col-sm-3">
 					<input type="text" name="ct_sta" class="form-control">
@@ -134,7 +188,7 @@ input[type=number] {
 					<input type="text" name="ct_sun" class="form-control">
 				</div>
 			</div>
-			
+
 			<div class="form-group row">
 				<label class="col-sm-2">날짜</label>
 				<div class="col-sm-3">
@@ -144,14 +198,14 @@ input[type=number] {
 
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10 ">
-					<input type="submit" value="다음으로">&nbsp;&nbsp;&nbsp; 
-					<input type="reset" value="모든 내용 취소">
+					<input type="submit" value="다음으로">&nbsp;&nbsp;&nbsp; <input
+						type="reset" value="모든 내용 취소">
 				</div>
 			</div>
-	</form>
-		
+		</form>
+
 	</div>
-	
-		<jsp:include page="/Home/footer.jsp" />
+
+	<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
