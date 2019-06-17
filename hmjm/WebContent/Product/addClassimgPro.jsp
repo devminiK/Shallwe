@@ -14,10 +14,12 @@
 <jsp:setProperty name="imgvo" property="*"/>
 
 <%--성민 작성0614 --%>
+<%--실제 사진이 저장된것을 확인할수있는 dic : org.eclipse.wst.server.core > tmp0 > wtpwebapss > 작성한파일 내에 사진이 저장되어있음. --%>
 <%
 		//상품번호 세션으로 받아오기
 		String productNum = (String)session.getAttribute("productNum");
 		String directory = application.getRealPath("/Images/Classimg/");
+		
 		
 		//상품번호, 경로 확인 용
 		//System.out.println("상품번호 받아오는가 :"+productNum);
@@ -50,7 +52,7 @@
 					
 					File file = new File(directory + fileRealName);
 					file.delete();
-					%>
+					--%>
 					<script>
 						var filename="<%= file.getName()%>"
 						alert(filename+"는 업로드할 수 없는 확장자의 파일입니다.");
