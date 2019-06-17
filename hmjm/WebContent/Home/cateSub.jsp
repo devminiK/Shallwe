@@ -10,6 +10,9 @@
 </head>
 <%
 	String cate = request.getParameter("c_code");
+	productDAO db = productDAO.getInstance();
+	productVO c = db.getProduct3(cate);
+	
 	int pageSize = 10;
 
 	String pageNum = request.getParameter("pageNum");
@@ -21,16 +24,32 @@
 	int count = 0;
 	int number=0;
 	
-	List cateSubList=null; 
+	List cateSubList = null; 
 	productDAO dbPro = productDAO.getInstance();
 	count = dbPro.getProductCount();
 	if (count > 0) {
-		cateSubList = dbPro.getProduct2(cate,startRow, endRow);}	
-
+		cateSubList = dbPro.getProductSub(cate,startRow, endRow);}	
 %>
-
-
 <body>
-<%=cate %>
+<jsp:include page="/Home/header.jsp" />
+<jsp:include page="category.jsp" />
+<%if(c == null){ %>
+	미등록 카테고리
+	<%}else{%>
+	<%if (count == 0 ){%>
+		<p>등록된 강의가 없습니다<p>
+	<%}else{%>
+		<% for(int i = 0 ; i <cateSubList.size(); i++){
+			productVO v = (productVO)cateSubList.get(i); %>
+			수업번호::<%=v.getP_num() %>
+			수업이름::<%=v.getP_classname() %><br>
+		
+		<%}%>
+	<%}%>
+	<%}%>
+	
+	
+	
+<jsp:include page="/Home/footer.jsp" />	
 </body>
 </html>

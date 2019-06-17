@@ -95,22 +95,22 @@ body {
     <button class="subnavbtn">디자인 <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <span><a href="/hmjm/Home/cateSub.jsp?c_code=101">포토샵</a></span>
-      <span><a href="#link2">일러스트</a></span>
+      <span><a href="/hmjm/Home/cateSub.jsp?c_code=102">일러스트</a></span>
     </div>
   </div> 
   <div class="subnav">
     <button class="subnavbtn">영상<i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="#link1">프리미어</a>
-      <a href="#link2">에프터이펙트</a>
+      <a href="/hmjm/Home/cateSub.jsp?c_code=201">프리미어</a>
+      <a href="/hmjm/Home/cateSub.jsp?c_code=202">에프터이펙트</a>
      
     </div>
   </div> 
   <div class="subnav">
     <button class="subnavbtn">외국어 <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <span><a href="#link1">영어</a></span>
-      <span><a href="#link2">중국어</a></span>
+      <span><a href="/hmjm/Home/cateSub.jsp?c_code=301">영어</a></span>
+      <span><a href="/hmjm/Home/cateSub.jsp?c_code=302">중국어</a></span>
     
     </div>
   </div>

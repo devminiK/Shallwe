@@ -52,7 +52,7 @@ number=count-(currentPage-1)*pageSize;
 		<td><%=number-- %></td>
 		<td><%=vo.getP_num()%></td>
 		<td>강의이름 :
-		<a href ="../Talent/Detail.jsp?p_num=<%=vo.getP_num() %>& pageNum=<%=currentPage %>">
+		<a href ="../Talent/Detail.jsp?p_num=<%=vo.getP_num()%>& pageNum=<%=currentPage %>">
 		<%=vo.getP_classname() %></a>
 		</td>
 		</tr>
