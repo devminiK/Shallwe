@@ -23,7 +23,7 @@
 		
 		//상품번호, 경로 확인 용
 		//System.out.println("상품번호 받아오는가 :"+productNum);
-		//System.out.println("=uploadFilePath="+directory);
+		System.out.println("=uploadFilePath="+directory);
 		
 		//test용, 추후 삭제할것
 		System.out.println("addClassimgPro.jsp: 세션상품번호"+productNum);
