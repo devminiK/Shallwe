@@ -122,6 +122,8 @@ to {
 	<jsp:include page="category.jsp" />
 	
  	<jsp:include page="listTest.jsp" />
+ 	
+ 	<%--메인화면에 보여줄 , 메인 사진들 --%>
 	<div class="slideshow-container">
 		<div class="mySlides fade">
 			<a href="#"><img src="/hmjm/Images/main1.jpg" style="width: 100%"></a>

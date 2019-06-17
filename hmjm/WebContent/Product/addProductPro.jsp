@@ -21,6 +21,7 @@
 	//test용, 추후 삭제할것
 	System.out.println("addProdcutPro.jsp: 세션상품번호"+productNum);
 %>
+
 <%--상품등록이 완료되었을경우의 확인절차 알고리즘..? : 보류 --%>
 
 <script>

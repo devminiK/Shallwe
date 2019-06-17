@@ -1,4 +1,4 @@
-package file;
+package hmjm.test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,6 +29,8 @@ public class FileDAO {
 		catch(Exception e){ e.printStackTrace(); }
 		return conn;
 	}
+	
+	
 	//version1
 	public int insert1(String fileName, String fileRealName) {	    
 		String sql="";
@@ -55,10 +57,10 @@ public class FileDAO {
 		String sql="";
 		try {
 			conn = getConnection(); 
-			sql = "insert into filetest values(?,?)"; 
+			sql = "insert into howmany values(?,?)"; 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getFileName());
-			pstmt.setString(2, vo.getFileRealName());
+			pstmt.setInt(1, vo.getP_min());
+			pstmt.setInt(2, vo.getP_max());
 			
 			pstmt.executeUpdate();
 		} catch(Exception ex) {

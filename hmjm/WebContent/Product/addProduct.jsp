@@ -91,11 +91,11 @@
 				return false;
 			}
 		}else{//1:1체크되었을때..진행중2019.06.11
-			
-			var sample = document.getElementsByName('howMany');
+				//
 		}
 	}
-
+	
+	
 	/*라디오 버튼 value값 조건비교로, 보여주기/숨김*/
 	function divChoice(v, id) {
 		if (v == "1")
@@ -104,7 +104,6 @@
 			document.getElementById(id).style.display = "";//보여줌
 			
 	}
-	
 	/***************카테고리 정하기*************************/
 	function categoryChange(e) {
 		//상품이름	
@@ -134,7 +133,6 @@
 		    target.appendChild(opt);
 		  } 	  
 		}
-	
 </script>
 
 <style>
@@ -186,7 +184,7 @@ input[type=number] {
   					<option value="a">디자인</option>
   					<option value="b">영상</option>
   					<option value="c">외국어</option>
-			</select>
+				</select>
 			<select id="p_category" name="p_category">
 					<option  vlaue="" name="p_category">세부 카테고리를 선택해주세요</option>
 			</select>
@@ -219,7 +217,7 @@ input[type=number] {
 			<div class="form-group row">
 				<label class="col-sm-2">강사 소개</label>
 				<div class="col-sm-5">
-					<textarea name="p_self" rows="2" cols="50"></textarea>
+					<textarea name="p_self" rows="2" cols="50">쓰기귀찮아서 우선..</textarea>
 				</div>
 			</div>
 			<h2>강의 소개</h2>
@@ -227,25 +225,25 @@ input[type=number] {
 			<div class="form-group row">
 				<label class="col-sm-2">튜터 정보</label>
 				<div class="col-sm-3">
-					<textarea name="p_class1" rows="2" cols="50"></textarea>
+					<textarea name="p_class1" rows="2" cols="50">..</textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">수업 소개</label>
 				<div class="col-sm-3">
-					<textarea name="p_class2" rows="2" cols="50"></textarea>
+					<textarea name="p_class2" rows="2" cols="50">..</textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">수업 대상</label>
 				<div class="col-sm-3">
-					<textarea name="p_class3" rows="2" cols="50"></textarea>
+					<textarea name="p_class3" rows="2" cols="50">..</textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">커리큘럼</label>
 				<div class="col-sm-3">
-					<textarea name="p_class4" rows="2" cols="50"></textarea>
+					<textarea name="p_class4" rows="2" cols="50">..</textarea>
 				</div>
 			</div>
 
@@ -266,8 +264,32 @@ input[type=number] {
 			<div class="form-group row">
 				<label class="col-sm-2">인원</label>
 				<div class="col-sm-3">
+				<%-- 
+					<select id="slcHowmany" name="slcHowmany">
+						<optgroup label="수업방식을 체크해주세요">
+							<option id="oto" value="1"
+							onclick="divChoice(this.value,'con');">1:1 클래스</option>
+  							<option id="otm" value="2"
+  							onclick="divChoice(this.value,'con');">1:N 클래스</option>
+						</optgroup>
+					</select>
+				<hr>
+				<div id="con" style="display: none">
+						최소인원: <input type="number" name="p_count_min" min=1><br>
+						최대인원: <input type="number" name="p_count_max" min=1>
+					</div>
+					--%>
+				<%------------radio 방법 > select로 바꾸기 --%>
 					<input type="radio" name="howMany"
 						id="oto" value="1" onclick="divChoice(this.value,'con');">1:1강습<br> 
+						<script>
+							var value= $(#howMany).val();
+							System.out.println(value);
+						</script>
+						
+						<%-- <input type="hidden" name="p_count_min" value=1>
+						<input type="hidden" name="p_count_max" value=1>--%>
+						
 					<input type="radio" name="howMany"
 						id="otm" value="2"	onclick="divChoice(this.value,'con');">1:N 강습<br>
 					
