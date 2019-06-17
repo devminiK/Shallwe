@@ -92,32 +92,26 @@ body {
 
 <div class="navbar">
   <div class="subnav">
-    <button class="subnavbtn">인기수업 <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <span><a href="#link1">상품 1</a></span>
-      <span><a href="#link2">상품 2</a></span>
-    </div>
-  </div> 
-  <div class="subnav">
     <button class="subnavbtn">디자인 <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="#link1">상품 1</a>
-      <a href="#link2">상품 2</a>
-      <a href="#link3">상품 3</a>
-      <a href="#link4">상품 4</a>
+      <span><a href="/hmjm/Home/cateSub.jsp?c_code=101">포토샵</a></span>
+      <span><a href="#link2">일러스트</a></span>
     </div>
   </div> 
   <div class="subnav">
-    <button class="subnavbtn">실무역량 <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn">영상<i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <span><a href="#link1">상품 1</a></span>
-      <span><a href="#link2">상품 2</a></span>
-      <span><a href="#link1">상품 1</a></span>
-      <span><a href="#link2">상품 2</a></span>
-      <span><a href="#link1">상품 1</a></span>
-      <span><a href="#link2">상품 2</a></span>
-      <span><a href="#link1">상품 1</a></span>
-      <span><a href="#link2">상품 2</a></span>
+      <a href="#link1">프리미어</a>
+      <a href="#link2">에프터이펙트</a>
+     
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">외국어 <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <span><a href="#link1">영어</a></span>
+      <span><a href="#link2">중국어</a></span>
+    
     </div>
   </div>
 </div>

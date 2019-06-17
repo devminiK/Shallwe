@@ -270,8 +270,52 @@ public class productDAO {
 			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
-
-
 		return productList;
+	}
+	public List getProduct2(String cate, int start, int end) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List cateSubList=null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					"select p_num,p_email,p_category,p_classname,p_self,p_time,p_cost,p_memo,p_count_min,p_count_max,p_class1,p_class2,p_class3,p_class4,r"
+					+ " from(select p_num,p_email,p_category,p_classname,p_self,p_time,p_cost,p_memo,p_count_min,p_count_max,p_class1,p_class2,p_class3,p_class4,rownum"
+					+ " from(select * from product where p_category =? order by p_num)"
+					+ " order by p_num) where r>=? and r<=?");
+			pstmt.setString(1, cate);
+			pstmt.setInt(2, start); 
+			pstmt.setInt(3, end);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				cateSubList = new ArrayList(end); 
+				do{ 
+					productVO vo= new productVO();
+					vo.setP_num(rs.getInt("p_num"));
+					vo.setP_email(rs.getString("p_email"));
+					vo.setP_category(rs.getString("p_category"));
+					vo.setP_classname(rs.getString("p_classname"));
+					vo.setP_self(rs.getString("p_self"));
+					vo.setP_time(rs.getInt("p_time"));
+					vo.setP_cost(rs.getInt("p_cost"));
+					vo.setP_memo(rs.getString("p_memo"));
+					vo.setP_count_min(rs.getInt("p_count_min"));
+					vo.setP_count_max(rs.getInt("p_count_max"));
+					vo.setP_class1(rs.getString("p_class1"));
+					vo.setP_class2(rs.getString("p_class2"));
+					vo.setP_class3(rs.getString("p_class3"));
+					vo.setP_class4(rs.getString("p_class4"));
+					cateSubList.add(vo);
+				}while(rs.next());
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return cateSubList;
 	}
 }

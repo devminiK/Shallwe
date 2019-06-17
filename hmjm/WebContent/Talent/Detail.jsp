@@ -42,9 +42,7 @@
 		count = pic.getClassimgCount(num);
 		
 		if (count > 0) {
-			classimgList = pic.getClassimg(num,startRow, endRow);
-		}
-	
+			classimgList = pic.getClassimg(num,startRow, endRow);}	
 %>
 
 <body>
@@ -59,50 +57,35 @@
 	<input type="hidden" name="p_email" value="<%=vo.getP_email()%>"/>
 	강사이메일:::::::: <a href="/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>">
 		<%=vo.getP_email() %></a><br><br>
-<% 	try{%>		
+<%-- 테스트용
+		<%if(bb == null){ %>
+	<h1> 테스트 !! 사진 미등록인 경우</h1>
+	<%}else{ %>
+	 <h1> 테스트!! 사진 있는 경우</h1>
+	 <%} %>
+
+<% 	try{%>    우선 남겨 둠	--%> 	
 	<div>
 	수업가능시간::::::::
-			<%if(t.getCt_mon()==null){%>
-			<%}else{%>
-			월: <%=t.getCt_mon() %>
-			<%} %>
-			<%if(t.getCt_tue()==null){%>
-			<%}else{%>
-			화: <%=t.getCt_tue() %>
-			<%} %>
-			<%if(t.getCt_wed()==null){%>
-			<%}else{%>
-			수: <%=t.getCt_wed() %>
-			<%} %>
-			<%if(t.getCt_thu()==null){%>
-			<%}else{%>
-			목: <%=t.getCt_thu() %>
-			<%} %>
-			<%if(t.getCt_fri()==null){%>
-			<%}else{%>
-			금: <%=t.getCt_fri() %>
-			<%} %>
-			<%if(t.getCt_sta()==null){%>
-			<%}else{%>
-			토: <%=t.getCt_sta() %>
-			<%} %>
-			
-			<%if(t.getCt_sun()==null){%>
-			<%}else{%>
-			일: <%=t.getCt_sun() %>
-			<%} %>
-			
-			<%if(t.getCt_day()==null){%>
-			<%}else{%>
-			데이수업<%=t.getCt_day() %>
-			<%} %>
-			
-		</div><br>
+	<%if(t == null){ %>
+	<h1> 시간 미등록 튜터</h1>
+	<%}else{ %>
+			<%if(t.getCt_mon()==null){%><%}else{%>월: <%=t.getCt_mon() %><%} %>
+			<%if(t.getCt_tue()==null){%><%}else{%>화: <%=t.getCt_tue() %><%} %>
+			<%if(t.getCt_wed()==null){%><%}else{%>수: <%=t.getCt_wed() %><%} %>
+			<%if(t.getCt_thu()==null){%><%}else{%>목: <%=t.getCt_thu() %><%} %>
+			<%if(t.getCt_fri()==null){%><%}else{%>금: <%=t.getCt_fri() %><%} %>
+			<%if(t.getCt_sta()==null){%><%}else{%>토: <%=t.getCt_sta() %><%} %>
+			<%if(t.getCt_sun()==null){%><%}else{%>일: <%=t.getCt_sun() %><%} %>
+			<%if(t.getCt_day()==null){%><%}else{%>데이수업<%=t.getCt_day() %><%} %>
+	<%} %>
+<%-- 	
 <% 
-
-	
-	if(bb.getCi_name()==null){%>
-	error
+	}catch(Exception e){} 
+%>	--%>		
+		</div><br>
+<% if(bb==null){%>
+	<h1>사진 미등록 튜터</h1>
 	<%}else{ %>
 	
 		<%if(count == 0){%>
@@ -110,21 +93,12 @@
 		<%}else{%>
 			<% for(int i = 0 ; i < classimgList.size(); i++){
 			classimgVO g = (classimgVO)classimgList.get(i);%>
-		
-			<img src="/Images/classimg/<%=g.getCi_name()%>"
-			width="50%" height="50%">
+			<img src="/hmjm/Images/Classimg/<%=g.getCi_name()%>" width="50%" >
 			<%}%>
 		<%}%>
 	<%}%>
 	
 
-	
-
-	
-	
-<% 
-	}catch(Exception e){} 
-%>
 <br>
 <a href ="./check.jsp?p_num=<%=vo.getP_num() %>">강의신청</a>
 <br>
