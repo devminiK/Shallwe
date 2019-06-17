@@ -28,56 +28,31 @@
 	/*유효성 검사*/
 	function writeSave() {
 		var form = document.addClassTimeForm;
-		/*
 		
 		if (form.ct_place.value == "") {
 			alert("수업 장소를 입력하세요.");
 			form.ct_place.focus();
 			return false;
 		}
-		if (form.ct_mon.value == "") {
-			alert("월요일날 가능한 시간을 입력해주세요");
+		if(form.ct_mon.value == ""
+				&& form.ct_tue.value == ""
+				&& form.ct_wed.value == ""
+				&& form.ct_thu.value == ""
+				&& form.ct_fri.value == ""
+				&& form.ct_sta.value == ""
+				&& form.ct_sun.value == ""){
+			alert("적어도 하나의 요일별 시간을 입력해야합니다.");
 			form.ct_mon.focus();
-			return false;
+			return false;		
 		}
-		if (form.ct_tue.value == "") {
-			alert("화요일날 가능한 시간을 입력해주세요");
-			form.ct_tue.focus();
-			return false;
-		}
-		if (form.ct_wed.value == "") {
-			alert("수요일날 가능한 시간을 입력해주세요");
-			form.ct_wed.focus();
-			return false;
-		}
-		if (form.ct_thu.value == "") {
-			alert("목요일날 가능한 시간을 입력해주세요");
-			form.ct_thu.focus();
-			return false;
-		}
-		if (form.ct_fri.value == "") {
-			alert("금요일날 가능한 시간을 입력해주세요");
-			form.ct_fri.focus();
-			return false;
-		}
-		if (form.ct_sta.value == "") {
-			alert("토요일날 가능한 시간을 입력해주세요");
-			form.ct_sta.focus();
-			return false;
-		}
-		if (form.ct_sun.value == "") {
-			alert("일요일날 가능한 시간을 입력해주세요");
-			form.ct_sun.focus();
-			return false;
-		}
-		
-		
+		/*
 		if (form.ct_day.value == "") {
 			alert("가능한 날짜를 입력해주세요");
 			form.ct_day.focus();
 			return false;
 		}
 		*/
+
 	}
 </script>
 
