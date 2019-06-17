@@ -17,11 +17,11 @@
 <%
 		//상품번호 세션으로 받아오기
 		String productNum = (String)session.getAttribute("productNum");
-		String directory = application.getRealPath("/Images/ClassImg/");
+		String directory = application.getRealPath("/Images/Classimg/");
 		
 		//상품번호, 경로 확인 용
 		//System.out.println("상품번호 받아오는가 :"+productNum);
-		//System.out.println("=uploadFilePath="+directory);
+		System.out.println("=uploadFilePath="+directory);
 		
 		//test용, 추후 삭제할것
 		System.out.println("addClassimgPro.jsp: 세션상품번호"+productNum);
@@ -70,7 +70,7 @@
 						alert("[상품번호 :"+ci_num+"]\n[파일명:"+fileName+"]이 등록되었습니다.");
 					</script>
 					<%--<META http-equiv=refresh content="0; url=/hmjm/My/application.jsp"> --%>
-					<META http-equiv=refresh content="0; url=/TeamProject/Home/main.jsp">
+					<META http-equiv=refresh content="0; url=/hmjm/Home/main.jsp">
 <%				}
 			}
 			
