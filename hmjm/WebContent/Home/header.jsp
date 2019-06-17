@@ -171,6 +171,7 @@
 				
 				<a href="#" onClick="window.open('/hmjm/Message/message.jsp','_blank',
 					'toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=620,height=600')">쪽지</a>
+				
 				<%
 					if(session.getAttribute("loginId")== null){%>
 						<a href="<%=logURL%>"><%=loginbarName %></a>

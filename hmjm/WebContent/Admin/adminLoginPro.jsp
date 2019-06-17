@@ -2,14 +2,14 @@
 <%@ page import="hmjm.bean.admin.adminDAO" %>
 
 <%
-	String aid= request.getParameter("aid");
+	String id= request.getParameter("aid");
 	String apw= request.getParameter("apw");
 	adminDAO dao = adminDAO.getInstance();
 	
 	boolean result = dao.adminLoginCheck(apw);
 	
 	if(result){
-		session.setAttribute("aid",aid);
+		session.setAttribute("loginId",id);
 		response.sendRedirect("/hmjm/Admin/adminMain.jsp");%>
 	<%}else{%>
 		<script>

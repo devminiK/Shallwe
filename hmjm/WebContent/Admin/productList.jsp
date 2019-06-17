@@ -19,6 +19,7 @@
 <h3>List of all products - <%=pcount%></h3>
 <!-- db에서 전체 판매글 목록 조회 ,수정, 삭제 가능 -->
 <!-- 판매글 내의 리뷰도 수정, 삭제 가능 -->
+<!-- 판매글 제목 클릭시 상세페이지 이동 -->
 <table border="1">
 	<tr align="center">
 		<td>번호</td>
@@ -41,7 +42,7 @@
 		<tr><td><%=vo.getP_num()%></td>
 			<td><%=vo.getP_email()%></td>
 			<td><%=vo.getP_category()%>
-			<td><%=vo.getP_classname()%></td>
+			<td><a href="/hmjm/Talent/Detail.jsp?p_num=<%=vo.getP_num()%>&"><%=vo.getP_classname()%></a></td>
 			<td><%=vo.getP_self()%></td>
 			<td><%=vo.getP_time()%></td>
 			<td><%=vo.getP_cost()%></td>
@@ -53,10 +54,10 @@
 			<td><%=vo.getP_class3()%></td>
 			<td><%=vo.getP_class4()%></td>
 			<td><input type="button" name="edit" value="수정" 
-				onclick="document.location.href='/hmjm/Admin/productEditForm.jsp?m_num=<%=vo.getP_num()%>'"/>
+				onclick="document.location.href='/hmjm/Admin/productEditForm.jsp?p_num=<%=vo.getP_num()%>'"/>
 				
 				<input type="button" name="delete" value="삭제"
-				onclick="document.location.href='/hmjm/Admin/productDeletePro.jsp?m_num=<%=vo.getP_num()%>'"/>
+				onclick="document.location.href='/hmjm/Admin/productDeletePro.jsp?p_num=<%=vo.getP_num()%>'"/>
 			</td>
 		</tr>
 <%} %>

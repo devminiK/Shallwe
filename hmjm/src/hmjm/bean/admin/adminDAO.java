@@ -288,6 +288,9 @@ public class adminDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 	}
+	//insert product
+	//update product
+	//get product detail
 	/********** product info end **********/
 	
 	
