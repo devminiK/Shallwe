@@ -63,7 +63,7 @@ public class adminDAO {
 		return result;
 	}
 	
-	/***** member info start *****/
+	/********** member info start **********/
 	//member list
 	public ArrayList<memberVO> getAllMember(){
 		ArrayList<memberVO> list = null;
@@ -136,12 +136,13 @@ public class adminDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"update member set m_name=?,m_phone=?,m_pw=?, m_usertype=? where m_email=?");
+					"update member set m_name=?,m_phone=?,m_pw=?, m_usertype=?, m_email=? where m_num=?");
 			pstmt.setString(1, vo.getM_name());
 			pstmt.setString(2, vo.getM_phone());
 			pstmt.setString(3, vo.getM_pw());
 			pstmt.setInt(4, vo.getM_usertype());
 			pstmt.setString(5, vo.getM_email());
+			pstmt.setInt(6, vo.getM_num());
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -152,15 +153,15 @@ public class adminDAO {
 	}
 	
 	//delete member
-	public void deleteMember(memberVO vo)
+	public void zeroMember(int num)
 			throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"update member set m_usertype=0 where m_email=?");
-			pstmt.setString(1, vo.getM_email());
+					"update member set m_usertype=0 where m_num=?");
+			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -171,15 +172,15 @@ public class adminDAO {
 	}
 	
 	//delete account
-	public void deleteAccount(memberVO vo)
+	public void deleteAccount(int num)
 			throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"delete from member where m_email=?");
-			pstmt.setString(1, vo.getM_email());
+					"delete from member where m_num=?");
+			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -188,5 +189,39 @@ public class adminDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 	}
-	/***** member info end *****/
+	
+	//count members
+	public int getMemberCount() throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x=0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*) from member");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); //첫번째 컬럼 값
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return x; 
+	}
+	/********** member info end **********/
+	
+	
+	/********** product info start **********/
+	
+	/********** product info end **********/
+	
+	
+	/********** message info start **********/
+	
+	/********** message info end **********/
+	
 }

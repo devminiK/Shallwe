@@ -7,15 +7,15 @@
 </head>
 <body>
 <h1>Welcome Admin</h1>
+<hr/>
+<!-- 회원 목록/수정/탈퇴/삭제 -->
+<jsp:include page="memberList.jsp"/>
 
-<!-- 회원목록 -->
-<h2>List of all members</h2>
-
-<!-- 상품목록 -->
-<h2>List of all products</h2>
+<!-- 상품 목록/수정/삭제/작성? -->
+<jsp:include page="productList.jsp"/>
 
 <!-- 쪽지목록 넣을까말까 -->
-<h2>List of all messages</h2>
+<jsp:include page="messageList.jsp"/>
 
 </body>
 </html>

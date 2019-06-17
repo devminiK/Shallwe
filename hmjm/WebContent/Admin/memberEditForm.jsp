@@ -15,14 +15,14 @@
 	memberVO c = edit.getMember(num);
 %>
 
-<form action ="/hmjm/Admin/memberEditPro.jsp" name="AME" method="post" align ="center">
+<form action ="/hmjm/Admin/memberEditPro.jsp?m_num=<%=c.getM_num()%>" name="AME" method="post" align ="center">
 <table width ="550" align ="center">
 	<tr height ="80" bgcolor ="333F48">
 		<th colspan ="3"><font color ="white">관리자 - 회원정보 수정</th>
 	</tr>
 	<tr height ="50">
 		<th>이메일</th>
-		<th><input type="text" autofosus name="m_email" value="<%=c.getM_email()%>"></th>
+		<th><input type="text" name="m_email" value="<%=c.getM_email()%>"></th>
 	</tr>
 	<tr height ="50">
 		<th>이 름</th>
@@ -45,7 +45,5 @@
 	<input type ="button" value ="취소" onclick="document.location.href='/hmjm/Admin/memberList.jsp'"/>
 
 </form>
-
-
 </body>
 </html>
