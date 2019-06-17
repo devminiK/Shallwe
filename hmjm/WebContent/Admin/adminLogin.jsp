@@ -1,17 +1,18 @@
 <!-- 관리자 전용 로그인폼 -->
-
-<!-- 판매글 작성, 수정, 삭제 -->
-<!-- 리뷰 작성, 수정, 삭제 -->
-<!-- 회원 정보 수정, 삭제, 탈퇴 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login Page for Admin</title>
 </head>
 <body>
 <!-- 로그인폼, submit: ~~pro.jsp -->
+<h1>Admin Login</h1>
+<form action="/hmjm/Admin/adminLoginPro.jsp" method="post">
+	ID : <input type="text" name="aid" id="aid"/>
+	PW : <input type="password" name="apw" id="apw"/><br/>
+	<input type="submit"/>
+	<input type="button" onclick="window.location='/hmjm/Home/mail.jsp'"/>
+</form>
 </body>
 </html>
