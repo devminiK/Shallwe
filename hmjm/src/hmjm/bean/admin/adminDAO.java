@@ -10,7 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import hmjm.bean.member.memberDAO;
 import hmjm.bean.member.memberVO;
 import hmjm.bean.product.productVO;
 import hmjm.bean.review.reviewVO;
@@ -41,14 +40,14 @@ public class adminDAO {
 	}
 	
 	//admin login check
-	public boolean adminLoginCheck(String aid, String apw) {
+	public boolean adminLoginCheck(String apw) {
 		boolean result = false;
 		try {
 			conn = getConnection();
-			String sql = "select * from member where m_email=? and m_pw=?";
+			String sql = "select * from member where m_email='admin' and m_pw=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, aid);
-			pstmt.setString(2, apw);
+			pstmt.setString(1, apw);
+			//pstmt.setString(2, apw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = true;
@@ -64,12 +63,12 @@ public class adminDAO {
 	}
 	
 	/********** member info start **********/
-	//member list
+	//members list
 	public ArrayList<memberVO> getAllMember(){
 		ArrayList<memberVO> list = null;
 		try {
 			conn = getConnection();
-			String sql = "select * from member";
+			String sql = "select * from member order by m_num";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			list = new ArrayList<memberVO>();
@@ -103,8 +102,7 @@ public class adminDAO {
 		memberVO vo = null;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(
-					"select * from member where m_num= ?");
+			pstmt = conn.prepareStatement("select * from member where m_num= ?");
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 
@@ -135,8 +133,7 @@ public class adminDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(
-					"update member set m_name=?,m_phone=?,m_pw=?, m_usertype=?, m_email=? where m_num=?");
+			pstmt = conn.prepareStatement("update member set m_name=?,m_phone=?,m_pw=?, m_usertype=?, m_email=? where m_num=?");
 			pstmt.setString(1, vo.getM_name());
 			pstmt.setString(2, vo.getM_phone());
 			pstmt.setString(3, vo.getM_pw());
@@ -152,15 +149,14 @@ public class adminDAO {
 		}
 	}
 	
-	//delete member
+	//zero member
 	public void zeroMember(int num)
 			throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(
-					"update member set m_usertype=0 where m_num=?");
+			pstmt = conn.prepareStatement("update member set m_usertype=0 where m_num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
@@ -178,8 +174,7 @@ public class adminDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(
-					"delete from member where m_num=?");
+			pstmt = conn.prepareStatement("delete from member where m_num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
@@ -201,7 +196,7 @@ public class adminDAO {
 			pstmt = conn.prepareStatement("select count(*) from member");
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				x= rs.getInt(1); //첫번째 컬럼 값
+				x= rs.getInt(1);
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -216,12 +211,155 @@ public class adminDAO {
 	
 	
 	/********** product info start **********/
+	//products list
+	public ArrayList<productVO> getAllProduct(){
+		ArrayList<productVO> list = null;
+		try {
+			conn = getConnection();
+			String sql = "select * from product order by p_num";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<productVO>();
+			while(rs.next()) {
+				productVO vo = new productVO();
+				vo.setP_num(rs.getInt("p_num"));
+				vo.setP_email(rs.getString("p_email"));
+				vo.setP_category(rs.getString("p_category"));
+				vo.setP_classname(rs.getString("p_classname"));
+				vo.setP_self(rs.getString("p_self"));
+				vo.setP_time(rs.getInt("p_time"));
+				vo.setP_cost(rs.getInt("p_cost"));
+				vo.setP_memo(rs.getString("p_memo"));
+				vo.setP_count_min(rs.getInt("p_count_min"));
+				vo.setP_count_max(rs.getInt("p_count_max"));
+				vo.setP_class1(rs.getString("p_class1"));
+				vo.setP_class2(rs.getString("p_class2"));
+				vo.setP_class3(rs.getString("p_class3"));
+				vo.setP_class4(rs.getString("p_class4"));
+				list.add(vo);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs != null) {try {rs.close();}catch(SQLException e) {}}
+			if(pstmt != null) {try {pstmt.close();}catch(SQLException e) {}}
+			if(conn != null) {try {conn.close();}catch(SQLException e) {}}
+		}
+		return list;
+	}
 	
+	//count products
+	public int getProductCount() throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x=0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*) from product");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return x; 
+	}
+	
+	//delete product
+	public void deleteProduct(int num)
+			throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("delete from product where p_num=?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
 	/********** product info end **********/
 	
 	
 	/********** message info start **********/
+	//messages list
+	public ArrayList<messageVO> getAllMsg(){
+	ArrayList<messageVO> list = null;
+	try {
+		conn = getConnection();
+		String sql = "select * from message order by s_num";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		list = new ArrayList<messageVO>();
+		while(rs.next()) {
+			messageVO vo = new messageVO();
+			vo.setS_num(rs.getInt("s_num"));
+			vo.setS_content(rs.getString("s_content"));
+			vo.setS_send(rs.getString("s_send"));
+			vo.setS_receive(rs.getString("s_receive"));
+			vo.setS_reg(rs.getTimestamp("S_reg"));
+			list.add(vo);
+		}
+	}catch(Exception e) {
+		e.printStackTrace();
+	}finally {
+		if(rs != null) {try {rs.close();}catch(SQLException e) {}}
+		if(pstmt != null) {try {pstmt.close();}catch(SQLException e) {}}
+		if(conn != null) {try {conn.close();}catch(SQLException e) {}}
+	}
+	return list;
+	}
 	
+	//count messages
+	public int getMsgCount() throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x=0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*) from message");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return x; 
+	}
+	
+	//delete message
+		public void deleteMsg(int num)
+				throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("delete from message where s_num=?");
+				pstmt.setInt(1, num);
+				pstmt.executeUpdate();
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+				if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+			}
+		}
 	/********** message info end **********/
 	
 }

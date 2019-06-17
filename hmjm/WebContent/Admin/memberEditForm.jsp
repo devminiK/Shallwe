@@ -7,8 +7,6 @@
 <title>admin - member info edit</title>
 </head>
 <body>
-	<script type="text/javascript"></script>
-
 <%	
 	int num = Integer.parseInt(request.getParameter("m_num"));
 	adminDAO edit = adminDAO.getInstance();

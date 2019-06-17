@@ -18,7 +18,7 @@
 <title>admin - members info</title>
 </head>
 <body>
-<h3>List of all members - <%=mcount%></h3><hr/>
+<h3>List of all members - <%=mcount%></h3>
 <table border="1">
 	<tr align="center">
 		<td>회원번호</td>

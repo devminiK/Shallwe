@@ -6,14 +6,11 @@
 	String apw= request.getParameter("apw");
 	adminDAO dao = adminDAO.getInstance();
 	
-	boolean result = dao.adminLoginCheck(aid, apw);
+	boolean result = dao.adminLoginCheck(apw);
 	
 	if(result){
 		session.setAttribute("aid",aid);
-		response.sendRedirect("/hmjm/admin/adminMain.jsp");%>
-		<script>
-			alert("Admin Login");
-		</script>
+		response.sendRedirect("/hmjm/Admin/adminMain.jsp");%>
 	<%}else{%>
 		<script>
 			alert("id/pw확인");

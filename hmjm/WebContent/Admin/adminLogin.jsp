@@ -11,8 +11,8 @@
 <form action="/hmjm/Admin/adminLoginPro.jsp" method="post">
 	ID : <input type="text" name="aid" id="aid"/>
 	PW : <input type="password" name="apw" id="apw"/><br/>
-	<input type="submit"/>
-	<input type="button" onclick="window.location='/hmjm/Home/mail.jsp'"/>
+	<input type="submit" value="LogIn"/>
+	<input type="button" value="Cancel" onclick="window.location='/hmjm/Home/main.jsp'"/>
 </form>
 </body>
 </html>
