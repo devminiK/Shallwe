@@ -79,7 +79,7 @@ public class classtimeDAO {
 	}
 
 
-	//수정, -not yet
+	//수정, TEST-not yet
 	public void updateClasstime(classtimeVO vo) {
 		try {
 			conn = getConnection();
