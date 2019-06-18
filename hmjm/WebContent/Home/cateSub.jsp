@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import = "hmjm.bean.product.*" %>
 <%@ page import = "java.util.List" %>
+<%@ page import = "hmjm.bean.classimg.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -29,6 +30,7 @@
 	count = dbPro.getProductCount();
 	if (count > 0) {
 		cateSubList = dbPro.getProductSub(cate,startRow, endRow);}	
+	classimgDAO aa  = classimgDAO.getInstance();//강의등록사진 불러오기
 %>
 <body>
 <jsp:include page="/Home/header.jsp" />
@@ -40,10 +42,13 @@
 		<p>등록된 강의가 없습니다<p>
 	<%}else{%>
 		<% for(int i = 0 ; i <cateSubList.size(); i++){
-			productVO v = (productVO)cateSubList.get(i); %>
+			productVO v = (productVO)cateSubList.get(i); 
+			int pn = v.getP_num();
+			classimgVO bb = aa.getImg(pn);%>
+			
 			수업번호::<%=v.getP_num() %>
-			수업이름::<%=v.getP_classname() %><br>
-		
+			수업이름::<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=v.getP_num()%>"><%=v.getP_classname() %></a><br>
+			<img src="/hmjm/Images/Classimg/<%=bb.getCi_name() %>" width="10%"/>
 		<%}%>
 	<%}%>
 	<%}%>

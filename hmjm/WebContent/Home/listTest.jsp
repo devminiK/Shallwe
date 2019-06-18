@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "hmjm.bean.product.*" %>
 <%@ page import = "java.util.List" %>
-
+<%@ page import = "hmjm.bean.classimg.*" %>
 <!DOCTYPE html>
 <%
 int pageSize = 10;
@@ -25,6 +25,7 @@ if (count > 0) {
 }
 
 number=count-(currentPage-1)*pageSize;
+classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
 
 
 %>
@@ -46,14 +47,18 @@ number=count-(currentPage-1)*pageSize;
 	<table><% 
 	for(int i = 0 ; i <productList.size(); i++){
 		productVO vo = (productVO)productList.get(i); 
-		
+		int pn = vo.getP_num();
+		classimgVO bb = aa.getImg(pn);
 %>	
 		<tr>
+		
 		<td><%=number-- %></td>
 		<td><%=vo.getP_num()%></td>
 		<td>강의이름 :
-		<a href ="../Talent/Detail.jsp?p_num=<%=vo.getP_num()%>& pageNum=<%=currentPage %>">
-		<%=vo.getP_classname() %></a>
+		<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=vo.getP_num()%>
+		& pageNum=<%=currentPage %>"><%=vo.getP_classname() %></a>
+		<img src="/hmjm/Images/Classimg/<%=bb.getCi_name() %>" width="10%"/>
+		
 		</td>
 		</tr>
 	<% }%>
