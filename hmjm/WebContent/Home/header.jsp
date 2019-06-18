@@ -100,7 +100,7 @@
 		function openRealtimetalk(){
 			url="/hmjm/My/qnatutee.jsp";
 			//새로운 윈도우로 열기
-			open(url, "qnatutee",  "toolbar=no, location=no,status=no,menubar=no,resizable=no,width=400, height=660");
+			open(url, "qnatutee",  "toolbar=no, location=no,status=no,menubar=no,resizable=no,width=650, height=660");
 		}
 		function searchCheck(){
 			var str = document.getElementById('search');

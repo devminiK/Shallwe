@@ -40,27 +40,19 @@
 	</script>
 <%} %> 
 
-<b>쪽지목록(전체 쪽지:<%=count%>)</b>
+<b>보낸 쪽지목록(전체 쪽지:<%=count%>)</b>
 <%if(count == 0){%>
 	<table width="600" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">쪽지가 없습니다.</td></tr>
 	</table>
 <%}else{%>
-<form method="post" name="message" action="messageReplyForm.jsp">
-	<table border="2" width="600" cellpadding="0" cellspacing="0" align="center"> 
+<form method="post" name="sendMessage">
+	<table border="1" cellpadding="0" cellspacing="0" align="center"> 
 	<%for(int i = 0 ; i < articleList.size() ; i++) {
 		messageVO article = (messageVO)articleList.get(i);
 		String login = article.getS_send();
-		//새 쪽지 알림
-		int newm = article.getS_count();
-		if(newm == 1){%>
-			<script>
-				alert("new message");
-			</script>
-		<%}if(id.equals(login)) {%>
-		<tr>
-		    <td align="center" width="50" ><%=number--%></td>
-		    
+		if(id.equals(login)) {%>
+		<tr><td align="center" width="30" ><%=number--%></td>
 		    	<input type="hidden" name="sender" value="<%=article.getS_send() %>"/></td>
 		    <td align="center" width="100">to <%=article.getS_receive()%></td>
 		    <td align="center" width="100"><%=article.getS_reg()%></td>

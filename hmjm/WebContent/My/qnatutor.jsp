@@ -42,7 +42,7 @@
 <body>
 	<div class="content">
 		 <div class="top" >
-			<img src="../images/logo.png" width="100px" >
+			<img src="/hmjm/Images/logo.png" width="100px" >
 			<span>실시간으로 간편하게 문의하세요!</span>
 			<span onclick="javascript:window.close();">×</span>
 		</div>
