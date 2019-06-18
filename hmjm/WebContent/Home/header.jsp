@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-
+<%@ page import = "hmjm.bean.tutor.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,6 +120,7 @@
 			
 		}
 	</script>
+
 </head>
 <%
 	String loginbarName;	//로그인바	
@@ -141,6 +142,9 @@
 		statebarName ="수업신청서";	
 		stateURL="/hmjm/My/application.jsp";
 	}
+	String preUser =(String)session.getAttribute("loginId");//이메일 값
+	tutorDAO vo = tutorDAO.getInstance();
+	tutorVO e = vo.getMember(preUser);
 %>
 <body id="header">
 	<div class="header_new">
@@ -177,7 +181,14 @@
 						<a href="<%=logURL%>"><%=loginbarName %></a>
 					<%}else{%>
 						<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a>
-						<a href="/hmjm/My/application.jsp"><img src="/hmjm/Images/Icon/user.png" width="35px"/></a> 
+						<a href="/hmjm/My/application.jsp">
+						<%if(e == null){ %>
+				<%--등록한 이미지사진 불러오기 --%> <img src="../Images/TutorImg/user.png"
+				width="40px"/>
+				<%} else {%>
+				<%--등록한 이미지사진 불러오기 --%> <img src="../Images/TutorImg/<%=e.getT_selfimg()%>"
+				width="40px"/> <%--해당 이메일의 닉네임 --%> </a> 
+					<%}%>
 					<%}%>
 			</div>
 

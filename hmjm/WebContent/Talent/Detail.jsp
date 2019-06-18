@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ page import = "hmjm.bean.product.*" %>
 <%@ page import = "hmjm.bean.buy.*" %>
+<%@ page import = "hmjm.bean.tutor.*" %>
 <%@ page import = "hmjm.bean.classtime.*" %>
 <%@ page import = "hmjm.bean.classimg.*" %>
 <%@ page import = "java.util.List" %>
@@ -12,20 +13,30 @@
 </head>
 
 <%
-	String id = (String) session.getAttribute("loginId");
+		String id = (String) session.getAttribute("loginId");
 	
-	int num = Integer.parseInt(request.getParameter("p_num"));
-	String pageNum = request.getParameter("pageNum");
+		int num = Integer.parseInt(request.getParameter("p_num"));
+		String pageNum = request.getParameter("pageNum");
 
-	classtimeDAO time = classtimeDAO.getInstance();
-	classtimeVO t = time.getClasstime(num);
+		classtimeDAO time = classtimeDAO.getInstance();
+		classtimeVO t = time.getClasstime(num);
 	
-	classimgDAO aa  = classimgDAO.getInstance();
-	classimgVO bb = aa.getImg(num);
-	
-	
+		classimgDAO aa  = classimgDAO.getInstance();
+		classimgVO bb = aa.getImg(num);
+	//내수업인지 신청한 수업인지 구별하기 위해 불러오는 값..테스트중
+		tutorDAO tu = tutorDAO.getInstance();
+		tutorVO e = tu.getMember(id);
+		
+		buyDAO buyer = buyDAO.getInstance();
+		buyVO b = buyer.getBuy(id);
+		buyVO c =buyer.getBuy2(num);
+		int bbb = b.getB_productnumber();
+	//////////////////////////////////////////
 		productDAO dbPro = productDAO.getInstance();
 		productVO vo = dbPro.getProduct(num);
+		
+		productVO tutor = dbPro.getProduct2(id);
+		//int ttt = tutor.getP_num();
 		
 
 		//사진 불러오기 할려고 했는데 이건 아닌 듯....미완성
@@ -132,7 +143,30 @@
 	
 
 <br>
-<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">강의신청</a>
+<%-- 	오류수정중 0618 건훈
+	if(id==null){
+		신청하기 1단계
+	<%}else{
+		if(b==null){
+			if(e==null){%>
+				신청하기2단계
+			<%}else{
+				if(1>0){%>
+					내강의이다
+				<%}else{%>
+					신청하기3단계
+				<%}
+			}
+		}else{
+			if(bbb == num){%>
+				내가 신청한 수업이다<%=bbb %>
+			<%}else{%>
+				신청하기4단계
+			<%}
+		}
+	}--%>
+	
+	<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">신청하기</a>
 <br>
 <br>
 <jsp:include page="/Review/review.jsp?p_num=<%=num%> %>"/>
