@@ -20,7 +20,7 @@
       String directory = application.getRealPath("/Images/Classimg/");
       
       //상품번호, 경로 확인 용
-      //System.out.println("상품번호 받아오는가 :"+productNum);
+      System.out.println("상품번호 받아오는가 :"+productNum);
       System.out.println("=uploadFilePath="+directory);
       
       //test용, 추후 삭제할것
