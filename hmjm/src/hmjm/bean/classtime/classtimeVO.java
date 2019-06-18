@@ -4,7 +4,7 @@ package hmjm.bean.classtime;
 public class classtimeVO {
 	private int ct_num;			//수업시간 테이블 번호(순서_시퀀스)
 	private int ct_classnum;	//수업번호(고유번호)
-	private String ct_place;	//수업 장소
+	private String ct_place;	//수업 장소(번호 값임)
 	private String ct_mon;		//월요일: 가능 시간
 	private String ct_tue;		//화요일: 가능 시간
 	private String ct_wed;		//수요일: 가능 시간
