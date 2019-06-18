@@ -121,8 +121,6 @@ to {
 	
 	<jsp:include page="category.jsp" />
 	
- 	<jsp:include page="listTest.jsp" />
- 	
  	<%--메인화면에 보여줄 , 메인 사진들 --%>
 	<div class="slideshow-container">
 		<div class="mySlides fade">
@@ -152,6 +150,8 @@ to {
 			onclick="currentSlide(3)"></span> <span class="dot"
 			onclick="currentSlide(4)"></span>
 	</div>
+	
+	<jsp:include page="listTest.jsp" />
 	<script>
 		var slideIndex = 1;
 		showSlides(slideIndex);

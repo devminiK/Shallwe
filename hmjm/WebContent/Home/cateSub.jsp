@@ -8,6 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>세부 카테고리</title>
+<style type="text/css">
+.rank {
+    float: left;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border: 1px #ddd solid;
+    padding: 1px;
+}
+</style>
 </head>
 <%
 	String cate = request.getParameter("c_code");
@@ -35,6 +45,7 @@
 <body>
 <jsp:include page="/Home/header.jsp" />
 <jsp:include page="category.jsp" />
+<div>
 <%if(c == null){ %>
 	미등록 카테고리
 	<%}else{%>
@@ -45,15 +56,16 @@
 			productVO v = (productVO)cateSubList.get(i); 
 			int pn = v.getP_num();
 			classimgVO bb = aa.getImg(pn);%>
-			
+			<div class="rank">
 			수업번호::<%=v.getP_num() %>
 			수업이름::<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=v.getP_num()%>"><%=v.getP_classname() %></a><br>
-			<img src="/hmjm/Images/Classimg/<%=bb.getCi_name() %>" width="10%"/>
+			<img src="/hmjm/Images/Classimg/<%=bb.getCi_name() %>" width="100%"/>
+			</div>
 		<%}%>
 	<%}%>
 	<%}%>
-	
-	
+
+	</div>
 	
 <jsp:include page="/Home/footer.jsp" />	
 </body>

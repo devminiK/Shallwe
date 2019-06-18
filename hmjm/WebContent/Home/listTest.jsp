@@ -35,37 +35,50 @@ classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
 <head>
 <meta charset="UTF-8">
 <title>강의목록 테스트</title>
+<style type="text/css">
+.rank {
+    float: left;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border: 1px #ddd solid;
+    padding: 1px;
+ 
+}
+</style>
 </head>
 <body>
-<p>강의목록 테스트</p>
-<p>등록강좌수:<%=count %></p>
+<div align="center">
+	<p>강의목록 테스트</p>
+	<p>등록강좌수:<%=count %></p>
 
 
 <%if (count == 0 ){%>
 	<p>등록된 강의가 없습니다<p>
+	
 <%}else{%>
-	<table><% 
+	<% 
 	for(int i = 0 ; i <productList.size(); i++){
 		productVO vo = (productVO)productList.get(i); 
 		int pn = vo.getP_num();
 		classimgVO bb = aa.getImg(pn);%>
 	
-		<tr>
-		
-		<td><%=number-- %></td>
-		<td><%=vo.getP_num()%></td>
-		<td>강의이름 :
+	
+		<div class="rank">
+		<%=number-- %>
+		<%=vo.getP_num()%>
+		강의이름 :
 		<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=vo.getP_num()%>& pageNum=<%=currentPage %>"><%=vo.getP_classname() %></a>
-		<img src="/hmjm/Images/Classimg/<%=bb.getCi_name() %>" width="10%"/>
 		
-		</td>
-		</tr>
+		<img src="/hmjm/Images/Classimg/<%=bb.getCi_name() %>" width="100%"/>
+		</div>
+	
 	<% }%>
-</table>	
-
+	
 <%}%>
-
-
+</div>
+	<br><br>
+ 
 <%
     if (count > 0) {
         int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
@@ -76,6 +89,7 @@ classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
         if (endPage > pageCount) endPage = pageCount;
         
         if (startPage > 10) {    %>
+       
         <a href="listTest.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
@@ -84,12 +98,11 @@ classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
         }
         if (endPage < pageCount) {  %>
         <a href="listTest.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
-<%
-        }
-    }
-%>
+        
+	<% }
+    } %>
 
-
+	
 
 </body>
 </html>

@@ -18,7 +18,7 @@ body {
 /*전체 nav bar*/
 .navbar {
 	width:1080px;
-	height:240px;
+	height:100px;
 	margin: 0 180px;
   overflow: hidden;
   background-color: white; /*white*/
