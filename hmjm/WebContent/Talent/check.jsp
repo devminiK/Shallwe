@@ -137,6 +137,9 @@
 	</div>
 		<br>
 	<div>
+		<%if(t == null){%>
+		<h1>시간 미등록 튜터입니다.쪽니나 이메일로 문의하세요</h1>
+		<%}else{%>
 		<div>
 			<p>위치<input type="text"  name="b_place" value="<%=t.getCt_place()%>" ></p>
 		</div>
@@ -174,8 +177,8 @@
 			<%if(t.getCt_day()==null){%>
 			<%}else{%>
 			데이수업<%=t.getCt_day() %>
-			<%} %>
-			
+			<%}%>
+		<%}%>
 					
 			<p>요일<input type="text"  name="b_day" ></p>
 		</div>

@@ -70,15 +70,47 @@
 	<%if(t == null){ %>
 	<h1> 시간 미등록 튜터</h1>
 	<%}else{ %>
-			<%if(t.getCt_mon()==null){%><%}else{%>월: <%=t.getCt_mon() %><%} %>
-			<%if(t.getCt_tue()==null){%><%}else{%>화: <%=t.getCt_tue() %><%} %>
-			<%if(t.getCt_wed()==null){%><%}else{%>수: <%=t.getCt_wed() %><%} %>
-			<%if(t.getCt_thu()==null){%><%}else{%>목: <%=t.getCt_thu() %><%} %>
-			<%if(t.getCt_fri()==null){%><%}else{%>금: <%=t.getCt_fri() %><%} %>
-			<%if(t.getCt_sta()==null){%><%}else{%>토: <%=t.getCt_sta() %><%} %>
-			<%if(t.getCt_sun()==null){%><%}else{%>일: <%=t.getCt_sun() %><%} %>
-			<%if(t.getCt_day()==null){%><%}else{%>데이수업<%=t.getCt_day() %><%} %>
-	<%} %>
+			<%if(t.getCt_mon()==null){%>
+			<%}else{%>
+				월: <%=t.getCt_mon()%>
+			<%}%>
+			
+			<%if(t.getCt_tue()==null){%>
+			<%}else{%>
+				화: <%=t.getCt_tue()%>
+				<%}%>
+				
+			<%if(t.getCt_wed()==null){%>
+			<%}else{%>
+				수: <%=t.getCt_wed()%>
+			<%}%>
+			
+			<%if(t.getCt_thu()==null){%>
+			<%}else{%>
+				목: <%=t.getCt_thu()%>
+			<%}%>
+			
+			<%if(t.getCt_fri()==null){%>
+			<%}else{%>
+				금: <%=t.getCt_fri() %>
+			<%}%>
+			
+			<%if(t.getCt_sta()==null){%>
+			<%}else{%>
+				토: <%=t.getCt_sta()%>
+			<%}%>
+			
+			<%if(t.getCt_sun()==null){%>
+			<%}else{%>
+				일: <%=t.getCt_sun() %>
+				<% %>
+				
+			<%if(t.getCt_day()==null){%>
+			<%}else{%>
+				데이수업<%=t.getCt_day()%>
+			<%}%>
+	<%}%>
+	<%}%>
 <%-- 	
 <% 
 	}catch(Exception e){} 

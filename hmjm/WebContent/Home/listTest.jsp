@@ -48,15 +48,14 @@ classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
 	for(int i = 0 ; i <productList.size(); i++){
 		productVO vo = (productVO)productList.get(i); 
 		int pn = vo.getP_num();
-		classimgVO bb = aa.getImg(pn);
-%>	
+		classimgVO bb = aa.getImg(pn);%>
+	
 		<tr>
 		
 		<td><%=number-- %></td>
 		<td><%=vo.getP_num()%></td>
 		<td>강의이름 :
-		<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=vo.getP_num()%>
-		& pageNum=<%=currentPage %>"><%=vo.getP_classname() %></a>
+		<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=vo.getP_num()%>& pageNum=<%=currentPage %>"><%=vo.getP_classname() %></a>
 		<img src="/hmjm/Images/Classimg/<%=bb.getCi_name() %>" width="10%"/>
 		
 		</td>

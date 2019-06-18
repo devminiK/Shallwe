@@ -88,16 +88,19 @@ body, html {
 function openPage(pageName,elmnt,color) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
+  
   for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
+    tabcontent[i].style.display = "none";}
+  
   tablinks = document.getElementsByClassName("tablink");
+  
   for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
+    tablinks[i].style.backgroundColor = "";}
+  
   document.getElementById(pageName).style.display = "block";
   elmnt.style.backgroundColor = color;
-}
+  
+  }
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
@@ -111,14 +114,12 @@ document.getElementById("defaultOpen").click();
 		productVO vo = dbPro.getProduct(num);
 		productVO p = dbPro.getProduct2(id);
 
-		
 		//String p = vo.getP_email();
 		//boolean result = id.equals(p);
 		
 		buyDAO buyer = buyDAO.getInstance();
 		buyVO b = buyer.getBuy(id);
 		//String e = b.getB_email();
-	
 		//boolean result2 = id.equals(e);
 		
 %>
@@ -133,7 +134,7 @@ document.getElementById("defaultOpen").click();
   <p>
   	<% if(p == null){%>
   			아직 당신의 수업이 없어요
-			<% }else{%>
+		<%}else{%>
 			
 			강의제목:::::::: <%=vo.getP_classname() %><br>
 			강사소개:::::::: <%=vo.getP_self() %><br>
@@ -146,15 +147,10 @@ document.getElementById("defaultOpen").click();
   <h3>내가 신청한 수업</h3>
   <p>
   	<% if(b == null){%>
-  			신청한 수업이 없습니다
-			
-			<% }else{%>
-			
+  			신청한 수업이 없습니다	
+		<% }else{%>
 			강의제목:::::::: <%=b.getB_classname() %><br>
 				<%}%>
-  
-  
-  
   
   </p>
 
