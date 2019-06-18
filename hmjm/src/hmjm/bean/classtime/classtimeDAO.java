@@ -48,9 +48,8 @@ public class classtimeDAO {
 	private String ct_day;
 	 * */
 
-	//작성한 수업 시간  DB에 삽입, -ok
+	//삽입 -ok
 	public void insertClasstime(classtimeVO classtime) {	    
-
 		String sql="";
 		try {
 			conn = getConnection(); 
@@ -142,6 +141,32 @@ public class classtimeDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return vo;
+	}
+	
+	//0618.해당지역(번호)를 가진 상품 갯수 알기-ing
+	public int getRegionCount(String ct_place) {
+		int resultCnt =0;
+		String sql ="";
+		try {
+			conn = getConnection(); 
+			
+			sql = "select count(*)from classtime where ct_place=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,ct_place);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				resultCnt = rs.getInt(1);	//첫번째 칼럼 값 꺼내기
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs != null) try { rs.close(); } catch(SQLException e) {}
+			if(pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
+			if(conn != null) try { conn.close(); } catch(SQLException e) {}
+		}
+		return resultCnt;
+		
 	}
 
 }

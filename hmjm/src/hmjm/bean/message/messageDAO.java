@@ -170,4 +170,71 @@ public class messageDAO {
 		return x;
 	}
 	
+	/***** 보낸 쪽지 *****/
+	//내가 보낸 쪽지 목록
+	public List<messageVO> getSend(int start, int end, String sender) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<messageVO> sendList=null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update message set s_count=s_count+1");
+			pstmt.executeQuery();
+			pstmt = conn.prepareStatement(
+					"select s_num,s_count,s_content,s_reg,s_send,s_receive,r "
+					+ " from (select s_num,s_count,s_content,s_reg,s_send,s_receive,rownum r "
+					+ " from (select * from message where s_send=? order by s_reg desc) "
+					+ " order by s_reg desc) where r>=? and r<=?");
+			pstmt.setString(1, sender);		
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rs = pstmt.executeQuery();
+					if (rs.next()) {
+						sendList = new ArrayList(); 
+						do{ 
+							messageVO send= new messageVO();
+							send.setS_num(rs.getInt("s_num"));
+							send.setS_count(rs.getInt("s_count"));
+							send.setS_content(rs.getString("s_content"));
+							send.setS_reg(rs.getTimestamp("s_reg"));
+							send.setS_send(rs.getString("s_send"));
+							send.setS_receive(rs.getString("s_receive"));
+							sendList.add(send); 
+						}while(rs.next());
+					}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return sendList;
+	}
+	
+	//보낸 쪽지 갯수 확인
+	public int getSendCount(String sender) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x=0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*) from message where s_send=?");
+			pstmt.setString(1, sender);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return x; 
+	}
+	
 }

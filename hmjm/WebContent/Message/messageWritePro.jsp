@@ -12,9 +12,8 @@
 	String id = (String)session.getAttribute("loginId");
 	messageDAO dbPro = messageDAO.getInstance();
     dbPro.insertArticle(message);
-    //response.sendRedirect("/hmjm/Message/message.jsp");
 %>
 <script>
 	alert("쪽지 발송 완료!");
-	history.go(-2);
+	window.location="/hmjm/Message/sendMessage.jsp";
 </script>

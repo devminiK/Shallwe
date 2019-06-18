@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>실시간 문의 - 쉘위</title>
+<title>쪽지 - 쉘위</title>
 <style>
 	.top{
 		background-color:#FF007F;
@@ -43,17 +43,17 @@
 <body>
 	<div class="content">
 		 <div class="top" >
-			<img src="../images/logo.png" width="100px" >
+			<img src="/hmjm/Images/logo.png" width="100px" >
 			<span>실시간으로 간편하게 문의하세요!</span>
 			<span onclick="javascript:window.close();">×</span>
 		</div>
 		<div class="row" >
-			<div class="rowele1 btntxt"><a class="btntxt" href="Qnatutee.jsp">수강생</a></div>
-			<div class="rowele2 btntxt"><a class="btntxt" href="Qnatutor.jsp">튜터</a></div>
+			<div class="rowele1 btntxt"><a class="btntxt" href="/hmjm/Message/message.jsp">받은쪽지</a></div>
+			<div class="rowele2 btntxt"><a class="btntxt" href="/hmjm/Message/sendMessage.jsp">보낸쪽지</a></div>
 		</div>
 		<div class="bottom">
 			<%--수강생, 문의가 있으면 리스트로 보여준다. --%>
-			<p>문의가 없습니다.</p>
+			<p>문의가 없습니다?</p>
 		</div>
 	</div>
 </body>
