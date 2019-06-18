@@ -134,8 +134,12 @@ if(id != null){ //로그인 상태일 때
 }else{%> <!-- 로그아웃 상태면 출력 -->
 	<p>로그인 좀...</p>
 <%}%>
-<%if(id.equals("admin")){ %>
+
+<%
+if(id!=null){
+if(id.equals("admin")){ %>
 	<jsp:include page="/Review/reviewWriteForm.jsp"/>
+<%} %>
 <%} %>
 </body>
 </html>

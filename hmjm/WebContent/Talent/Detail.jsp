@@ -1,3 +1,4 @@
+<%@page import="oracle.net.aso.b"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ page import = "hmjm.bean.product.*" %>
 <%@ page import = "hmjm.bean.buy.*" %>
@@ -17,7 +18,9 @@
 	
 		int num = Integer.parseInt(request.getParameter("p_num"));
 		String pageNum = request.getParameter("pageNum");
-
+		
+		System.out.println("로그인아이디"+id);
+		
 		classtimeDAO time = classtimeDAO.getInstance();
 		classtimeVO t = time.getClasstime(num);
 	
@@ -25,18 +28,29 @@
 		classimgVO bb = aa.getImg(num);
 	//내수업인지 신청한 수업인지 구별하기 위해 불러오는 값..테스트중
 		tutorDAO tu = tutorDAO.getInstance();
-		tutorVO e = tu.getMember(id);
+		tutorVO ee = tu.getMember(id);
+		
+		System.out.println("튜터정보**e**"+ee);
 		
 		buyDAO buyer = buyDAO.getInstance();
 		buyVO b = buyer.getBuy(id);
-		buyVO c =buyer.getBuy2(num);
-		int bbb = b.getB_productnumber();
-	//////////////////////////////////////////
+		//buyVO c =buyer.getBuy2(num);
+		System.out.println("구매정보**b**"+b);
+		
+		//System.out.println("구매한경우강의넘버**bbb**"+bbb);
+		
+		
+	
 		productDAO dbPro = productDAO.getInstance();
 		productVO vo = dbPro.getProduct(num);
+		productVO vc = dbPro.getProduct2(id);
 		
-		productVO tutor = dbPro.getProduct2(id);
-		//int ttt = tutor.getP_num();
+		
+		//내가 등록한 강의 번호
+		
+		//System.out.println("등록한경우강의넘버가 아닌가보다**vv**"+vv);
+		
+		
 		
 
 		//사진 불러오기 할려고 했는데 이건 아닌 듯....미완성
@@ -144,32 +158,61 @@
 
 <br>
 <%-- 	오류수정중 0618 건훈
-	if(id==null){
-		신청하기 1단계
-	<%}else{
-		if(b==null){
-			if(e==null){%>
-				신청하기2단계
-			<%}else{
-				if(1>0){%>
-					내강의이다
+	<% if(id!=null){
+		
+		if(e!=null){
+			if(vv==num){%>
+				내가등록한 강의
 				<%}else{%>
-					신청하기3단계
-				<%}
-			}
-		}else{
-			if(bbb == num){%>
-				내가 신청한 수업이다<%=bbb %>
-			<%}else{%>
-				신청하기4단계
-			<%}
-		}
-	}--%>
-	
-	<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">신청하기</a>
+					신청하기
+					<%}
+			}else{
+				if(b!=null){
+				if(bbb==num){%>
+					내가 신청한 강의
+					<%}else{%>
+						신청하기
+						<%}
+					}
+				}			
+		}else{%>
+			<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">신청하기</a>
+			<%}%>
+			--%>
+<% try{%>		
+	<%if(id==null){%>
+		신청하기
+		<% }else{
+			if(ee==null){
+				if(b==null){%>
+					튜터가 아니고 구매이력도 없는 신청하기
+						<%}else{
+							int bbb = b.getB_productnumber();
+							if(bbb!=num){%>
+								튜터아니고 구매이력있지만 이건아님 >>신청하기
+								<%}else if(bbb==num){%>
+									내가 신청한 강의							
+									<%}
+								}
+					}else{
+						int vv = vc.getP_num();
+						if(vv!=num){%>
+							튜터인데  내가 등록한 강의가 아니라신청하기 
+							<%}else{
+								if(vv==num){%>
+									내가 등록한 강의
+									<%}
+								}
+							}
+						}%>
+<% 
+	}catch(Exception e){} 
+%>							
+						
+						
 <br>
 <br>
-<jsp:include page="/Review/review.jsp?p_num=<%=num%> %>"/>
+<jsp:include page="/Review/review.jsp?p_num=<%=num%>" />
 <jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
