@@ -33,20 +33,6 @@ public class classtimeDAO {
 		catch(Exception e){ e.printStackTrace(); }
 		return conn;
 	}
-	//삽입, 수정, 삭제, 조회 기능 필요
-	/*
-	private int ct_num;
-	private int ct_classnum;
-	private String ct_place;
-	private String ct_mon;
-	private String ct_tue;
-	private String ct_wed;
-	private String ct_thu;
-	private String ct_fri;
-	private String ct_sta;
-	private String ct_sun;
-	private String ct_day;
-	 * */
 
 	//삽입 -ok
 	public void insertClasstime(classtimeVO classtime) {	    
@@ -143,7 +129,7 @@ public class classtimeDAO {
 		return vo;
 	}
 	
-	//0618.해당지역(번호)를 가진 상품 갯수 알기-ing
+	//0618.해당지역(번호)를 가진 상품 갯수 알기-ok
 	public int getRegionCount(String ct_place) {
 		int resultCnt =0;
 		String sql ="";
@@ -166,6 +152,33 @@ public class classtimeDAO {
 			if(conn != null) try { conn.close(); } catch(SQLException e) {}
 		}
 		return resultCnt;
+		
+	}
+	//'xx'지역에서 하는 수업 번호 가져오기 (결과 값은 여러개일것)
+	public  List<String> getClassNumFromRegin(String ct_place) {
+		List<String> classnum = null;
+		
+		String sql ="";
+		try { 
+			conn = getConnection(); 
+			
+			sql = "select ct_classnum from classtime where ct_place=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,ct_place);
+			rs = pstmt.executeQuery();
+			
+			classnum = new ArrayList();
+			while(rs.next()) {
+				classnum.add(rs.getString(1));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs != null) try { rs.close(); } catch(SQLException e) {}
+			if(pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
+			if(conn != null) try { conn.close(); } catch(SQLException e) {}
+		}
+		return classnum;
 		
 	}
 
