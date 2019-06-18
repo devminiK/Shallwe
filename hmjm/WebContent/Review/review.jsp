@@ -1,9 +1,13 @@
-<%@ page contentType = "text/html; charset=UTF-8" %>
-<%@ page import = "hmjm.bean.review.*" %>
-<%@ page import = "hmjm.bean.product.*" %>
-<%@ page import = "java.util.List" %>
-<%@ page import = "java.text.SimpleDateFormat" %>
-<% request.setCharacterEncoding("UTF-8");%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="hmjm.bean.review.reviewDAO"%>
+<%@ page import="hmjm.bean.review.reviewVO"%>
+<%@ page import="hmjm.bean.product.productDAO"%>
+<%@ page import="hmjm.bean.product.productVO"%>
+<%@ page import="hmjm.bean.buy.buyDAO"%>
+<%@ page import="hmjm.bean.buy.buyVO"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%request.setCharacterEncoding("UTF-8");%>
 <%!
     int pageSize = 10; //한 화면에 보여줄 리스트 갯수
 %>
@@ -32,6 +36,8 @@
 
 	int rcount = 0; //판매글 리뷰 갯수 초기화
 	rcount = dbPro.reviewCount(pnum);
+	
+	
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -105,17 +111,34 @@ if (count > 0) {
 }%>
 <br/><br/>
 <%
-// 로그인한 상태 + 해당 판매글의 리뷰 중 로그인한 아이디와 일치하는 아이디가 없으면 리뷰 작성폼을 보여줌
+/*
+1. 로그인 확인
+2. buy테이블에서 b_email 확인 
+3. 리뷰 작성 아이디 중복확인
+로그인 true, b_email true , 중복 false 일때 reviewWriteForm include  
+*/
+
+//리뷰 작성 아이디 중복확인
 reviewDAO chk = reviewDAO.getInstance();
 int check = chk.checkArticle(pnum, id);
-if(id!=null){
-	if(check == 0){%> 
-		<jsp:include page="/Review/reviewWriteForm.jsp"/>
-	<%}else{%>
+
+//구매자확인
+buyDAO bdao = buyDAO.getInstance();
+//boolean bcheck = bdao.buyCheck(id);
+
+if(id!=null){ //로그인아이디가 null이 아닐 때
+	if(check == 0){ //작성된 리뷰 중 중복 아이디가 없을 때
+		if(check==0){%> <!-- 구매확인 true일때 -->
+			<jsp:include page="/Review/reviewWriteForm.jsp"/>
+		<%}else{%> <!-- 구매자가 아닐경우 출력 -->
+			<p>강의 신청부터...</p>
+		<%}	
+	}else{%> <!-- 중복아이디가 있으면 출력 -->
 		<p>리뷰는 한번만...</p>
-<%}}else{%>
+	<%}
+}else{%> <!-- 로그아웃 상태면 출력 -->
 	<p>로그인 좀...</p>
-<%} %>
+<%}%>
 
 </body>
 </html>

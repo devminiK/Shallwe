@@ -25,6 +25,7 @@
 <%}else{ %>
 	<script>
 		alert("누구세요");
+		window.location="/hmjm/Home/main.jsp";
 	</script>
 <%} %>
 </body>

@@ -15,7 +15,7 @@
 	ID : <input type="text" name="aid" id="aid"/>
 	PW : <input type="password" name="apw" id="apw"/><br/>
 	<input type="submit" value="LogIn"/>
-	<input type="button" value="Cancel" onclick="window.location='/hmjm/Home/main.jsp'"/>
+	<input type="button" value="Home" onclick="window.location='/hmjm/Home/main.jsp'"/>
 </form>
 <%}else{%>
 	<input type="button" value="Admin Main" onclick="window.location='/hmjm/Admin/adminMain.jsp'"/>
