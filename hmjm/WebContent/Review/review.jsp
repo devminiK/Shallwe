@@ -3,8 +3,6 @@
 <%@ page import="hmjm.bean.review.reviewVO"%>
 <%@ page import="hmjm.bean.product.productDAO"%>
 <%@ page import="hmjm.bean.product.productVO"%>
-<%@ page import="hmjm.bean.buy.buyDAO"%>
-<%@ page import="hmjm.bean.buy.buyVO"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%request.setCharacterEncoding("UTF-8");%>
@@ -121,14 +119,11 @@ if (count > 0) {
 //리뷰 작성 아이디 중복확인
 reviewDAO chk = reviewDAO.getInstance();
 int check = chk.checkArticle(pnum, id);
+int bcheck = chk.buyCheck(pnum, id);
 
-//구매자확인
-buyDAO bdao = buyDAO.getInstance();
-//boolean bcheck = bdao.buyCheck(id);
-
-if(id!=null){ //로그인아이디가 null이 아닐 때
+if(id != null){ //로그인 상태일 때
 	if(check == 0){ //작성된 리뷰 중 중복 아이디가 없을 때
-		if(check==0){%> <!-- 구매확인 true일때 -->
+		if(bcheck != 0){%> <!-- 구매확인 true일때 -->
 			<jsp:include page="/Review/reviewWriteForm.jsp"/>
 		<%}else{%> <!-- 구매자가 아닐경우 출력 -->
 			<p>강의 신청부터...</p>

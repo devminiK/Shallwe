@@ -243,7 +243,7 @@ public class reviewDAO {
 		return x;
 	}
 	
-	//판매글에 특정 계정이 리뷰를 작성했는지 확인
+	//판매글에 현재 계정이 리뷰를 작성했는지 확인
 	public int checkArticle(int prnum, String id) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -268,6 +268,33 @@ public class reviewDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 		return check;
+	}
+	
+	//판매글에 현재 계정이 구매자인지 확인 - buy 테이블 이용
+	public int buyCheck(int prnum, String id) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int bcheck = 0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					" select count (*) from (select * from buy where b_productnumber=?) "
+					+ " where b_email=? "); 
+			pstmt.setInt(1, prnum);
+			pstmt.setString(2, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				bcheck = rs.getInt(1);
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return bcheck;
 	}
 	
 	//판매글의 리뷰 갯수 확인 (페이지설정용)
