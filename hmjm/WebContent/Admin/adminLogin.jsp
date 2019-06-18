@@ -20,7 +20,8 @@
 <%}else{%>
 	<input type="button" value="Admin Main" onclick="window.location='/hmjm/Admin/adminMain.jsp'"/>
 	<input type="button" value="Home" onclick="window.location='/hmjm/Home/main.jsp'"/>
-	<input type="button" value="Admin Logout" onclick="document.location.href='/hmjm/Admin/adminLogout.jsp'"/>
+	<input type="button" value="관리자에게 쪽지보내기" onClick="window.open('/hmjm/Admin/adminMessageForm.jsp','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=620,height=600')"/>
+	<input type="button" value="Logout" onclick="document.location.href='/hmjm/Admin/adminLogout.jsp'"/>
 <%}%>
 
 </body>

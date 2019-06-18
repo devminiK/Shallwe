@@ -5,6 +5,6 @@
 %>
 
 <script>
-	alert("Goodbye Admin");
+	alert("Goodbye");
 	window.location="/hmjm/Admin/adminLogin.jsp";
 </script>

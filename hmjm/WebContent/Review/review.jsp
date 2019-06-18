@@ -81,7 +81,7 @@
 			<td align="center">
 			<%String login = article.getR_name();
 			if (id!=null){
-				if(id.equals(login)) {%>
+				if(id.equals(login) || id.equals("admin")) {%>
 					<input type="button" value="수정" 
 						onclick="document.location.href='/hmjm/Review/reviewUpdateForm.jsp?num=<%=article.getR_num()%>&pageNum=<%=pageNum%>&p_num=<%=pnum%>'"/>
 					<input type="button" value="삭제" 
@@ -134,7 +134,9 @@ if(id != null){ //로그인 상태일 때
 }else{%> <!-- 로그아웃 상태면 출력 -->
 	<p>로그인 좀...</p>
 <%}%>
-
+<%if(id.equals("admin")){ %>
+	<jsp:include page="/Review/reviewWriteForm.jsp"/>
+<%} %>
 </body>
 </html>
 
