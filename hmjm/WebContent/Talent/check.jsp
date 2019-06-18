@@ -98,7 +98,7 @@
 %>
 	
 <body>
-	
+<jsp:include page="/Home/header.jsp" />	
 	<%if(session.getAttribute("loginId") != null){%>
 	
 	<!--  넘어온 수업정보를 넘기는 폼인것 같은데 아직 확실히 잘 모르겠음
@@ -203,5 +203,6 @@
 					
 			<%}%>
 	</form>
+<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
