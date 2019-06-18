@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>실시간 문의 - 쉘위</title>
+<title>쪽지 - 쉘위</title>
 <style>
 	.top{
 		background-color:#FF007F;
@@ -47,8 +47,8 @@
 			<span onclick="javascript:window.close();">×</span>
 		</div>
 		<div class="row" >
-			<div class="rowele2"><a class="btntxt" href="Qnatutee.jsp">수강생</a></div>
-			<div class="rowele1"><a class="btntxt" href="Qnatutor.jsp">튜터</a></div>
+			<div class="rowele2"><a class="btntxt" href="/hmjm/Message/message.jsp">받은쪽지</a></div>
+			<div class="rowele1"><a class="btntxt" href="/hmjm/Message/sendMessage.jsp">보낸쪽지</a></div>
 		</div>
 		<div class="bottom">
 			<%--튜터, 문의가 있으면 리스트로 보여준다. --%>

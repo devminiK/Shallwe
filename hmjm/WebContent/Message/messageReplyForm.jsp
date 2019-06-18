@@ -18,7 +18,6 @@
     messageDAO dbPro = messageDAO.getInstance();
     messageVO vo = dbPro.getArticle(snum);
 %>
-<jsp:include page="/Home/header.jsp"/>
 <body>
 <h2>쪽지 답장하기</h2>
 <form method="post" name="messageReplyForm" action="/hmjm/Message/messageWritePro.jsp">
@@ -47,6 +46,5 @@
 	</table>    
 <%}catch(Exception e){}%>     
 </form>
-<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>      

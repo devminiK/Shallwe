@@ -135,7 +135,7 @@
   		statebarName ="회원가입";	
   		stateURL="/hmjm/Register/register.jsp";
 	}else{
-		loginbarName="실시간 톡";	//로그아웃기능은, 수업신청서안에서 사용할것_by.sm
+		loginbarName="쪽지";	//로그아웃기능은, 수업신청서안에서 사용할것_by.sm
 		logURL="/hmjm/My/qnatutee.jsp";
 		
 		statebarName ="수업신청서";	
@@ -168,10 +168,6 @@
 				<%}%>
 				<a href="/hmjm/Tutor/Register/menu.jsp">튜터등록</a><!-- 등록페이지로 이동하게 수정 -->
 				<a href="<%=stateURL%>"><%=statebarName%></a>
-				
-				<a href="#" onClick="window.open('/hmjm/Message/message.jsp','_blank',
-					'toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=620,height=600')">쪽지</a>
-				
 				<%
 					if(session.getAttribute("loginId")== null){%>
 						<a href="<%=logURL%>"><%=loginbarName %></a>
