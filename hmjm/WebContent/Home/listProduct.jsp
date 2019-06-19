@@ -90,14 +90,14 @@ classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
         
         if (startPage > 10) {    %>
        
-        <a href="listTest.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+        <a href="listProduct.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 <%      }
         for (int i = startPage ; i <= endPage ; i++) {  %>
-        <a href="listTest.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+        <a href="listProduct.jsp?pageNum=<%= i %>">[<%= i %>]</a>
 <%
         }
         if (endPage < pageCount) {  %>
-        <a href="listTest.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+        <a href="listProduct.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
         
 	<% }
     } %>
