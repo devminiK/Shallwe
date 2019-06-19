@@ -68,7 +68,7 @@ classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
 		<%=number-- %>
 		<%=vo.getP_num()%>
 		강의이름 :
-		<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=vo.getP_num()%>& pageNum=<%=currentPage %>"><%=vo.getP_classname() %></a>
+		<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=vo.getP_num()%>&pageNum=<%=currentPage %>"><%=vo.getP_classname() %></a>
 		
 		<img src="/hmjm/Images/Classimg/<%=bb.getCi_name() %>" width="100%"/>
 		</div>
@@ -77,7 +77,7 @@ classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
 	
 <%}%>
 </div>
-	<br><br>
+	
  
 <%
     if (count > 0) {

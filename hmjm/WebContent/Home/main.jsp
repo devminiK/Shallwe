@@ -183,6 +183,7 @@ to {
 	
 
 	<%--footer --%>
+	<br/>
 	<jsp:include page="footer.jsp" />
 	
 
