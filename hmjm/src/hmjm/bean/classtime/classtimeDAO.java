@@ -93,7 +93,7 @@ public class classtimeDAO {
 
 
 
-	//0618.해당지역(번호)를 가진 상품 갯수 알기-ok
+	//0618.해당지역(번호)로 상품 갯수 알기-성민ok
 	public int getRegionCount(String ct_place) {
 		int resultCnt =0;
 		String sql ="";
@@ -118,8 +118,9 @@ public class classtimeDAO {
 		return resultCnt;
 
 	}
+	
 
-	//'xx'지역에서 하는 수업 번호 가져오기 (결과 값은 여러개일것)_ok
+	//'xx'지역에서 하는 수업 번호 가져오기 (결과 값은 여러개일것)_성민ok
 	public  List<String> getClassNumFromRegin(String ct_place) {
 		List<String> classnum = null;
 

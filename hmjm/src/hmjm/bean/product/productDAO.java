@@ -65,7 +65,7 @@ public class productDAO {
 		}
 	}
 	
-		//상품 번호로 정보를 꺼내오기_성민ing
+		//상품 번호로 정보를 꺼내오기_성민ok
 		public productVO getProduct(int p_num)
 				throws Exception{
 			Connection conn = null;
