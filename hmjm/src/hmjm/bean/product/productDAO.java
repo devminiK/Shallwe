@@ -109,7 +109,7 @@ public class productDAO {
 
 	//해당 번호의 수업 정보를 가져온다. _현재  파라미터 이메일로 함, 추후 p_num으로 변경할 것 -..?
 		//e_mail로 정보 꺼내고 있는 중
-	public productVO getProduct2(String p_email)
+	public productVO getProduct2(String id,int num)
 			throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -118,8 +118,9 @@ public class productDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select * from product where p_email = ?");
-			pstmt.setString(1, p_email);
+					"select * from product where p_email = ? and p_num=?");
+			pstmt.setString(1,id);
+			pstmt.setInt(2, num);
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {

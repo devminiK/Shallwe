@@ -43,7 +43,7 @@
 	
 		productDAO dbPro = productDAO.getInstance();
 		productVO vo = dbPro.getProduct(num);
-		productVO vc = dbPro.getProduct2(id);
+		productVO vc = dbPro.getProduct2(id,num);
 		
 		
 		//내가 등록한 강의 번호
