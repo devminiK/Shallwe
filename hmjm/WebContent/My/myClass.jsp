@@ -3,6 +3,7 @@
 <%@ page import = "hmjm.bean.member.*" %>
 <%@ page import = "hmjm.bean.product.*" %>
 <%@ page import = "hmjm.bean.buy.*" %>
+<%@ page import = "java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -122,6 +123,27 @@ document.getElementById("defaultOpen").click();
 		//String e = b.getB_email();
 		//boolean result2 = id.equals(e);
 		
+		int pageSize = 10;
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum == null) {pageNum = "1";}
+
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage - 1) * pageSize + 1;	// 시작페이지 카운트
+		int endRow = currentPage * pageSize;  	// 1~10까지 가져오기위한거
+		int count = 0;
+		int number=0;
+		//튜터강의 목록
+		List tutorProductList = null;
+		count = dbPro.getProductCount();
+		if (count > 0) {
+			tutorProductList = dbPro.getProductTutor(id,startRow, endRow);}
+		
+		//구매목록
+		List productbuyList =null;
+			count = buyer.buyCount();
+			if (count > 0) {
+				productbuyList = buyer.getBuyList(id, startRow, endRow);}
+		
 %>
 <body>
 	<jsp:include page="/Home/header.jsp"/>
@@ -134,12 +156,15 @@ document.getElementById("defaultOpen").click();
   <p>
   	<% if(p == null){%>
   			아직 당신의 수업이 없어요
-		<%}else{%>
-			
-			강의제목:::::::: <%=vo.getP_classname() %><br>
-			강사소개:::::::: <%=vo.getP_self() %><br>
-			카테고리:::::::: <%=vo.getP_category() %><br>
-				<%}%>
+		<%}else{
+			 for(int i = 0 ; i <tutorProductList.size(); i++){
+				
+				productVO tu = (productVO)tutorProductList.get(i);%>
+				수업번호::<%=tu.getP_num() %><br>
+				수업이름::<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=tu.getP_num()%>"><%=tu.getP_classname() %></a>
+				<br><br>
+			<%}%>
+		<%}%>
 			
   </p>
 </div>
@@ -149,8 +174,13 @@ document.getElementById("defaultOpen").click();
   	<% if(b == null){%>
   			신청한 수업이 없습니다	
 		<% }else{%>
-			강의제목:::::::: <%=b.getB_classname() %><br>
+			<% for(int i = 0 ; i <productbuyList.size(); i++){
+				buyVO bb = (buyVO)productbuyList.get(i);%>
+				수업번호::<%=bb.getB_num() %><br>
+				수업이름::<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=bb.getB_productnumber()%>"><%=bb.getB_classname() %></a>
+				<br><br>
 				<%}%>
+		<%}%>
   
   </p>
 

@@ -67,11 +67,11 @@ a {
 		<tr>
 			<td class="section">
 			<%if(e == null){ %>
-				<%--등록한 이미지사진 불러오기 --%> <img src="../Images/TutorImg/user.png"
+				<%--등록한 이미지사진 불러오기 --%> <img src="/hmjm/Images/TutorImg/user.png"
 				width="50%"/><%=preUser %><br>
 				튜터: 미등록<br>
 				<%} else {%>
-				<%--등록한 이미지사진 불러오기 --%> <img src="../Images/TutorImg/<%=e.getT_selfimg()%>"
+				<%--등록한 이미지사진 불러오기 --%> <img src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"
 				width="50%"/> <%--해당 이메일의 닉네임 --%> <%=c.getM_name()%> 님<br>
 				 <a href="/hmjm/Tutor/Register/menu.jsp">튜터 정보 수정</a><br>
 				<%}%>
@@ -95,7 +95,7 @@ a {
 							<p>수업을 신청하세요^^</p>
 							<%}else{ %>
 						<p>수업이름: <%=b.getB_classname() %></p>
-						<p>수업번호: <a href ="../Talent/Detail.jsp?p_num=<%=b.getB_productnumber() %>"><%=b.getB_productnumber() %></a> </p>
+						<p>수업번호: <a href ="/hmjm/Talent/Detail.jsp?p_num=<%=b.getB_productnumber() %>"><%=b.getB_productnumber() %></a> </p>
 						<p>상세보기: <a href ="/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber() %>">테스트경로</a> </p>
 							<%}%>
 					</div>
@@ -106,7 +106,7 @@ a {
 							<p>아직 나의 수업이 없어요</p>
 							<%}else{%>
 							<p>수업이름: <%=p.getP_classname() %></p>
-							<p>수업번호: <a href ="../Talent/Detail.jsp?p_num=<%=p.getP_num() %>"><%=p.getP_num() %></a> </p>
+							<p>수업번호: <a href ="/hmjm/Talent/Detail.jsp?p_num=<%=p.getP_num() %>"><%=p.getP_num() %></a> </p>
 							
 							<p>상세보기: <a href ="/hmjm/My/myClass.jsp?p_num=<%=p.getP_num() %>">테스트경로</a> </p>
 							<%}%>
