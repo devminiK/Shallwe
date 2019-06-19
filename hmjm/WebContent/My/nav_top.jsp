@@ -54,7 +54,7 @@ a {
 	tutorVO e = vo.getMember(preUser);
 	
 	productDAO product = productDAO.getInstance();
-	productVO p = product.getProduct2(preUser);
+	productVO p = product.getProduct4(preUser);
 	
 	buyDAO buyer = buyDAO.getInstance();
 	buyVO b = buyer.getBuy(preUser);

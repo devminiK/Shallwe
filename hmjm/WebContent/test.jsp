@@ -36,7 +36,7 @@
 	productDAO dbPro = productDAO.getInstance();
 	productVO v = dbPro.getProduct(num);
 	
-	productVO tutor = dbPro.getProduct2(id);
+	productVO tutor = dbPro.getProduct4(id);
 	//int ttt = tutor.getP_num();
 %>
 <% 	

@@ -44,6 +44,7 @@
 		productDAO dbPro = productDAO.getInstance();
 		productVO vo = dbPro.getProduct(num);
 		productVO vc = dbPro.getProduct2(id,num);
+		productVO vd = dbPro.getProduct4(id);
 		
 		
 		//내가 등록한 강의 번호
@@ -148,7 +149,7 @@
 
 <br>
 
-<% try{%>		
+		
 <%
 if(id!=null){
 	
@@ -159,15 +160,23 @@ if(id!=null){
 				if(bbb==num){%>
 					튜터o 내가 구매한 강의
 					<%}else{
-						int vv = vc.getP_num();
-						if(vv==num){%>
-							내가 등록한 강의
-							<%}else{%>
-						<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">튜터o구매이력o 신청하기</a>
-							<%}
+							
+							if(vd==null){%>
+									<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
+									튜터o 판매글없다>> 신청하기</a>
+				
+									<%}else{
+										
+										if(vc!=null){%>
+											내가등록한강의
+										<%}else{%>
+											<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
+											튜터o 판매글o 이건 내강의가 아니다>>신청하기</a>
+											<%}
+										}
 						}
 			}else{%>
-				<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">튜터o 구매이력x 신청하기</a>
+				<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">튜터o 구매이력x 신청하기</a>
 				<%}
 
 	}else{
@@ -177,25 +186,22 @@ if(id!=null){
 				if(bbb==num){%>
 					튜터x 내가 구매한 강의
 					<%}else{%>
-						<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">튜터x구매이력o 신청하기</a>
+						<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">튜터x구매이력o 신청하기</a>
 						<%}
 			}else{%>
-				<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">튜터x 구매이력x 신청하기</a>
+				<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">튜터x 구매이력x 신청하기</a>
 				<%}
 
 			}
 	
 	
 	}else{%>
-		<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">비로그인 신청하기</a>
+		<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">비로그인 신청하기</a>
 		<%}
 
 
 %>	
-<% 
-	}catch(Exception e){} 
-%>							
-						
+					
 						
 <br>
 <br>

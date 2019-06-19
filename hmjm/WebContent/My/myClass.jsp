@@ -113,7 +113,7 @@ document.getElementById("defaultOpen").click();
 		int num = Integer.parseInt(request.getParameter("p_num"));
 		productDAO dbPro = productDAO.getInstance();
 		productVO vo = dbPro.getProduct(num);
-		productVO p = dbPro.getProduct2(id);
+		productVO p = dbPro.getProduct4(id);
 
 		//String p = vo.getP_email();
 		//boolean result = id.equals(p);
