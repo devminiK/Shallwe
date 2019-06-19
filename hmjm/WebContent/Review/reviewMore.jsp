@@ -7,7 +7,7 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%request.setCharacterEncoding("UTF-8");%>
 <%!
-    int rpageSize = 5; //한 화면에 보여줄 리스트 갯수
+    int rpageSize = 100; //한 화면에 보여줄 리스트 갯수
 %>
 
 <%
@@ -34,19 +34,21 @@
 
 	int rcount = 0; //판매글 리뷰 갯수 초기화
 	rcount = dbPro.reviewCount(pnum);
+	
+	
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body align="center">
-<b>최근 5개의 리뷰</b>
+<b>모든 리뷰: <%=rcount%>개</b>
 <%if (rcount == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
 	</table>
 
 <%}else{%>
-	<table border="2" width="900" cellpadding="0" cellspacing="0" align="center"> 
+	<table border="2" cellpadding="0" cellspacing="0" align="center"> 
 	<%for (int i = 0 ; i < articleList.size() ; i++) {
 		reviewVO article = (reviewVO)articleList.get(i);%>
 		<tr><td align="center"  width="50" ><%=number--%></td>
@@ -88,44 +90,22 @@
 		</tr>
 	<%}}%>
 </table>
-<br/>
-<input type="button" value="다!" 
-	onClick="window.open('/hmjm/Review/reviewMore.jsp?p_num=<%=pnum%>&rpageNum=<%=rpageNum%>','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=770,height=600')"/>
-<br/><br/>
 <%
-/*
-1. 로그인 확인
-2. buy테이블에서 b_email 확인 
-3. 리뷰 작성 아이디 중복확인
-로그인 true, b_email true , 중복 false 일때 reviewWriteForm include  
-*/
-
-//리뷰 작성 아이디 중복확인
-reviewDAO chk = reviewDAO.getInstance();
-int check = chk.checkArticle(pnum, id);
-int bcheck = chk.buyCheck(pnum, id);
-
-if(id != null){ //로그인 상태일 때
-	if(check == 0){ //작성된 리뷰 중 중복 아이디가 없을 때
-		if(bcheck != 0){%> <!-- 구매확인 true일때 -->
-			<jsp:include page="/Review/reviewWriteForm.jsp"/>
-		<%}else{%> <!-- 구매자가 아닐경우 출력 -->
-			<p>강의 신청부터...</p>
-		<%}	
-	}else{%> <!-- 중복아이디가 있으면 출력 -->
-		<p>리뷰는 한번만...</p>
+if (recount > 0) {
+	int rpageCount = recount / rpageSize + ( recount % rpageSize == 0 ? 0 : 1);
+    int rstartPage = (int)(rcurrentPage/10)*10+1;
+	int rpageBlock=10;
+    int rendPage = rstartPage + rpageBlock-1;
+    if (rendPage > rpageCount) rendPage = rpageCount;
+	if (rstartPage > 10) {%>
+		<a href="/hmjm/Review/reviewMore.jsp?p_num=<%=pnum%>&rpageNum=<%=rstartPage-10%>">[이전]</a>
 	<%}
-}else{%> <!-- 로그아웃 상태면 출력 -->
-	<p>로그인 좀...</p>
-<%}%>
-
-<!-- 관리자 로그인 상태일 때 -->
-<%
-if(id!=null){
-	if(id.equals("admin")){ %>
-		<jsp:include page="/Review/reviewWriteForm.jsp"/>
-	<%} %>
-<%} %>
+	for (int i = rstartPage ; i <= rendPage ; i++) {  %>
+		<a href="/hmjm/Review/reviewMore.jsp?p_num=<%=pnum%>&rpageNum=<%=i%>">[<%=i%>]</a>
+	<%}
+	if (rendPage < rpageCount) {%>
+		<a href="/hmjm/Review/reviewMore.jsp?p_num=<%=pnum%>&rpageNum=<%=rstartPage+10%>">[다음]</a>
+	<%}
+}%>
 </body>
 </html>
-

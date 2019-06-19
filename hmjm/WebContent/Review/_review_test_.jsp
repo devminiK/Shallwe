@@ -34,12 +34,14 @@
 
 	int rcount = 0; //판매글 리뷰 갯수 초기화
 	rcount = dbPro.reviewCount(pnum);
+	
+	
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body align="center">
-<b>최근 5개의 리뷰</b>
+<b>사용자 후기</b>
 <%if (rcount == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
@@ -88,9 +90,23 @@
 		</tr>
 	<%}}%>
 </table>
-<br/>
-<input type="button" value="다!" 
-	onClick="window.open('/hmjm/Review/reviewMore.jsp?p_num=<%=pnum%>&rpageNum=<%=rpageNum%>','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=770,height=600')"/>
+<%
+if (recount > 0) {
+	int rpageCount = recount / rpageSize + ( recount % rpageSize == 0 ? 0 : 1);
+    int rstartPage = (int)(rcurrentPage/10)*10+1;
+	int rpageBlock=10;
+    int rendPage = rstartPage + rpageBlock-1;
+    if (rendPage > rpageCount) rendPage = rpageCount;
+	if (rstartPage > 10) {%>
+		<a href="/hmjm/Talent/Detail.jsp?p_num=<%=pnum%>&rpageNum=<%=rstartPage-10%>">[이전]</a>
+	<%}
+	for (int i = rstartPage ; i <= rendPage ; i++) {  %>
+		<a href="/hmjm/Talent/Detail.jsp?p_num=<%=pnum%>&rpageNum=<%=i%>">[<%=i%>]</a>
+	<%}
+	if (rendPage < rpageCount) {%>
+		<a href="/hmjm/Talent/Detail.jsp?p_num=<%=pnum%>&rpageNum=<%=rstartPage+10%>">[다음]</a>
+	<%}
+}%>
 <br/><br/>
 <%
 /*
