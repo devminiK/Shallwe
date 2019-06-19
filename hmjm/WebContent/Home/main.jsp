@@ -151,7 +151,7 @@ to {
 			onclick="currentSlide(4)"></span>
 	</div>
 	
-	<jsp:include page="listTest.jsp" />
+	<jsp:include page="listProduct.jsp" />
 	<script>
 		var slideIndex = 1;
 		showSlides(slideIndex);

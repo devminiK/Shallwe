@@ -1,11 +1,11 @@
-<%@page import="oracle.net.aso.b"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page language = "java" contentType="text/html; charset=UTF-8" %>
 <%@ page import = "hmjm.bean.product.*" %>
 <%@ page import = "hmjm.bean.buy.*" %>
 <%@ page import = "hmjm.bean.tutor.*" %>
 <%@ page import = "hmjm.bean.classtime.*" %>
 <%@ page import = "hmjm.bean.classimg.*" %>
 <%@ page import = "java.util.List" %>
+<%@ page import = "oracle.net.aso.b"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -180,37 +180,49 @@
 			<%}%>
 			--%>
 <% try{%>		
-	<%if(id==null){%>
-		
-		<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">강의신청</a>
-		<% }else{
-			if(ee==null){
-				if(b==null){%>
-				
-					<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">
-					튜터가 아니고 구매이력도 없는 신청하기</a>
-						<%}else{
-							int bbb = b.getB_productnumber();
-							if(bbb!=num){%>
-								튜터아니고 구매이력있지만 이건아님 >>신청하기
-								<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">
-								튜터아니고 구매이력있지만 이건아님 >>신청하기</a>
-								<%}else if(bbb==num){%>
-									내가 신청한 강의							
-									<%}
-								}
-					}else{
+<%
+if(id!=null){
+	
+	if(ee!=null){
+
+		if(b!=null){int bbb = b.getB_productnumber();
+
+				if(bbb==num){%>
+					튜터o 내가 구매한 강의
+					<%}else{
 						int vv = vc.getP_num();
-						if(vv!=num){%>
-							<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">
-							튜터인데  내가 등록한 강의가 아니라 신청하기 </a>
-							<%}else{
-								if(vv==num){%>
-									내가 등록한 강의
-									<%}
-								}
-							}
-						}%>
+						if(vv==num){%>
+							내가 등록한 강의
+							<%}else{%>
+						<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">튜터o구매이력o 신청하기</a>
+							<%}
+						}
+			}else{%>
+				<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">튜터o 구매이력x 신청하기</a>
+				<%}
+
+	}else{
+	
+			if(b!=null){int bbb = b.getB_productnumber();
+
+				if(bbb==num){%>
+					튜터x 내가 구매한 강의
+					<%}else{%>
+						<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">튜터x구매이력o 신청하기</a>
+						<%}
+			}else{%>
+				<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">튜터x 구매이력x 신청하기</a>
+				<%}
+
+			}
+	
+	
+	}else{%>
+		<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">비로그인 신청하기</a>
+		<%}
+
+
+%>	
 <% 
 	}catch(Exception e){} 
 %>							
