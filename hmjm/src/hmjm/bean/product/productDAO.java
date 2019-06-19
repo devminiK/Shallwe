@@ -35,7 +35,7 @@ public class productDAO {
 
 	
 	
-	//작성한 수업 등록 글 DB에 삽입_ok
+	//작성한 수업 등록 글 DB에 삽입_성민ok
 	public void insertProduct(productVO product) {	    
 		String sql="";
 		try {
@@ -65,16 +65,18 @@ public class productDAO {
 		}
 	}
 	
-	//상품 번호로 정보를 꺼내오기..ing
+		//상품 번호로 정보를 꺼내오기_성민ing
 		public productVO getProduct(int p_num)
 				throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			productVO vo = null;
+			String sql="";
 			try {
 				conn = getConnection();
-				pstmt = conn.prepareStatement("select * from product where p_num = ?");
+				sql ="select * from product where p_num = ?";
+				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, p_num);
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
@@ -147,6 +149,7 @@ public class productDAO {
 		}
 		return vo;
 	}
+	
 	public productVO getProduct3(String p_category)
 			throws Exception{
 		Connection conn = null;
@@ -188,7 +191,7 @@ public class productDAO {
 		return vo;
 	}
 
-	//최종 시퀀스 값 검색하기_ok
+	//최종 시퀀스 값 검색하기_성민ok
 	public int getProductNum() {
 		int x = 0;
 
@@ -211,36 +214,6 @@ public class productDAO {
 		}
 		return x-1;	//최종 시퀀스 값은 +1된 값이 나오기 때문에 1을 빼줌
 	}
-
-	//불필요..?  //해당 번호의 상품이 존재하는지 여부를 확인하기 위함 , 파라미터 추후에  p_num 으로 변경할것
-	/*
-	public boolean productCheck(int p_num) {
-		boolean result = false;
-
-		try {
-			conn = getConnection();
-			String sql ="select * from product where p_num=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, p_num);
-			rs = pstmt.executeQuery();
-
-			if(rs.next()) {
-				result = true;
-			}else {
-				result = false;
-			}
-
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			if(rs != null) {try {rs.close();}catch(SQLException e) {}}
-			if(pstmt != null) {try {pstmt.close();}catch(SQLException e) {}}
-			if(conn != null) {try {conn.close();}catch(SQLException e) {}}			
-		}
-		return result;		
-	}
-	*/
-
 
 	//저장된 전체 글의 수를 얻어냄 0611건훈수정
 	public int getProductCount() throws Exception {
@@ -268,7 +241,7 @@ public class productDAO {
 
 
 
-	//...?
+	//
 	public List getProduct(int start, int end) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
