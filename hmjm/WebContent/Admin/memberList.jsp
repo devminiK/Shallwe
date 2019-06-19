@@ -25,6 +25,7 @@
 		<td>아이디</td>
 		<td>패스워드</td>
 		<td>이름</td>
+		<td>전화번호</td>
 		<td>유저타입</td>
 		<td>가입일</td>
 		<td>관리</td>
@@ -34,6 +35,7 @@
 			<td><%=vo.getM_email()%></td>
 			<td><%=vo.getM_pw()%>
 			<td><%=vo.getM_name()%></td>
+			<td><%=vo.getM_phone()%></td>
 			<td><%=vo.getM_usertype()%></td>
 			<td><%=vo.getM_reg()%></td>
 			<td><input type="button" name="edit" value="수정" 

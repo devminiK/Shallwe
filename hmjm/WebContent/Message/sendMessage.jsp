@@ -70,13 +70,13 @@ int pageBlock=10;
    	int endPage = startPage + pageBlock-1;
 	if (endPage > pageCount) endPage = pageCount;
 	if (startPage > 10) {%>
-		<a href="message.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+		<a href="sendMessage.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
 	<%}
 	for (int i = startPage ; i <= endPage ; i++) {%>
-		<a href="message.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+		<a href="sendMessage.jsp?pageNum=<%= i %>">[<%= i %>]</a>
 	<%}
 	if (endPage < pageCount) {%>
-		<a href="message.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+		<a href="sendMessage.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
 	<%}
 }%>
 </form>
