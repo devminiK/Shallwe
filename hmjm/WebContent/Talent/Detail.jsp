@@ -82,14 +82,7 @@
 	<input type="hidden" name="p_email" value="<%=vo.getP_email()%>"/>
 	강사이메일:::::::: <a href="/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>">
 		<%=vo.getP_email() %></a><br><br>
-<%-- 테스트용
-		<%if(bb == null){ %>
-	<h1> 테스트 !! 사진 미등록인 경우</h1>
-	<%}else{ %>
-	 <h1> 테스트!! 사진 있는 경우</h1>
-	 <%} %>
-
-<% 	try{%>    우선 남겨 둠	--%> 	
+	
 	<div>
 	수업가능시간::::::::
 	<%if(t == null){ %>
@@ -136,10 +129,7 @@
 			<%}%>
 	<%}%>
 	<%}%>
-<%-- 	
-<% 
-	}catch(Exception e){} 
-%>	--%>		
+		
 		</div><br>
 <% if(bb==null){%>
 	<h1>사진 미등록 튜터</h1>
@@ -157,28 +147,7 @@
 	
 
 <br>
-<%-- 	오류수정중 0618 건훈
-	<% if(id!=null){
-		
-		if(e!=null){
-			if(vv==num){%>
-				내가등록한 강의
-				<%}else{%>
-					신청하기
-					<%}
-			}else{
-				if(b!=null){
-				if(bbb==num){%>
-					내가 신청한 강의
-					<%}else{%>
-						신청하기
-						<%}
-					}
-				}			
-		}else{%>
-			<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">신청하기</a>
-			<%}%>
-			--%>
+
 <% try{%>		
 <%
 if(id!=null){
