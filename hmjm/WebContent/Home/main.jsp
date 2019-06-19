@@ -150,7 +150,7 @@ to {
 			onclick="currentSlide(3)"></span> <span class="dot"
 			onclick="currentSlide(4)"></span>
 	</div>
-	
+	<%--메인에 추천 상품 나열해줌 --%>
 	<jsp:include page="listProduct.jsp" />
 	<script>
 		var slideIndex = 1;

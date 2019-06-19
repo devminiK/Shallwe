@@ -7,23 +7,18 @@
 </head>
 <% 
 	String id = (String)session.getAttribute("loginId");
-	//String p_email = request.getParameter("p_email");
 	int num=0;
 	try{  
     	if(request.getParameter("s_num")!=null){
 		num=Integer.parseInt(request.getParameter("s_num"));
 		}
-    //int pnum = Integer.parseInt(request.getParameter("p_num"));
-    //productDAO dbPro = productDAO.getInstance();
-    //productVO vo = dbPro.getProduct(pnum);
-    
 %>
 <body>
 <h2>관리자에게 쪽지 보내기</h2>
 <form method="post" name="adminMessageWriteForm" action="/hmjm/Message/messageWritePro.jsp">
 		<input type="hidden" name="s_num" value="<%=num%>">
 	<table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
-		<!-- 보내는 사람은 로그인한 아이디, 받는사람 아이디는 수동입력 -->
+		
 		<tr><td width="100" align="center">보내는사람</td>
 	    	<td width="330"><%=id%>
 	    		<input type="hidden" name="s_send" value="<%=id%>">

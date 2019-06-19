@@ -72,7 +72,7 @@
 
 <body>
 <jsp:include page="/Home/header.jsp" />
-
+<jsp:include page="/SideMenu/sideMenu.jsp"/>
 	
 	<h1>강의 상세 페이지</h1>
 	<p><%=vo.getP_num() %>:::::::::::::이거 강의번호를 신청할때 넘겨야한다</p><br>

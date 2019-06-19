@@ -1,4 +1,4 @@
-<!-- 레이어팝업창 내용 -->
+<%-- 레이어팝업창 내용 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -1,4 +1,4 @@
-<!-- 이 파일을 각 페이지마다 인클루드하여 사용 -->
+<%-- 이 파일을 각 페이지마다 인클루드하여 사용 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,8 +27,8 @@
 <script type="text/javascript">
 	var stmnLEFT = 10; // 오른쪽 여백 
 	var stmnGAP1 = 0; // 위쪽 여백 
-	var stmnGAP2 = 300; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
-	var stmnBASE = 300; // 스크롤 시작위치 
+	var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
+	var stmnBASE = 150; // 스크롤 시작위치 
 	var stmnActivateSpeed = 0; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
 	var stmnScrollSpeed = 0; //스크롤 속도 (클수록 느림)
 	var stmnTimer; 

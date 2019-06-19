@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ page import = "hmjm.bean.tutor.*" %>
+<%@ page import="hmjm.bean.tutor.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +16,7 @@
 .header_new {
 	width: 1050;
 	height: 80px;
-	margin: 0 250px;	/*중간으로 배열하기위한값을 줌*/
+	margin: 0 250px; /*중간으로 배열하기위한값을 줌*/
 }
 
 .topnav {
@@ -46,7 +46,7 @@
 	text-align: center;
 	padding-top: 20px;
 	padding-right: 20px;
-	margin-left: 10px; 	/*글자 사이간격*/
+	margin-left: 10px; /*글자 사이간격*/
 	text-decoration: none;
 	font-size: 15px;
 	font-weight: bold;
@@ -71,8 +71,8 @@
 
 .topnav .search-container button {
 	float: left;
-	padding: 6px 10px; 	/*버튼의 사이즈*/
-	margin-top: 18px; 	/*버튼 배치*/
+	padding: 6px 10px; /*버튼의 사이즈*/
+	margin-top: 18px; /*버튼 배치*/
 	margin-left: 10px;
 	margin-right: 8px;
 	font-size: 17px;
@@ -154,7 +154,8 @@
 			</div>
 
 			<div class="search-container">
-				<form name="searchBar" action="/hmjm/Home/search.jsp" onSubmit="return searchCheck();">
+				<form name="searchBar" action="/hmjm/Home/search.jsp"
+					onSubmit="return searchCheck();">
 					<!--/*input 창 양옆넓이 늘릴것*/  -->
 					<input type="text" style="width: 400px;"
 						placeholder="배우고 싶은 수업 또는 튜너를 검색해보세요!" name="search" id="search">
@@ -165,27 +166,27 @@
 			</div>
 
 			<div class="category">
-					<%
+				<%
 					//My/Application.jsp에 로그아웃기능 추가하면 삭제할것.
 					if(session.getAttribute("loginId")!= null){%>
-						<a href="/hmjm/Log/logout.jsp">로그아웃</a>
+				<a href="/hmjm/Log/logout.jsp">로그아웃</a>
 				<%}%>
-				<a href="/hmjm/Tutor/Register/menu.jsp">튜터등록</a><!-- 등록페이지로 이동하게 수정 -->
+				<a href="/hmjm/Tutor/Register/menu.jsp">튜터등록</a>
+				<!-- 등록페이지로 이동하게 수정 -->
 				<a href="<%=stateURL%>"><%=statebarName%></a>
 				<%
 					if(session.getAttribute("loginId")== null){%>
-						<a href="<%=logURL%>"><%=loginbarName %></a>
-					<%}else{%>
-						<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a>
-						<a href="/hmjm/My/application.jsp">
-						<%if(e == null){ %>
-				<%--등록한 이미지사진 불러오기 --%> <img src="../Images/TutorImg/user.png"
-				width="40px"/>
-				<%} else {%>
-				<%--등록한 이미지사진 불러오기 --%> <img src="../Images/TutorImg/<%=e.getT_selfimg()%>"
-				width="40px"/> <%--해당 이메일의 닉네임 --%> </a> 
-					<%}%>
-					<%}%>
+				<a href="<%=logURL%>"><%=loginbarName %></a>
+				<%}else{%>
+				<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a> 
+				<a href="/hmjm/My/application.jsp"> </a>
+					<%if(e == null){ %> <%--등록한 이미지사진 불러오기 --%>
+						<img src="/hmjm/Images/TutorImg/user.png" width="40px" /> 
+					<%} else {%> <%--등록한 이미지사진 불러오기 --%>
+						<img src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>" width="40px" />
+					<%--해당 이메일의 닉네임 --%>
+					<%}
+				}%>
 			</div>
 
 		</div>
