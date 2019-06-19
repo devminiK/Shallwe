@@ -1,4 +1,4 @@
-<!-- 전체 판매글 조회, 수정, 삭제 -->
+<%-- 전체 판매글 조회, 수정, 삭제 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="hmjm.bean.admin.adminDAO"%>
 <%@ page import="hmjm.bean.product.productVO"%>
@@ -17,9 +17,9 @@
 </head>
 <body>
 <h3>List of all products - <%=pcount%></h3>
-<!-- db에서 전체 판매글 목록 조회 ,수정, 삭제 가능 -->
-<!-- 판매글 내의 리뷰도 수정, 삭제 가능 -->
-<!-- 판매글 제목 클릭시 상세페이지 이동 -->
+<%-- db에서 전체 판매글 목록 조회 ,수정, 삭제 가능 --%>
+<%-- 판매글 내의 리뷰도 수정, 삭제 가능 --%>
+<%-- 판매글 제목 클릭시 상세페이지 이동 --%>
 <table border="1">
 	<tr align="center">
 		<td>번호</td>

@@ -1,6 +1,6 @@
-<!-- 회원 목록 조회, 수정, 삭제, 탈퇴 -->
-<!-- 탈퇴는 usertype: 0 -->
-<!-- 삭제는 db에서 계정 삭제 -->
+<%-- 회원 목록 조회, 수정, 삭제, 탈퇴 --%>
+<%-- 탈퇴는 usertype: 0 --%>
+<%-- 삭제는 db에서 계정 삭제 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="hmjm.bean.admin.adminDAO"%>
 <%@ page import="hmjm.bean.member.memberVO"%>

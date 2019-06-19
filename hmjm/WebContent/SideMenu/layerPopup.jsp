@@ -1,4 +1,4 @@
-<!-- 레이어팝업 클릭시 새 창이 아닌 현재 창 내에 팝업 -->
+<%-- 레이어팝업 클릭시 새 창이 아닌 현재 창 내에 팝업 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>

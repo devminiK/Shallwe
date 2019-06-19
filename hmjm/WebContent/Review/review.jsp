@@ -54,7 +54,7 @@
 		    <td align="center"  width="100"><%=article.getR_name()%></td>
 		    <td align="center"  width="100"><%=article.getR_reg()%></td>
 		</tr>
-			<!-- 점수에 따라 별 갯수 1~5개 -->
+			<%-- 점수에 따라 별 갯수 1~5개 --%>
 		<tr><td align="center" width="150">커리큘럼<br/>
 			<%int curr = article.getR_s_curr();
 			for(int cu=0; cu<curr; cu++){%>	<img src="/hmjm/Images/star.jpg"> <%}%> </td>
@@ -75,7 +75,7 @@
 			<%int kind = article.getR_s_kind();
 			for(int ki=0; ki<kind; ki++){%> <img src="/hmjm/Images/star.jpg"> <%}%> </td>
 			
-			<!-- 로그인을 한상태 + 작성글의 아이디와 로그인 아이디가 일치할때만 수정/삭제 가능-->
+			<%-- 로그인을 한상태 + 작성글의 아이디와 로그인 아이디가 일치할때만 수정/삭제 가능--%>
 			<td align="center">
 			<%String login = article.getR_name();
 			if (id!=null){
@@ -107,19 +107,19 @@ int bcheck = chk.buyCheck(pnum, id);
 
 if(id != null){ //로그인 상태일 때
 	if(check == 0){ //작성된 리뷰 중 중복 아이디가 없을 때
-		if(bcheck != 0){%> <!-- 구매확인 true일때 -->
+		if(bcheck != 0){%> <%-- 구매확인 true일때 --%>
 			<jsp:include page="/Review/reviewWriteForm.jsp"/>
-		<%}else{%> <!-- 구매자가 아닐경우 출력 -->
+		<%}else{%> <%-- 구매자가 아닐경우 출력 --%>
 			<p>강의 신청부터...</p>
 		<%}	
-	}else{%> <!-- 중복아이디가 있으면 출력 -->
+	}else{%> <%-- 중복아이디가 있으면 출력 --%>
 		<p>리뷰는 한번만...</p>
 	<%}
-}else{%> <!-- 로그아웃 상태면 출력 -->
+}else{%> <%-- 로그아웃 상태면 출력 --%>
 	<p>로그인 좀...</p>
 <%}%>
 
-<!-- 관리자 로그인 상태일 때 -->
+<%-- 관리자 로그인 상태일 때 --%>
 <%
 if(id!=null){
 	if(id.equals("admin")){ %>
