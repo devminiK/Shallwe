@@ -181,15 +181,20 @@
 			--%>
 <% try{%>		
 	<%if(id==null){%>
-		신청하기
+		
+		<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">강의신청</a>
 		<% }else{
 			if(ee==null){
 				if(b==null){%>
-					튜터가 아니고 구매이력도 없는 신청하기
+				
+					<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">
+					튜터가 아니고 구매이력도 없는 신청하기</a>
 						<%}else{
 							int bbb = b.getB_productnumber();
 							if(bbb!=num){%>
 								튜터아니고 구매이력있지만 이건아님 >>신청하기
+								<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">
+								튜터아니고 구매이력있지만 이건아님 >>신청하기</a>
 								<%}else if(bbb==num){%>
 									내가 신청한 강의							
 									<%}
@@ -197,7 +202,8 @@
 					}else{
 						int vv = vc.getP_num();
 						if(vv!=num){%>
-							튜터인데  내가 등록한 강의가 아니라신청하기 
+							<a href ="./check.jsp?p_num=<%=vo.getP_num() %>">
+							튜터인데  내가 등록한 강의가 아니라 신청하기 </a>
 							<%}else{
 								if(vv==num){%>
 									내가 등록한 강의
