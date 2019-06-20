@@ -26,7 +26,7 @@
    
 <body>
 <!-- 리뷰를 수정할 때는 이름, 내용, 점수를 이전에 작성한 그대로 불러옴 -->
-<form method="post" name="writeform" action="/hmjm/Review/reviewUpdatePro.jsp?p_num=<%=pnum %>">
+<form method="post" name="writeform" action="/hmjm/Review/reviewMoreUpdatePro.jsp?p_num=<%=pnum %>">
 	<input type="hidden" name="r_num" value="<%=num%>">
 <table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
 	

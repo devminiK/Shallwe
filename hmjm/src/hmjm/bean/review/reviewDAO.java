@@ -321,4 +321,30 @@ public class reviewDAO {
 		return rcount;
 	}
 	
+	//리뷰 별점 평균, 소수점 1자리
+	public double avgScore(int num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		double avg = 0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(
+					" select round(avg(avg),1) from (select pr_num, "
+					+ " (r_s_curr+r_s_pre+r_s_tk++r_s_deli+r_s_kind)/5 as avg from review where pr_num=?)");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				avg = rs.getDouble(1); //첫번째 컬럼 값
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return avg; 
+	}
+	
 }

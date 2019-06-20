@@ -40,7 +40,7 @@ classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
 </style>
 </head>
 <body>
-	<table width="1800">
+	<table width="100%">
 		<div align="center">
 			<p>강의목록 테스트</p>
 			<p>등록강좌수:<%=count%></p>

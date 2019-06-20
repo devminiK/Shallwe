@@ -34,13 +34,15 @@
 
 	int rcount = 0; //판매글 리뷰 갯수 초기화
 	rcount = dbPro.reviewCount(pnum);
+	
+	double avg = dbPro.avgScore(pnum); //리뷰 별점의 평균점수
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body align="center">
 <p>최근 5개의 리뷰</p>
-
+<p>평균점수: <%=avg%> / 5</p>
 <%if (rcount == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
@@ -94,7 +96,7 @@
 </table>
 <br/>
 <input type="button" value="다!" 
-	onClick="window.open('/hmjm/Review/reviewMore.jsp?p_num=<%=pnum%>&rpageNum=<%=rpageNum%>','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=770,height=600')"/>
+	onClick="window.open('/hmjm/Review/reviewMore.jsp?p_num=<%=pnum%>','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=770,height=600')"/>
 <br/><br/>
 <%
 /*

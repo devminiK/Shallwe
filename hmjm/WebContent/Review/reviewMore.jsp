@@ -35,13 +35,14 @@
 	int rcount = 0; //판매글 리뷰 갯수 초기화
 	rcount = dbPro.reviewCount(pnum);
 	
-	
+	double avg = dbPro.avgScore(pnum); //리뷰 별점의 평균점수
 %>
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body align="center">
 <b>모든 리뷰: <%=rcount%>개</b>
+<p>평균점수: <%=avg%> / 5</p>
 <%if (rcount == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
@@ -83,9 +84,9 @@
 			if (id!=null){
 				if(id.equals(login) || id.equals("admin")) {%>
 					<input type="button" value="수정" 
-						onclick="document.location.href='/hmjm/Review/reviewUpdateForm.jsp?num=<%=article.getR_num()%>&rpageNum=<%=rpageNum%>&p_num=<%=pnum%>'"/>
+						onclick="document.location.href='/hmjm/Review/reviewMoreUpdateForm.jsp?num=<%=article.getR_num()%>&rpageNum=<%=rpageNum%>&p_num=<%=pnum%>'"/>
 					<input type="button" value="삭제" 
-						onclick="document.location.href='/hmjm/Review/reviewDeleteForm.jsp?num=<%=article.getR_num()%>&p_num=<%=pnum%>'">
+						onclick="document.location.href='/hmjm/Review/reviewMoreDeleteForm.jsp?num=<%=article.getR_num()%>&p_num=<%=pnum%>'">
 			<%}}%> </td>
 		</tr>
 	<%}}%>
