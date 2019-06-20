@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ page import="hmjm.bean.classtime.*"%>
+<%@ page import="hmjm.bean.classtime.classtimeDAO"%>
 <%@ page import="hmjm.bean.product.*"%>
 
 <%--06.17 성민 작성 --%>
@@ -8,17 +8,13 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	//필요한가?
-	//String preUser = (String)session.getAttribute("loginId");
-
 	//지역별 카테고리 갯수를 가져오기위해함
 	classtimeDAO ctdao = classtimeDAO.getInstance();
 %>
 <head>
 <title>지역별 카테고리 검색</title>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <style>
 #row {
 	display: table-row;
