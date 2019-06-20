@@ -39,12 +39,12 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body align="center">
-<b>최근 5개의 리뷰</b>
+<p>최근 5개의 리뷰</p>
+
 <%if (rcount == 0) {%>
 	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
 	</table>
-
 <%}else{%>
 	<table border="2" width="900" cellpadding="0" cellspacing="0" align="center"> 
 	<%for (int i = 0 ; i < articleList.size() ; i++) {
@@ -74,7 +74,7 @@
 			<td align="center" width="150">친절도<br/>
 			<%int kind = article.getR_s_kind();
 			for(int ki=0; ki<kind; ki++){%> <img src="/hmjm/Images/star.jpg"> <%}%> </td>
-			
+
 			<%-- 로그인을 한상태 + 작성글의 아이디와 로그인 아이디가 일치할때만 수정/삭제 가능--%>
 			<td align="center">
 			<%String login = article.getR_name();
@@ -84,9 +84,13 @@
 						onclick="document.location.href='/hmjm/Review/reviewUpdateForm.jsp?num=<%=article.getR_num()%>&rpageNum=<%=rpageNum%>&p_num=<%=pnum%>'"/>
 					<input type="button" value="삭제" 
 						onclick="document.location.href='/hmjm/Review/reviewDeleteForm.jsp?num=<%=article.getR_num()%>&p_num=<%=pnum%>'">
-			<%}}%> </td>
+				<%}
+			}%> 
+			</td>
 		</tr>
-	<%}}%>
+	<%}
+}%>
+	
 </table>
 <br/>
 <input type="button" value="다!" 
