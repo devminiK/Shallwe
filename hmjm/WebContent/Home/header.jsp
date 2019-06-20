@@ -98,9 +98,9 @@
 </style>
 <script type="text/javascript">
 		function openRealtimetalk(){
-			url="/hmjm/My/qnatutee.jsp";
+			url="/hmjm/Message/msg.jsp";
 			//새로운 윈도우로 열기
-			open(url, "qnatutee",  "toolbar=no, location=no,status=no,menubar=no,resizable=no,width=650, height=660");
+			open(url,"qnatutee","toolbar=no,location=no,status=no,menubar=no,resizable=no,location=no,directories=no,width=650,height=660");
 		}
 		function searchCheck(){
 			var str = document.getElementById('search');
@@ -137,7 +137,7 @@
   		stateURL="/hmjm/Register/register.jsp";
 	}else{
 		loginbarName="쪽지";	//로그아웃기능은, 수업신청서안에서 사용할것_by.sm
-		logURL="/hmjm/My/qnatutee.jsp";
+		logURL="/hmjm/Message/msg.jsp";
 		
 		statebarName ="수업신청서";	
 		stateURL="/hmjm/My/application.jsp";
