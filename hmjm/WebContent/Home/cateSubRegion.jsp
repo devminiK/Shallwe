@@ -13,23 +13,22 @@
 <title>지역별 카테고리 검색 시, 아래에 나올 컨텐츠</title>
 <style>
 
-#boxCon {
-	
-	height: 30px;
-	display: table-row;
-}
 
-#t_box {
-	display: table-cell;
-}
 
-.mbox {
+.pd_container{
+	background-color:#E1E1E1;
 	float:left;
+	margin:2px;
 }
-
-td {
-	text-align: center;
-	font-weight: bold;
+.pd_info{
+	display:table-row;
+}
+.pd_infoEle{
+	display:table-cell;
+	margin-left:auto;
+	margin-right:auto;
+	padding:5px;
+	
 }
 
 #cont_img{
@@ -66,7 +65,16 @@ a:hovor {
 		productDAO pdao = productDAO.getInstance();
 		reviewDAO rdao = reviewDAO.getInstance();
 		
-		String[] eachReNum = reNumValues.split(",");
+		String[] eachReNum = reNumValues.split(",");//마지막에 .jsp가 값으로 들어가게됨
+		
+		System.out.println("test번호갯수:"+eachReNum.length);
+		
+		for(int i=0;i<eachReNum.length-1;i++){
+			String x = eachReNum[i];	//지역번호
+			System.out.println("test:"+x);
+			System.out.println("test:"+ctdao.getRegionCount(x));
+		}
+		
 		for (String x : eachReNum) {
 
 			String ern = x; //지역번호
@@ -113,19 +121,21 @@ a:hovor {
 			<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=pvo.getP_num()%>"></a>
 			<div class="pd_container">
 				<div class="pd_img"><img id="cont_img"src="/hmjm/Images/Classimg/<%=cidao.getImgRealName(num)%>"/></div>
-				<div class="pd_info1"><p>[수업 명]<%=pvo.getP_classname()%></p></div>
-				<div class="pd_info2"><p>[가격]<%=pvo.getP_cost()%>원</p>
+				<div class="pd_info">
+				<div class="pd_infoEle"><b>[<%=pvo.getP_classname()%>]</b></div>
+				<div class="pd_infoEle"><p><img src="/hmjm/Images/Icon/coin.png"/><%=pvo.getP_cost()%></p>
 				<%
 					long stScore =Math.round(rdao.avgScore(num)); //반올림
 					//별찍기
 					for(int i=0;i<stScore;i++){%>
-						<img src="/hmjm/Images/Icon/star_f.png"/>
+						<span><img src="/hmjm/Images/Icon/star_f.png"/></span>
 						<%}
 					for(int i=0;i<5-stScore;i++){%>
-						<img src="/hmjm//Images/Icon/star_empty.png"/>
+						<span><img src="/hmjm//Images/Icon/star_empty.png"/></span>
 					<%}%>
-						<b><%=rdao.avgScore(num)%>(<%=rdao.reviewCount(num)%>)</b>
+						<span><%=rdao.avgScore(num)%>(<%=rdao.reviewCount(num)%>)</span>
 				</div>
+					</div>
 			</div>
 		</div><%--id=contents--%>
 	
