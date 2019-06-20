@@ -132,6 +132,7 @@
 		
 		<p>선생님 별명: <%=v.getT_nick() %><p>
 		<p>선생님 이메일: <%=vo.getP_email() %></p>
+		<input type="hidden" name="tutor_id" value="<%=vo.getP_email() %>">
 		<p>^^^위에 수업번호를 선택해서 넘어왔다고 생각하고^^^</p>
 		
 	</div>

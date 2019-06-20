@@ -64,7 +64,7 @@ body, html {
   cursor: pointer;
   padding: 14px 16px;
   font-size: 17px;
-  width: 50%;
+  width: 33.3%;
 }
 
 .tablink:hover {
@@ -120,6 +120,7 @@ document.getElementById("defaultOpen").click();
 		
 		buyDAO buyer = buyDAO.getInstance();
 		buyVO b = buyer.getBuy(id);
+		buyVO o = buyer.getBuyOrder(id);
 		//String e = b.getB_email();
 		//boolean result2 = id.equals(e);
 		
@@ -137,6 +138,11 @@ document.getElementById("defaultOpen").click();
 		count = dbPro.getProductCount();
 		if (count > 0) {
 			tutorProductList = dbPro.getProductTutor(id,startRow, endRow);}
+		//수업신청 받은 목록
+		List orderList= null;
+		count = buyer.buyCount();
+		if (count > 0) {
+			orderList = buyer.getBuyOrderList(id, startRow, endRow);}
 		
 		//구매목록
 		List productbuyList =null;
@@ -150,8 +156,9 @@ document.getElementById("defaultOpen").click();
 	<jsp:include page="nav_top.jsp" />
 	
 	<button class="tablink" onclick="openPage('Home', this, 'red')">튜터</button>
-	<button class="tablink" onclick="openPage('About', this, 'orange')">수강생</button>
-	<div id="Home" class="tabcontent">
+	<button class="tablink" onclick="openPage('News', this, 'green')">수강생</button>
+	<button class="tablink" onclick="openPage('About', this, 'orange')">수강중</button>
+<div id="Home" class="tabcontent">
   <h3>내 수업</h3>
   <p>
   	<% if(p == null){%>
@@ -167,6 +174,23 @@ document.getElementById("defaultOpen").click();
 		<%}%>
 			
   </p>
+</div>
+<div id= "News" class="tabcontent">
+<%
+	if(o ==null){%>
+		아직 수강생이 없네용 ㅋㅋ
+	<%}else{
+		for(int i = 0 ; i<orderList.size(); i++){
+			buyVO or = (buyVO)orderList.get(i);%>
+			<%=or.getB_productnumber() %>
+			<%=or.getB_classname() %>
+			<%=or.getB_email() %><br>
+		<%}
+	}
+
+
+
+%>
 </div>
 <div id="About" class="tabcontent">
   <h3>내가 신청한 수업</h3>

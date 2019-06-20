@@ -58,9 +58,13 @@ a {
 	
 	buyDAO buyer = buyDAO.getInstance();
 	buyVO b = buyer.getBuy(preUser);
+	buyVO o = buyer.getBuyOrder(preUser);//구매자 있는지 확인할 때
 	int count = 0;
+	int countp = 0;
+	int countOrder = 0;
 	count = buyer.buyCount2(preUser);
-
+	countOrder = buyer.buyCount3(preUser);
+	countp = product.getProductCount2(preUser);
 	
 %>
 <body>
@@ -88,7 +92,12 @@ a {
 					<div class="sec_box_ele">
 						<img class="icon" alt="" src="/hmjm/Images/Icon/kakao.jpg">
 						<p>받은수업신청서</p>
-						<p>0건</p>
+						<%if(b == null){ %>
+						<p>(<%=countOrder %>)건</p>
+						<%}else{ %>
+						<p>(<%=countOrder %>)건</p>
+						<p><a href ="/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber() %>">리스트 보기</a></p>
+							<%}%>
 					</div>
 					<div class="sec_box_ele">
 						<img class="icon" alt="" src="/hmjm/Images/Icon/kakao.jpg">
@@ -96,9 +105,8 @@ a {
 						<%if(b == null){ %>
 							<p>수업을 신청하세요^^</p>
 							<%}else{ %>
-						<p>수업이름: <%=b.getB_classname() %></p>
-						<p>수업번호: <a href ="/hmjm/Talent/Detail.jsp?p_num=<%=b.getB_productnumber() %>"><%=b.getB_productnumber() %></a> </p>
-						<p>상세보기: <a href ="/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber() %>">테스트경로</a> </p>
+							<p>(<%=count %>)건</p>
+							<p><a href ="/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber() %>">리스트 보기</a></p>
 							<%}%>
 					</div>
 					<div class="sec_box_ele">
@@ -107,10 +115,8 @@ a {
 						<%if(p == null){ %>
 							<p>아직 나의 수업이 없어요</p>
 							<%}else{%>
-							<p>수업이름: <%=p.getP_classname() %></p>
-							<p>수업번호: <a href ="/hmjm/Talent/Detail.jsp?p_num=<%=p.getP_num() %>"><%=p.getP_num() %></a> </p>
-							
-							<p>상세보기: <a href ="/hmjm/My/myClass.jsp?p_num=<%=p.getP_num() %>">테스트경로</a> </p>
+							<p>(<%=countp %>)건</p>
+							<p><a href ="/hmjm/My/myClass.jsp?p_num=<%=p.getP_num() %>">리스트 보기</a></p>
 							<%}%>
 					</div>
 
