@@ -120,6 +120,39 @@ public class buyDAO {
 		}
 		return vo;
 		}
+	//구매번호와 아이디 일치로 구매한 수업인지 구분하기 위해
+	public buyVO getBuy3(String id, int num)
+			throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			buyVO vo = null;
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement(
+						"select * from buy where b_email=? and b_productnumber = ?");
+				pstmt.setString(1, id);
+				pstmt.setInt(2, num);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					vo = new buyVO();
+					vo.setB_num(rs.getInt("b_num"));
+					vo.setB_email(rs.getString("b_email"));
+					vo.setB_productnumber(rs.getInt("b_productnumber"));
+					vo.setB_classname(rs.getString("b_classname"));
+					vo.setB_place(rs.getString("b_place"));
+					vo.setB_day(rs.getString("b_day"));
+				}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return vo;
+		}
 	////저장된 구매 수 얻어냄//kunhoon
 	public int buyCount() throws Exception {
 		Connection conn = null;
@@ -129,6 +162,29 @@ public class buyDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("select count(*) from buy");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1); //0번아니고 1번부터 시작
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return x; 
+	}
+//개인 구매 카운팅 위해	
+	public int buyCount2(String id) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x=0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*) from buy where b_email=?");
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x= rs.getInt(1); //0번아니고 1번부터 시작

@@ -107,8 +107,8 @@ public class productDAO {
 			return vo;
 		}
 
-	//해당 번호의 수업 정보를 가져온다. _현재  파라미터 이메일로 함, 추후 p_num으로 변경할 것 -..?
-		//e_mail로 정보 꺼내고 있는 중
+	//수업번호와 아이디 일치로 등록한 수업인지 구분하기 위해
+		
 	public productVO getProduct2(String id,int num)
 			throws Exception{
 		Connection conn = null;
@@ -282,7 +282,7 @@ public class productDAO {
 
 
 
-	//
+	//전체리스트
 	public List getProduct(int start, int end) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

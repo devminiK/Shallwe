@@ -40,31 +40,56 @@
 	//int ttt = tutor.getP_num();
 %>
 <% 	
-	if(id==null){%>
-		신청하기 1단계
-	<%}else{
-		if(b==null){
-			if(e==null){%>
-				신청하기2단계
-			<%}else{
-				if(1>0){%>
-					내강의이다
-				<%}else{%>
-					신청하기3단계
-				<%}
-			}
+if(id!==null){
+	if(ee!=null){
+		if(vd!=null){
+			if(vc!=null){
+				내가등록한글
+				}else{
+					if(b!=null){
+						if(c!=null){
+								구매한글
+								}else{
+									신청하기
+								}
+			
+							}else{
+								청하기
+								}
+					
+				}
+			
 		}else{
-			if(bbb == num){%>
-				내가 신청한 수업이다
-			<%}else{%>
-				신청하기4단계
-				<script>
-	    		alert("일단 여기까지 오는 군");
-	    		history.go(-1);
-	    	</script>
-			<%}
-		}
+				if(b!=null){
+					if(c!=null){
+						구매한글
+						}else{
+							신청하기
+						}
+			
+					}else{
+						신청하기
+						}
+			
+				}
+				
+		}else{
+				if(b!=null){
+					if(c!=null){
+						구매한글
+					}else{
+						신청하기
+					}
+			
+				}else{
+					신청하기
+				}	
+			
+			}
+	}else{
+		비로그인 신청
 	}
+
 %>
 
 

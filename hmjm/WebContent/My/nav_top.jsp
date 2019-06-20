@@ -58,7 +58,9 @@ a {
 	
 	buyDAO buyer = buyDAO.getInstance();
 	buyVO b = buyer.getBuy(preUser);
-	
+	int count = 0;
+	count = buyer.buyCount2(preUser);
+
 	
 %>
 <body>

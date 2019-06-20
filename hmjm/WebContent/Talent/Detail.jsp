@@ -34,7 +34,7 @@
 		
 		buyDAO buyer = buyDAO.getInstance();
 		buyVO b = buyer.getBuy(id);
-		//buyVO c =buyer.getBuy2(num);
+		buyVO c =buyer.getBuy3(id,num);//구매한 상품 신청 못하게
 		System.out.println("구매정보**b**"+b);
 		
 		//System.out.println("구매한경우강의넘버**bbb**"+bbb);
@@ -43,7 +43,7 @@
 	
 		productDAO dbPro = productDAO.getInstance();
 		productVO vo = dbPro.getProduct(num);
-		productVO vc = dbPro.getProduct2(id,num);
+		productVO vc = dbPro.getProduct2(id,num);//등록한 상품 신청 못하게
 		productVO vd = dbPro.getProduct4(id);
 		
 		
@@ -152,52 +152,66 @@
 		
 <%
 if(id!=null){
-	
 	if(ee!=null){
-
-		if(b!=null){int bbb = b.getB_productnumber();
-
-				if(bbb==num){%>
-					튜터o 내가 구매한 강의
-					<%}else{
-							
-							if(vd==null){%>
+		if(vd!=null){
+			if(vc!=null){%>
+				내가 등록한글
+				<a href="/hmjm/Home/main.jsp"> 
+				 처음으로</a>
+				<%}else{
+					if(b!=null){
+						if(c!=null){%>
+								튜터o 구매한 강의
+								<a href="/hmjm/Home/main.jsp">
+								처음으로</a>
+								<%}else{%>
 									<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
-									튜터o 판매글없다>> 신청하기</a>
-				
-									<%}else{
-										
-										if(vc!=null){%>
-											내가등록한강의
-										<%}else{%>
-											<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
-											튜터o 판매글o 이건 내강의가 아니다>>신청하기</a>
-											<%}
-										}
-						}
-			}else{%>
-				<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">튜터o 구매이력x 신청하기</a>
-				<%}
-
-	}else{
-	
-			if(b!=null){int bbb = b.getB_productnumber();
-
-				if(bbb==num){%>
-					튜터x 내가 구매한 강의
-					<%}else{%>
-						<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">튜터x구매이력o 신청하기</a>
+									튜터 o 구매이력 o 신청하기</a>
+								<%}
+			
+							}else{%>
+								<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
+								튜터o 구매이력 x 신청하기</a>
+								<%}
+					
+				}
+			
+		}else{
+				if(b!=null){
+					if(c!=null){%>
+						튜터 o 판매x 구매한 강의
+						<a href="/hmjm/Home/main.jsp">
+								처음으로</a>
+						<%}else{%>
+						<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
+						튜터 o 판매x 구매이력 o 신청하기</a>
 						<%}
-			}else{%>
-				<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">튜터x 구매이력x 신청하기</a>
-				<%}
-
+			
+					}else{%>
+						<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
+						튜터o 판매x 구매이력 x 신청하기 </a>
+						<%}
+			
+				}
+				
+		}else{
+				if(b!=null){
+					if(c!=null){%>
+						튜터x 구매한글
+					<%}else{%>
+						<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
+						튜터x 구매이력o 신청하기</a>
+					<%}
+			
+				}else{%>
+					<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
+					튜터x 구매이력 x 첫구매!</a>
+				<%}	
+			
 			}
-	
-	
 	}else{%>
-		<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">비로그인 신청하기</a>
-		<%}
+		<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">비로그인 신청</a>
+	<%}
 
 
 %>	
