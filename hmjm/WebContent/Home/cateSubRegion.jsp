@@ -6,56 +6,25 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%--06.19 성민 작성 --%>
-<%
-		request.setCharacterEncoding("UTF-8");
 
-		//reNum값은 String 하나로 받은 뒤, split를 이용해 자른다.
-		String reNumValues = request.getParameter("reNum");
-		classtimeDAO ctdao = classtimeDAO.getInstance();
-		classimgDAO cidao = classimgDAO.getInstance();
-		productDAO pdao = productDAO.getInstance();
-		reviewDAO rdao = reviewDAO.getInstance();
-
-		String[] eachReNum = reNumValues.split(",");
-		for (String x : eachReNum) {
-
-			String ern = x; //지역번호
-
-			//해당 지역번호로 등록된 수업 갯수
-			int pdCount = ctdao.getRegionCount(x);
-			//System.out.print("해당지역 수업갯수:"+pdCount);
-	%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>지역별 카테고리 검색 시, 아래에 나올 컨텐츠</title>
 <style>
-#container {
-	width: 100%;
-}
 
 #boxCon {
-	width: 100%;
+	
 	height: 30px;
 	display: table-row;
 }
 
-#boxl {
+#t_box {
 	display: table-cell;
 }
 
-#boxr {
-	isplay: table-cell;
-}
-
-.md_main {
-	display: table-row;
-}
-
 .mbox {
-	width: 330px;
-	height: 330px;
-	dispaly: table-cell;
+	float:left;
 }
 
 td {
@@ -67,10 +36,8 @@ td {
 	width: 300px;
 }
 
-a:link {
-	color: black;
-	text-decoration: none;
-}
+a:link {	color: black;
+			text-decoration: none;}
 
 a:visited {
 	color: black;
@@ -87,12 +54,31 @@ a:hovor {
 <body>
 	<jsp:include page="header.jsp" />
 	<jsp:include page="category.jsp" />
+	<%-- 
+	<jsp:include page="/category/reCatForm.jsp" />--%>
+	<%
+		request.setCharacterEncoding("UTF-8");
 
-	<div id="container">
+		//reNum값은 String 하나로 받은 뒤, split를 이용해 자른다.
+		String reNumValues = request.getParameter("reNum");
+		classtimeDAO ctdao = classtimeDAO.getInstance();
+		classimgDAO cidao = classimgDAO.getInstance();
+		productDAO pdao = productDAO.getInstance();
+		reviewDAO rdao = reviewDAO.getInstance();
+		
+		String[] eachReNum = reNumValues.split(",");
+		for (String x : eachReNum) {
+
+			String ern = x; //지역번호
+
+			//해당 지역번호로 등록된 수업 갯수
+			int pdCount = ctdao.getRegionCount(x);
+			//System.out.print("해당지역 수업갯수:"+pdCount);
+	%>
+	
 		<div id="top">
-			<div id="boxl"><%=pdCount%>개의 수업
-			</div>
-			<div id="boxr">
+			<div id="t_box"><%=pdCount%>개의 수업</div>
+			<div id="t_box">
 				<select>
 					<option>추천도순</option>
 					<option>낮은 가격순</option>
@@ -123,29 +109,30 @@ a:hovor {
 					}
 		%>
 		<%--컨텐츠  list--%>
-		<div class="md_main">
-			<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=pvo.getP_num()%>">
-			<table class="mbox" border="1">
-				<tr>
-					<td rowspan="2"><img id="cont_img"src="/hmjm/Images/Classimg/<%=cidao.getImgRealName(num)%>"/></td>
-					<td>
-						<p>[수업 명]<%=pvo.getP_classname()%></p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<p>[가격]<%=pvo.getP_cost()%>원</p>
-						<%--별점평균, img로찍어주기--%>
-						<p>	★★★☆☆(<%=rdao.reviewCount(num)%>)</p>
-				</tr>
-			</table>
-			|
-			</a> 
-		</div>
-	</div>
+		<div id="contents">
+			<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=pvo.getP_num()%>"></a>
+			<div class="pd_container">
+				<div class="pd_img"><img id="cont_img"src="/hmjm/Images/Classimg/<%=cidao.getImgRealName(num)%>"/></div>
+				<div class="pd_info1"><p>[수업 명]<%=pvo.getP_classname()%></p></div>
+				<div class="pd_info2"><p>[가격]<%=pvo.getP_cost()%>원</p>
+				<%
+					long stScore =Math.round(rdao.avgScore(num)); //반올림
+					//별찍기
+					for(int i=0;i<stScore;i++){%>
+						<img src="/hmjm/Images/Icon/star_f.png"/>
+						<%}
+					for(int i=0;i<5-stScore;i++){%>
+						<img src="/hmjm//Images/Icon/star_empty.png"/>
+					<%}%>
+						<b><%=rdao.avgScore(num)%>(<%=rdao.reviewCount(num)%>)</b>
+				</div>
+			</div>
+		</div><%--id=contents--%>
+	
+		
 	<%}
 	}%>
-
-	<jsp:include page="footer.jsp" />
+<%-- 
+	<jsp:include page="footer.jsp" />--%>
 </body>
 </html>

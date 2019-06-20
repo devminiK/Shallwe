@@ -3,10 +3,7 @@
 <%@ page import = "hmjm.bean.product.productDAO" %>
 <%@ page import = "hmjm.bean.product.productVO" %>
 <%@ page import = "java.util.List" %>
-
 <%@ page import = "java.util.ArrayList" %>
-
-
 
 <%--06.17 성민 작성 --%>
 
@@ -23,9 +20,11 @@
 	}
 	System.out.println(plus);
 %>
+<%-- 
 <a href="/hmjm/Home/cateSubRegion.jsp?<%=plus%>">링크일단</a>
+--%>
 
-<%--이 방법이라도 해야(반응 느림) 체크값 해지하고 되돌아 갈 수 있음
-<META  http-equiv="Refresh" content="0; URL=reCatForm.jsp"/>	
-			 --%>
+<META  http-equiv="Refresh" content="0; URL=/hmjm/Home/cateSubRegion.jsp?<%=plus%>.jsp"/>	
+
+
 
