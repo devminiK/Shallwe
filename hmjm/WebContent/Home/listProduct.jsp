@@ -70,7 +70,7 @@ if (count > 0) {
 	int endPage = startPage + pageBlock-1;
 	if (endPage > pageCount) endPage = pageCount;
 	if (startPage > 10) {%>
-		<a href="listProduct.jsp?pageNum=<%= startPage - 10 %>">[이전]</a>
+		<a href="listProduct.jsp?pageNum=<%= startPage - 5 %>">[이전]</a>
 	<%}
 	for (int i = startPage ; i <= endPage ; i++) {%>
 		<a href="listProduct.jsp?pageNum=<%= i %>">[<%= i %>]</a>
