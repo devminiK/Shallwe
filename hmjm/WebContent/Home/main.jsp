@@ -118,8 +118,10 @@ to {
 	<jsp:include page="header.jsp" />
 	<jsp:include page="/SideMenu/sideMenu.jsp"/>
 	<%--중간 카테고리bar: category --%>
-	
 	<jsp:include page="category.jsp" />
+	 <%--지역 카테고리 bar: 미완성 
+	<jsp:include page="/category/reCatForm.jsp" />
+	--%>
 	
  	<%--메인화면에 보여줄 , 메인 사진들 --%>
 	<div class="slideshow-container">

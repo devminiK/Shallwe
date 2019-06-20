@@ -13,8 +13,6 @@
 <title>지역별 카테고리 검색 시, 아래에 나올 컨텐츠</title>
 <style>
 
-
-
 .pd_container{
 	background-color:#E1E1E1;
 	float:left;
@@ -29,6 +27,9 @@
 	margin-right:auto;
 	padding:5px;
 	
+}
+#top{
+	float:left;
 }
 
 #cont_img{
@@ -64,7 +65,7 @@ a:hovor {
 		classimgDAO cidao = classimgDAO.getInstance();
 		productDAO pdao = productDAO.getInstance();
 		reviewDAO rdao = reviewDAO.getInstance();
-		
+		int apdCnt =0;
 		String[] eachReNum = reNumValues.split(",");//마지막에 .jsp가 값으로 들어가게됨
 		
 		System.out.println("test번호갯수:"+eachReNum.length);
@@ -82,18 +83,8 @@ a:hovor {
 			//해당 지역번호로 등록된 수업 갯수
 			int pdCount = ctdao.getRegionCount(x);
 			//System.out.print("해당지역 수업갯수:"+pdCount);
+			apdCnt+=pdCount;
 	%>
-	
-		<div id="top">
-			<div id="t_box"><%=pdCount%>개의 수업</div>
-			<div id="t_box">
-				<select>
-					<option>추천도순</option>
-					<option>낮은 가격순</option>
-					<option>최신순</option>
-				</select>
-			</div>
-		</div>
 		<%
 				//해당 지역번호로 등록된 상품 번호(리스트)
 				List<String> pdNum = new ArrayList<String>();
@@ -142,6 +133,16 @@ a:hovor {
 		
 	<%}
 	}%>
+	<div id="top">
+			<div><%=apdCnt%>개의 수업</div>
+			<div>
+				<select>
+					<option>추천도순</option>
+					<option>낮은 가격순</option>
+					<option>최신순</option>
+				</select>
+			</div>
+		</div>
 <%-- 
 	<jsp:include page="footer.jsp" />--%>
 </body>
