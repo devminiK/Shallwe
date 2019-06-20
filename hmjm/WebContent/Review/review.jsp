@@ -40,11 +40,11 @@
 <html>
 <link href="style.css" rel="stylesheet" type="text/css">
 
-<body align="center">
+<body style="text-align:center;">
 <p>최근 5개의 리뷰</p>
 <p>평균점수: <%=avg%> / 5</p>
 <%if (rcount == 0) {%>
-	<table width="800" border="1" cellpadding="0" cellspacing="0" align="center">
+	<table style="width:800px" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
 	</table>
 <%}else{%>

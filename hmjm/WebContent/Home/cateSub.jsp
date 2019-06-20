@@ -45,6 +45,7 @@
 <body>
 <jsp:include page="/Home/header.jsp" />
 <jsp:include page="category.jsp" />
+<table style="width:100%">
 <div>
 <%if(c == null){ %>
 	미등록 카테고리
@@ -66,7 +67,7 @@
 	<%}%>
 
 	</div>
-	
+</table>	
 <jsp:include page="/Home/footer.jsp" />	
 </body>
 </html>
