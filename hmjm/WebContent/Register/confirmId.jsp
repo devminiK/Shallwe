@@ -30,7 +30,7 @@
   <tr>
     <td align="center"> 
        <p>다른 이메일을 선택하세요.<p>
-       <input type="text" size="10" maxlength="12" name="m_email"> 
+       <input type="text" size="10" maxlength="50" name="m_email"> 
        <input type="submit" value="이메일 중복확인">
     </td>
   </tr>

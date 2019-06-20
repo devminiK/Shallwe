@@ -92,11 +92,19 @@ a {
 					<div class="sec_box_ele">
 						<img class="icon" alt="" src="/hmjm/Images/Icon/kakao.jpg">
 						<p>받은수업신청서</p>
-						<%if(b == null){ %>
-						<p>(<%=countOrder %>)건</p>
-						<%}else{ %>
-						<p>(<%=countOrder %>)건</p>
+						<%if(e == null){ %>
+						<p>튜터:미등록</p>
+						<%} else {
+							if(p == null){ %>
+							<p>아직<br> 나의 수업이 없어요</p>
+							<%}else{
+							if(b == null){ %>
+								<p>(<%=countOrder %>)건</p>
+								<%}else{ %>
+									<p>(<%=countOrder %>)건</p>
 						<p><a href ="/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber() %>">리스트 보기</a></p>
+								<%}%>
+							<%}%>
 							<%}%>
 					</div>
 					<div class="sec_box_ele">
@@ -113,7 +121,7 @@ a {
 						<img class="icon" alt="" src="/hmjm/Images/Icon/kakao.jpg">
 						<p>내 수업</p>
 						<%if(p == null){ %>
-							<p>아직 나의 수업이 없어요</p>
+							<p>아직<br> 나의 수업이  없어요</p>
 							<%}else{%>
 							<p>(<%=countp %>)건</p>
 							<p><a href ="/hmjm/My/myClass.jsp?p_num=<%=p.getP_num() %>">리스트 보기</a></p>

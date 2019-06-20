@@ -174,6 +174,33 @@ public class tutorDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 	}
+	
+	////튜터수정 사진 가능하게
+	public void updateTutor2(tutorVO vo)
+			throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update tutor set t_school=?, t_major=?, t_idcard=?, t_c=?, t_nick=?, t_selfimg=? where t_email=?");		
+			pstmt.setString(1, vo.getT_school());
+			pstmt.setString(2, vo.getT_major());
+			pstmt.setString(3, vo.getT_idcard());
+			pstmt.setString(4, vo.getT_c());
+			pstmt.setString(5, vo.getT_nick());
+			pstmt.setString(6, vo.getT_selfimg());
+			pstmt.setString(7, vo.getT_email());
+			pstmt.executeUpdate();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			
+		}finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
+	
 }
 	
 	
