@@ -82,7 +82,9 @@
 	강사소개:::::::: <%=vo.getP_self() %><br>
 	카테고리:::::::: <%=vo.getP_category() %><br>
 	<input type="hidden" name="p_email" value="<%=vo.getP_email()%>"/>
-	강사이메일:::::::: <a href="/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>">
+	강사이메일::::::::
+	<a href="#" onClick="window.open('/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>',
+		'_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,directories=no,width=650,height=660')">
 		<%=vo.getP_email() %></a><br><br>
 	
 	<div>

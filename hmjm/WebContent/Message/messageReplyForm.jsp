@@ -23,25 +23,22 @@
 <form method="post" name="messageReplyForm" action="/hmjm/Message/messageWritePro.jsp">
 	<input type="hidden" name="s_num" value="<%=num%>">
 	<!-- 답장하기를 누르면 받는사람 아이디에 보내는 사람 아이디 자동입력 -->
-	<table width="800" border="1" cellspacing="0" cellpadding="0" align="center">
-		<tr><td width="100" align="center">보내는사람</td>
-	    	<td width="330"><%=id%>
-	    		<input type="hidden" name="s_send" value="<%=id%>"></td>
-	    	<td width="100" align="center">받는사람</td>
-	    	<td width="330"><%=send%>
+	<table width="550" border="1" cellspacing="0" cellpadding="0" align="center">
+		<tr><td align="center">받는사람</td>
+	    	<td><%=send%>
+	    		<input type="hidden" name="s_send" value="<%=id%>">
 	    		<input type="hidden" name="s_receive" value="<%=send%>"></td>
 		</tr>
   
-		<tr><td width="70" align="center">내 용</td>
-		  	<td width="330" colspan="3">
-		  		<textarea name="s_content" rows="5" cols="100" required><%=vo.getS_content() %> 의 답장: </textarea></td>
+		<tr><td align="center">내 용</td>
+		  	<td><textarea name="s_content" rows="5" cols="65" required><%=vo.getS_content() %> 의 답장: </textarea></td>
 		</tr>
 	</table>
 	
 	<table align="center">  
 		<tr><td colspan=2 align="center"> 
 				<input type="submit" value="보내기"/>
-				<input type="button" value="취소" onClick="history.go(-1)"/></td>
+				<input type="button" value="닫기" onclick="window.close()"/></td>
 		</tr>
 	</table>    
 <%}catch(Exception e){}%>     

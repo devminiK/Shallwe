@@ -71,6 +71,7 @@
 		</tr>
 	<%}}}%>
 	</table>
+	<input type="button" value="닫기" onclick="window.close()"/>
 <%if (count > 0) {
 	int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
     int startPage = (int)(currentPage/10)*10+1;

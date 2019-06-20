@@ -52,17 +52,14 @@ body, html {
 	height: 100%;
 }
 
-#Receive {
+#Receive{
 	background-color: lightblue;
 }
 
 #Send {
 	background-color: lightgreen;
 }
-
-
 </style>
-
 <script>
 	function openPage(pageName, elmnt, color) {
 		var i, tabcontent, tablinks;
@@ -77,24 +74,20 @@ body, html {
 		document.getElementById(pageName).style.display = "block";
 		elmnt.style.backgroundColor = color;
 	}
-
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("defaultOpen").click();
 </script>
-
 </head>
 <body id="menu">
-	<button class="tablink" onclick="openPage('Receive', this, '#1871ba')">받은</button>
+	<button class="tablink" onclick="openPage('Receive', this, '#1871ba')" id="defaultOpen">받은</button>
 	<button class="tablink" onclick="openPage('Send', this, '#2cf948')">보낸</button>
-	
-			<div>
-				<div id="Receive" class="tabcontent">
-					<jsp:include page="message.jsp"/>
-				</div>
-				<div id="Send" class="tabcontent">
-					<jsp:include page="sendMessage.jsp"/>
-				</div>
-			</div>
-	
+	<div>
+		<div id="Receive" class="tabcontent">
+			<jsp:include page="message.jsp"/>
+		</div>
+		<div id="Send" class="tabcontent">
+			<jsp:include page="sendMessage.jsp"/>
+		</div>
+	</div>
 </body>
 </html>
