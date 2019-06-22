@@ -41,8 +41,14 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <body style="text-align:center;">
-<p>최근 5개의 리뷰</p>
-<p>평균점수: <%=avg%> / 5</p>
+	<p><%=dbPro.reviewCount(pnum)%>개 리뷰가 존재합니다.</p>
+	<%--별 아이콘 찍기 --%>
+	<p>평균점수: 
+	<%
+		for(int i=0;i<avg;i++){%>
+			<span><img src="/hmjm/Images/Icon/star_f.png"/></span>
+		<%}%>
+		<span><%=avg%> / 5.0</span>
 <%if (rcount == 0) {%>
 	<table style="width:800px" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr><td align="center">작성된 후기가 없습니다.</td></tr>
