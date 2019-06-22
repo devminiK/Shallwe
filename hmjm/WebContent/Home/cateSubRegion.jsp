@@ -54,8 +54,8 @@ a:hovor {
 <body>
 	<jsp:include page="header.jsp" />
 	<jsp:include page="category.jsp" />
-	<%-- 
-	<jsp:include page="/category/reCatForm.jsp" />--%>
+	 
+	<jsp:include page="reCatForm.jsp" />
 	<%
 		request.setCharacterEncoding("UTF-8");
 
@@ -72,8 +72,8 @@ a:hovor {
 		
 		for(int i=0;i<eachReNum.length-1;i++){
 			String x = eachReNum[i];	//지역번호
-			System.out.println("test:"+x);
-			System.out.println("test:"+ctdao.getRegionCount(x));
+			System.out.println("test지역번호:"+x);
+			System.out.println("test해당지역수업수:"+ctdao.getRegionCount(x));
 		}
 		
 		for (String x : eachReNum) {
@@ -143,7 +143,7 @@ a:hovor {
 				</select>
 			</div>
 		</div>
-<%-- 
-	<jsp:include page="footer.jsp" />--%>
+
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
