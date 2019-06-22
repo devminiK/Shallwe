@@ -13,7 +13,7 @@
 	width: 100%;
 	height: 220px;
 	margin: 0 auto;
-	background-color: #666666;
+	background-color:#333333;
 	boarder: 1px solid;
 	text-align: center;
 }
@@ -31,15 +31,25 @@
 .sec_box_ele {
 	display: table-cell;
 }
+/*a태그 밀줄 제거, 폰트 사이즈 변경, 윤곽 잡기(버튼처럼)*/
+a:link {	color: black;
+			text-decoration: none;}
 
-a {
-	/*밀줄 제거, 폰트 사이즈 변경, 윤곽 잡기(버튼처럼)*/
-	
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a:hovor {
+	color: black;
+	text-decoration: none;
 }
 
 #icon, img { /*아이콘 이미지 사이즈 */
 	width: 50px;
 }
+
+
 </style>
 
 
@@ -78,7 +88,7 @@ a {
 				튜터: 미등록<br>
 				<%} else {%>
 				<%--등록한 이미지사진 불러오기 --%> <img src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"
-				width="50%"/> <%--해당 이메일의 닉네임 --%> <%=c.getM_name()%> 님<br>
+				width="50%"/> <%--해당 이메일의 닉네임 --%><h2> <%=c.getM_name()%> 님</h2><br>
 				 <a href="/hmjm/Tutor/Register/menu.jsp">튜터 정보 수정</a><br>
 				<%}%>
 			    <a href="/hmjm/My/profile.jsp">정보 수정</a>&nbsp;<br>
@@ -90,7 +100,7 @@ a {
 			<td class="section">
 				<div class="sec_box">
 					<div class="sec_box_ele">
-						<img class="icon" alt="" src="/hmjm/Images/Icon/kakao.jpg">
+						<img class="icon" alt="" src="/hmjm/Images/Icon/journal.png">
 						<p>받은수업신청서</p>
 						<%if(e == null){ %>
 						<p>튜터:미등록</p>
@@ -108,7 +118,7 @@ a {
 							<%}%>
 					</div>
 					<div class="sec_box_ele">
-						<img class="icon" alt="" src="/hmjm/Images/Icon/kakao.jpg">
+						<img class="icon" alt="" src="/hmjm/Images/Icon/checklist.png">
 						<p>신청한 수업</p>
 						<%if(b == null){ %>
 							<p>수업을 신청하세요^^</p>
@@ -118,7 +128,7 @@ a {
 							<%}%>
 					</div>
 					<div class="sec_box_ele">
-						<img class="icon" alt="" src="/hmjm/Images/Icon/kakao.jpg">
+						<img class="icon" alt="" src="/hmjm/Images/Icon/blackboard.png">
 						<p>내 수업</p>
 						<%if(p == null){ %>
 							<p>아직<br> 나의 수업이  없어요</p>
@@ -132,11 +142,10 @@ a {
 			</td>
 			<td class="section">
 				<div>
-					<span>등록된 전화번호:</span> <a href="/hmjm/My/profile.jsp"><%=c.getM_phone() %></a>
+					<span>등록된 전화번호:<%=c.getM_phone() %></span> <a href="/hmjm/My/profile.jsp">수정하기</a>
 				</div>
 				<div>
-					<span>등록 된 이메일:</span>
-					<%=preUser%>
+					<span>등록 된 이메일:</span> <%=preUser%>
 				</div>
 				<div>
 					<%if (e == null) {%>
