@@ -95,6 +95,9 @@
 		border: 1px solid #ccc;
 	}
 }
+#tImg{
+	border-radius:50%;
+}
 </style>
 <script type="text/javascript">
 		function openRealtimetalk(){
@@ -183,7 +186,7 @@
 					<%if(e == null){ %> <%--등록한 이미지사진 불러오기 --%>
 						<img src="/hmjm/Images/TutorImg/user.png" width="40px" /></a> 
 					<%} else {%> <%--등록한 이미지사진 불러오기 --%>
-						<img src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>" width="40px" /></a>
+						<img id="tImg" src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>" width="40px" /></a>
 					<%--해당 이메일의 닉네임 --%>
 					<%}
 				}%>

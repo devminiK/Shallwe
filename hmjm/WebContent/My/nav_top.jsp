@@ -48,7 +48,13 @@ a:hovor {
 #icon, img { /*아이콘 이미지 사이즈 */
 	width: 50px;
 }
-
+#tImg{
+	border-radius:50%;
+}
+.divBtn{
+	border-style:solid; /*버튼 윤곽만들기 */
+	border-top-width:1px;
+}
 
 </style>
 
@@ -87,9 +93,11 @@ a:hovor {
 				width="50%"/><%=preUser %><br>
 				튜터: 미등록<br>
 				<%} else {%>
-				<%--등록한 이미지사진 불러오기 --%> <img src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"
-				width="50%"/> <%--해당 이메일의 닉네임 --%><h2> <%=c.getM_name()%> 님</h2><br>
-				 <a href="/hmjm/Tutor/Register/menu.jsp">튜터 정보 수정</a><br>
+				<%--등록한 이미지사진 불러오기 --%> 
+				<img id="tImg" width="50%" src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"/>
+				<%--해당 이메일의 닉네임 --%>
+				<h2><%=c.getM_name()%> 님</h2><br>
+				<div class="divBtn"><a href="/hmjm/Tutor/Register/menu.jsp">튜터 정보 수정</a></div><br>
 				<%}%>
 			    <a href="/hmjm/My/profile.jsp">정보 수정</a>&nbsp;<br>
 			    
