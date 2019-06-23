@@ -51,9 +51,28 @@ a:hovor {
 #tImg{
 	border-radius:50%;
 }
-.divBtn{
-	border-style:solid; /*버튼 윤곽만들기 */
-	border-top-width:1px;
+span{
+	 font-size: 12px;
+	 color:#A6A6A6;
+}
+.btn {
+  border: 1px solid black;
+  background-color: #333333;
+  color: black;
+  padding: 5px 10px;	/*윤곽 너비*/
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Green */
+.click {
+  border-color: #999999;
+  color: #A6A6A6;/*글자 색*/
+}
+
+.click:hover {
+  background-color: black;
+  color: white;
 }
 
 </style>
@@ -97,12 +116,13 @@ a:hovor {
 				<img id="tImg" width="50%" src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"/>
 				<%--해당 이메일의 닉네임 --%>
 				<h2><%=c.getM_name()%> 님</h2><br>
-				<div class="divBtn"><a href="/hmjm/Tutor/Register/menu.jsp">튜터 정보 수정</a></div><br>
+				<div class="divBtn">
+				<button class="btn click" onClick="location.href='/hmjm/Tutor/tutorModifyForm.jsp'">튜터 정보 수정</button>
+				
 				<%}%>
-			    <a href="/hmjm/My/profile.jsp">정보 수정</a>&nbsp;<br>
-			    
-			   
-				<a href="/hmjm/Log/logout.jsp">로그아웃</a>
+			    <button class="btn click" onClick="location.href='/hmjm/My/profile.jsp'">정보 수정</button><br>
+			   <button class="btn click" onClick="location.href='/hmjm/Log/logout.jsp'">로그 아웃</button>
+			   </div>
 			</td>
 			
 			<td class="section">
@@ -129,7 +149,7 @@ a:hovor {
 						<img class="icon" alt="" src="/hmjm/Images/Icon/checklist.png">
 						<p>신청한 수업</p>
 						<%if(b == null){ %>
-							<p>수업을 신청하세요^^</p>
+							<p>수업을 신청하세요.</p>
 							<%}else{ %>
 							<p>(<%=count %>)건</p>
 							<p><a href ="/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber() %>">리스트 보기</a></p>
@@ -150,20 +170,21 @@ a:hovor {
 			</td>
 			<td class="section">
 				<div>
-					<span>등록된 전화번호:<%=c.getM_phone() %></span> <a href="/hmjm/My/profile.jsp">수정하기</a>
+					<span>등록된 전화번호  <%=c.getM_phone() %></span>
+					<button class="btn click" onClick="location.href='/hmjm/My/profile.jsp'">수정하기</button>
 				</div>
 				<div>
-					<span>등록 된 이메일:</span> <%=preUser%>
+					<span>등록 된 이메일 <%=preUser%></span>
 				</div>
 				<div>
 					<%if (e == null) {%>
 					<span>학교 정보:</span> 등록안됨
 					<%} else {%>
-					<span>학교 정보:</span> <%=e.getT_school() %>
+					<span>학교 정보 <%=e.getT_school() %></span> 
 					<%}%>
 				</div>
 				<div>
-					<span>계정 정보:</span> <a href="/hmjm/Account/resetPassword.jsp">비밀번호변경</a>
+					<span>계정 정보</span><button class="btn click" onClick="location.href='/hmjm/Account/resetPassword.jsp'">비밀번호변경</button>
 				</div>
 
 			</td>
