@@ -16,6 +16,23 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script language="javascript" type="text/javascript">
+	/*유효성 검사*/
+	function chSave(){
+		var chk_obj = document.getElementsByName("reNum");
+		var chk_leng = chk_obj.length;
+		var checked = 0;
+		
+		for(i=0;i<chk_leng;i++){
+			if(chk_obj[i].checked==true)
+				checked+=1;
+		}
+		if(checked<1){
+			alert("하나이상의 지역을 선택해주세요");	
+			return false;
+		}
+	}
+</script>
 <style>
 #reCatForm {
 	margin: 0 auto;
@@ -50,7 +67,7 @@
 	width: 65%;
 }
 
-#bottom {
+#bot_btn {
 	margin-top: 10px;
 	float: right;
 }
@@ -90,7 +107,7 @@ p {
 					<h4>지역을 선택해주세요</h4>
 				</div>
 				<div id="boxr">
-					<form action="reCatPro.jsp" method="get">
+					<form action="reCatPro.jsp" method="get" onsubmit="return chSave();">
 						<table border=1>
 							<tr>
 								<%-- <div class="btn-group-toggle" data-toggle="buttons">--%>
@@ -137,7 +154,7 @@ p {
 									</div></td>
 							</tr>
 						</table>
-						<div id="bottom">
+						<div id="bot_btn">
 							<input type="submit" class="btn btn-danger" value="선택지역 결과 보기">
 						</div>
 					</form>

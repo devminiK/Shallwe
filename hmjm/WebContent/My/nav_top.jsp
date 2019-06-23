@@ -140,7 +140,7 @@ span{
 								<p>(<%=countOrder %>)건</p>
 								<%}else{ %>
 									<p>(<%=countOrder %>)건</p>
-						<p><a href ="/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber() %>">리스트 보기</a></p>
+						<button class="btn click" onClick="location.href='/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber()%>'">리스트 보기</button>
 								<%}%>
 							<%}%>
 							<%}%>
@@ -152,7 +152,7 @@ span{
 							<p>수업을 신청하세요.</p>
 							<%}else{ %>
 							<p>(<%=count %>)건</p>
-							<p><a href ="/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber() %>">리스트 보기</a></p>
+							<button class="btn click" onClick="location.href='/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber() %>'">리스트보기</button>
 							<%}%>
 					</div>
 					<div class="sec_box_ele">
@@ -162,7 +162,7 @@ span{
 							<p>아직<br> 나의 수업이  없어요</p>
 							<%}else{%>
 							<p>(<%=countp %>)건</p>
-							<p><a href ="/hmjm/My/myClass.jsp?p_num=<%=p.getP_num() %>">리스트 보기</a></p>
+							<button class="btn click" onClick="location.href='/hmjm/My/myClass.jsp?p_num=<%=p.getP_num() %>'">리스트보기</button>
 							<%}%>
 					</div>
 

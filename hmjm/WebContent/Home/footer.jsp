@@ -70,17 +70,17 @@
 }
 
 /*개별 요소 태그 속성*/
-b {
+b.ft_b {
 	text-transform: uppercase;
 }
 
 
-ul {
+ul.ft_ul {
 	list-style-type: none;
 	padding-left: 0;
 }
 
-li {
+li.ft_li {
 	color: gray;
 	margin: 5px;
 }
@@ -103,34 +103,34 @@ span{
 	<div class="footer_cont">
 		<div class="info_box">
 			<div class="info_cell">
-				<b>company</b>
-				<ul><li><a href="#">서비스 소개</a></li>
+				<b class="ft_b">company</b>
+				<ul class="ft_ul"><li><a href="#">서비스 소개</a></li>
 					<li><a href="#">튜터 컨텐츠</a></li>
 					<li><a href="#">블로그</a></li>
 					<li><a href="#">언론보도</a></li></ul>
 			</div>
 
 			<div class="info_cell">
-				<b>policies</b>
-				<ul><li><a href="#">이용약관</a></li>
+				<b class="ft_b">policies</b>
+				<ul class="ft_ul"><li><a href="#">이용약관</a></li>
 					<li><a href="#">개인정보취금방침</a></li>	</ul>
 			</div>
 
 			<div class="info_cell">
-				<b>support</b>
-				<ul><li><a href="#">FAQ</a></li>
+				<b class="ft_b">support</b>
+				<ul class="ft_ul"><li><a href="#">FAQ</a></li>
 					<li><a href="#">쉘위 센터</a></li>
 					<li><a href="/hmjm/Admin/adminLogin.jsp">admin</a></li></ul>
 			</div>
 
 			<div class="info_cell">
-				<b>기업교육</b>
-				<ul><li><a href="#">shallwe Biz</a></li></ul>
+				<b class="ft_b">기업교육</b>
+				<ul class="ft_ul"><li><a href="#">shallwe Biz</a></li></ul>
 			</div>
             
             <div class="info_cell_kko" style="float:right;">
-				<b>shallweing center</b>
-				<ul><li><img src="/hmjm/Images/Icon/kakao.jpg" width="18px"/>&nbsp;&nbsp;KAKAO 플러스친구 / @쉘위센터</li>
+				<b class="ft_b">shallweing center</b>
+				<ul class="ft_ul"><li><img src="/hmjm/Images/Icon/kakao.jpg" width="18px"/>&nbsp;&nbsp;KAKAO 플러스친구 / @쉘위센터</li>
 					<li>운영시간 / 평일 10:00 ~ 18:00</li>
 					<li><span>ㅁㅁㅁㅁ</span>/점심 13:00 ~ 14:00</li></ul>
 			</div>
