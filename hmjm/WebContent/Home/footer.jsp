@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%--성민 작성 --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,22 +7,22 @@
 <style>
 
 #footer{
-	width:1050px;
+/*너비, 스크롤 나옴, 수정해야함*/
+	width:100%;
 	height:300px;
 	margin: 0 auto;
 }
 .footer_cont {
-	width:1050px;
-	height:380px;
+	width:100%;
+	height:300px;
 	margin: 0px 230px;
 	padding: 35px 0px 70px;
-	font-family: Arial, Helvetica, sans-serif;
 }
 
 /*ul요소 포함 박스*/
 .info_box {
 	display: table-row;	/*tr같이 나열*/
-	width: 663px;
+	width: 300px;
 	height: 138px;
 	
 }
@@ -38,22 +38,22 @@
     float:right;
 }
 .footer_mid {
-	width:1050px;
+	width:100%;
     padding: 79px 0px 0px;
 	height:79px;  	
 }
 
 .footer_bot {
 	display: table-row;	/*tr같이 나열*/
-	width:1050px;
-	height:60;
+	width:100%;
+	height:50;
 	padding: 79px 0px 0px;
 	font-family: Arial, Helvetica, sans-serif;
   	
 }
 .bot_info {
 	display: table-cell;/*상하가 아닌 좌우 나열을 위함*/
-	width: 650px;
+	width: 722px;
 	height: 60px;
    
 }
@@ -92,8 +92,11 @@ li a {
 p{
 	font-size:13px;
 }
-span{
+span.ft{
 	color:white;
+}
+.ft_icon{
+	width:29px;
 }
 
 
@@ -127,30 +130,27 @@ span{
 				<b class="ft_b">기업교육</b>
 				<ul class="ft_ul"><li><a href="#">shallwe Biz</a></li></ul>
 			</div>
-            
-            <div class="info_cell_kko" style="float:right;">
+			<%--아래로 표시됨, 수정 요망 --%>
+			<div class="info_cell">
 				<b class="ft_b">shallweing center</b>
-				<ul class="ft_ul"><li><img src="/hmjm/Images/Icon/kakao.jpg" width="18px"/>&nbsp;&nbsp;KAKAO 플러스친구 / @쉘위센터</li>
+				<ul class="ft_ul"><li><span><img src="/hmjm/Images/Icon/kakao.jpg" width="18px"/></span>&nbsp;&nbsp;KAKAO 플러스친구 / @쉘위센터</li>
 					<li>운영시간 / 평일 10:00 ~ 18:00</li>
-					<li><span>ㅁㅁㅁㅁ</span>/점심 13:00 ~ 14:00</li></ul>
+					<li><span class="ft">ㅁㅁㅁㅁ</span>/점심 13:00 ~ 14:00</li></ul>
 			</div>
-            
-		</div>
-        
-        <div class="footer_mid"></div>
 		
-
+ 
+		</div>
 		<div class="footer_bot">
 			<div class="bot_info">
 				<p>상호 : (주)쉘위 | 주소 : 서울특별시 관악구 남부순환로 1820 에그옐로우빌딩 14층 | 사업자등록번호 : 000-00-00000 | 대표자명 : 김성민</p>
-				<p>Copyright ⓒ2019 taling inc, ltd. All rights reserved</p>
+				<p>Copyright ⓒ2019 shallWe inc, ltd. All rights reserved</p>
 			</div>
 			
 			<div class="bot_logo">
-                <a href="https://www.facebook.com/taling.me" target="_blank"><img src="/hmjm/Images/Icon/facebook.png" width="29px"/></a>
-                <a href="https://www.instagram.com/" target="_blank"><img src="/hmjm/Images/Icon/instagram.png" width="29px"/></a>
-                <a href="https://www.youtube.com/channel/UCuFmmpVLaNNFoy-cHqELl_A" target="_blank"><img src="/hmjm/Images/Icon/youtube.png" width="29px"/></a>
-                <a href="https://post.naver.com/taling_me" target="_blank"><img src="/hmjm/Images/Icon/naver.png" width="29px"/></a>
+                <a href="https://www.facebook.com/taling.me" target="_blank"><img class="ft_icon" src="/hmjm/Images/Icon/facebook.png"/></a>
+                <a href="https://www.instagram.com/" target="_blank"><img class="ft_icon"  src="/hmjm/Images/Icon/instagram.png"/></a>
+                <a href="https://www.youtube.com/channel/UCuFmmpVLaNNFoy-cHqELl_A" target="_blank"><img class="ft_icon"  src="/hmjm/Images/Icon/youtube.png"/></a>
+                <a href="https://post.naver.com/taling_me" target="_blank"><img class="ft_icon"  src="/hmjm/Images/Icon/naver.png"/></a>
 			</div>
 
 		</div>

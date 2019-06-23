@@ -119,7 +119,7 @@ a:hovor {
 	%>
 	<%--컨텐츠  list--%>
 	<div id="contents">
-		<a href="/hmjm/Talent/Detail.jsp?p_num=<%=pvo.getP_num()%>"></a>
+		<a href="/hmjm/Talent/Detail.jsp?p_num=<%=pvo.getP_num()%>">
 		<div class="pd_container">
 			<div class="pd_img">
 				<img id="cont_img"
@@ -145,6 +145,7 @@ a:hovor {
 				</div>
 			</div>
 		</div>
+		</a>
 	</div><%--id=contents--%>
 	<%}
 	}%>

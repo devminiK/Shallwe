@@ -5,11 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>쉘위?- 나만의 튜터를 만들어보세요.</title>
 <style>
-* {
-	box-sizing: border-box
-}
-
 #main {
+	box-sizing: border-box
 	font-family: Verdana, sans-serif;
 	margin: 0
 }

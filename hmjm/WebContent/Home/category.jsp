@@ -19,7 +19,7 @@ body {
 /*전체 nav bar*/
 .navbar {
 	width: 1080px;
-	height: 100px;
+	height: 160px;/*이것보다 작으면 border 가려짐*/
 	margin: 0 180px;
 	overflow: hidden;
 	background-color: white; /*white*/
@@ -29,7 +29,6 @@ body {
 	float: left;
 	font-size: 14px;
 	color: black; /*??*/
-	text-align: center;
 	padding: 15px 10px;
 	text-decoration: none;
 }
