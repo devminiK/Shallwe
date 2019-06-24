@@ -53,11 +53,11 @@
 			<td><%=vo.getP_class2()%></td>
 			<td><%=vo.getP_class3()%></td>
 			<td><%=vo.getP_class4()%></td>
-			<td><input type="button" name="edit" value="수정" 
-				onclick="document.location.href='/hmjm/Admin/productEditForm.jsp?p_num=<%=vo.getP_num()%>'"/>
+			<td><button type="button" class="btn btn-info btn-sm"
+				onclick="document.location.href='/hmjm/Admin/productEditForm.jsp?p_num=<%=vo.getP_num()%>'">수정</button>
 				
-				<input type="button" name="delete" value="삭제"
-				onclick="document.location.href='/hmjm/Admin/productDeletePro.jsp?p_num=<%=vo.getP_num()%>'"/>
+				<button type="button" class="btn btn-danger btn-sm"
+				onclick="document.location.href='/hmjm/Admin/productDeletePro.jsp?p_num=<%=vo.getP_num()%>'">삭제</button>
 			</td>
 		</tr>
 <%} %>

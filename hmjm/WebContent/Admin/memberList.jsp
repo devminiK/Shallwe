@@ -38,14 +38,14 @@
 			<td><%=vo.getM_phone()%></td>
 			<td><%=vo.getM_usertype()%></td>
 			<td><%=vo.getM_reg()%></td>
-			<td><input type="button" name="edit" value="수정" 
-				onclick="document.location.href='/hmjm/Admin/memberEditForm.jsp?m_num=<%=vo.getM_num()%>'"/>
+			<td><button type="button" class="btn btn-info btn-sm"
+				onclick="document.location.href='/hmjm/Admin/memberEditForm.jsp?m_num=<%=vo.getM_num()%>'">수정</button>
 				
-				<input type="button" name="zero" value="탈퇴"
-				onclick="document.location.href='/hmjm/Admin/memberZeroPro.jsp?m_num=<%=vo.getM_num()%>'"/>
+				<button type="button" class="btn btn-warning btn-sm"
+				onclick="document.location.href='/hmjm/Admin/memberZeroPro.jsp?m_num=<%=vo.getM_num()%>'">탈퇴</button>
 				
-				<input type="button" name="delete" value="삭제"
-				onclick="document.location.href='/hmjm/Admin/memberDeletePro.jsp?m_num=<%=vo.getM_num()%>'"/>
+				<button type="button" class="btn btn-danger btn-sm"
+				onclick="document.location.href='/hmjm/Admin/memberDeletePro.jsp?m_num=<%=vo.getM_num()%>'">삭제</button>
 			</td>
 		</tr>
 <%}%>

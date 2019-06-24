@@ -68,7 +68,7 @@
 		    <td align="center" width="100">from <%=article.getS_send()%>
 		    	<input type="hidden" name="sender" value="<%=article.getS_send() %>"/></td>
 		    <td align="center" width="100"><%=article.getS_reg()%></td>
-		    <td align="left" width="375"><%=article.getS_content()%></td>
+		    <td align="left" width="350"><%=article.getS_content()%></td>
 		    <td align="center">
 		    	<button type="button" class="btn btn-primary btn-sm"
 		    		onclick="document.location.href='/hmjm/Message/messageReplyForm.jsp?s_num=<%=article.getS_num()%>&sender=<%=article.getS_send()%>'">답장</button>

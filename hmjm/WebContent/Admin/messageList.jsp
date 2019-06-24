@@ -31,8 +31,8 @@
 			<td><%=vo.getS_receive()%>
 			<td><%=vo.getS_content()%></td>
 			<td><%=vo.getS_reg()%></td>
-			<td><input type="button" name="delete" value="삭제"
-				onclick="document.location.href='/hmjm/Admin/messageDeletePro.jsp?s_num=<%=vo.getS_num()%>'"/>
+			<td><button type="button" class="btn btn-danger btn-sm"
+				onclick="document.location.href='/hmjm/Admin/messageDeletePro.jsp?s_num=<%=vo.getS_num()%>'">삭제</button>
 			</td>
 		</tr>
 <%}%>
