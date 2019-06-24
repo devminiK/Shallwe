@@ -13,9 +13,11 @@
 	margin: 0 auto;
 }
 .footer_cont {
-	width:100%;
+	width:925;
 	height:300px;
-	margin: 0px 230px;
+	display:table;
+	margin-left:auto;
+	margin-right:auto;
 	padding: 35px 0px 70px;
 }
 
@@ -53,7 +55,7 @@
 }
 .bot_info {
 	display: table-cell;/*상하가 아닌 좌우 나열을 위함*/
-	width: 722px;
+	width: 100%;
 	height: 60px;
    
 }
@@ -136,25 +138,20 @@ span.ft{
 				<ul class="ft_ul"><li><span><img src="/hmjm/Images/Icon/kakao.jpg" width="18px"/></span>&nbsp;&nbsp;KAKAO 플러스친구 / @쉘위센터</li>
 					<li>운영시간 / 평일 10:00 ~ 18:00</li>
 					<li><span class="ft">ㅁㅁㅁㅁ</span>/점심 13:00 ~ 14:00</li></ul>
+				<div class="bot_logo">
+	                <a href="https://www.facebook.com/taling.me" target="_blank"><img class="ft_icon" src="/hmjm/Images/Icon/facebook.png"/></a>
+	                <a href="https://www.instagram.com/" target="_blank"><img class="ft_icon"  src="/hmjm/Images/Icon/instagram.png"/></a>
+	                <a href="https://www.youtube.com/channel/UCuFmmpVLaNNFoy-cHqELl_A" target="_blank"><img class="ft_icon"  src="/hmjm/Images/Icon/youtube.png"/></a>
+	                <a href="https://post.naver.com/taling_me" target="_blank"><img class="ft_icon"  src="/hmjm/Images/Icon/naver.png"/></a>
+				</div>
 			</div>
-		
- 
 		</div>
 		<div class="footer_bot">
 			<div class="bot_info">
 				<p>상호 : (주)쉘위 | 주소 : 서울특별시 관악구 남부순환로 1820 에그옐로우빌딩 14층 | 사업자등록번호 : 000-00-00000 | 대표자명 : 김성민</p>
 				<p>Copyright ⓒ2019 shallWe inc, ltd. All rights reserved</p>
 			</div>
-			
-			<div class="bot_logo">
-                <a href="https://www.facebook.com/taling.me" target="_blank"><img class="ft_icon" src="/hmjm/Images/Icon/facebook.png"/></a>
-                <a href="https://www.instagram.com/" target="_blank"><img class="ft_icon"  src="/hmjm/Images/Icon/instagram.png"/></a>
-                <a href="https://www.youtube.com/channel/UCuFmmpVLaNNFoy-cHqELl_A" target="_blank"><img class="ft_icon"  src="/hmjm/Images/Icon/youtube.png"/></a>
-                <a href="https://post.naver.com/taling_me" target="_blank"><img class="ft_icon"  src="/hmjm/Images/Icon/naver.png"/></a>
-			</div>
-
 		</div>
-        
 	</div>
 </body>
 </html>

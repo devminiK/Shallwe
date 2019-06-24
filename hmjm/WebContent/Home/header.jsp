@@ -10,14 +10,15 @@
 <style>
 /*#header{box-sizing: border-box;}*/
 #header {
+	width: 100%;
 	margin: 0 auto;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
 .header_new {
-	width: 1050;
+	width: 925px;
 	height: 80px;
-	margin: 0 250px; /*중간으로 배열하기위한값을 줌*/
+	margin: 0 auto; /*중간으로 배열하기위한값을 줌*/
 }
 
 .topnav {

@@ -35,6 +35,7 @@
 </script>
 <style>
 #reCatForm {
+	width:100%;
 	margin: 0 auto;
 }
 
@@ -53,6 +54,8 @@
 	display: table-row;
 	width: 100%;
 	height: 30%;
+	margin-left: auto;
+	margin-right:auto;
 }
 
 #boxl {
@@ -112,50 +115,50 @@ p {
 							<tr>
 								<%-- <div class="btn-group-toggle" data-toggle="buttons">--%>
 								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="101"><span>강남(<%=ctdao.getRegionCount("101")%>)
+										type="checkbox" name="reNum" value="101"/><span>강남(<%=ctdao.getRegionCount("101")%>)
 									</span>
 								</label></td>
 								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="102"><span>신촌홍대(<%=ctdao.getRegionCount("102")%>)
+										type="checkbox" name="reNum" value="102"/><span>신촌홍대(<%=ctdao.getRegionCount("102")%>)
 									</span>
 								</label></td>
 								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="103"><span>건대(<%=ctdao.getRegionCount("103")%>)
+										type="checkbox" name="reNum" value="103"/><span>건대(<%=ctdao.getRegionCount("103")%>)
 									</span></label></td>
 							</tr>
 							<tr>
 								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="201"><span>수원(<%=ctdao.getRegionCount("201")%>)
+										type="checkbox" name="reNum" value="201"/><span>수원(<%=ctdao.getRegionCount("201")%>)
 									</span></label></td>
 								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="202"><span>분당(<%=ctdao.getRegionCount("202")%>)
+										type="checkbox" name="reNum" value="202"/><span>분당(<%=ctdao.getRegionCount("202")%>)
 									</span></label></td>
 								<td><div class="btn-group-toggle" data-toggle="buttons">
 										<label class="btn btn-primary"> <input type="checkbox"
-											name="reNum" value="203"><span>죽전(<%=ctdao.getRegionCount("203")%>)
+											name="reNum" value="203"/><span>죽전(<%=ctdao.getRegionCount("203")%>)
 										</span></label>
 									</div></td>
 							</tr>
 							<tr>
 								<td><div class="btn-group-toggle" data-toggle="buttons">
 										<label class="btn btn-primary"> <input type="checkbox"
-											name="reNum" value="301"><span>부산서면(<%=ctdao.getRegionCount("301")%>)
+											name="reNum" value="301"/><span>부산서면(<%=ctdao.getRegionCount("301")%>)
 										</span></label>
 									</div></td>
 								<td><div class="btn-group-toggle" data-toggle="buttons">
 										<label class="btn btn-primary"> <input type="checkbox"
-											name="reNum" value="302"><span>부산해운대(<%=ctdao.getRegionCount("302")%>)
+											name="reNum" value="302"/><span>부산해운대(<%=ctdao.getRegionCount("302")%>)
 										</span></label>
 									</div></td>
 								<td><div class="btn-group-toggle" data-toggle="buttons">
 										<label class="btn btn-primary"> <input type="checkbox"
-											name="reNum" value="303"><span>부산사상(<%=ctdao.getRegionCount("303")%>)
+											name="reNum" value="303"/><span>부산사상(<%=ctdao.getRegionCount("303")%>)
 										</span></label>
 									</div></td>
 							</tr>
 						</table>
 						<div id="bot_btn">
-							<input type="submit" class="btn btn-danger" value="선택지역 결과 보기">
+							<input type="submit" class="btn btn-danger" value="선택지역 결과 보기"/>
 						</div>
 					</form>
 				</div>
