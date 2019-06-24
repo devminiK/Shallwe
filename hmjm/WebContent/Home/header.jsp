@@ -16,7 +16,7 @@
 }
 
 .header_new {
-	width: 925px;
+	width: 1000px;
 	height: 80px;
 	margin: 0 auto; /*중간으로 배열하기위한값을 줌*/
 }
