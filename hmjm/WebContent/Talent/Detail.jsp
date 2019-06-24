@@ -94,7 +94,7 @@ function showSlides(n) {
 	//내수업인지 신청한 수업인지 구별하기 위해 불러오는 값..테스트중
 		tutorDAO tu = tutorDAO.getInstance();
 		tutorVO ee = tu.getMember(id);
-		
+	
 		System.out.println("튜터정보**e**"+ee);
 		
 		buyDAO buyer = buyDAO.getInstance();
