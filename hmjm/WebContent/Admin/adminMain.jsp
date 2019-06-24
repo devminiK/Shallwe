@@ -12,6 +12,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <title>Admin Main</title>
 </head>
+
 <body>
 <jsp:include page="/SideMenu/sideMenu.jsp"/>
 <%if(id.equals("admin")){ %>
@@ -21,14 +22,18 @@
 	Message</button>
 <button type="button" class="btn btn-danger" onclick="document.location.href='/hmjm/Admin/adminLogout.jsp'">로그아웃</button>
 <hr/>
+
 <%-- 회원 목록/수정/탈퇴/삭제 --%>
 <jsp:include page="memberList.jsp"/>
 <hr/>
+
 <%-- 상품 목록/수정/삭제/작성? --%>
 <jsp:include page="productList.jsp"/>
 <hr/>
+
 <%-- 쪽지목록 넣을까말까 --%>
 <jsp:include page="messageList.jsp"/>
+
 <%}else{ %>
 	<script>
 		alert("누구세요");

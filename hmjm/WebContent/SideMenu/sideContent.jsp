@@ -62,7 +62,7 @@
     padding:2em;
     border:1px solid #ddd;
     width:80%;
-    height:100%
+    height:80%
 }
 
 </style>

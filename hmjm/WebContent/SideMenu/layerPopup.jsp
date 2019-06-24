@@ -70,7 +70,7 @@
 	    opacity: 0.9; 
 	}
 */
-	.modal { 
+	.modalp { 
 		position: fixed; 
 		left: 0; 
 		top: 0; 
@@ -82,7 +82,7 @@
 		transform: scale(1.1); 
 		transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
 	} 
-	.modal-content { 
+	.modal-contentp { 
 		position: absolute; 
 		top: 50%; 
 		left: 50%; 
@@ -93,7 +93,7 @@
 		height: 700px; 
 		border-radius: 0.5rem; 
 	} 
-	.close-button { 
+	.close-buttonp { 
 		float: right; 
 		width: 1.5rem; 
 		line-height: 1.5rem; 
@@ -102,7 +102,7 @@
 		border-radius: 0.25rem; 
 		background-color: lightgray; 
 	} 
-	.close-button:hover { 
+	.close-buttonp:hover { 
 		background-color: darkgray; 
 	} 
 	.show-modal { 
@@ -116,16 +116,15 @@
 	}
     
 </style>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 </head>
 <body>
 <!-- 버튼 -->
 <img src="/hmjm/Images/faq_small.png" class="trigger"/>
 <!-- 팝업 될 레이어 --> 
-	<div class="modal"> 
-    	<div class="modal-content"> 
-        	<span class="close-button">&times;</span> 
+	<div class="modalp"> 
+    	<div class="modal-contentp"> 
+        	<span class="close-buttonp">&times;</span> 
             <h1>FAQ</h1>
             <jsp:include page="sideContent.jsp"/>
             
@@ -133,10 +132,10 @@
 	</div>
 
 	<script type="text/javascript"> 
-		var modal = document.querySelector(".modal");
+		var modal = document.querySelector(".modalp");
 		var trigger = document.querySelector(".trigger");
-		var closeButton = document.querySelector(".close-button"); 
-		var cancelButton = document.querySelector("#cancel");
+		var closeButton = document.querySelector(".close-buttonp"); 
+		//var cancelButton = document.querySelector("#cancel");
 
 		function toggleModal() { 
 			modal.classList.toggle("show-modal"); 
@@ -150,7 +149,7 @@
 
 		trigger.addEventListener("click", toggleModal);
 		closeButton.addEventListener("click", toggleModal); 
-		cancel.addEventListener("click", toggleModal); 
+		//cancel.addEventListener("click", toggleModal); 
 		window.addEventListener("click", windowOnClick); 
 	</script>
 </body>
