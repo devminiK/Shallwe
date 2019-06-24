@@ -13,80 +13,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>강의 상세페이지</title>
 <style type="text/css">
-
+* {box-sizing: border-box}
 body {
 	min-width: 1000px;
 	background-color: white;
 }
-.mySlides {display: none}
-img {vertical-align: middle;}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 30%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+#tuImg {
+	float: center;
+	overflow: hidden;
+	display: block;
+	margin: 0 auto;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background-size: cover;
+	background-position: center;
 }
-
-.active, .dot:hover {
-  background-color: #717171;
+#container_detail {
+    width: 100%;
+    background: #e3e3e3;
+    padding: 50px 0 50px 0;
+    letter-spacing: 0;
 }
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 0.5s;
-  animation-name: fade;
-  animation-duration: 0.5s;
+.pic {
+	width: 500px;
+    float: left;
+    background: #fff;
+    padding: 0 80px 0 80px;
 }
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+.title {
+	width: 500px;
+    float: right;
+    padding-top: 40px;
+    margin: 100px 0 50px 0;
 }
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
 </style>
 <script>
 var slideIndex = 1;
@@ -180,11 +140,15 @@ function showSlides(n) {
 <body>
 	<jsp:include page="/Home/header.jsp" />
 	<jsp:include page="/SideMenu/sideMenu.jsp" />
-	<div>
+	<div id="container_detail">
 		<h1>강의 상세 페이지</h1>
-		<p><%=vo.getP_num() %>:::::::::::::이거 강의번호를 신청할때 넘겨야한다
-		</p>
-		<br> 강의제목::::::::<%=vo.getP_classname() %><br>
+		<div class="pic">
+			<img id="tuImg" src="/hmjm/Images/TutorImg/<%=ee.getT_selfimg()%>">
+		
+		<div class="title">
+			<br> 강의제목::::::::<%=vo.getP_classname() %>
+			</div>
+		</div>
 		강사소개::::::::<%=vo.getP_self() %><br>
 		카테고리::::::::<%=vo.getP_category() %><br>
 		<input type="hidden" name="p_email"
@@ -260,25 +224,20 @@ function showSlides(n) {
 		test
 		<%}else{%>
 		
+			
 		<% for(int i = 0 ; i < classimgList.size(); i++){
 			classimgVO g = (classimgVO)classimgList.get(i);%>
-			<div class="slideshow-container">
-			<div class="mySlides fade">	
-				<img src="/hmjm/Images/Classimg/<%=g.getCi_name()%>" style="width:35%">
-			</div>
 			
-			</div>
+		
+				<img src="/hmjm/Images/Classimg/<%=g.getCi_name()%>" style="width:50%">
+
+		
 		<%}%>
-		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>	
-		<%}%>
-		<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-</div>
+			
+			
 		<%}%>
 
+<%}%>
 
 		<br>
 
