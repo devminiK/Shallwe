@@ -1,16 +1,121 @@
-<%@ page language = "java" contentType="text/html; charset=UTF-8" %>
-<%@ page import = "hmjm.bean.product.*" %>
-<%@ page import = "hmjm.bean.buy.*" %>
-<%@ page import = "hmjm.bean.tutor.*" %>
-<%@ page import = "hmjm.bean.classtime.*" %>
-<%@ page import = "hmjm.bean.classimg.*" %>
-<%@ page import = "java.util.List" %>
-<%@ page import = "oracle.net.aso.b"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="hmjm.bean.product.*"%>
+<%@ page import="hmjm.bean.buy.*"%>
+<%@ page import="hmjm.bean.tutor.*"%>
+<%@ page import="hmjm.bean.classtime.*"%>
+<%@ page import="hmjm.bean.classimg.*"%>
+<%@ page import="java.util.List"%>
+<%@ page import="oracle.net.aso.b"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>강의 상세페이지</title>
+<style type="text/css">
+
+body {
+	min-width: 1000px;
+	background-color: white;
+}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 30%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 0.5s;
+  animation-name: fade;
+  animation-duration: 0.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+</style>
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
 </head>
 
 <%
@@ -73,156 +178,175 @@
 %>
 
 <body>
-<jsp:include page="/Home/header.jsp" />
-<jsp:include page="/SideMenu/sideMenu.jsp"/>
-	
-	<h1>강의 상세 페이지</h1>
-	<p><%=vo.getP_num() %>:::::::::::::이거 강의번호를 신청할때 넘겨야한다</p><br>
-	강의제목:::::::: <%=vo.getP_classname() %><br>
-	강사소개:::::::: <%=vo.getP_self() %><br>
-	카테고리:::::::: <%=vo.getP_category() %><br>
-	<input type="hidden" name="p_email" value="<%=vo.getP_email()%>"/>
-	강사이메일::::::::
-	<a href="#" onClick="window.open('/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>',
-		'_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,directories=no,width=650,height=660')">
-		<%=vo.getP_email() %></a><br><br>
-	
+	<jsp:include page="/Home/header.jsp" />
+	<jsp:include page="/SideMenu/sideMenu.jsp" />
 	<div>
-	수업가능시간::::::::
-	<%if(t == null){ %>
-	<h1> 시간 미등록 튜터</h1>
-	<%}else{ %>
+		<h1>강의 상세 페이지</h1>
+		<p><%=vo.getP_num() %>:::::::::::::이거 강의번호를 신청할때 넘겨야한다
+		</p>
+		<br> 강의제목::::::::<%=vo.getP_classname() %><br>
+		강사소개::::::::<%=vo.getP_self() %><br>
+		카테고리::::::::<%=vo.getP_category() %><br>
+		<input type="hidden" name="p_email"
+			value="<%=vo.getP_email()%>" />
+		강사이메일:::::::: <a href="#"
+			onClick="window.open('/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>',
+		'_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,directories=no,width=650,height=660')">
+			<%=vo.getP_email() %></a>
+		<br>
+		<br>
+<%--수업가능시간 --%>
+		<div>
+			수업가능시간::::::::
+			<%if(t == null){ %>
+			<h1>시간 미등록 튜터</h1>
+			<%}else{ %>
 			<%if(t.getCt_mon()==null){%>
 			<%}else{%>
-				월: <%=t.getCt_mon()%>
+			월:
+			<%=t.getCt_mon()%>
 			<%}%>
-			
+
 			<%if(t.getCt_tue()==null){%>
 			<%}else{%>
-				화: <%=t.getCt_tue()%>
-				<%}%>
-				
+			화:
+			<%=t.getCt_tue()%>
+			<%}%>
+
 			<%if(t.getCt_wed()==null){%>
 			<%}else{%>
-				수: <%=t.getCt_wed()%>
+			수:
+			<%=t.getCt_wed()%>
 			<%}%>
-			
+
 			<%if(t.getCt_thu()==null){%>
 			<%}else{%>
-				목: <%=t.getCt_thu()%>
+			목:
+			<%=t.getCt_thu()%>
 			<%}%>
-			
+
 			<%if(t.getCt_fri()==null){%>
 			<%}else{%>
-				금: <%=t.getCt_fri() %>
+			금:
+			<%=t.getCt_fri() %>
 			<%}%>
-			
+
 			<%if(t.getCt_sta()==null){%>
 			<%}else{%>
-				토: <%=t.getCt_sta()%>
+			토:
+			<%=t.getCt_sta()%>
 			<%}%>
-			
+
 			<%if(t.getCt_sun()==null){%>
 			<%}else{%>
-				일: <%=t.getCt_sun() %>
-				<% %>
-				
+			일:
+			<%=t.getCt_sun() %>
+			<% %>
+
 			<%if(t.getCt_day()==null){%>
 			<%}else{%>
-				데이수업<%=t.getCt_day()%>
+			데이수업<%=t.getCt_day()%>
 			<%}%>
-	<%}%>
-	<%}%>
-		
-		</div><br>
-<% if(bb==null){%>
-	<h1>사진 미등록 튜터</h1>
-	<%}else{ %>
-	
+			<%}%>
+			<%}%>
+
+		</div>
+		<br>
+		<% if(bb==null){%>
+		<h1>사진 미등록 튜터</h1>
+		<%}else{ %>
+
 		<%if(count == 0){%>
 		test
 		<%}else{%>
-			<% for(int i = 0 ; i < classimgList.size(); i++){
-			classimgVO g = (classimgVO)classimgList.get(i);%>
-			<img src="/hmjm/Images/Classimg/<%=g.getCi_name()%>" width="50%" >
-			<%}%>
-		<%}%>
-	<%}%>
-	
-
-<br>
-
 		
+		<% for(int i = 0 ; i < classimgList.size(); i++){
+			classimgVO g = (classimgVO)classimgList.get(i);%>
+			<div class="slideshow-container">
+			<div class="mySlides fade">	
+				<img src="/hmjm/Images/Classimg/<%=g.getCi_name()%>" style="width:35%">
+			</div>
+			
+			</div>
+		<%}%>
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>	
+		<%}%>
+		<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+		<%}%>
+
+
+		<br>
+
+<%--신청하기 if문 --%>
 <%
 if(id!=null){
 	if(ee!=null){
 		if(vd!=null){
 			if(vc!=null){%>
-				내가 등록한글
-				<a href="/hmjm/Home/main.jsp"> 
-				 처음으로</a>
-				<%}else{
+		내가 등록한글 <a href="/hmjm/Home/main.jsp"> 처음으로</a>
+		<%}else{
 					if(b!=null){
 						if(c!=null){%>
-								튜터o 구매한 강의
-								<a href="/hmjm/Home/main.jsp">
-								처음으로</a>
-								<%}else{%>
-									<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
-									튜터 o 구매이력 o 신청하기</a>
-								<%}
+		튜터o 구매한 강의 <a href="/hmjm/Home/main.jsp"> 처음으로</a>
+		<%}else{%>
+		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터 o
+			구매이력 o 신청하기</a>
+		<%}
 			
 							}else{%>
-								<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
-								튜터o 구매이력 x 신청하기</a>
-								<%}
+		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터o
+			구매이력 x 신청하기</a>
+		<%}
 					
 				}
 			
 		}else{
 				if(b!=null){
 					if(c!=null){%>
-						튜터 o 판매x 구매한 강의
-						<a href="/hmjm/Home/main.jsp">
-								처음으로</a>
-						<%}else{%>
-						<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
-						튜터 o 판매x 구매이력 o 신청하기</a>
-						<%}
+		튜터 o 판매x 구매한 강의 <a href="/hmjm/Home/main.jsp"> 처음으로</a>
+		<%}else{%>
+		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터 o
+			판매x 구매이력 o 신청하기</a>
+		<%}
 			
 					}else{%>
-						<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
-						튜터o 판매x 구매이력 x 신청하기 </a>
-						<%}
+		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터o
+			판매x 구매이력 x 신청하기 </a>
+		<%}
 			
 				}
 				
 		}else{
 				if(b!=null){
 					if(c!=null){%>
-						튜터x 구매한글
-					<%}else{%>
-						<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
-						튜터x 구매이력o 신청하기</a>
-					<%}
+		튜터x 구매한글
+		<%}else{%>
+		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터x
+			구매이력o 신청하기</a>
+		<%}
 			
 				}else{%>
-					<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">
-					튜터x 구매이력 x 첫구매!</a>
-				<%}	
+		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터x
+			구매이력 x 첫구매!</a>
+		<%}	
 			
 			}
 	}else{%>
-		<a href ="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">비로그인 신청</a>
-	<%}
+		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">비로그인 신청</a>
+		<%}
 
 
-%>	
-					
-						
-<br>
-<br>
-<jsp:include page="/Review/review.jsp?p_num=<%=num%>" />
-<jsp:include page="/Home/footer.jsp" />
+%>
+
+
+		<br> <br>
+	</div>
+	<jsp:include page="/Review/review.jsp?p_num=<%=num%>" />
+	<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
