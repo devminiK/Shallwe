@@ -6,16 +6,17 @@
 <style>
 
 #footer{
+	
 	width:1050px;
-	height:300px;
+	height:200px;
 	margin: 0 auto;
 	font-family: Arial, Helvetica, sans-serif;
 }
 .footer_cont {
+background-color:green;
 	width:1050px;
-	height:235px;
+	height:300px;
 	margin: 0px 150px;/*left-right margin*/
-	/*padding: 35px 0px 70px;*/ /*not nessasary*/
 }
 
 /*ul요소 포함 박스*/
@@ -33,7 +34,7 @@
     margin-right:50px;
 }
 .footer_mid {
-	width:1050px;
+	width:100%;
     padding: 10px 0px 0px;  	
 }
 
