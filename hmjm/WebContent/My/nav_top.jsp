@@ -50,6 +50,7 @@ a:hovor {
 }
 #tImg{
 	border-radius:50%;
+	
 }
 span{
 	 font-size: 12px;

@@ -78,7 +78,7 @@ hr {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 20%;
   opacity: 0.9;
 }
 
