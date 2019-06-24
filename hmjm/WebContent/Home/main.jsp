@@ -10,6 +10,13 @@
 	font-family: Verdana, sans-serif;
 	margin: 0
 }
+#ft_position {
+   /*position: fixed;*/
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: black;
+}
 
 .mySlides {
 	display: none
@@ -110,14 +117,16 @@ to {
 </style>
 </head>
 <body id="main">
-	<%--상단 카테고리bar: header --%>
+	<%-- 좌측 도움말 --%>
+	<jsp:include page="/SideMenu/sideMenu.jsp" flush="false"/>
 	
-	<jsp:include page="header.jsp" />
-	<jsp:include page="/SideMenu/sideMenu.jsp"/>
+	<%--상단 카테고리bar: header --%>
+	<jsp:include page="header.jsp" flush="false" />
+	
 	<%--중간 카테고리bar: category --%>
-	<jsp:include page="category.jsp" />
-	 <%--지역 카테고리 bar: 미완성 --%>
-	<jsp:include page="reCatForm.jsp" />
+	<jsp:include page="category.jsp" flush="false"/>
+	 <%--지역 카테고리 bar--%>
+	<jsp:include page="reCatForm.jsp"/> 
 	
 	
  	<%--메인화면에 보여줄 , 메인 사진들 --%>
@@ -181,9 +190,13 @@ to {
 	</script>
 	
 
-	<%--footer --%>
+	
 	<br/>
-	<jsp:include page="footer.jsp" />
+	<%--footer --%>
+	<div id="ft_position">
+		<jsp:include page="footer.jsp" flush="false"/>
+	</div>
+	
 	
 
 </body>

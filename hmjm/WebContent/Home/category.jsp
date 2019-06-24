@@ -16,6 +16,7 @@
 	width: 900px;
 	height: 180px;
 	margin: 0 auto;/*가운데 정렬*/
+	margin-top:0;
 	overflow: hidden;
 	background-color: white; /*white*/
 }

@@ -33,14 +33,15 @@
 </script>
 <style>
 #reCatForm {
-	width: 90%;
+	width: 100%;
+	margin:0 auto;
 }
 
 #recat_new {
 	background-color: #EEEEEE;
-	width: 90%;
-	height: 270px;
-	margin: 0 auto;
+	width: 100%;
+	height: 275px;/*form을 감싸는 배경색*/
+	margin: auto auto;
 }
 
 #items {
@@ -89,9 +90,6 @@ td {
 	font-weight: bold;
 }
 
-p {
-	margin: 20px 0px;
-}
 </style>
 
 </head>
