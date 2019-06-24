@@ -30,22 +30,38 @@ body {
 	background-position: center;
 }
 #container_detail {
-    width: 100%;
+    width: 1000px;
     background: #e3e3e3;
     padding: 50px 0 50px 0;
     letter-spacing: 0;
+    margin: 0 auto;
 }
 .pic {
 	width: 500px;
+	height: 200px;
     float: left;
-    background: #fff;
+    
     padding: 0 80px 0 80px;
 }
 .title {
 	width: 500px;
+	height: 100px;
     float: right;
-    padding-top: 40px;
-    margin: 100px 0 50px 0;
+    margin: 0 auto;
+    padding: 0 0 0 0;
+     
+}
+.title2 {
+	width: 500px;
+	height: 100px;
+    float: right;
+    margin: 0 auto;
+    padding: 0 0 0 0;
+     
+}
+.s {
+	width: 1000px;
+	margin: 0 auto; 
 }
 </style>
 <script>
@@ -110,6 +126,8 @@ function showSlides(n) {
 		productVO vo = dbPro.getProduct(num);
 		productVO vc = dbPro.getProduct2(id,num);//등록한 상품 신청 못하게
 		productVO vd = dbPro.getProduct4(id);
+		String t_email = vo.getP_email();//강사 닉네임을 불러오기위해
+		tutorVO et = tu.getMember(t_email);
 		
 		
 		
@@ -142,26 +160,47 @@ function showSlides(n) {
 	<jsp:include page="/SideMenu/sideMenu.jsp" />
 	<div id="container_detail">
 		<h1>강의 상세 페이지</h1>
-		<div class="pic">
-			<img id="tuImg" src="/hmjm/Images/TutorImg/<%=ee.getT_selfimg()%>">
-		
-		<div class="title">
-			<br> 강의제목::::::::<%=vo.getP_classname() %>
+			<div class="pic">
+				<img id="tuImg" src="/hmjm/Images/TutorImg/<%=et.getT_selfimg()%>">
+				<%=et.getT_nick() %>
 			</div>
+			<div class="title">
+				 <h1><%=vo.getP_classname()%></h1>
+			</div>
+			<div class="title2">
+				<%=t.getCt_place() %>장소
+				<%=vo.getP_time() %>시간/회
+				
+				<%if(vo.getP_count_min()==0){%>
+				1:1강습<%}else{%>
+					<%=vo.getP_count_min() %>~<%=vo.getP_count_max() %>명
+					<%} %>
+				
+				<%=vo.getP_cost() %>원/시간
+				 
+			</div>
+			<div class ="s">
+				<input type="hidden" name="p_email"
+					value="<%=vo.getP_email()%>" /><br>
+				강사이메일:::::::: <a href="#"
+					onClick="window.open('/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>',
+					'_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,directories=no,width=650,height=660')">
+						<%=vo.getP_email() %></a><br>
+		
+				강사소개::::::::<%=vo.getP_self() %><br>
+				튜터정보::<%=vo.getP_class1() %><br>
+				수업소개::<%=vo.getP_class1() %><br>
+				수업대상::<%=vo.getP_class1() %><br>
+				커리큘럼::<%=vo.getP_class1() %><br>
+				
+				
+				
+				<br>
+
 		</div>
-		강사소개::::::::<%=vo.getP_self() %><br>
-		카테고리::::::::<%=vo.getP_category() %><br>
-		<input type="hidden" name="p_email"
-			value="<%=vo.getP_email()%>" />
-		강사이메일:::::::: <a href="#"
-			onClick="window.open('/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>',
-		'_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,directories=no,width=650,height=660')">
-			<%=vo.getP_email() %></a>
-		<br>
-		<br>
-<%--수업가능시간 --%>
-		<div>
-			수업가능시간::::::::
+		 <%--수업가능시간 --%>
+		
+			수업가능시간::
 			<%if(t == null){ %>
 			<h1>시간 미등록 튜터</h1>
 			<%}else{ %>
@@ -213,8 +252,6 @@ function showSlides(n) {
 			<%}%>
 			<%}%>
 			<%}%>
-
-		</div>
 		<br>
 		<% if(bb==null){%>
 		<h1>사진 미등록 튜터</h1>
@@ -227,17 +264,10 @@ function showSlides(n) {
 			
 		<% for(int i = 0 ; i < classimgList.size(); i++){
 			classimgVO g = (classimgVO)classimgList.get(i);%>
-			
-		
 				<img src="/hmjm/Images/Classimg/<%=g.getCi_name()%>" style="width:50%">
-
-		
+				<%}%>
+			<%}%>
 		<%}%>
-			
-			
-		<%}%>
-
-<%}%>
 
 		<br>
 
