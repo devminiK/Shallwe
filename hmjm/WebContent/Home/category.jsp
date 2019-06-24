@@ -6,21 +6,16 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-body {
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0 auto;
-	/*
-	width: 1080;
-	height: 80px;
-	margin: 0 180px;
-	*/
+#cate {
+    height:180px;/*160px보다 작으면 border 가려짐*/
+	width:90%;
 }
 
 /*전체 nav bar*/
 .navbar {
-	width: 1080px;
-	height: 160px;/*이것보다 작으면 border 가려짐*/
-	margin: 0 180px;
+	width: 900px;
+	height: 180px;
+	margin: 0 auto;/*가운데 정렬*/
 	overflow: hidden;
 	background-color: white; /*white*/
 }
@@ -29,7 +24,7 @@ body {
 	float: left;
 	font-size: 14px;
 	color: black; /*??*/
-	padding: 15px 10px;
+	padding: 13px 10px;
 	text-decoration: none;
 }
 
@@ -43,7 +38,7 @@ body {
 	border: none;
 	outline: none;
 	color: black;
-	padding: 14px 20px;
+	padding: 10px 10px;
 	background-color: inherit;
 	font-family: inherit;
 	font-weight: bold;
@@ -54,17 +49,19 @@ body {
 	border-top: 1.5px solid black;
 	border-right: 1.5px solid black;
 	border-left: 1.5px solid black;
-	border-bottom: 1.5px solid white;
+	border-bottom: 1.5px solid black;
 }
 
-.subnav-content {
+.subnav-content {/*hovor cont*/
 	display: none;
 	position: absolute;
 	left: 0;
 	background-color: white;
-	width: 100%;
+	width: 80%;/*border안잘리도록*/
+	height:10p%;
 	z-index: 1;
-	margin: 0 180px;
+	background-color:white;
+	margin:0;
 }
 
 .subnav-content a {
@@ -75,6 +72,7 @@ body {
 
 .subnav-content a:hover {
 	color: gray;
+	text-decoration: none;
 }
 
 .subnav-content:hover { /*위아래가 이어져야함*/
@@ -88,12 +86,9 @@ body {
 	display: block;
 }
 
-#notwork { /*적용 안됨^^;*/
-	font-colr: #FF9595;
-}
 </style>
 </head>
-<body>
+<body id="cate">
 
 	<div class="navbar">
 		<div class="subnav">
@@ -193,6 +188,6 @@ body {
 			</div>
 		</div>
 	</div>
-	<br><br><br>
+	<br>
 </body>
 </html>
