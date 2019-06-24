@@ -3,63 +3,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
+<title>로그인</title>
+
+
+<style>
+#logMain {
+	height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.bg-img {
+	/* The image used */
+	background-image: url("/hmjm//Images/loginbg.jpg");
+	min-height: 600px;
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+/* Add styles to the form container */
+.container {
+	position: absolute;
+	right: 0;
+	margin: 20px;
+	max-width: 300px;
+	padding: 16px;
+	background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	border: none;
+	background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+	background-color: #ddd;
+	outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+	background-color: #4CAF50;
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.9;
+	margin: 3px;
+}
+
+.btn:hover {
+	opacity: 1;
+}
+</style>
 </head>
 
-<body class="not-front">
-<div id="main">
-	<jsp:include page="/Home/header.jsp"/>
+<body id="logMain">
 
-
-<div id="inner">
-
-<div class="top2_wrapper">
-<div class="bg1"><img src="images/bg1.jpg" alt="" class="img"></div>
-<div class="top2_inner">
-<div class="container">
-<div class="top2 clearfix">
-	
-<h1>Login</h1>
-
-</div>	
-</div>	
-</div>
-</div>
-
-<div id="content">
-<div class="container">
-<div class="row">
-<div class="span9">
-	
-<h2><span>Welcome</span></h2>
-
-<h3>Login Here</h3>
-
-<div class="thumb1">
-	<div class="thumbnail clearfix">
-		<figure class=""><img src="images/about01.jpg" alt=""></figure>
-		<div class="caption">
-			
-			
+	<jsp:include page="/Home/header.jsp" />
+	<div>
+		<div class="bg-img">
 			<%if(session.getAttribute("loginId") == null){%>
-			<form action="loginPro.jsp" method="post">
-				<TABLE cellSpacing=1 cellPadding=1 width="260" border=0 align="center" >
-  				  
-				  <TR height="30">
-				    <TD width="200" align=center>아이디</TD>
-				    <TD width="150" align=center>
-				    	<INPUT type="text" name="m_email" size="15" /></TD></TR>
-				  <TR height="30">
-				    <TD width="200" align=center>비밀번호</TD>
-				    <TD width="150" align=center>
-				    	<INPUT type="password" name="m_pw" size="15" /></TD></TR>
-				  <TR height="30">
-				    <TD colspan="2" align="middle">
-				      <INPUT type="submit" value="로그인"/> 
-				      <INPUT type="reset" value="다시입력"/>
-				      <input type="button" value="회원가입" 
-				      onclick="javascript:window.location='/hmjm/Register/register.jsp'"></TD></TR>
-				</TABLE>
+			<form action="loginPro.jsp" method="post" class="container">
+				<h1>Login</h1>
+				<label for="email"><b>Email</b></label> 
+				<input type="text"	name="m_email" placeholder="Enter Email"  required> 
+				<label	for="psw"><b>Password</b></label> 
+				<input type="password" name="m_pw" placeholder="Enter Password" required>
+
+				<button type="submit" class="btn">Login</button>
+				<button type="reset" class="btn">Reset</button>
+				<button type="button" 
+				class="btn" onclick="javascript:window.location='/hmjm/Register/register.jsp'">Join Us</button>
 			</form>
 			<%}else{ //로그아웃시 main.jsp로 이동
 				session.invalidate();
@@ -68,20 +94,8 @@
 						history.go(-1);
 					</script>
 			<%}%>
-
-
-			
 		</div>
 	</div>
-</div>
-
-</div>
-
-</div>
-
-</div>	
-</div>
-
-<jsp:include page="/Home/footer.jsp" />
+	<jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
