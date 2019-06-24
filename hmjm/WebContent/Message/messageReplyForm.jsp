@@ -3,8 +3,10 @@
 <%@ page import="hmjm.bean.message.messageVO" %>
 <html>
 <head>
-<link href="style.css" rel="stylesheet" type="text/css">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <% 
 	String id = (String)session.getAttribute("loginId");
@@ -37,8 +39,8 @@
 	
 	<table align="center">  
 		<tr><td colspan=2 align="center"> 
-				<input type="submit" value="보내기"/>
-				<input type="button" value="닫기" onclick="window.close()"/></td>
+				<button type="submit" class="btn btn-primary">보내기</button>
+				<button type="button" class="btn btn-dark" onclick="window.close()">닫기</button></td>
 		</tr>
 	</table>    
 <%}catch(Exception e){}%>     

@@ -38,7 +38,12 @@
 	double avg = dbPro.avgScore(pnum); //리뷰 별점의 평균점수
 %>
 <html>
-<link href="style.css" rel="stylesheet" type="text/css">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
 
 <body style="text-align:center;">
 	<p><%=dbPro.reviewCount(pnum)%>개 리뷰가 존재합니다.</p>
@@ -88,10 +93,10 @@
 			<%String login = article.getR_name();
 			if (id!=null){
 				if(id.equals(login) || id.equals("admin")) {%>
-					<input type="button" value="수정" 
-						onclick="document.location.href='/hmjm/Review/reviewUpdateForm.jsp?num=<%=article.getR_num()%>&rpageNum=<%=rpageNum%>&p_num=<%=pnum%>'"/>
-					<input type="button" value="삭제" 
-						onclick="document.location.href='/hmjm/Review/reviewDeleteForm.jsp?num=<%=article.getR_num()%>&p_num=<%=pnum%>'">
+					<button type="button" class="btn btn-primary btn-sm"
+					onclick="document.location.href='/hmjm/Review/reviewUpdateForm.jsp?num=<%=article.getR_num()%>&rpageNum=<%=rpageNum%>&p_num=<%=pnum%>'">수정</button>
+					<button type="button" class="btn btn-danger btn-sm"
+					onclick="document.location.href='/hmjm/Review/reviewDeleteForm.jsp?num=<%=article.getR_num()%>&p_num=<%=pnum%>'">삭제</button>
 				<%}
 			}%> 
 			</td>
@@ -101,8 +106,8 @@
 	
 </table>
 <br/>
-<input type="button" value="다!" 
-	onClick="window.open('/hmjm/Review/reviewMore.jsp?p_num=<%=pnum%>','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=770,height=600')"/>
+<button type="button" class="btn btn-secondary"
+onClick="window.open('/hmjm/Review/reviewMore.jsp?p_num=<%=pnum%>','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=770,height=600')">더보기</button>
 <br/><br/>
 <%
 /*

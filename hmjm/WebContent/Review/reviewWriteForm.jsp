@@ -69,8 +69,9 @@
 	</tr>
 </table>
 <table align="center">  
-	<tr><td colspan=2 align="center"> 
-			<input type="submit" value="후기 작성하기"/>  
+	<tr><td colspan=2 align="center">
+			<button type="submit" class="btn btn-success">리뷰 작성하기</button>
+			  
 		</td>
 	</tr>
 </table>    

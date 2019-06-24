@@ -61,6 +61,7 @@
 /* 검색 기능 */
 .topnav .search-container {
 	float: left;
+	padding-left: 100px;
 }
 
 .topnav input[type=text] {

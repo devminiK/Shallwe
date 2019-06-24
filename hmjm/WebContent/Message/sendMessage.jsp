@@ -4,6 +4,10 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <title>Sent Messages</title>
 </head>
 <%!
@@ -58,12 +62,12 @@
 		    <td align="center" width="100"><%=article.getS_reg()%></td>
 		    <td align="left" width="375"><%=article.getS_content()%></td>
 		    <td align="center">
-				<input type="button" value="삭제" 
-					onclick="document.location.href='/hmjm/Message/messageDeleteForm.jsp?num=<%=article.getS_num()%>'"/></td>
+				<button type="button" class="btn btn-danger btn-sm"
+					onclick="document.location.href='/hmjm/Message/messageDeleteForm.jsp?num=<%=article.getS_num()%>'">삭제</button></td>
 		</tr>
 	<%}}}%>
 	</table>
-	<input type="button" value="닫기" onclick="window.close()"/>
+	<button type="button" class="btn btn-dark" onclick="window.close()">닫기</button>
 <%if (count > 0) {
 	int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
 	int startPage = (int)(currentPage/10)*10+1;
