@@ -46,15 +46,15 @@ public class productDAO {
 			pstmt.setString(2, product.getP_category());
 			pstmt.setString(3, product.getP_classname());
 			pstmt.setString(4, product.getP_self());
-			pstmt.setInt(5, product.getP_time());
-			pstmt.setInt(6, product.getP_cost());
-			pstmt.setString(7, product.getP_memo());
-			pstmt.setInt(8, product.getP_count_min());
-			pstmt.setInt(9, product.getP_count_max());
-			pstmt.setString(10, product.getP_class1());
-			pstmt.setString(11, product.getP_class2());
-			pstmt.setString(12, product.getP_class3());
-			pstmt.setString(13, product.getP_class4());
+			pstmt.setString(5, product.getP_class1());
+			pstmt.setString(6, product.getP_class2());
+			pstmt.setString(7, product.getP_class3());
+			pstmt.setString(8, product.getP_class4());
+			pstmt.setInt(9, product.getP_time());
+			pstmt.setInt(10, product.getP_cost());
+			pstmt.setInt(11, product.getP_count_min());
+			pstmt.setInt(12, product.getP_count_max());
+			pstmt.setString(13, product.getP_memo());
 			pstmt.executeUpdate();
 		} catch(Exception ex) {
 			ex.printStackTrace();

@@ -10,16 +10,12 @@ public class productVO {
 	private String p_class2;	//소개_튜터소개
 	private String p_class3;	//소개_튜터소개
 	private String p_class4;	//소개_튜터소개
-	private int p_time;		//수업 소요 시간
+	private int p_time;			//수업 소요 시간
 	private int p_cost;			//가격
 	private int p_count_min;	//인원 최소 인원
 	private int p_count_max;	//인원 최대 인원
 	private String p_memo;		//덧 붙이는 말
-	private String p_imgsrc;		//이미지파일을 가져오기위한 변수 추가 작성
-	
-	//private String p_nick;		//튜터의 닉네임	-가져올것
-	//private String p_selfimg;	//등록 상품의 튜어 사진	-가져올것
-	//private String p_name;		//튜터의 이름	-가져올것
+
 	
 	public int getP_num() {
 		return p_num;
@@ -45,26 +41,6 @@ public class productVO {
 	public void setP_classname(String p_classname) {
 		this.p_classname = p_classname;
 	}
-	/*
-	public String getP_nick() {
-		return p_nick;
-	}
-	public void setP_nick(String p_nick) {
-		this.p_nick = p_nick;
-	}
-	public String getP_selfimg() {
-		return p_selfimg;
-	}
-	public void setP_selfimg(String p_selfimg) {
-		this.p_selfimg = p_selfimg;
-	}
-	public String getP_name() {
-		return p_name;
-	}
-	public void setP_name(String p_name) {
-		this.p_name = p_name;
-	}
-	*/
 	public String getP_self() {
 		return p_self;
 	}
@@ -125,12 +101,5 @@ public class productVO {
 	public void setP_memo(String p_memo) {
 		this.p_memo = p_memo;
 	}
-	
-	//파일에 관련된 .setter, getter 추가 작성
-	public String getP_Imgsrc() {
-		return p_imgsrc;
-	}
-	public void setP_Imgsrc(String p_imgsrc) { 
-		this.p_imgsrc = p_imgsrc;
-	}
+
 }
