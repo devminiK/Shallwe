@@ -260,7 +260,7 @@ function showSlides(n) {
 		
 		classtimeDAO time = classtimeDAO.getInstance();
 		classtimeVO t = time.getClasstime(num);
-	
+		int cp = Integer.parseInt(t.getCt_place());
 		classimgDAO aa  = classimgDAO.getInstance();
 		classimgVO bb = aa.getImg(num);
 	//내수업인지 신청한 수업인지 구별하기 위해 불러오는 값..테스트중
@@ -330,7 +330,43 @@ function showSlides(n) {
 				 <h1><%=vo.getP_classname()%></h1>
 			</div>
 			<div class="title2">
-				<%=t.getCt_place() %>장소
+			
+			<%switch(cp){
+				case 101:%>
+				강남<%;
+				break;
+				case 102:%>
+				신촌홍대<%;
+				break;
+				case 103:%>
+				건대<%;
+				break;
+				
+				case 201:%>
+				수원<%;
+				break;
+				case 202:%>
+				분당<%;
+				break;
+				case 203:%>
+				죽전<%;
+				break;
+				
+				case 301:%>
+				부산서면<%;
+				break;
+				case 302:%>
+				부산해운대<%;
+				break;
+				case 303:%>
+				부산사상<%;
+				break;
+		
+				}%>
+				
+				
+				
+		
 				<%=vo.getP_time() %>시간/회
 				
 				<%if(vo.getP_count_min()==0){%>
