@@ -16,18 +16,61 @@ searchDAO dao = searchDAO.getInstance();
 ArrayList<productVO> list = dao.getAllProduct(search);
 
 classimgDAO img  = classimgDAO.getInstance();//강의 등록사진 불러오기
+reviewDAO rdao = reviewDAO.getInstance();
 %>
 <html>
 <head>
 <style type="text/css">
-	.ranks {
-		float: left;
-		width: 300px;
-		height: 200px;
-		overflow: hidden;
-		border: 1px #ddd solid;
-		padding: 1px;
-	}
+.pd_container {
+	background-color: #E1E1E1;
+	float: left;
+	margin: 2px;
+}
+
+.pd_info {
+	display: table-row;
+}
+
+.pd_infoEle {
+	display: table-cell;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+}
+
+#btCont {
+	width:100%;
+	height:200px;
+	float: left;
+}
+
+#cont_img {
+	width: 250px;
+	height:200px;
+}
+
+/*a태그 관련 스타일 적용*/
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a:hovor {
+	color: black;
+	text-decoration: none;
+}
+
+.bt_msg1{
+	text-align:center;
+}
+.bt_msg2{
+	float:right
+}	
 </style>
 <title>Search Result</title>
 </head>
@@ -36,24 +79,46 @@ classimgDAO img  = classimgDAO.getInstance();//강의 등록사진 불러오기
 <jsp:include page="/SideMenu/sideMenu.jsp" flush="false"/>
 <%--상단 카테고리bar: header --%>
 <jsp:include page="header.jsp" flush="false" />
+
 <h1>"<%=search%>"로 검색하신 결과입니다.</h1>
 <table style="width:100%">
-	
-	<%
-	if(!list.isEmpty()){
+	<%if(!list.isEmpty()){
 		for(productVO vo : list){
 			int pnum = vo.getP_num();
 			classimgVO ci = img.getImg(pnum);%>
-			<div class="ranks">	
-				no.<%=vo.getP_num()%>
-				강의이름 : <a href="/hmjm/Talent/Detail.jsp?p_num=<%=vo.getP_num()%>"><%=vo.getP_classname()%></a>
-				<img src="/hmjm/Images/Classimg/<%=ci.getCi_name() %>" width="100%" />
-			</div>
+
+			<%--컨텐츠  list--%>
+			<div id="contents">
+				<a href="/hmjm/Talent/Detail.jsp?p_num=<%=vo.getP_num()%>">
+					<div class="pd_container">
+						<div class="pd_img">
+							<img id="cont_img" src="/hmjm/Images/Classimg/<%=ci.getCi_name()%>" />
+						</div>
+						<div class="pd_info">
+							<div class="pd_infoEle">
+								<b>[<%=vo.getP_classname()%>]</b>
+							</div>
+							<div class="pd_infoEle">
+								<p><img src="/hmjm/Images/Icon/coin.png"/><%=vo.getP_cost()%></p>
+								<%
+								long stScore = Math.round(rdao.avgScore(pnum)); //반올림
+								for (int i = 0; i < stScore; i++) {//별찍기%>
+									<span><img src="/hmjm/Images/Icon/star_f.png"/></span>
+								<%}
+								for (int i = 0; i < 5 - stScore; i++) {%>
+									<span><img src="/hmjm//Images/Icon/star_empty.png"/></span>
+								<%}%>
+								<%=rdao.avgScore(pnum)%>(<%=rdao.reviewCount(pnum)%>)
+							</div>
+						</div>
+					</div>
+				</a>
+			</div><%--id=contents--%>
+
 		<%}%> 
 	<%}else{%>
-		<h1>검색결과가 없습니다아아아아.</h1>
+		<h2>그런거 없습니다ㅋ</h2>
 	<%} %>
-	
 </table>
 <jsp:include page="footer.jsp" flush="false"/>
 </body>
