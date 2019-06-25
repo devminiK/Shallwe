@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="hmjm.bean.tutor.*"%>
+
 <%--성민 작성 --%>
 <!DOCTYPE html>
 <html>
@@ -20,27 +21,20 @@
 	margin: 0 auto; /*중간으로 배열하기위한값을 줌*/
 }
 
-.topnav {
-	overflow: hidden;
-	background-color: white;
-}
-
 /* 좌측 아이콘 */
-.topnav .icon {
+.icon img {
 	float: left;
-}
-
-.topnav .icon img {
-	width: 120px;
+	width: 200px; /*제대로 된 로고 넣으면 조정할것*/
+	height: 40px;
 	cursor: pointer;
 }
 
-/* 우측 카테고리 */
-.topnav .category {
+.category {
 	float: right;
+	display: table-cell;
 }
 
-.topnav .category a {
+.category a {
 	float: left;
 	display: block;
 	color: black;
@@ -53,148 +47,225 @@
 	font-weight: bold;
 }
 
-.topnav  .category a:hover {
+.category a:hover {
 	color: gray;
 }
 
-/* 검색 기능 */
-.topnav .search-container {
+#selfImg {
+	border-radius: 50%;
+}
+
+/******************************************************************/
+* {
+	box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column1 {
 	float: left;
-	padding-left: 100px;
+	width: 33.33%;
+	padding: 7px;
+	height: 55px; /* Should be removed. Only for demonstration */
 }
 
-.topnav input[type=text] {
-	padding: 6px;
-	margin-top: 20px;
-	size: 25;
-	maxlength: 30px;
-	border: 2px;
-}
-
-.topnav .search-container button {
+.column2 {
 	float: left;
-	padding: 6px 10px; /*버튼의 사이즈*/
-	margin-top: 18px; /*버튼 배치*/
-	margin-left: 10px;
-	margin-right: 8px;
-	font-size: 17px;
-	border: none;
+	width: 33.33%;
+	padding: 7px;
+	height: 55px; /* Should be removed. Only for demonstration */
 }
 
-@media screen and (max-width: 600px) {
-	.topnav .search-container {
-		float: none;
-	}
-	.topnav a, .topnav input[type=text], .topnav .search-container button {
-		float: none;
-		display: block;
-		text-align: left;
-		width: 100%;
-		margin: 0;
-		padding: 14px;
-	}
-	.topnav input[type=text] {
-		border: 1px solid #ccc;
-	}
+.column3 {
+	float: left;
+	width: 33.33%;
+	padding: 7px;
+	height: 55px; /* Should be removed. Only for demonstration */
 }
-#tImg{
-	border-radius:50%;
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/*********************************************search bar************/
+@import
+	url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
+
+/* Base styling */
+.search_body {
+	width: 430px;
+	@import
+	url("https://fonts.googleapis.com/css?family=Raleway:400,700,900");
+	margin
+	:
+	 
+	0
+	auto
+	;
+	
+    
+	font-family
+	:
+	 
+	'
+	Raleway
+	'
+	,
+	sans-serif
+	;
+	
+
+}
+
+.search__input {
+	width: 100%; /*검색 창 길이*/
+	padding: 12px 24px; /*검색 입력 값 안의 padding*/
+	background-color: transparent;
+	transition: transform 250ms ease-in-out;
+	font-size: 11px;
+	line-height: 18px;
+	color: #575756;
+	background-color: transparent;
+	background-image:
+		url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 95% center;
+	border-radius: 50px;
+	border: 3px solid pink;
+	transition: all 250ms ease-in-out;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+}
+
+.search__input::placeholder {
+	color: rgba(87, 87, 86, 0.8);
+	/* text-transform: uppercase;*/
+	letter-spacing: 1.5px;
+}
+
+.search__input:hover, .search__input:focus {
+	padding: 12px 0;
+	outline: 0;
+	border: 1px solid transparent;
+	border-bottom: 2px solid pink;
+	border-radius: 0;
+	background-position: 100% center;
 }
 </style>
 <script type="text/javascript">
-		function openRealtimetalk(){
-			url="/hmjm/Message/msg.jsp";
-			//새로운 윈도우로 열기
-			open(url,"qnatutee","toolbar=no,location=no,status=no,menubar=no,resizable=no,location=no,directories=no,width=650,height=660");
+	function openRealtimetalk() {
+		url = "/hmjm/Message/msg.jsp";
+		//새로운 윈도우로 열기
+		open(
+				url,
+				"qnatutee",
+				"toolbar=no,location=no,status=no,menubar=no,resizable=no,location=no,directories=no,width=650,height=660");
+	}
+	function searchCheck() {
+		var str = document.getElementById('search');
+		var blank = /^[\s]/g;
+
+		//검색어 입력필수
+		if (str.value == '' || str.value == null) {
+			alert("검색어를 입력하세요.");
+			return false;
 		}
-		function searchCheck(){
-			var str = document.getElementById('search');
-			var blank = /^[\s]/g;
-			
-			//검색어 입력필수
-			if(str.value == '' || str.value == null){
-				alert("검색어를 입력하세요.");
-				return false;
-			}
-			
-			//공백금지
-			if(blank.test(str.value)==true){
-				alert("제대로 좀 입력하세요.")
-				return false;
-			}
-			
+
+		//공백금지
+		if (blank.test(str.value) == true) {
+			alert("제대로 좀 입력하세요.")
+			return false;
 		}
-	</script>
+
+	}
+</script>
 
 </head>
 <%
-	String loginbarName;	//로그인바	
+	String loginbarName; //로그인바	
 	String logURL;
-	
-	String statebarName;	//로그인 여부에 따른 상태바
+
+	String statebarName; //로그인 여부에 따른 상태바
 	String stateURL;
-	
-	if(session.getAttribute("loginId") == null){
-		loginbarName="로그인";		
-		logURL="/hmjm/Log/loginForm.jsp";
-		
-  		statebarName ="회원가입";	
-  		stateURL="/hmjm/Register/register.jsp";
-	}else{
-		loginbarName="쪽지";	//로그아웃기능은, 수업신청서안에서 사용할것_by.sm
-		logURL="/hmjm/Message/msg.jsp";
-		
-		statebarName ="수업신청서";	
-		stateURL="/hmjm/My/application.jsp";
+
+	if (session.getAttribute("loginId") == null) {
+		loginbarName = "로그인";
+		logURL = "/hmjm/Log/loginForm.jsp";
+
+		statebarName = "회원가입";
+		stateURL = "/hmjm/Register/register.jsp";
+	} else {
+		loginbarName = "쪽지"; //로그아웃기능은, 수업신청서안에서 사용할것_by.sm
+		logURL = "/hmjm/Message/msg.jsp";
+
+		statebarName = "수업신청서";
+		stateURL = "/hmjm/My/application.jsp";
 	}
-	String preUser =(String)session.getAttribute("loginId");//이메일 값
+	String preUser = (String) session.getAttribute("loginId");//이메일 값
 	tutorDAO vo = tutorDAO.getInstance();
 	tutorVO e = vo.getMember(preUser);
 %>
 <body id="header">
 	<div class="header_new">
-		<div class="topnav">
-			<div class="icon">
-				<a href="/hmjm/Home/main.jsp"><img src="/hmjm/Images/logo.png" /></a>
+		<div class="row">
+			<div class="column1">
+				<div class="icon">
+					<a href="/hmjm/Home/main.jsp"><img
+						src="/hmjm/Images/Icon/logo_dance.png" /></a>
+				</div>
 			</div>
+			<div class="column2">
+				<div class=".search_body">
+					<form name="searchBar" action="/hmjm/Home/search.jsp"
+						onSubmit="return searchCheck();">
+						<input type="text" name="search" id="search" class="search__input"
+							placeholder="배우고싶은 수업 또는 튜터를 검색해보세요!">
+					</form>
+				</div>
 
-			<div class="search-container">
-				<form name="searchBar" action="/hmjm/Home/search.jsp"
-					onSubmit="return searchCheck();">
-					<!--/*input 창 양옆넓이 늘릴것*/  -->
-					<input type="text" style="width: 400px;"
-						placeholder="배우고 싶은 수업 또는 튜너를 검색해보세요!" name="search" id="search">
-					<button type="submit">
-						<i class="fa fa-search"></i>
-					</button>
-				</form>
 			</div>
-
-			<div class="category">
-				<%
-					//My/Application.jsp에 로그아웃기능 추가하면 삭제할것.
-					if(session.getAttribute("loginId")!= null){%>
-				<a href="/hmjm/Log/logout.jsp">로그아웃</a>
-				<%}%>
-				<a href="/hmjm/Tutor/Register/menu.jsp">튜터등록</a>
-				<!-- 등록페이지로 이동하게 수정 -->
-				<a href="<%=stateURL%>"><%=statebarName%></a>
-				<%
-					if(session.getAttribute("loginId")== null){%>
-				<a href="<%=logURL%>"><%=loginbarName %></a>
-				<%}else{%>
-				<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a> 
-				<a href="/hmjm/My/application.jsp">
-					<%if(e == null){ %> <%--등록한 이미지사진 불러오기 --%>
-						<img src="/hmjm/Images/TutorImg/user.png" width="40px" /></a> 
-					<%} else {%> <%--등록한 이미지사진 불러오기 --%>
-						<img id="tImg" src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>" width="40px" /></a>
+			<div class="column3">
+				<div class="category">
+					<%
+						if (session.getAttribute("loginId") != null) {
+					%>
+					<a href="/hmjm/Log/logout.jsp">로그아웃</a>
+					<%
+						}
+					%>
+					<a href="/hmjm/Tutor/Register/menu.jsp">튜터등록</a>
+					<!-- 등록페이지로 이동하게 수정 -->
+					<a href="<%=stateURL%>"><%=statebarName%></a>
+					<%
+						if (session.getAttribute("loginId") == null) {
+					%>
+					<a href="<%=logURL%>"><%=loginbarName%></a>
+					<%
+						} else {
+					%>
+					<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a> <a
+						href="/hmjm/My/application.jsp"> <%
+ 	if (e == null) {
+ %> <%--등록한 이미지사진 불러오기 --%> <img
+						src="/hmjm/Images/TutorImg/user.png" width="40px" /></a>
+					<%
+						} else {
+					%>
+					<%--등록한 이미지사진 불러오기 --%>
+					<img id="selfImg" src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"
+						width="40px" /></a>
 					<%--해당 이메일의 닉네임 --%>
-					<%}
-				}%>
+					<%
+						}
+						}
+					%>
+				</div>
 			</div>
-
 		</div>
+
 	</div>
 
 </body>
