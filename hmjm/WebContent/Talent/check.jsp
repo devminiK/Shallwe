@@ -139,7 +139,11 @@
 		 value="<%=vo.getP_classname() %>"></h3><br>
 		
 		<h3>선생님 별명: <%=v.getT_nick() %><h3>
-		<h3>선생님 이메일: <%=vo.getP_email() %></h3>
+		<h3>선생님 이메일: 
+			<a href="#"
+					onClick="window.open('/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>',
+					'_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,directories=no,width=650,height=660')">
+						<%=vo.getP_email() %></a></h3>
 		<input type="hidden" name="tutor_id" value="<%=vo.getP_email() %>">
 		<br>
 	

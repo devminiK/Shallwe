@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="hmjm.bean.product.*"%>
 <%@ page import="java.util.List"%>
 <%@ page import="hmjm.bean.classimg.*"%>

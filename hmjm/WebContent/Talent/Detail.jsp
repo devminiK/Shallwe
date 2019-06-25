@@ -13,146 +13,16 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>강의 상세페이지</title>
-<!-- 타임라인 스타일 -->
+<!-- 타임라인 스타일은  힘들것 같아요 -->
 <style>
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #474e5d;
+
   font-family: Helvetica, sans-serif;
 }
-
-/* The actual timeline (the vertical ruler) */
-.timeline {
-  position: relative;
-  max-width: 500px;
-  min-width: 300px;
-  margin: 0 auto;
-}
-
-/* The actual timeline (the vertical ruler) */
-.timeline::after {
-  content: '';
-  position: absolute;
-  width: 6px;
-  background-color: white;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -3px;
-}
-
-/* Container around content */
-.container {
-  padding: 10px 40px;
-  position: relative;
-  background-color: inherit;
-  width: 50%;
-}
-
-/* The circles on the timeline */
-.container::after {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  right: -17px;
-  background-color: white;
-  border: 4px solid #FF9F55;
-  top: 15px;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-/* Place the container to the left */
-.left {
-  left: 0;
-}
-
-/* Place the container to the right */
-.right {
-  left: 50%;
-}
-
-/* Add arrows to the left container (pointing right) */
-.left::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  right: 30px;
-  border: medium solid white;
-  border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent white;
-}
-
-/* Add arrows to the right container (pointing left) */
-.right::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  left: 30px;
-  border: medium solid white;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent white transparent transparent;
-}
-
-/* Fix the circle for containers on the right side */
-.right::after {
-  left: -16px;
-}
-
-/* The actual content */
-.content {
-  padding: 20px 30px;
-  background-color: white;
-  position: relative;
-  border-radius: 6px;
-}
-
-/* Media queries - Responsive timeline on screens less than 600px wide */
-@media screen and (max-width: 600px) {
-  /* Place the timelime to the left */
-  .timeline::after {
-  left: 31px;
-  }
-  
-  /* Full-width containers */
-  .container {
-  width: 100%;
-  padding-left: 70px;
-  padding-right: 25px;
-  }
-  
-  /* Make sure that all arrows are pointing leftwards */
-  .container::before {
-  left: 60px;
-  border: medium solid white;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent white transparent transparent;
-  }
-
-  /* Make sure all circles are at the same spot */
-  .left::after, .right::after {
-  left: 15px;
-  }
-  
-  /* Make all right containers behave like the left ones */
-  .right {
-  left: 0%;
-  }
-}
-</style>
-
-<style type="text/css">
-
 
 #tuImg {
 	float: center;
@@ -274,8 +144,6 @@ function showSlides(n) {
 		int num = Integer.parseInt(request.getParameter("p_num"));
 		String pageNum = request.getParameter("pageNum");
 		
-		System.out.println("로그인아이디"+id);
-		
 		classtimeDAO time = classtimeDAO.getInstance();
 		classtimeVO t = time.getClasstime(num);
 		int cp = Integer.parseInt(t.getCt_place());//지역표시 위해
@@ -284,14 +152,10 @@ function showSlides(n) {
 	//내수업인지 신청한 수업인지 구별하기 위해 불러오는 값..테스트중
 		tutorDAO tu = tutorDAO.getInstance();
 		tutorVO ee = tu.getMember(id);
-	
-		System.out.println("튜터정보**e**"+ee);
 		
 		buyDAO buyer = buyDAO.getInstance();
 		buyVO b = buyer.getBuy(id);
 		buyVO c =buyer.getBuy3(id,num);//구매한 상품 신청 못하게
-		System.out.println("구매정보**b**"+b);
-		
 		//System.out.println("구매한경우강의넘버**bbb**"+bbb);
 		
 		productDAO dbPro = productDAO.getInstance();

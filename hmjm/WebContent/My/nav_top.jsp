@@ -148,7 +148,7 @@ p{
 				튜터: 미등록<br>
 			<%} else {%>
 				<%--등록한 이미지사진 불러오기 --%>
-				<img id="userImg"	src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"/>
+				<img id="userImg" src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"/>
 				
   		</div>
   		<div class="nav_inner_colBox">
