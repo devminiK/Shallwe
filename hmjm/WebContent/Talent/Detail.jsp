@@ -168,7 +168,7 @@ body {
 
 #container_detail {
     width: 1000px;
-    background: #e3e3e3;
+    background: none;
     padding: 50px 0 50px 0;
     letter-spacing: 0;
     margin: 0 auto;
@@ -197,13 +197,14 @@ body {
      
 }
 .s {
-	padding: 50px 0 50px 0;
+	padding: 50px;
 	width: 1000px;
+	
 	margin: 0 auto; 
 }
 .empty{
-	heighyt:50px;
-	background:green;
+	height:30px;
+	background-color:green;
 }
 /*버튼 스타일*/
 .btn {
@@ -216,6 +217,20 @@ body {
 
 .success {background-color: #4CAF50;} /* Green */
 .success:hover {background-color: #46a049;}
+
+ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+li {
+
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+    float: left;
+}
 
 </style>
 
@@ -276,24 +291,15 @@ function showSlides(n) {
 		
 		//System.out.println("구매한경우강의넘버**bbb**"+bbb);
 		
-		
-	
 		productDAO dbPro = productDAO.getInstance();
 		productVO vo = dbPro.getProduct(num);
 		productVO vc = dbPro.getProduct2(id,num);//등록한 상품 신청 못하게
 		productVO vd = dbPro.getProduct4(id);
 		String t_email = vo.getP_email();//강사 닉네임을 불러오기위해
 		tutorVO et = tu.getMember(t_email);
-		
-		
-		
 		//내가 등록한 강의 번호
 		
 		//System.out.println("등록한경우강의넘버가 아닌가보다**vv**"+vv);
-		
-		
-		
-
 		//사진 불러오기 할려고 했는데 이건 아닌 듯....미완성
 		if (pageNum == null) { pageNum = "1"; }
 		int pageSize = 10;
@@ -330,7 +336,8 @@ function showSlides(n) {
 				 <h1><%=vo.getP_classname()%></h1>
 			</div>
 			<div class="title2">
-			
+			<ul>
+			<li><img src="/hmjm/Images/Icon/location.png"><br>
 			<%switch(cp){
 				case 101:%>
 				강남<%;
@@ -363,56 +370,24 @@ function showSlides(n) {
 				break;
 		
 				}%>
+				</li>
 				
 				
-				
-		
+				<li><img src="/hmjm/Images/Icon/time.png"><br>
 				<%=vo.getP_time() %>시간/회
-				
+				</li>
+				<li><img src="/hmjm/Images/Icon/people.png"><br>
 				<%if(vo.getP_count_min()==0){%>
 				1:1강습<%}else{%>
 					<%=vo.getP_count_min() %>~<%=vo.getP_count_max() %>명
 					<%} %>
-				
+				</li>
+				<li><img src="/hmjm/Images/Icon/don.png"><br>
 				<%=vo.getP_cost() %>원/시간
-				 
-			</div>
-			
-				
-			<div class ="s">
-				<h4>강사소개</h4>
-				<%=vo.getP_self()%>
-			</div>
-			<div class="empty">test</div>
-			<div class ="s">
-				<h4>튜터정보</h4>
-				<%=vo.getP_class1() %>
-			</div>
-			<div class ="s">
-				<h4>수업소개</h4>
-				<%=vo.getP_class2() %>
-			</div>
+				</li><br>
+				<%--수업가능시간 --%>
 		
-			<div class ="s">
-				<h4>수업대상</h4>
-				<%=vo.getP_class3() %>
-			</div>
-			<div class ="s">	
-				<h4>커리큘럼</h4>
-				<%=vo.getP_class4() %>
-			</div>
-
-		</div>
-				테스트라인<br>
-	
-
-				
-			
-
-	
-		 <%--수업가능시간 --%>
-		
-			수업가능시간::
+			<li>수업시간:
 			<%if(t == null){ %>
 			<h1>시간 미등록 튜터</h1>
 			<%}else{ %>
@@ -464,6 +439,38 @@ function showSlides(n) {
 			<%}%>
 			<%}%>
 			<%}%>
+			</li>
+			</ul>	 
+			</div>
+			
+			
+			<div class ="s">
+				<h4>강사소개</h4>
+				<%=vo.getP_self()%>
+			</div>
+			<div class="empty"></div>	
+			
+			
+			<div class ="s">
+				<h4>튜터정보</h4>
+				<%=vo.getP_class1() %>
+			</div>
+			<div class ="s">
+				<h4>수업소개</h4>
+				<%=vo.getP_class2() %>
+			</div>
+		
+			<div class ="s">
+				<h4>수업대상</h4>
+				<%=vo.getP_class3() %>
+			</div>
+			<div class ="s">	
+				<h4>커리큘럼</h4>
+				<%=vo.getP_class4() %>
+			</div>
+
+		</div>
+			테스트라인
 		<br>
 		<% if(bb==null){%>
 		<h1>사진 미등록 튜터</h1>
