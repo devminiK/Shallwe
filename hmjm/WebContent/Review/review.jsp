@@ -24,7 +24,7 @@
 	int rendRow = rcurrentPage * rpageSize;
 	int recount = 0;
 	int number = 0;
-
+	
 	List articleList = null;
 	reviewDAO dbPro = reviewDAO.getInstance();
 	recount = dbPro.getArticleCount(pnum);
