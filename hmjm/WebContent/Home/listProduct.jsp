@@ -95,15 +95,14 @@ a:hovor {
 <body>
 	<table style="width:100%">
 		<div >
-			<p>강의목록 테스트</p>
-			<p>등록강좌수:<%=count%></p>
+			<h5> 등록강좌수[<%=count%>]</h5>
 			<%if (count == 0 ){%>
-			<p>등록된 강의가 없습니다</p>
+				<p>등록된 강의가 없습니다:(</p>
 			<%}else{
 				for(int i = 0 ; i <productList.size(); i++){
-				productVO vo = (productVO)productList.get(i); 
-				int pn = vo.getP_num();
-				classimgVO bb = aa.getImg(pn);%>
+					productVO vo = (productVO)productList.get(i); 
+					int pn = vo.getP_num();
+					classimgVO bb = aa.getImg(pn);%>
 				
 				
 				<div id="contents">
