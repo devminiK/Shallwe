@@ -65,23 +65,52 @@
 			<!-- 점수에 따라 별 갯수 1~5개 -->
 		<tr><td align="center" width="150">커리큘럼<br/>
 			<%int curr = article.getR_s_curr();
-			for(int cu=0; cu<curr; cu++){%>	<img src="/hmjm/Images/star.jpg"> <%}%> </td>
+			for(int cu=0; cu<curr; cu++){%>	
+				<img src="/hmjm/Images/Icon/star_f.png">
+			<%}
+			for (int j = 0; j < 5 - curr; j++) {%>
+				<img src="/hmjm/Images/Icon/star_empty.png"> 
+			<%}%>
+			</td>
 
 			<td align="center" width="150">준비성<br/>
 			<%int pre = article.getR_s_pre();
-			for(int pr=0; pr<pre; pr++){%> <img src="/hmjm/Images/star.jpg"> <%}%> </td>
+			for(int pr=0; pr<pre; pr++){%> 
+				<img src="/hmjm/Images/Icon/star_f.png"> 
+			<%}
+			for (int j = 0; j < 5 - pre; j++) {%> 
+				<img src="/hmjm/Images/Icon/star_empty.png"> 
+			<%}%> 
+			</td>
 
 			<td align="center" width="150">시간준수<br/>
 			<%int tk = article.getR_s_tk();
-			for(int t=0; t<tk; t++){%> <img src="/hmjm/Images/star.jpg"> <%}%> </td>
+			for(int t=0; t<tk; t++){%> 
+				<img src="/hmjm/Images/Icon/star_f.png"> 
+			<%}
+			for (int j = 0; j < 5 - tk; j++) {%> 
+				<img src="/hmjm/Images/Icon/star_empty.png"> 
+			<%}%> 
+			</td>
 
 			<td align="center" width="150">전달력<br/>
 			<%int deli = article.getR_s_deli();
-			for(int de=0; de<deli; de++){%>	<img src="/hmjm/Images/star.jpg"> <%}%> </td>
+			for(int de=0; de<deli; de++){%>	
+				<img src="/hmjm/Images/Icon/star_f.png"> 
+			<%}for (int j = 0; j < 5 - deli; j++) {%> 
+				<img src="/hmjm/Images/Icon/star_empty.png"> 
+			<%}%> 
+			</td>
 
 			<td align="center" width="150">친절도<br/>
 			<%int kind = article.getR_s_kind();
-			for(int ki=0; ki<kind; ki++){%> <img src="/hmjm/Images/star.jpg"> <%}%> </td>
+			for(int ki=0; ki<kind; ki++){%> 
+			<img src="/hmjm/Images/Icon/star_f.png"> 
+			<%}
+			for (int j = 0; j < 5 - kind; j++) {%> 
+			<img src="/hmjm/Images/Icon/star_empty.png"> 
+			<%}%> 
+			</td>
 			
 			<!-- 로그인을 한상태 + 작성글의 아이디와 로그인 아이디가 일치할때만 수정/삭제 가능-->
 			<td align="center">
