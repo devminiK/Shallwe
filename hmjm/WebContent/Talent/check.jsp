@@ -11,6 +11,14 @@
 <title>재능 수강 신청하기</title>
 </head>
 <style>
+#container_detail {
+    width: 1000px;
+    background: #e3e3e3;
+    padding: 50px 0 50px 0;
+    letter-spacing: 0;
+    margin: 0 auto;
+}
+
  .btn_red {
     width: 100px;
     display: inline-block;
@@ -106,9 +114,9 @@
 			<input type="hidden" id="StartRegion" name="StartRegion" value="강남">
 			<input type="hidden" id="StartDateTime" name="StartDateTime" value="오후7:30~오후10:30 (2019-06-12)">
 	</form>-->
-	<div>
+	<div id="container_detail">
 	  <form method="post" name="checkForm"
-	  action="checkPro.jsp" >
+	  action="checkPro.jsp" align="center">
 	  <!-- buy테이블에 입력 될 값
 	  	b_num(시퀀스)
 	  	b_email
@@ -135,7 +143,7 @@
 		<input type="hidden" name="tutor_id" value="<%=vo.getP_email() %>">
 		<p>^^^위에 수업번호를 선택해서 넘어왔다고 생각하고^^^</p>
 		
-	</div>
+	
 		<br>
 	<div>
 		<%if(t == null){%>
@@ -204,6 +212,7 @@
 					
 			<%}%>
 	</form>
+	</div>
 <jsp:include page="/Home/footer.jsp" />
 </body>
 </html>
