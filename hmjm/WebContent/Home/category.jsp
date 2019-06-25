@@ -58,7 +58,7 @@
 	position: absolute;
 	left: 0;
 	background-color: white;
-	width: 80%;/*border안잘리도록*/
+	width: 90%;/*border안잘리도록*/
 	height:10p%;
 	z-index: 1;
 	background-color:white;
@@ -165,6 +165,17 @@
 
 		<div class="subnav">
 			<button class="subnavbtn">
+				재테크 <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="subnav-content">
+				<span><a id="notwork" href="#">x투잡</a></span> <span><a
+					id="notwork" href="#">x주식투자</a></span> <span><a id="notwork"
+					href="#">x기타 재테크</a></span> <span><a id="notwork" href="#">x가상화폐</a></span>
+			</div>
+		</div>
+		
+		<div class="subnav">
+			<button class="subnavbtn">
 				라이프스타일 <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="subnav-content">
@@ -177,17 +188,7 @@
 					id="notwork" href="#">x연기</a></span>
 			</div>
 		</div>
-
-		<div class="subnav">
-			<button class="subnavbtn">
-				재테크 <i class="fa fa-caret-down"></i>
-			</button>
-			<div class="subnav-content">
-				<span><a id="notwork" href="#">x투잡</a></span> <span><a
-					id="notwork" href="#">x주식투자</a></span> <span><a id="notwork"
-					href="#">x기타 재테크</a></span> <span><a id="notwork" href="#">x가상화폐</a></span>
-			</div>
-		</div>
+		
 	</div>
 	<br>
 </body>

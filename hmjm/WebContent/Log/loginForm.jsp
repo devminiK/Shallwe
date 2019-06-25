@@ -12,12 +12,9 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-* {
-	box-sizing: border-box;
-}
-
 .bg-img {
 	/* The image used */
+	margin-top:10px;
 	background-image: url("/hmjm//Images/loginbg.jpg");
 	min-height: 600px;
 	/* Center and scale the image nicely */
@@ -28,9 +25,9 @@
 }
 
 /* Add styles to the form container */
-.container {
+.log_container {
 	position: absolute;
-	right: 0;
+	right: 20px;
 	margin: 20px;
 	max-width: 300px;
 	padding: 16px;
@@ -73,9 +70,10 @@ input[type=text]:focus, input[type=password]:focus {
 
 	<jsp:include page="/Home/header.jsp" />
 	<div>
+	<br>
 		<div class="bg-img">
 			<%if(session.getAttribute("loginId") == null){%>
-			<form action="loginPro.jsp" method="post" class="container">
+			<form action="loginPro.jsp" method="post" class="log_container">
 				<h1>Login</h1>
 				<label for="email"><b>Email</b></label> 
 				<input type="text"	name="m_email" placeholder="Enter Email"  required> 

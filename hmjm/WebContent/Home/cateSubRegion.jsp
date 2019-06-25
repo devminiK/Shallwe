@@ -62,6 +62,12 @@ a:hovor {
 .bt_msg2{
 	float:right
 }
+#ft_position {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: black;
+}
 </style>
 </head>
 
@@ -118,6 +124,7 @@ a:hovor {
 					System.out.println("상품 존재안함");
 	%>
 	<%--컨텐츠  list--%>
+	
 	<div id="contents">
 		<a href="/hmjm/Talent/Detail.jsp?p_num=<%=pvo.getP_num()%>">
 		<div class="pd_container">
@@ -147,6 +154,7 @@ a:hovor {
 		</div>
 		</a>
 	</div><%--id=contents--%>
+	
 	<%}
 	}%>
 	<div id="btCont">
@@ -168,6 +176,9 @@ a:hovor {
 	</div>
 	</div>
 	
-	<jsp:include page="footer.jsp" />
+	<%--footer --%>
+	<div id="ft_position">
+		<jsp:include page="footer.jsp" flush="false"/>
+	</div>
 </body>
 </html>

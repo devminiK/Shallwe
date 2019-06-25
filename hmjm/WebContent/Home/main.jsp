@@ -6,12 +6,11 @@
 <title>쉘위?- 나만의 튜터를 만들어보세요.</title>
 <style>
 #main {
-	box-sizing: border-box
+	box-sizing: border-box;
 	font-family: Verdana, sans-serif;
 	margin: 0
 }
 #ft_position {
-   /*position: fixed;*/
    left: 0;
    bottom: 0;
    width: 100%;
@@ -65,7 +64,7 @@
 }
 
 /* The dots/bullets/indicators */
-.dot {
+.main_dot {
 	cursor: pointer;
 	height: 15px;
 	width: 15px;
@@ -76,7 +75,7 @@
 	transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
+.active, .main_dot:hover {
 	background-color: #717171;
 }
 
@@ -125,6 +124,7 @@ to {
 	<jsp:include page="header.jsp" flush="false" />
 	
 	<%--중간 카테고리bar: category --%>
+	
 	<jsp:include page="category.jsp" flush="false"/>
 	
  	<%--메인화면에 보여줄 , 메인 사진들 --%>
@@ -142,18 +142,21 @@ to {
 
 		function showSlides(n) {
   		var i;
- 		 var slides = document.getElementsByClassName("mySlides");
- 		 var dots = document.getElementsByClassName("dot");
- 		 if (n > slides.length) {slideIndex = 1}    
+ 		var slides = document.getElementsByClassName("mySlides");
+ 		var dots = document.getElementsByClassName("dot");
+ 		
+ 		if (n > slides.length) {slideIndex = 1}    
  		if (n < 1) {slideIndex = slides.length}
+ 		
   		for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
+      		slides[i].style.display = "none";  
  		 }
  		 for (i = 0; i < dots.length; i++) {
    		   dots[i].className = dots[i].className.replace(" active", "");
- 			 }
+ 		}
+ 		 
  		 slides[slideIndex-1].style.display = "block";  
-  		dots[slideIndex-1].className += " active";
+  		 dots[slideIndex-1].className += " active";
 		}
 	</script>
 	<div class="slideshow-container">
@@ -176,15 +179,14 @@ to {
 		<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
 			onclick="plusSlides(1)">&#10095;</a>
 	</div>
-
 	<br>
 	<div style="text-align: center;">
-		<span class="dot" onclick="currentSlide(1)"></span> <span class="dot"
-			onclick="currentSlide(2)"></span> <span class="dot"
-			onclick="currentSlide(3)"></span> <span class="dot"
-			onclick="currentSlide(4)"></span>
+		<span class="main_dot" onclick="currentSlide(1)"></span> 
+		<span class="main_dot" onclick="currentSlide(2)"></span> 
+		<span class="main_dot" onclick="currentSlide(3)"></span> 
+		<span class="main_dot" onclick="currentSlide(4)"></span>
 	</div>
-	
+	<br>
 	
 	 <%--지역 카테고리 bar--%>
 	<jsp:include page="reCatForm.jsp"/>
@@ -192,9 +194,6 @@ to {
 	
 	<%--메인에 추천 상품 나열해줌 --%>
 	<jsp:include page="listProduct.jsp" />
-	
-	
-
 	
 	<br/>
 	<%--footer --%>
