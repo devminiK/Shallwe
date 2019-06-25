@@ -10,14 +10,150 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>강의 상세페이지</title>
-<style type="text/css">
-* {box-sizing: border-box}
-body {
-	min-width: 1000px;
-	background-color: white;
+<!-- 타임라인 스타일 -->
+<style>
+* {
+  box-sizing: border-box;
 }
+
+body {
+  background-color: #474e5d;
+  font-family: Helvetica, sans-serif;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: white;
+  border: 4px solid #FF9F55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .timeline::after {
+  left: 31px;
+  }
+  
+  /* Full-width containers */
+  .container {
+  width: 100%;
+  padding-left: 70px;
+  padding-right: 25px;
+  }
+  
+  /* Make sure that all arrows are pointing leftwards */
+  .container::before {
+  left: 60px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+  left: 15px;
+  }
+  
+  /* Make all right containers behave like the left ones */
+  .right {
+  left: 0%;
+  }
+}
+</style>
+
+<style type="text/css">
+
+
 #tuImg {
 	float: center;
 	overflow: hidden;
@@ -29,6 +165,7 @@ body {
 	background-size: cover;
 	background-position: center;
 }
+
 #container_detail {
     width: 1000px;
     background: #e3e3e3;
@@ -60,10 +197,29 @@ body {
      
 }
 .s {
+	padding: 50px 0 50px 0;
 	width: 1000px;
 	margin: 0 auto; 
 }
+.empty{
+	heighyt:50px;
+	background:green;
+}
+/*버튼 스타일*/
+.btn {
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.success {background-color: #4CAF50;} /* Green */
+.success:hover {background-color: #46a049;}
+
 </style>
+
+
 <script>
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -159,10 +315,16 @@ function showSlides(n) {
 	<jsp:include page="/Home/header.jsp" />
 	<jsp:include page="/SideMenu/sideMenu.jsp" />
 	<div id="container_detail">
-		<h1>강의 상세 페이지</h1>
+		
 			<div class="pic">
 				<img id="tuImg" src="/hmjm/Images/TutorImg/<%=et.getT_selfimg()%>">
 				<%=et.getT_nick() %>
+				<input type="hidden" name="p_email"
+					value="<%=vo.getP_email()%>" /><br>
+				강사이메일:::::::: <a href="#"
+					onClick="window.open('/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>',
+					'_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,directories=no,width=650,height=660')">
+						<%=vo.getP_email() %></a>
 			</div>
 			<div class="title">
 				 <h1><%=vo.getP_classname()%></h1>
@@ -179,25 +341,39 @@ function showSlides(n) {
 				<%=vo.getP_cost() %>원/시간
 				 
 			</div>
+			
+				
 			<div class ="s">
-				<input type="hidden" name="p_email"
-					value="<%=vo.getP_email()%>" /><br>
-				강사이메일:::::::: <a href="#"
-					onClick="window.open('/hmjm/Message/messageWriteForm.jsp?p_email=<%=vo.getP_email()%>&p_num=<%=num%>',
-					'_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,directories=no,width=650,height=660')">
-						<%=vo.getP_email() %></a><br>
+				<h4>강사소개</h4>
+				<%=vo.getP_self()%>
+			</div>
+			<div class="empty">test</div>
+			<div class ="s">
+				<h4>튜터정보</h4>
+				<%=vo.getP_class1() %>
+			</div>
+			<div class ="s">
+				<h4>수업소개</h4>
+				<%=vo.getP_class2() %>
+			</div>
 		
-				강사소개::::::::<%=vo.getP_self() %><br>
-				튜터정보::<%=vo.getP_class1() %><br>
-				수업소개::<%=vo.getP_class1() %><br>
-				수업대상::<%=vo.getP_class1() %><br>
-				커리큘럼::<%=vo.getP_class1() %><br>
-				
-				
-				
-				<br>
+			<div class ="s">
+				<h4>수업대상</h4>
+				<%=vo.getP_class3() %>
+			</div>
+			<div class ="s">	
+				<h4>커리큘럼</h4>
+				<%=vo.getP_class4() %>
+			</div>
 
 		</div>
+				테스트라인<br>
+	
+
+				
+			
+
+	
 		 <%--수업가능시간 --%>
 		
 			수업가능시간::
@@ -283,13 +459,13 @@ if(id!=null){
 						if(c!=null){%>
 		튜터o 구매한 강의 <a href="/hmjm/Home/main.jsp"> 처음으로</a>
 		<%}else{%>
-		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터 o
-			구매이력 o 신청하기</a>
+		 튜터 o구매이력 o 신청하기
+		 <button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 							}else{%>
-		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터o
-			구매이력 x 신청하기</a>
+		 튜터o구매이력 x 신청하기
+		 <button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 					
 				}
@@ -299,13 +475,13 @@ if(id!=null){
 					if(c!=null){%>
 		튜터 o 판매x 구매한 강의 <a href="/hmjm/Home/main.jsp"> 처음으로</a>
 		<%}else{%>
-		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터 o
-			판매x 구매이력 o 신청하기</a>
+		 튜터 o판매x 구매이력 o 신청하기
+		 <button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 					}else{%>
-		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터o
-			판매x 구매이력 x 신청하기 </a>
+		튜터o판매x 구매이력 x 신청하기 
+		<button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 				}
@@ -313,20 +489,21 @@ if(id!=null){
 		}else{
 				if(b!=null){
 					if(c!=null){%>
-		튜터x 구매한글
+		튜터x 구매한 강의<a href="/hmjm/Home/main.jsp"> 처음으로</a>
 		<%}else{%>
-		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터x
-			구매이력o 신청하기</a>
+		 튜터x구매이력o 신청하기
+		 <button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 				}else{%>
-		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>"> 튜터x
-			구매이력 x 첫구매!</a>
+				<button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		 튜터x구매이력 x 첫구매!
 		<%}	
 			
 			}
 	}else{%>
-		<a href="/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>">비로그인 신청</a>
+		
+		<button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 
 
@@ -334,7 +511,7 @@ if(id!=null){
 
 
 		<br> <br>
-	</div>
+
 	<jsp:include page="/Review/review.jsp?p_num=<%=num%>" />
 	<jsp:include page="/Home/footer.jsp" />
 </body>
