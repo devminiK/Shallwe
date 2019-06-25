@@ -112,7 +112,8 @@ p{
 			<div class="info_cell">
 				<b>support</b>
 				<ul><li><a href="#">FAQ</a></li>
-					<li><a href="#">쉘위 센터</a></li></ul>
+					<li><a href="#">쉘위 센터</a></li>
+					<li><a href="/hmjm/Admin/adminLogin.jsp">admin</a></li></ul>
 			</div>
 
 			<div class="info_cell">

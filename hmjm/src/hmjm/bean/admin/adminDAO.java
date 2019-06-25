@@ -384,6 +384,7 @@ public class adminDAO {
 				vo.setT_c(rs.getString("t_c"));
 				vo.setT_reg(rs.getTimestamp("t_reg"));
 				vo.setT_nick(rs.getString("t_nick"));
+				vo.setT_email(rs.getString("t_email"));
 				list.add(vo);
 			}
 		}catch(Exception e) {
