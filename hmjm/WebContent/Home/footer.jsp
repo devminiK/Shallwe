@@ -85,14 +85,22 @@ li a {
 p{
 	font-size:13px;
 }
+
 #nbps{
 	color:white;
+}
+.ft_icon_sns{
+	width:29px;
+}
+.ft_icon_kko{
+	width:18px;
 }
 
 
 </style>
 </head>
 <body id="footer">
+	<table style="width:100%">
 	<div class="footer_cont">
 		<div class="info_box">
 			<div class="info_cell">
@@ -123,7 +131,7 @@ p{
             
             <div class="info_cell_kko" style="float:right;">
 				<b>shallweing center</b>
-				<ul><li><img src="/hmjm/Images/Icon/kakao.jpg" width="18px"/>&nbsp;&nbsp;KAKAO 플러스친구 / @쉘위센터</li>
+				<ul><li><img src="/hmjm/Images/Icon/kakao.jpg" class="ft_icon_kko"/>&nbsp;&nbsp;KAKAO 플러스친구 / @쉘위센터</li>
 					<li>운영시간 / 평일 10:00 ~ 18:00</li>
 					<li><span id="nbps">ㅁㅁㅁㅁ</span>/점심 13:00 ~ 14:00</li></ul>
 			</div>
@@ -140,14 +148,15 @@ p{
 			</div>
 			
 			<div class="bot_logo">
-                <a href="https://www.facebook.com/taling.me" target="_blank"><img src="/hmjm/Images/Icon/facebook.png" width="29px"/></a>
-                <a href="https://www.instagram.com/" target="_blank"><img src="/hmjm/Images/Icon/instagram.png" width="29px"/></a>
-                <a href="https://www.youtube.com/channel/UCuFmmpVLaNNFoy-cHqELl_A" target="_blank"><img src="/hmjm/Images/Icon/youtube.png" width="29px"/></a>
-                <a href="https://post.naver.com/taling_me" target="_blank"><img src="/hmjm/Images/Icon/naver.png" width="29px"/></a>
+                <a href="https://www.facebook.com/taling.me" target="_blank"><img src="/hmjm/Images/Icon/facebook.png" class="ft_icon_sns"/></a>
+                <a href="https://www.instagram.com/" target="_blank"><img src="/hmjm/Images/Icon/instagram.png" class="ft_icon_sns"/></a>
+                <a href="https://www.youtube.com/channel/UCuFmmpVLaNNFoy-cHqELl_A" target="_blank"><img src="/hmjm/Images/Icon/youtube.png" class="ft_icon_sns"/></a>
+                <a href="https://post.naver.com/taling_me" target="_blank"><img src="/hmjm/Images/Icon/naver.png" class="ft_icon_sns"/></a>
 			</div>
 
 		</div>
         
 	</div>
+	</table>
 </body>
 </html>
