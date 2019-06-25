@@ -159,33 +159,30 @@ a:hovor {
 	
 	<%}
 	}%>
-	<div id="btCont">
-		<%
-			if (apdCnt == 0) {
-		%>
-		<div class="bt_msg1">
-			<h2>해당 지역에서 진행되는 수업이 없습니다 :(</h2>
+		<div id="btCont">
+			<%
+				if (apdCnt == 0) {
+			%>
+			<div class="bt_msg1">
+				<h2>해당 지역에서 진행되는 수업이 없습니다 :(</h2>
+			</div>
+			<%}%>
+			<div class="bt_msg2">
+				<%=apdCnt%>개의 수업 <select>
+					<option>추천도순</option>
+					<option>낮은 가격순</option>
+					<option>최신순</option>
+				</select>
+			</div>
 		</div>
 
-		<%}%>
-		<div class="bt_msg2">
-		<%=apdCnt%>개의 수업
-		<select>
-				<option>추천도순</option>
-				<option>낮은 가격순</option>
-				<option>최신순</option>
-		</select>		
-	</div>
-	</div>
-<<<<<<< HEAD
+		
 	
-	<%--footer --%>
+</table>
+	<%--footer --%>	
 	<div id="ft_position">
 		<jsp:include page="footer.jsp" flush="false"/>
 	</div>
-=======
-</table>	
-	<jsp:include page="footer.jsp" />
->>>>>>> refs/remotes/origin/master
+
 </body>
 </html>
