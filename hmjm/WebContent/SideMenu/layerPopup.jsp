@@ -113,6 +113,7 @@
 	}
 	.trigger {
 		cursor: pointer;
+		width:60px;
 	}
     
 </style>
@@ -120,7 +121,7 @@
 </head>
 <body>
 <!-- 버튼 -->
-<img src="/hmjm/Images/faq_small.png" class="trigger"/>
+<img src="/hmjm/Images/Icon/QnA.png" class="trigger"/>
 <!-- 팝업 될 레이어 --> 
 	<div class="modalp"> 
     	<div class="modal-contentp"> 
