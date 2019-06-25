@@ -78,21 +78,21 @@
 }
 
 /* Create three equal columns that floats next to each other */
-.column1 {
+.hd_column1 {
 	float: left;
 	width: 15%;
 	padding: 7px;
 	height: 55px; /* Should be removed. Only for demonstration */
 }
 
-.column2 {
+.hd_column2 {
 	float: left;
 	width: 42%;
 	padding: 7px;
 	height: 55px; /* Should be removed. Only for demonstration */
 }
 
-.column3 {
+.hd_column3 {
 	float: left;
 	width: 43%;
 	padding: 7px;
@@ -207,13 +207,13 @@
 <body id="header">
 	<div class="header_new">
 		<div class="row">
-			<div class="column1">
+			<div class="hd_column1">
 				<div class="icon">
 					<a href="/hmjm/Home/main.jsp"><img
 						src="/hmjm/Images/Icon/logo_dance.png" /></a>
 				</div>
 			</div>
-			<div class="column2">
+			<div class="hd_column2">
 				<div class=".search_body">
 					<form name="searchBar" action="/hmjm/Home/search.jsp"
 						onSubmit="return searchCheck();">
@@ -223,7 +223,7 @@
 				</div>
 
 			</div>
-			<div class="column3">
+			<div class="hd_column3">
 				<div class="category">
 					<div class="inner_category">
 						<% if (session.getAttribute("loginId") != null) {%>
