@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 
 import hmjm.bean.member.memberVO;
 import hmjm.bean.product.productVO;
-import hmjm.bean.review.reviewVO;
 import hmjm.bean.message.messageVO;
 import hmjm.bean.tutor.tutorVO;
 
@@ -365,4 +364,76 @@ public class adminDAO {
 		}
 	/********** message info end **********/
 	
+		
+	/********** tutor info start **********/
+	//members list
+	public ArrayList<tutorVO> getAllTutor(){
+		ArrayList<tutorVO> list = null;
+		try {
+			conn = getConnection();
+			String sql = "select * from tutor order by t_num";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<tutorVO>();
+			while(rs.next()) {
+				tutorVO vo = new tutorVO();
+				vo.setT_num(rs.getInt("t_num"));
+				vo.setT_school(rs.getString("t_school"));
+				vo.setT_major(rs.getString("t_major"));
+				vo.setT_idcard(rs.getString("t_idcard"));
+				vo.setT_c(rs.getString("t_c"));
+				vo.setT_reg(rs.getTimestamp("t_reg"));
+				vo.setT_nick(rs.getString("t_nick"));
+				list.add(vo);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs != null) {try {rs.close();}catch(SQLException e) {}}
+			if(pstmt != null) {try {pstmt.close();}catch(SQLException e) {}}
+			if(conn != null) {try {conn.close();}catch(SQLException e) {}}
+		}
+		return list;
+	}
+	//count tutors
+	public int getTutorCount() throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x=0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*) from tutor");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				x= rs.getInt(1);
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+		return x; 
+	}
+	
+	//delete account
+	public void deleteTutor(int num)
+			throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("delete from tutor where t_num=?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+		}
+	}
+	/********** tutor info end **********/
 }

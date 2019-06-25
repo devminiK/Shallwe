@@ -27,6 +27,10 @@
 <jsp:include page="memberList.jsp"/>
 <hr/>
 
+<%-- 튜터 목록/삭제 --%>
+<jsp:include page="tutorList.jsp"/>
+<hr/>
+
 <%-- 상품 목록/수정/삭제/작성? --%>
 <jsp:include page="productList.jsp"/>
 <hr/>
