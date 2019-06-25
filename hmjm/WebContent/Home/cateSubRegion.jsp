@@ -106,6 +106,7 @@ a:hovor {
 			System.out.print("해당지역 수업갯수:" + pdCount);
 			apdCnt += pdCount;
 	%>
+<table style="width:100%">
 	<%
 		//해당 지역번호로 등록된 상품 번호(리스트)
 			List<String> pdNum = new ArrayList<String>();
@@ -175,10 +176,15 @@ a:hovor {
 		</select>		
 	</div>
 	</div>
+<<<<<<< HEAD
 	
 	<%--footer --%>
 	<div id="ft_position">
 		<jsp:include page="footer.jsp" flush="false"/>
 	</div>
+=======
+</table>	
+	<jsp:include page="footer.jsp" />
+>>>>>>> refs/remotes/origin/master
 </body>
 </html>
