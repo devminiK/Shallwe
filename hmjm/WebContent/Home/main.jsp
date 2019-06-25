@@ -22,8 +22,9 @@
 	display: none
 }
 
-img {
+.mainimg {
 	vertical-align: middle;
+	width:100%;
 }
 
 /* Slideshow container */
@@ -97,8 +98,7 @@ to {
 }
 
 }
-@
-keyframes fade {
+@keyframes fade {
 	from {opacity: .4
 }
 
@@ -115,6 +115,7 @@ to {
 	}
 }
 </style>
+
 </head>
 <body id="main">
 	<%-- 좌측 도움말 --%>
@@ -125,42 +126,9 @@ to {
 	
 	<%--중간 카테고리bar: category --%>
 	<jsp:include page="category.jsp" flush="false"/>
-	 <%--지역 카테고리 bar--%>
-	<jsp:include page="reCatForm.jsp"/> 
-	
 	
  	<%--메인화면에 보여줄 , 메인 사진들 --%>
-	<div class="slideshow-container">
-		<div class="mySlides fade">
-			<a href="#"><img src="/hmjm/Images/main1.jpg" style="width: 100%"></a>
-		</div>
-
-		<div class="mySlides fade">
-			<a href="#"><img src="/hmjm/Images/main2.jpg" style="width: 100%"></a>
-		</div>
-
-		<div class="mySlides fade">
-			<a href="#"><img src="/hmjm/Images/main3.jpg" style="width: 100%"></a>
-		</div>
-
-		<div class="mySlides fade">
-			<a href="#"><img src="/hmjm/Images/main4.jpg" style="width: 100%"></a>
-		</div>
-
-		<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
-			onclick="plusSlides(1)">&#10095;</a>
-	</div>
-
-	<br>
-	<div style="text-align: center;">
-		<span class="dot" onclick="currentSlide(1)"></span> <span class="dot"
-			onclick="currentSlide(2)"></span> <span class="dot"
-			onclick="currentSlide(3)"></span> <span class="dot"
-			onclick="currentSlide(4)"></span>
-	</div>
-	<%--메인에 추천 상품 나열해줌 --%>
-	<jsp:include page="listProduct.jsp" />
-	<script>
+ 	<script>
 		var slideIndex = 1;
 		showSlides(slideIndex);
 
@@ -188,6 +156,43 @@ to {
   		dots[slideIndex-1].className += " active";
 		}
 	</script>
+	<div class="slideshow-container">
+		<div class="mySlides fade">
+			<a href="#"><img class="mainimg" src="/hmjm/Images/main1.PNG"></a>
+		</div>
+
+		<div class="mySlides fade">
+			<a href="#"><img class="mainimg" src="/hmjm/Images/main2.PNG"></a>
+		</div>
+
+		<div class="mySlides fade">
+			<a href="#"><img class="mainimg" src="/hmjm/Images/main3.PNG"></a>
+		</div>
+
+		<div class="mySlides fade">
+			<a href="#"><img class="mainimg" src="/hmjm/Images/main4.PNG"></a>
+		</div>
+
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
+			onclick="plusSlides(1)">&#10095;</a>
+	</div>
+
+	<br>
+	<div style="text-align: center;">
+		<span class="dot" onclick="currentSlide(1)"></span> <span class="dot"
+			onclick="currentSlide(2)"></span> <span class="dot"
+			onclick="currentSlide(3)"></span> <span class="dot"
+			onclick="currentSlide(4)"></span>
+	</div>
+	
+	
+	 <%--지역 카테고리 bar--%>
+	<jsp:include page="reCatForm.jsp"/>
+	
+	
+	<%--메인에 추천 상품 나열해줌 --%>
+	<jsp:include page="listProduct.jsp" />
+	
 	
 
 	
