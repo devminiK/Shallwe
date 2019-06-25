@@ -24,14 +24,26 @@
 /* 좌측 아이콘 */
 .icon img {
 	float: left;
-	width: 200px; /*제대로 된 로고 넣으면 조정할것*/
+	width: 150px; /*제대로 된 로고 넣으면 조정할것*/
 	height: 40px;
 	cursor: pointer;
+	/*가운데 정렬*/
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .category {
-	float: right;
+	display: table;
+    /*border:1px solid #000;  */
+	text-align:center;
+	float:right;
+	
+	
+}
+.inner_category{
 	display: table-cell;
+    vertical-align: middle;
+    margin: 0 auto;
 }
 
 .category a {
@@ -39,8 +51,9 @@
 	display: block;
 	color: black;
 	text-align: center;
-	padding-top: 20px;
-	padding-right: 20px;
+	/*padding-top: 20px;*/
+	padding-right: 18px;
+	margin-top:10px;
 	margin-left: 10px; /*글자 사이간격*/
 	text-decoration: none;
 	font-size: 15px;
@@ -49,13 +62,17 @@
 
 .category a:hover {
 	color: gray;
+	text-decoration: none;
+	
 }
 
 #selfImg {
 	border-radius: 50%;
+	width:40px;
+	margin:0; 
 }
 
-/******************************************************************/
+/********************************************SEPARATE***********/
 * {
 	box-sizing: border-box;
 }
@@ -63,21 +80,21 @@
 /* Create three equal columns that floats next to each other */
 .column1 {
 	float: left;
-	width: 33.33%;
+	width: 15%;
 	padding: 7px;
 	height: 55px; /* Should be removed. Only for demonstration */
 }
 
 .column2 {
 	float: left;
-	width: 33.33%;
+	width: 42%;
 	padding: 7px;
 	height: 55px; /* Should be removed. Only for demonstration */
 }
 
 .column3 {
 	float: left;
-	width: 33.33%;
+	width: 43%;
 	padding: 7px;
 	height: 55px; /* Should be removed. Only for demonstration */
 }
@@ -89,7 +106,7 @@
 	clear: both;
 }
 
-/*********************************************search bar************/
+/*********************************************SEARCH INPUT************/
 @import
 	url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
 
@@ -98,25 +115,8 @@
 	width: 430px;
 	@import
 	url("https://fonts.googleapis.com/css?family=Raleway:400,700,900");
-	margin
-	:
-	 
-	0
-	auto
-	;
-	
-    
-	font-family
-	:
-	 
-	'
-	Raleway
-	'
-	,
-	sans-serif
-	;
-	
-
+	margin : 0 auto;
+  	font-family	:'Raleway',sans-serif;
 }
 
 .search__input {
@@ -159,11 +159,9 @@
 	function openRealtimetalk() {
 		url = "/hmjm/Message/msg.jsp";
 		//새로운 윈도우로 열기
-		open(
-				url,
-				"qnatutee",
-				"toolbar=no,location=no,status=no,menubar=no,resizable=no,location=no,directories=no,width=650,height=660");
+		open(url,"qnatutee","toolbar=no,location=no,status=no,menubar=no,resizable=no,location=no,directories=no,width=650,height=660");
 	}
+	
 	function searchCheck() {
 		var str = document.getElementById('search');
 		var blank = /^[\s]/g;
@@ -179,10 +177,8 @@
 			alert("제대로 좀 입력하세요.")
 			return false;
 		}
-
 	}
 </script>
-
 </head>
 <%
 	String loginbarName; //로그인바	
@@ -229,43 +225,48 @@
 			</div>
 			<div class="column3">
 				<div class="category">
-					<%
-						if (session.getAttribute("loginId") != null) {
-					%>
-					<a href="/hmjm/Log/logout.jsp">로그아웃</a>
-					<%
-						}
-					%>
-					<a href="/hmjm/Tutor/Register/menu.jsp">튜터등록</a>
-					<!-- 등록페이지로 이동하게 수정 -->
-					<a href="<%=stateURL%>"><%=statebarName%></a>
-					<%
-						if (session.getAttribute("loginId") == null) {
-					%>
-					<a href="<%=logURL%>"><%=loginbarName%></a>
-					<%
-						} else {
-					%>
-					<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a> <a
-						href="/hmjm/My/application.jsp"> <%
- 	if (e == null) {
- %> <%--등록한 이미지사진 불러오기 --%> <img
-						src="/hmjm/Images/TutorImg/user.png" width="40px" /></a>
-					<%
-						} else {
-					%>
-					<%--등록한 이미지사진 불러오기 --%>
-					<img id="selfImg" src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"
-						width="40px" /></a>
-					<%--해당 이메일의 닉네임 --%>
-					<%
-						}
-						}
-					%>
+					<div class="inner_category">
+						<% if (session.getAttribute("loginId") != null) {%>
+							<a href="/hmjm/Log/logout.jsp">로그아웃</a>
+						<%}%>
+					</div>
+					
+					<div class="inner_category">
+						<a href="/hmjm/Tutor/Register/menu.jsp">튜터등록</a>
+					</div>
+					
+					<div class="inner_category">
+						<a href="<%=stateURL%>"><%=statebarName%></a>
+					</div>
+					
+					<% if (session.getAttribute("loginId") == null) {%>
+						<div class="inner_category">
+							<a href="<%=logURL%>"><%=loginbarName%></a>
+						</div>
+					<%} else {%>
+						<div class="inner_category">
+							<a href="" onclick="openRealtimetalk()"><%=loginbarName%></a> 
+						</div> 
+						<%if (e == null) {%> 
+							<%--등록한 이미지사진 불러오기 --%> 
+							<div class="inner_category">
+								<a href="/hmjm/My/application.jsp">
+								<img src="/hmjm/Images/TutorImg/user.png" width="40px" />
+								</a>
+							</div>
+						<%} else {%>
+							<%--등록한 이미지사진 불러오기 --%>
+							<div class="inner_category">
+								<a href="/hmjm/My/application.jsp">
+								<img id="selfImg" src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"/>
+								</a>
+							</div>
+						<%}
+					}%>
 				</div>
 			</div>
+			
 		</div>
-
 	</div>
 
 </body>
