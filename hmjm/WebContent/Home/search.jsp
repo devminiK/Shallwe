@@ -17,6 +17,7 @@ ArrayList<productVO> list = dao.getAllProduct(search);
 
 classimgDAO img  = classimgDAO.getInstance();//강의 등록사진 불러오기
 reviewDAO rdao = reviewDAO.getInstance();
+productDAO pdao = productDAO.getInstance();
 %>
 <html>
 <head>
@@ -29,6 +30,7 @@ reviewDAO rdao = reviewDAO.getInstance();
 
 .pd_info {
 	display: table-row;
+
 }
 
 .pd_infoEle {
@@ -36,6 +38,7 @@ reviewDAO rdao = reviewDAO.getInstance();
 	margin-left: auto;
 	margin-right: auto;
 	padding: 5px;
+	width: 125px;
 }
 
 #btCont {
@@ -85,7 +88,8 @@ a:hovor {
 	<%if(!list.isEmpty()){
 		for(productVO vo : list){
 			int pnum = vo.getP_num();
-			classimgVO ci = img.getImg(pnum);%>
+			classimgVO ci = img.getImg(pnum);
+			productVO pvo = pdao.getProduct(pnum);%>
 
 			<%--컨텐츠  list--%>
 			<div id="contents">
@@ -99,7 +103,7 @@ a:hovor {
 								<b>[<%=vo.getP_classname()%>]</b>
 							</div>
 							<div class="pd_infoEle">
-								<p><img src="/hmjm/Images/Icon/coin.png"/><%=vo.getP_cost()%></p>
+								<p><img src="/hmjm/Images/Icon/coin.png"/><%=pvo.getP_cost()%></p>
 								<%
 								long stScore = Math.round(rdao.avgScore(pnum)); //반올림
 								for (int i = 0; i < stScore; i++) {//별찍기%>
