@@ -196,7 +196,7 @@ to {
 	<jsp:include page="listProduct.jsp" />
 	
 	<br/>
-	<img src="/hmjm/Images/ad.PNG" width="100%"/>
+	<img src="/hmjm/Images/ad.png" width="100%"/>
 	<%--footer --%>
 	<div id="ft_position">
 		<jsp:include page="footer.jsp" flush="false"/>
