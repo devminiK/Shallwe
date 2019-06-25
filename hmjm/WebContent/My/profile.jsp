@@ -45,8 +45,10 @@
 	</tr>
  </table><br>
 	<input type ="submit" name="modify" value ="회원정보 수정" " style ="height:30px;width:100px;"><br><br>
-	<input type ="button" value ="취소" " style ="height:30px;width:100px;"
+	<input type ="button" value ="취소" " style ="height:30px;width:50px;"
 	onclick="javascript:window.location='application.jsp'">
+	<input type ="button" value ="탈퇴" " style ="height:30px;width:50px;"
+	onclick="javascript:window.location='/hmjm/Admin/adminLogin.jsp'">
 
 
 </form>

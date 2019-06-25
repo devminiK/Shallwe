@@ -46,6 +46,8 @@
 	<input type ="submit" name="modify" value ="회원정보 수정" " style ="height:30px;width:100px;"><br><br>
 	<input type ="button" value ="취소" " style ="height:30px;width:100px;"
 	onclick="javascript:window.location='index.jsp'">
+	<input type ="button" value ="탈퇴" " style ="height:30px;width:100px;"
+	onclick="javascript:window.location='/hmjm/Admin/adminLogin.jsp'">
 
 
 </form>

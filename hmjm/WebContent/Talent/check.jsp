@@ -95,6 +95,7 @@
 	//시간이랑 위치 불러오기
 	classtimeDAO time = classtimeDAO.getInstance();
 	classtimeVO t = time.getClasstime(num);
+	int cp = Integer.parseInt(t.getCt_place());
 	
 	String t_email = vo.getP_email();//강사 닉네임을 불러오기위해
 	
@@ -125,63 +126,92 @@
 	  	b_place
 	  	b_day
 	   -->
-		<h1>수업에서 수강신청하기 누르면 나옴</h1>
-		<p>내아이디:
+		<h3>내아이디:
 		<input type="text" readonly name="b_email" 
-		 value="<%=(String)session.getAttribute("loginId") %>"></p><br>
-		<p>수업번호: <%=vo.getP_num() %>
+		 value="<%=(String)session.getAttribute("loginId") %>"></h3><br>
+		<h3>수업번호: <%=vo.getP_num() %>
 		<!-- product number값을 넘긴다 -->
 		<input type="hidden" readonly name="b_productnumber" 
-		 value="<%=vo.getP_num() %>">
+		 value="<%=vo.getP_num() %>"></h3>
 		 
-		<p>수업이름:
+		<h3>수업이름:
 		<input type="text" readonly name="b_classname" 
-		 value="<%=vo.getP_classname() %>"></p><br>
+		 value="<%=vo.getP_classname() %>"></h3><br>
 		
-		<p>선생님 별명: <%=v.getT_nick() %><p>
-		<p>선생님 이메일: <%=vo.getP_email() %></p>
+		<h3>선생님 별명: <%=v.getT_nick() %><h3>
+		<h3>선생님 이메일: <%=vo.getP_email() %></h3>
 		<input type="hidden" name="tutor_id" value="<%=vo.getP_email() %>">
-		<p>^^^위에 수업번호를 선택해서 넘어왔다고 생각하고^^^</p>
-		
-	
 		<br>
-	<div>
+	
 		<%if(t == null){%>
 		<h1>시간 미등록 튜터입니다.쪽니나 이메일로 문의하세요</h1>
 		<%}else{%>
 		<div>
-			<p>위치<input type="text"  name="b_place" value="<%=t.getCt_place()%>" ></p>
+			<h3>위치:<input type="hidden" name="b_place" value="<%=t.getCt_place()%>" >
+			<%switch(cp){
+				case 101:%>
+				강남<%;
+				break;
+				case 102:%>
+				신촌홍대<%;
+				break;
+				case 103:%>
+				건대<%;
+				break;
+				
+				case 201:%>
+				수원<%;
+				break;
+				case 202:%>
+				분당<%;
+				break;
+				case 203:%>
+				죽전<%;
+				break;
+				
+				case 301:%>
+				부산서면<%;
+				break;
+				case 302:%>
+				부산해운대<%;
+				break;
+				case 303:%>
+				부산사상<%;
+				break;
+		
+				}%>
+			</h3>
 		</div>
-		<div>
+		<div><h3>가능시간</h3>
 			<%if(t.getCt_mon()==null){%>
 			<%}else{%>
-			월: <%=t.getCt_mon() %>
-			<%} %><br>
+			월: <%=t.getCt_mon() %><br>
+			<%} %>
 			<%if(t.getCt_tue()==null){%>
 			<%}else{%>
-			화: <%=t.getCt_tue() %>
-			<%} %><br>
+			화: <%=t.getCt_tue() %><br>
+			<%} %>
 			<%if(t.getCt_wed()==null){%>
 			<%}else{%>
-			수: <%=t.getCt_wed() %>
-			<%} %><br>
+			수: <%=t.getCt_wed() %><br>
+			<%} %>
 			<%if(t.getCt_thu()==null){%>
 			<%}else{%>
-			목: <%=t.getCt_thu() %>
-			<%} %><br>
+			목: <%=t.getCt_thu() %><br>
+			<%} %>
 			<%if(t.getCt_fri()==null){%>
 			<%}else{%>
-			금: <%=t.getCt_fri() %>
-			<%} %><br>
+			금: <%=t.getCt_fri() %><br>
+			<%} %>
 			<%if(t.getCt_sta()==null){%>
 			<%}else{%>
-			토: <%=t.getCt_sta() %>
-			<%} %><br>
+			토: <%=t.getCt_sta() %><br>
+			<%} %>
 			
 			<%if(t.getCt_sun()==null){%>
 			<%}else{%>
-			일: <%=t.getCt_sun() %>
-			<%} %><br>
+			일: <%=t.getCt_sun() %><br>
+			<%} %>
 			
 			<%if(t.getCt_day()==null){%>
 			<%}else{%>
@@ -192,7 +222,7 @@
 			<p>요일<input type="text"  name="b_day" ></p>
 		</div>
 		
-	</div>
+	
 	
 
 	

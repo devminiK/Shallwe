@@ -208,15 +208,18 @@ body {
 }
 /*버튼 스타일*/
 .btn {
-  border: none;
-  color: white;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
+ 	background-color: #4CAF90;
+	color: white;
+	padding: 16px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 400px;
+	opacity: 0.9;
 }
 
-.success {background-color: #4CAF50;} /* Green */
-.success:hover {background-color: #46a049;}
+
+.success:hover {opacity: 1;}
 
 ul {
     list-style:none;
@@ -266,8 +269,8 @@ function showSlides(n) {
 </head>
 
 <%
+		request.setCharacterEncoding("UTF-8");
 		String id = (String) session.getAttribute("loginId");
-	
 		int num = Integer.parseInt(request.getParameter("p_num"));
 		String pageNum = request.getParameter("pageNum");
 		
@@ -275,7 +278,7 @@ function showSlides(n) {
 		
 		classtimeDAO time = classtimeDAO.getInstance();
 		classtimeVO t = time.getClasstime(num);
-		int cp = Integer.parseInt(t.getCt_place());
+		int cp = Integer.parseInt(t.getCt_place());//지역표시 위해
 		classimgDAO aa  = classimgDAO.getInstance();
 		classimgVO bb = aa.getImg(num);
 	//내수업인지 신청한 수업인지 구별하기 위해 불러오는 값..테스트중
@@ -468,6 +471,13 @@ function showSlides(n) {
 				<h4>커리큘럼</h4>
 				<%=vo.getP_class4() %>
 			</div>
+			<%if(vo.getP_memo()==null){
+			}else{%>
+			<div class ="s">	
+				<h4>메모</h4>
+				<%=vo.getP_memo() %>
+			</div>
+			<%}%>
 
 		</div>
 			테스트라인
@@ -503,12 +513,12 @@ if(id!=null){
 		튜터o 구매한 강의 <a href="/hmjm/Home/main.jsp"> 처음으로</a>
 		<%}else{%>
 		 튜터 o구매이력 o 신청하기
-		 <button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		 <button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 							}else{%>
 		 튜터o구매이력 x 신청하기
-		 <button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		 <button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 					
 				}
@@ -516,15 +526,15 @@ if(id!=null){
 		}else{
 				if(b!=null){
 					if(c!=null){%>
-		튜터 o 판매x 구매한 강의 <a href="/hmjm/Home/main.jsp"> 처음으로</a>
+		<!--  튜터 o 판매x 구매한 강의--> <a href="/hmjm/Home/main.jsp"> 처음으로</a>
 		<%}else{%>
-		 튜터 o판매x 구매이력 o 신청하기
-		 <button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		 <!-- 튜터 o판매x 구매이력 o 신청하기 -->
+		 <button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 					}else{%>
-		튜터o판매x 구매이력 x 신청하기 
-		<button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		<!--  튜터o판매x 구매이력 x 신청하기--> 
+		<button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 				}
@@ -532,21 +542,23 @@ if(id!=null){
 		}else{
 				if(b!=null){
 					if(c!=null){%>
-		튜터x 구매한 강의<a href="/hmjm/Home/main.jsp"> 처음으로</a>
+		<!--튜터x 구매한 강의--><a href="/hmjm/Home/main.jsp"> 처음으로</a>
 		<%}else{%>
-		 튜터x구매이력o 신청하기
-		 <button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		<!-- 튜터x구매이력o 신청하기-->
+		 <button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 				}else{%>
-				<button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
-		 튜터x구매이력 x 첫구매!
+				<button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		<!--튜터x구매이력 x--> 첫구매!
 		<%}	
 			
 			}
 	}else{%>
 		
-		<button class="btn success" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		<button type="button" class="btn btn-secondary"
+		onClick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+	<br />
 		<%}
 
 
