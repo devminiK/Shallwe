@@ -52,6 +52,7 @@ public class searchDAO {
 			list = new ArrayList<productVO>();
 			while(rs.next()) {
 				productVO vo = new productVO();
+				vo.setP_num(rs.getInt("p_num"));
 				vo.setP_classname(rs.getString("p_classname"));
 				vo.setP_class1(rs.getString("p_class1"));
 				vo.setP_class2(rs.getString("p_class2"));
