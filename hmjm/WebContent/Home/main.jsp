@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>쉘위?- 나만의 튜터를 만들어보세요.</title>
 <style>
+* {box-sizing: border-box}
 #main {
 	width:1200px;
 	box-sizing: border-box;
@@ -18,9 +19,7 @@
    color: black;
 }
 
-.mySlides {
-	display: none
-}
+.mySlides {display: none}
 
 .mainimg {
 	vertical-align: middle;
@@ -31,8 +30,7 @@
 .slideshow-container {
 	width: 1050px;
 	height: 350px;
-	overflow-x: hidden;
-	overflow-y: hidden;
+	
 	position: relative;
 	margin:auto;
 }
@@ -90,29 +88,17 @@
 
 @
 -webkit-keyframes fade {
-	from {opacity: .4
-}
-
-to {
-	opacity: 1
-}
-
+	from {opacity: .4}
+	to {opacity: 1}
 }
 @keyframes fade {
-	from {opacity: .4
-}
-
-to {
-	opacity: 1
-}
-
+	from {opacity: .4}
+	to {opacity: 1}
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-	.prev, .next, .text {
-		font-size: 11px
-	}
+	.prev, .next, .text {font-size: 11px}
 }
 </style>
 
@@ -129,37 +115,7 @@ to {
 	<jsp:include page="category.jsp" flush="false"/>
 	
  	<%--메인화면에 보여줄 , 메인 사진들 --%>
- 	<script>
-		var slideIndex = 1;
-		showSlides(slideIndex);
-
-		function plusSlides(n) {
-		  showSlides(slideIndex += n);
-		}
-
-		function currentSlide(n) {
-		  showSlides(slideIndex = n);
-		}
-
-		function showSlides(n) {
-  		var i;
- 		var slides = document.getElementsByClassName("mySlides");
- 		var dots = document.getElementsByClassName("dot");
- 		
- 		if (n > slides.length) {slideIndex = 1}    
- 		if (n < 1) {slideIndex = slides.length}
- 		
-  		for (i = 0; i < slides.length; i++) {
-      		slides[i].style.display = "none";  
- 		 }
- 		 for (i = 0; i < dots.length; i++) {
-   		   dots[i].className = dots[i].className.replace(" active", "");
- 		}
- 		 
- 		 slides[slideIndex-1].style.display = "block";  
-  		 dots[slideIndex-1].className += " active";
-		}
-	</script>
+ 	
 	<div class="slideshow-container">
 		<div class="mySlides fade">
 			<a href="#"><img class="mainimg" src="/hmjm/Images/main1.PNG"></a>
@@ -187,6 +143,8 @@ to {
 		<span class="main_dot" onclick="currentSlide(3)"></span> 
 		<span class="main_dot" onclick="currentSlide(4)"></span>
 	</div>
+	
+	
 	<br>
 	
 	 <%--지역 카테고리 bar--%>
@@ -197,11 +155,39 @@ to {
 	<jsp:include page="listProduct.jsp" />
 	
 	<br/>
-	<img src="/hmjm/Images/ad.png" width="100%"/>
+	
 	<%--footer --%>
 	<div id="ft_position">
 		<jsp:include page="footer.jsp" flush="false"/>
 	</div>
+	<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace("active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += "active";
+}
+</script>
 	
 	
 

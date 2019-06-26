@@ -8,7 +8,7 @@
 <style>
 #menu {
 	width:1200px;
-    background: #e3e3e3;
+    background: white;
     
     margin:0 auto;
     }
@@ -76,7 +76,7 @@ document.getElementById("defaultOpen").click();
 </head>
 <body id="menu">
 	
-	<jsp:include page="/Home/header.jsp" />
+	<jsp:include page="/Home/header.jsp" /><br>
 	<jsp:include page="/My/nav_top.jsp" />
 	<button class="tablink" onclick="openPage('Home', this, 'red')">튜터</button>
 	<button class="tablink" onclick="openPage('About', this, 'orange')">강의등록</button>
