@@ -50,7 +50,8 @@
 /* Set height of body and the document to 100% */
 body, html {
   height: 100%;
-  margin: 0;
+  width: 1200px;
+  margin: 0 auto;
   font-family: Arial;
 }
 

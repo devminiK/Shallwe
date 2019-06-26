@@ -13,7 +13,10 @@
 * {
   box-sizing: border-box;
 }
-
+#main{
+	width:1200px;
+	margin:0 auto;
+}
 /* Create three equal columns that floats next to each other */
 .nav_column1 {
 	background-color:#333333;
@@ -137,7 +140,7 @@ p{
 	countp = product.getProductCount2(preUser);
 	
 %>
-<body>
+<body id="main">
 <div class="row">
   <div class="nav_column1">
   	<div class="nav_colBox">

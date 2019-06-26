@@ -12,10 +12,14 @@
    width: 100%;
    color: black;
 }
+#main{
+	width:1200px;
+	margin:0 auto;
+}
 </style>
 </head>
-<body>
-	<jsp:include page="/Home/header.jsp"/>
+<body id="main">
+	<jsp:include page="/Home/header.jsp"/><br>
 	<jsp:include page="nav_top.jsp" />
 	<div class="container">
 		
