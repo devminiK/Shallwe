@@ -183,9 +183,9 @@ document.getElementById("defaultOpen").click();
 	<%}else{
 		for(int i = 0 ; i<orderList.size(); i++){
 			buyVO or = (buyVO)orderList.get(i);%>
-			<%=or.getB_productnumber() %>
-			<%=or.getB_classname() %>
-			<%=or.getB_email() %><br>
+			수업번호::<%=or.getB_productnumber() %><br>
+			수업이름::<%=or.getB_classname()%><br>
+			수강생 이메일::<%=or.getB_email() %><br><br>
 		<%}
 	}
 

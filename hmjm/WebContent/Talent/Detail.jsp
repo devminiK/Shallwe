@@ -319,7 +319,7 @@ ul {
 			<%}%>
 
 		</div>
-			테스트라인
+			
 		<br/>
 		<%if(bb==null){%>
 			<h1>사진 미등록 튜터</h1>
@@ -341,48 +341,48 @@ if(id!=null){
 	if(ee!=null){
 		if(vd!=null){
 			if(vc!=null){%>
-		내가 등록한글 <a href="/hmjm/Home/main.jsp"> 처음으로</a>
-		<%}else{
+		<!--  내가 등록한글--><a href="/hmjm/Home/main.jsp"> 내 수업</a>
+				<%}else{
 					if(b!=null){
 						if(c!=null){%>
-		튜터o 구매한 강의 <a href="/hmjm/Home/main.jsp"> 처음으로</a>
-		<%}else{%>
-		 튜터 o구매이력 o 신청하기
+		<!--구매한 강의--> <a href="/hmjm/Home/main.jsp"> 수강중</a>
+						<%}else{%>
+		 <!--  튜터 o구매이력 o 신청하기--> 
 		 <button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
-		<%}
+							<%}
 			
 							}else{%>
-		 튜터o구매이력 x 신청하기
+		 <!--  튜터o구매이력 x 신청하기-->
 		 <button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
-		<%}
-				}
-		}else{
-				if(b!=null){
-					if(c!=null){%>
-		<!--  튜터 o 판매x 구매한 강의--> <a href="/hmjm/Home/main.jsp"> 처음으로</a>
-		<%}else{%>
+								<%}
+									}
+				}else{
+					if(b!=null){
+						if(c!=null){%>
+		<!--  튜터 o 판매x 구매한 강의--> <a href="/hmjm/Home/main.jsp"> 수강중</a>
+							<%}else{%>
 		 <!-- 튜터 o판매x 구매이력 o 신청하기 -->
 		 <button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
-		<%}
-					}else{%>
+								<%}
+						}else{%>
 		<!--  튜터o판매x 구매이력 x 신청하기--> 
 		<button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
-		<%}
-				}
-		}else{
-				if(b!=null){
-					if(c!=null){%>
-		<!--튜터x 구매한 강의--><a href="/hmjm/Home/main.jsp"> 처음으로</a>
-		<%}else{%>
-		<!-- 튜터x구매이력o 신청하기-->
+							<%}
+						}
+				}else{
+						if(b!=null){
+							if(c!=null){%>
+				<!--튜터x 구매한 강의--><a href="/hmjm/Home/main.jsp"> 수강중</a>
+									<%}else{%>
+					<!-- 튜터x구매이력o 신청하기-->
 		 <button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
-		<%}
-				}else{%>
+										<%}
+								}else{%>
 				<button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<!--튜터x구매이력 x--> 첫구매!
-		<%}	
+									<%}	
 			}
-	}else{%>
+		}else{%>
 		<button type="button" class="btnd btn-secondary"
 		onClick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 	<br/>

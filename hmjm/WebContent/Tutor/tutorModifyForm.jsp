@@ -60,6 +60,9 @@
 </script>
 
 <style type="text/css">
+.tt{
+	width:1200px;
+}
 ul {
 	list-style: none;
 }
@@ -127,7 +130,7 @@ ul {
 </style>
 
 </head>
-<body>
+<body class="tt">
 	<%
 		String m_email = (String) session.getAttribute("loginId");
 		//memberDAO manager = memberDAO.getInstance();

@@ -219,7 +219,7 @@ input[type=number] {
 			<div class="form-group row">
 				<label class="col-sm-2">강사 소개</label>
 				<div class="col-sm-5">
-					<textarea name="p_self" rows="2" cols="50">쓰기귀찮아서 우선..</textarea>
+					<textarea name="p_self" rows="2" cols="50"></textarea>
 				</div>
 			</div>
 			<h2>강의 소개</h2>
@@ -227,25 +227,25 @@ input[type=number] {
 			<div class="form-group row">
 				<label class="col-sm-2">튜터 정보</label>
 				<div class="col-sm-3">
-					<textarea name="p_class1" rows="2" cols="50">..</textarea>
+					<textarea name="p_class1" rows="2" cols="50"></textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">수업 소개</label>
 				<div class="col-sm-3">
-					<textarea name="p_class2" rows="2" cols="50">..</textarea>
+					<textarea name="p_class2" rows="2" cols="50"></textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">수업 대상</label>
 				<div class="col-sm-3">
-					<textarea name="p_class3" rows="2" cols="50">..</textarea>
+					<textarea name="p_class3" rows="2" cols="50"></textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">커리큘럼</label>
 				<div class="col-sm-3">
-					<textarea name="p_class4" rows="2" cols="50">..</textarea>
+					<textarea name="p_class4" rows="2" cols="50"></textarea>
 				</div>
 			</div>
 
