@@ -8,8 +8,10 @@
 
 <style>
 #logMain {
+	width:1200px;
 	height: 100%;
 	font-family: Arial, Helvetica, sans-serif;
+	margin: 0 auto;
 }
 
 .bg-img {

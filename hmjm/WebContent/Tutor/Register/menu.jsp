@@ -7,8 +7,11 @@
 <title>튜터등록 메뉴</title>
 <style>
 #menu {
+	width:1200px;
     background: #e3e3e3;
-    padding: 100px 100px 100px 100px;}
+    
+    margin:0 auto;
+    }
 
 .menu_new {width: 500;}
 
@@ -74,8 +77,9 @@ document.getElementById("defaultOpen").click();
 <body id="menu">
 	
 	<jsp:include page="/Home/header.jsp" />
+	<jsp:include page="/My/nav_top.jsp" />
 	<button class="tablink" onclick="openPage('Home', this, 'red')">튜터</button>
-	<button class="tablink" onclick="openPage('About', this, 'orange')">수강</button>
+	<button class="tablink" onclick="openPage('About', this, 'orange')">강의등록</button>
 	
 	<div >
 		<div >

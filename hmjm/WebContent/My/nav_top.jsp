@@ -240,7 +240,7 @@ p{
 					<%}%>
 				</div>
 				<div>
-					<span>계정 정보</span><button class="btn click" onClick="location.href='/hmjm/Account/resetPassword.jsp'">비밀번호변경</button>
+					<span>계정 정보</span><button class="btn click" onClick="location.href='/hmjm/My/profile.jsp'">비밀번호변경</button>
 				</div>
   </div>
   </div>
