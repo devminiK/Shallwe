@@ -69,7 +69,6 @@ body {
 .s {
 	padding: 50px;
 	width: 1000px;
-	
 	margin: 0 auto; 
 }
 .empty{
@@ -77,15 +76,17 @@ body {
 	background-color:green;
 }
 /*버튼 스타일*/
-.btn {
+.btnd {
  	background-color: #4CAF90;
 	color: white;
-	padding: 16px 20px;
 	margin: 8px 0;
-	border: none;
+	border:none;
+	border-radius: 5px 5px 5px 5px;
 	cursor: pointer;
 	width: 400px;
+	height: 38px;
 	opacity: 0.9;
+	text-align: center;
 }
 
 
@@ -97,9 +98,9 @@ ul {
     padding:0;
 }
 
-li {
+.cinfo {
 
-    margin: 0 0 0 0;
+    margin: 3 3 3 3;
     padding: 0 0 0 0;
     border : 0;
     float: left;
@@ -204,7 +205,7 @@ function showSlides(n) {
 			</div>
 			<div class="title2">
 			<ul>
-			<li><img src="/hmjm/Images/Icon/location.png"><br>
+			<li class="cinfo"><img src="/hmjm/Images/Icon/location.png"><br>
 			<%switch(cp){
 				case 101:%>
 				강남<%;
@@ -240,21 +241,21 @@ function showSlides(n) {
 				</li>
 				
 				
-				<li><img src="/hmjm/Images/Icon/time.png"><br>
+				<li class="cinfo"><img src="/hmjm/Images/Icon/time.png"><br>
 				<%=vo.getP_time() %>시간/회
 				</li>
-				<li><img src="/hmjm/Images/Icon/people.png"><br>
+				<li class="cinfo"><img src="/hmjm/Images/Icon/people.png"><br>
 				<%if(vo.getP_count_min()==0){%>
 				1:1강습<%}else{%>
 					<%=vo.getP_count_min() %>~<%=vo.getP_count_max() %>명
 					<%} %>
 				</li>
-				<li><img src="/hmjm/Images/Icon/don.png"><br>
+				<li class="cinfo"><img src="/hmjm/Images/Icon/don.png"><br>
 				<%=vo.getP_cost() %>원/시간
 				</li><br>
 				<%--수업가능시간 --%>
 		
-			<li>수업시간:
+			<li class="cinfo">수업시간:
 			<%if(t == null){ %>
 			<h1>시간 미등록 튜터</h1>
 			<%}else{ %>
@@ -377,12 +378,12 @@ if(id!=null){
 		튜터o 구매한 강의 <a href="/hmjm/Home/main.jsp"> 처음으로</a>
 		<%}else{%>
 		 튜터 o구매이력 o 신청하기
-		 <button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		 <button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 							}else{%>
 		 튜터o구매이력 x 신청하기
-		 <button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		 <button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 					
 				}
@@ -393,12 +394,12 @@ if(id!=null){
 		<!--  튜터 o 판매x 구매한 강의--> <a href="/hmjm/Home/main.jsp"> 처음으로</a>
 		<%}else{%>
 		 <!-- 튜터 o판매x 구매이력 o 신청하기 -->
-		 <button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		 <button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 					}else{%>
 		<!--  튜터o판매x 구매이력 x 신청하기--> 
-		<button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		<button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 				}
@@ -409,18 +410,18 @@ if(id!=null){
 		<!--튜터x 구매한 강의--><a href="/hmjm/Home/main.jsp"> 처음으로</a>
 		<%}else{%>
 		<!-- 튜터x구매이력o 신청하기-->
-		 <button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+		 <button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<%}
 			
 				}else{%>
-				<button class="btn btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
+				<button class="btnd btn-secondary" onclick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 		<!--튜터x구매이력 x--> 첫구매!
 		<%}	
 			
 			}
 	}else{%>
 		
-		<button type="button" class="btn btn-secondary"
+		<button type="button" class="btnd btn-secondary"
 		onClick="location.href='/hmjm/Talent/check.jsp?p_num=<%=vo.getP_num() %>'">강의신청</button>
 	<br />
 		<%}
