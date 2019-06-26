@@ -25,7 +25,7 @@
 /* 좌측 아이콘 */
 .icon img {
 	float: left;
-	width: 150px; /*제대로 된 로고 넣으면 조정할것*/
+	width: 90px; /*제대로 된 로고 넣으면 조정할것*/
 	height: 40px;
 	cursor: pointer;
 	/*가운데 정렬*/
@@ -70,7 +70,8 @@
 #selfImg {
 	border-radius: 50%;
 	width:40px;
-	margin:0; 
+	height:40px;
+	margin:0 auto; 
 }
 
 /********************************************SEPARATE***********/

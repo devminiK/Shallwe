@@ -100,6 +100,12 @@ a:hovor {
 #userImg{
 	border-radius:50%;
 	width:100px;
+	height:100px;
+	overflow: hidden;
+	display: block;
+	margin: 0 auto;
+	background-size: cover;
+	background-position: center;
 	
 }
 span{
