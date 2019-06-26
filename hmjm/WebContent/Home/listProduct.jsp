@@ -55,6 +55,7 @@ reviewDAO rdao = reviewDAO.getInstance();
 	margin-left: auto;
 	margin-right: auto;
 	padding: 5px;
+	width: 125px;
 }
 
 #btCont {

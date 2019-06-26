@@ -30,7 +30,6 @@ productDAO pdao = productDAO.getInstance();
 
 .pd_info {
 	display: table-row;
-
 }
 
 .pd_infoEle {
