@@ -120,7 +120,7 @@ ul {
 	margin: 8px 0;
 	border: none;
 	cursor: pointer;
-	width: 400px;
+	width: 200px;
 	opacity: 0.9;
 }
 
@@ -138,7 +138,7 @@ ul {
 		tutorDAO vo = tutorDAO.getInstance();
 		tutorVO e = vo.getMember(m_email);
 	%>
-	<jsp:include page="/Home/header.jsp" />
+	<jsp:include page="/Home/header.jsp" /><br>
 	<div id="container_register">
 
 
@@ -191,10 +191,10 @@ ul {
 
 				<a onclick="addFile();" class="addbtn"><h5>추가 +</h5></a> <input
 					type="hidden" id="fileCnt" name="fileCnt" value="0"><br>
-				<input type="submit" name="modify" value="튜터 정보 수정"
-					class="registerbtn"><br> <input type="button"
-					value="취소" class="registerbtn2"
-					onclick="javascript:window.location='Register/menu.jsp'">
+				<input type="submit" name="modify" value="튜터 정보 수정"class="registerbtn"><br>
+				<input type="button" value="취소" class="registerbtn2" onclick="javascript:window.location='Register/menu.jsp'">
+				<input type="button" value="튜터해지" class="registerbtn2" 
+					onclick="window.open('/hmjm/Admin/adminMessageForm.jsp','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=620,height=600')">
 			</div>
 		</form>
 	</div>

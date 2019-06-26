@@ -65,7 +65,7 @@
 				" style="height: 30px; width: 50px;"
 				onclick="javascript:window.location='application.jsp'"> <input
 				type="button" value="탈퇴" " style="height: 30px; width: 50px;"
-				onclick="javascript:window.location='/hmjm/Admin/adminLogin.jsp'">
+				onclick="window.open('/hmjm/Admin/adminMessageForm.jsp','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=620,height=600')">
 
 
 		</form>

@@ -5,26 +5,26 @@
 <%@ page import="hmjm.bean.review.*"%>
 <!DOCTYPE html>
 <%
-int pageSize = 10;
+	int pageSize = 10;
 
-String pageNum = request.getParameter("pageNum");
-if (pageNum == null) { pageNum = "1"; }
+	String pageNum = request.getParameter("pageNum");
+	if (pageNum == null) { pageNum = "1"; }
 
-int currentPage = Integer.parseInt(pageNum);
-int startRow = (currentPage - 1) * pageSize + 1;	// 시작페이지 카운트
-int endRow = currentPage * pageSize;  	// 1~10까지 가져오기위한거
-int count = 0;
-int number=0;
+	int currentPage = Integer.parseInt(pageNum);
+	int startRow = (currentPage - 1) * pageSize + 1;	// 시작페이지 카운트
+	int endRow = currentPage * pageSize;  	// 1~10까지 가져오기위한거
+	int count = 0;
+	int number=0;
 
-List productList = null;
-productDAO dbPro = productDAO.getInstance();
-count = dbPro.getProductCount();
-if (count > 0) { productList = dbPro.getProduct(startRow, endRow); }
+	List productList = null;
+	productDAO dbPro = productDAO.getInstance();
+	count = dbPro.getProductCount();
+	if (count > 0) { productList = dbPro.getProduct(startRow, endRow); }
 
-number=count-(currentPage-1)*pageSize;
-classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
+	number=count-(currentPage-1)*pageSize;
+	classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
 
-reviewDAO rdao = reviewDAO.getInstance();
+	reviewDAO rdao = reviewDAO.getInstance();
 %>
 
 <html>
@@ -132,7 +132,7 @@ a:hovor {
 			</div>
 		</div>
 		</a>
-	</div><%--id=contents--%>
+	</div>
 		
 			
 				<% }

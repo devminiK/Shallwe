@@ -116,15 +116,10 @@ document.getElementById("defaultOpen").click();
 		productVO vo = dbPro.getProduct(num);
 		productVO p = dbPro.getProduct4(id);
 
-		//String p = vo.getP_email();
-		//boolean result = id.equals(p);
-		
 		buyDAO buyer = buyDAO.getInstance();
 		buyVO b = buyer.getBuy(id);
 		buyVO o = buyer.getBuyOrder(id);
-		//String e = b.getB_email();
-		//boolean result2 = id.equals(e);
-		
+	
 		int pageSize = 10;
 		String pageNum = request.getParameter("pageNum");
 		if (pageNum == null) {pageNum = "1";}
@@ -153,7 +148,7 @@ document.getElementById("defaultOpen").click();
 		
 %>
 <body>
-	<jsp:include page="/Home/header.jsp"/>
+	<jsp:include page="/Home/header.jsp"/><br>
 	<jsp:include page="nav_top.jsp" />
 	
 	<button class="tablink" onclick="openPage('Home', this, 'red')">튜터</button>

@@ -6,13 +6,12 @@
 <head><title> 탈잉 ID 중복확인</title>
 
 
-<% request.setCharacterEncoding("utf-8");%>
-
 <%
+	request.setCharacterEncoding("utf-8");
     String m_email = request.getParameter("m_email");
 	memberDAO manager = memberDAO.getInstance();
     int check = manager.confirmId(m_email);
- %>
+%>
  
 
 <body>

@@ -10,6 +10,7 @@
 
 <%
 	productDAO pdao = productDAO.getInstance();
+System.out.println("===============================");
 	pdao.insertProduct(pvo); /*작성한 정보를 삽입*/
 	
 	//최종 시퀀스 값이 얼마인지 구해야한다.(세션은 string형으로 받고,주어야하기때문에 형변환)

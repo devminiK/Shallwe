@@ -45,7 +45,7 @@ public class productDAO {
 			pstmt.setString(1, product.getP_email());
 			pstmt.setString(2, product.getP_category());
 			pstmt.setString(3, product.getP_classname());
-			pstmt.setString(4, product.getP_self());
+			pstmt.setString(4, product.getP_self()); 
 			pstmt.setString(5, product.getP_class1());
 			pstmt.setString(6, product.getP_class2());
 			pstmt.setString(7, product.getP_class3());

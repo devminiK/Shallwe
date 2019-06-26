@@ -16,15 +16,16 @@
 	width:1200px;
 	margin:0 auto;
 }
+
 </style>
 </head>
 <body id="main">
 	<jsp:include page="/Home/header.jsp"/><br>
 	<jsp:include page="nav_top.jsp" />
-	<div class="container">
-		
-		<h1>상단 메뉴 바 -> 수업신청서 클릭했을때 나오는 페이지</h1>
+	
+	<div class="container" >	
 	</div>
+	
 	<div id="ft_position">
 		<jsp:include page="/Home/footer.jsp" />
 	</div>

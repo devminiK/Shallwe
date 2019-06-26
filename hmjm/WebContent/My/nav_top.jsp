@@ -153,7 +153,7 @@ p{
   		<div class="nav_inner_colBox">
   			<%if (e == null) {%>
 				<%--등록한 이미지사진 불러오기 --%>
-				<img src="/hmjm/Images/TutorImg/user.png" width="50%" /><%=preUser%><br>
+				<img src="/hmjm/Images/TutorImg/user.png" width="50px" /><%=preUser%><br>
 				튜터: 미등록<br>
 			<%} else {%>
 				<%--등록한 이미지사진 불러오기 --%>

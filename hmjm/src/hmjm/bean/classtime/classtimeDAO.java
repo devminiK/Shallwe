@@ -40,7 +40,7 @@ public class classtimeDAO {
 		try {
 			conn = getConnection(); 
 
-			sql = "insert into classtime values(product_seq.nextval,?,?,?,?,?,?,?,?,?,?)"; 
+			sql = "insert into classtime values(classtime_seq.nextval,?,?,?,?,?,?,?,?,?,?)"; 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, classtime.getCt_classnum());
 			pstmt.setString(2, classtime.getCt_place());

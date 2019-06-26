@@ -46,42 +46,14 @@
     
 </style>
 <script type="text/javascript">
-	
-	$(function(){
-		$('.date_ch').change(function(){
-			if($(this).val()=="첫 수업 일자를 선택해주세요")
-			{
-				$('#StartDateTime').val('');
-				var index = $(this).attr('id').substr(4,1);
-				index = "#StartDateTime"+index;
-				$(index).val('');
-			}
-			else
-			{
-				$('#StartDateTime').val($(this).val());
-				var index = $(this).attr('id').substr(4,1);
-				index = "#StartDateTime"+index;
-				$(index).val($(this).val());
-			}
-			//alert($(this).prop('selectedIndex'));
-			//alert($(this).attr('id').substr(4,1));
-			/*var index = $(this).attr('id').substr(4,1);
-			index = "#StartDateTime"+index;
-			$(index).val($(this).val());*/
-			
-		});
-	});
+	function writeSave() {
+		var form = document.checkForm;
 
-	function setMode()
-	{
-		if (($('#StartDateTime').val()=='')&&($('#optionCount').val()!="0")&&($('#StartRegion').val()!="온라인"))
-		{
-			alert('첫 수업 일자를 선택해주세요');
+		if (form.b_day.value == "") {
+			alert("수강을 원하는 날짜를 입력하세요");
+			form.b_day.focus();
+			return false;
 		}
-		else{
-			$('#StartInfo').submit();
-		}
-		
 	}
 
 </script>
@@ -102,22 +74,15 @@
 	tutorDAO m =tutorDAO.getInstance();
 	tutorVO v = m.getMember(t_email);
 	
-	
-
 %>
 	
 <body>
 <jsp:include page="/Home/header.jsp" />	
 	<%if(session.getAttribute("loginId") != null){%>
 	
-	<!--  넘어온 수업정보를 넘기는 폼인것 같은데 아직 확실히 잘 모르겠음
-	<form id="StartInfo" name="form" action="/Talent/Apply/6466" method="POST">
-			<input type="hidden" id="StartRegion" name="StartRegion" value="강남">
-			<input type="hidden" id="StartDateTime" name="StartDateTime" value="오후7:30~오후10:30 (2019-06-12)">
-	</form>-->
 	<div id="container_detail">
 	  <form method="post" name="checkForm"
-	  action="checkPro.jsp" align="center">
+	  action="checkPro.jsp" align="center" onsubmit="return writeSave()">
 	  <!-- buy테이블에 입력 될 값
 	  	b_num(시퀀스)
 	  	b_email
