@@ -27,7 +27,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	padding: 5px;
-	width: 125px;
+	width: 140px;
 }
 
 #btCont {
@@ -37,7 +37,7 @@
 }
 
 #cont_img {
-	width: 250px;
+	width: 295px;
 	height:200px;
 }
 
@@ -69,13 +69,20 @@ a:hovor {
    width: 100%;
    color: black;
 }
+
+table {
+	width:1200px;
+	box-sizing: border-box;
+	font-family: Verdana, sans-serif;
+	margin: 0 auto;
+	display: table-cell;
+}
 </style>
 </head>
 
 <body>
 	<jsp:include page="header.jsp" />
 	<jsp:include page="category.jsp" />
-
 	<jsp:include page="reCatForm.jsp" />
 	<%
 		request.setCharacterEncoding("UTF-8");
@@ -96,9 +103,9 @@ a:hovor {
 			String x = eachReNum[i]; //지역번호
 			System.out.println("test지역번호:" + x);
 			System.out.println("test해당지역수업수:" + ctdao.getRegionCount(x));
-		}
-
-		for (String x : eachReNum) {
+		}%>
+<table style="width:1200px">
+		<%for (String x : eachReNum) {
 
 			String ern = x; //지역번호
 
@@ -106,9 +113,7 @@ a:hovor {
 			int pdCount = ctdao.getRegionCount(x);
 			System.out.print("해당지역 수업갯수:" + pdCount);
 			apdCnt += pdCount;
-	%>
-<table style="width:100%">
-	<%
+
 		//해당 지역번호로 등록된 상품 번호(리스트)
 			List<String> pdNum = new ArrayList<String>();
 			pdNum = ctdao.getClassNumFromRegin(x);
@@ -124,9 +129,8 @@ a:hovor {
 					System.out.println("상품 존재");
 				else
 					System.out.println("상품 존재안함");
-	%>
+%>
 	<%--컨텐츠  list--%>
-	
 	<div id="contents">
 		<a href="/hmjm/Talent/Detail.jsp?p_num=<%=pvo.getP_num()%>">
 		<div class="pd_container">
@@ -141,31 +145,26 @@ a:hovor {
 				</div>
 				<div class="pd_infoEle">
 					<p><img src="/hmjm/Images/Icon/coin.png" /><%=pvo.getP_cost()%></p>
-					<%
-						long stScore = Math.round(rdao.avgScore(num)); //반올림
-							
-							for (int i = 0; i < stScore; i++) {//별찍기%>
-								<span><img src="/hmjm/Images/Icon/star_f.png" /></span>
-							<%}
-							for (int i = 0; i < 5 - stScore; i++) {%>
-									<span><img src="/hmjm//Images/Icon/star_empty.png" /></span>
-							<%}%>
-							<%=rdao.avgScore(num)%>(<%=rdao.reviewCount(num)%>)
+					<%long stScore = Math.round(rdao.avgScore(num)); //반올림
+					for (int i = 0; i < stScore; i++) {//별찍기%>
+						<span><img src="/hmjm/Images/Icon/star_f.png" /></span>
+					<%}
+					for (int i = 0; i < 5 - stScore; i++) {%>
+						<span><img src="/hmjm//Images/Icon/star_empty.png" /></span>
+					<%}%>
+					<%=rdao.avgScore(num)%>(<%=rdao.reviewCount(num)%>)
 				</div>
 			</div>
 		</div>
 		</a>
 	</div><%--id=contents--%>
 	
-	<%}
-	}%>
+	<%}}%>
 		<div id="btCont">
-			<%
-				if (apdCnt == 0) {
-			%>
-			<div class="bt_msg1">
-				<h2>해당 지역에서 진행되는 수업이 없습니다 :(</h2>
-			</div>
+			<%if (apdCnt == 0) {%>
+				<div class="bt_msg1">
+					<h2>해당 지역에서 진행되는 수업이 없습니다 :(</h2>
+				</div>
 			<%}%>
 			<div class="bt_msg2">
 				<%=apdCnt%>개의 수업 <select>
@@ -175,9 +174,6 @@ a:hovor {
 				</select>
 			</div>
 		</div>
-
-		
-	
 </table>
 	<%--footer --%>	
 	<div id="ft_position">

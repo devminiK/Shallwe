@@ -22,6 +22,7 @@ productDAO pdao = productDAO.getInstance();
 <html>
 <head>
 <style type="text/css">
+
 .pd_container {
 	background-color: #E1E1E1;
 	float: left;
@@ -37,7 +38,7 @@ productDAO pdao = productDAO.getInstance();
 	margin-left: auto;
 	margin-right: auto;
 	padding: 5px;
-	width: 125px;
+	width: 140px;
 }
 
 #btCont {
@@ -47,7 +48,7 @@ productDAO pdao = productDAO.getInstance();
 }
 
 #cont_img {
-	width: 250px;
+	width: 295px;
 	height:200px;
 }
 
@@ -71,8 +72,26 @@ a:hovor {
 	text-align:center;
 }
 .bt_msg2{
-	float:right
-}	
+	float:right;
+}
+
+body {
+	width:1200px;
+	box-sizing: border-box;
+	font-family: Verdana, sans-serif;
+	margin: 0 auto;
+}
+
+#ft_position {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: black;
+}
+.result {
+	display: table-cell;
+	width: 1200px;
+}
 </style>
 <title>Search Result</title>
 </head>
@@ -82,6 +101,7 @@ a:hovor {
 <%--상단 카테고리bar: header --%>
 <jsp:include page="header.jsp" flush="false" />
 
+<div class="result">
 <h1>"<%=search%>"로 검색하신 결과입니다.</h1>
 <table style="width:100%">
 	<%if(!list.isEmpty()){
@@ -123,6 +143,7 @@ a:hovor {
 		<h2>그런거 없습니다ㅋ</h2>
 	<%} %>
 </table>
+</div>
 <jsp:include page="footer.jsp" flush="false"/>
 </body>
 </html>

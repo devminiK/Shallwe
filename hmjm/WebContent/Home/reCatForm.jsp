@@ -33,13 +33,13 @@
 </script>
 <style>
 #reCatForm {
-	width: 100%;
+	width: 1200px;
 	margin:0 auto;
 }
 
 #recat_new {
 	background-color: #EEEEEE;
-	width: 100%;
+	width: 1200px;
 	height: 275px;/*form을 감싸는 배경색*/
 	margin: auto auto;
 }

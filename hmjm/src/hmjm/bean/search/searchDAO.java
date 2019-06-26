@@ -45,7 +45,7 @@ public class searchDAO {
 			String sql =
 				"select * from product where"
 				+ " (p_classname || p_class1 || p_class2 || p_class3 || p_class4 || p_category || p_self)"
-				+ " like ?";
+				+ " like ? order by p_num";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
 			rs = pstmt.executeQuery();
