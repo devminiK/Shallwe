@@ -6,9 +6,10 @@
 <title>쉘위?- 나만의 튜터를 만들어보세요.</title>
 <style>
 #main {
+	width:1200px;
 	box-sizing: border-box;
 	font-family: Verdana, sans-serif;
-	margin: 0
+	margin: 0 auto;
 }
 #ft_position {
    left: 0;

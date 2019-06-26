@@ -6,7 +6,7 @@
 <style>
 
 #footer{
-	width:1050px;
+	width:1000px;
 	height:300px;
 	margin: 0 auto;
 	font-family: Arial, Helvetica, sans-serif;
