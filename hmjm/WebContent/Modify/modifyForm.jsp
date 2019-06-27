@@ -14,7 +14,6 @@
 
 <%										
 	String m_email = (String)session.getAttribute("loginId");
-	//System.out.println("====="+m_email);
 	memberDAO manager = memberDAO.getInstance();
 	memberVO c = manager.getMember(m_email);
 	

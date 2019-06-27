@@ -144,7 +144,6 @@ document.getElementById("defaultOpen").click();
 		count = buyer.buyCount();
 		if (count > 0) {
 			orderList = buyer.getBuyOrderList(id, startRow, endRow);}
-		
 		//구매목록
 		List productbuyList =null;
 			count = buyer.buyCount();
@@ -223,7 +222,8 @@ document.getElementById("defaultOpen").click();
 						</tr>
 						<tr>
 							<td>수업 이름</td>
-							<td><a href ="/hmjm/Talent/Detail.jsp?p_num=<%=bb.getB_productnumber()%>"><%=bb.getB_classname()%></a></td>
+							<td><a href ="/hmjm/Talent/Detail.jsp?p_num=<%=bb.getB_productnumber()%>">
+							<%=bb.getB_classname()%></a></td>
 						</tr>
 					</table>
 				<%}

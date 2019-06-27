@@ -20,10 +20,8 @@
 	productDAO dbPro = productDAO.getInstance();
 	count = dbPro.getProductCount();
 	if (count > 0) { productList = dbPro.getProduct(startRow, endRow); }
-
 	number=count-(currentPage-1)*pageSize;
 	classimgDAO aa  = classimgDAO.getInstance();//강의 등록사진 불러오기
-
 	reviewDAO rdao = reviewDAO.getInstance();
 %>
 
@@ -31,25 +29,14 @@
 <head>
 <title>강의목록</title>
 <style type="text/css">
-.rank {
-		float: left;
-		width: 300px;
-		height: 200px;
-		overflow: hidden;
-		border: 1px #ddd solid;
-		padding: 1px;
-}
-
 .pd_container {
 	background-color: #E1E1E1;
 	float: left;
 	margin: 2px;
 }
-
 .pd_info {
 	display: table-row;
 }
-
 .pd_infoEle {
 	display: table-cell;
 	margin-left: auto;
@@ -57,34 +44,28 @@
 	padding: 5px;
 	width: 140px;
 }
-
 #btCont {
 	width:100%;
 	height:200px;
 	float: left;
 }
-
 #cont_img {
 	width: 295px;
 	height:200px;
 }
-
 /*a태그 관련 스타일 적용*/
 a:link {
 	color: black;
 	text-decoration: none;
 }
-
 a:visited {
 	color: black;
 	text-decoration: none;
 }
-
 a:hovor {
 	color: black;
 	text-decoration: none;
 }
-
 .bt_msg1{
 	text-align:center;
 }
@@ -95,7 +76,7 @@ a:hovor {
 </head>
 <body>
 	<table style="width:100%">
-		<div >
+		<div>
 			<h5> 등록강좌수[<%=count%>]</h5>
 			<%if (count == 0 ){%>
 				<p>등록된 강의가 없습니다:(</p>
@@ -106,7 +87,7 @@ a:hovor {
 					classimgVO bb = aa.getImg(pn);%>
 				
 				
-				<div id="contents">
+			<div id="contents">
 					<a href="/hmjm/Talent/Detail.jsp?p_num=<%=vo.getP_num()%>&pageNum=<%=currentPage %>">
 				<div class="pd_container">
 					<div class="pd_img">
@@ -128,35 +109,33 @@ a:hovor {
 									<span><img src="/hmjm//Images/Icon/star_empty.png" /></span>
 							<%}%>
 							<%=rdao.avgScore(pn)%>(<%=rdao.reviewCount(pn)%>)
+					</div>
 				</div>
 			</div>
+				</a>
 		</div>
-		</a>
-	</div>
-		
-			
-				<% }
-			}%>
+				<%}
+				}%>
 		
 	</div>
 	</table>
 
 <%
-if (count > 0) {
-	int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
-	int startPage = (int)(currentPage/10)*10+1;
-	int pageBlock= 10;
-	int endPage = startPage + pageBlock-1;
-	if (endPage > pageCount) endPage = pageCount;
-	if (startPage > 10) {%>
-		<a href="listProduct.jsp?pageNum=<%= startPage - 5 %>">[이전]</a>
-	<%}
-	for (int i = startPage ; i <= endPage ; i++) {%>
-		<a href="listProduct.jsp?pageNum=<%= i %>">[<%= i %>]</a>
-	<%}
-	if (endPage < pageCount) {%>
-		<a href="listProduct.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
-	<%}
-}%>
+		if (count > 0) {
+			int pageCount = count / pageSize + ( count % pageSize == 0 ? 0 : 1);
+			int startPage = (int)(currentPage/10)*10+1;
+			int pageBlock= 10;
+			int endPage = startPage + pageBlock-1;
+			if (endPage > pageCount) endPage = pageCount;
+			if (startPage > 10) {%>
+				<a href="listProduct.jsp?pageNum=<%= startPage - 5 %>">[이전]</a>
+			<%}
+			for (int i = startPage ; i <= endPage ; i++) {%>
+				<a href="listProduct.jsp?pageNum=<%= i %>">[<%= i %>]</a>
+			<%}
+			if (endPage < pageCount) {%>
+				<a href="listProduct.jsp?pageNum=<%= startPage + 10 %>">[다음]</a>
+			<%}
+		}%>
 </body>
 </html>
