@@ -151,13 +151,13 @@ public class classimgDAO {	/*성민 작성*/
 		return vo;
 	}
 		//수업번호로 첫번째 이미지 경로 가져오기_성민
-		public String getImgRealName(int num) throws Exception {
+		public String getImgName(int num) throws Exception {
 			
 			String imgsrc= "";
 			String sql="";
 			try {
 				conn = getConnection();
-				sql="select ci_realname from classimg where ci_classnum=?";
+				sql="select ci_name from classimg where ci_classnum=?";
 				pstmt = conn.prepareStatement(sql); 
 				pstmt.setInt(1, num);
 				rs = pstmt.executeQuery();

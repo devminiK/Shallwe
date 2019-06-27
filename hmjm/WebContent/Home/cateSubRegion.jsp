@@ -129,7 +129,7 @@ a:hovor {
 		<div class="pd_container">
 			<div class="pd_img">
 				<img id="cont_img"
-					src="/hmjm/Images/Classimg/<%=cidao.getImgRealName(num)%>" />
+					src="/hmjm/Images/Classimg/<%=cidao.getImgName(num)%>" />
 			</div>
 			<div class="pd_info">
 				<div class="pd_infoEle">
