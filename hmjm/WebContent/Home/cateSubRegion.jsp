@@ -12,6 +12,13 @@
 <head>
 <title>지역별 검색 시, 보여주는 컨텐츠 목록</title>
 <style>
+* {box-sizing: border-box}
+#cateSubRegion {
+	width:1200px;
+	box-sizing: border-box;
+	font-family: Verdana, sans-serif;
+	margin: 0 auto;
+}
 .pd_container {
 	background-color: #E1E1E1;
 	float: left;
@@ -73,7 +80,7 @@ a:hovor {
 </style>
 </head>
 
-<body>
+<body id="cateSubRegion">
 	<jsp:include page="header.jsp" />
 	<jsp:include page="category.jsp" />
 	<jsp:include page="reCatForm.jsp" />

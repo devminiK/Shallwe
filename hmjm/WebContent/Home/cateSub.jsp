@@ -101,7 +101,8 @@ a:hovor {
 <table style="width:100%">
 <div>
 <%if(c == null){ %>
-	미등록 카테고리
+	<h2>해당 지역에서 진행되는 수업이 없습니다 :(</h2>
+	<br>
 	<%}else{%>
 	<%if (count == 0 ){%>
 		<p>등록된 강의가 없습니다<p>
