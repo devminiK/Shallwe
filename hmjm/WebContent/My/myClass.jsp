@@ -84,6 +84,11 @@ body, html {
 #News {background-color: green;}
 #Contact {background-color: blue;}
 #About {background-color: orange;}
+.classTab{
+	width:300px;
+	border:1px solid white;
+	margin-bottom:5px;
+}
 </style>
 
 <script>
@@ -155,57 +160,80 @@ document.getElementById("defaultOpen").click();
 	<button class="tablink" onclick="openPage('News', this, 'green')">수강생</button>
 	<button class="tablink" onclick="openPage('About', this, 'orange')">수강중</button>
 <div id="Home" class="tabcontent">
-  <h3>내 수업</h3>
+  <h3>내가 등록한 수업</h3>
   <p>
   	<% if(p == null){%>
-  			아직 당신의 수업이 없어요
+  			<h4>등록하신 수업이 존재하지않습니다.</h4>
 		<%}else{
 			 for(int i = 0 ; i <tutorProductList.size(); i++){
 				
 				productVO tu = (productVO)tutorProductList.get(i);%>
-				수업번호::<%=tu.getP_num() %><br>
-				수업이름::<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=tu.getP_num()%>"><%=tu.getP_classname() %></a>
-				<br><br>
-			<%}%>
-		<%}%>
+				<table class="classTab">
+					<tr>
+						<td>수업 번호</td>
+						<td><%=tu.getP_num()%></td>
+					</tr>
+					<tr>
+						<td>수업 이름</td>
+						<td><a href ="/hmjm/Talent/Detail.jsp?p_num=<%=tu.getP_num()%>"><%=tu.getP_classname()%></a></td>
+					</tr>
+				</table>
+			<%}
+		}%>
 			
   </p>
 </div>
 <div id= "News" class="tabcontent">
+  <h3>나의 수업에 신청한 수강생</h3>
 <%
 	if(o ==null){%>
-		아직 수강생이 없네용 ㅋㅋ
+		<h4>당신의 수업을 신청한 수강생이 존재하지않습니다.</h4>
 	<%}else{
 		for(int i = 0 ; i<orderList.size(); i++){
 			buyVO or = (buyVO)orderList.get(i);%>
-			수업번호::<%=or.getB_productnumber() %><br>
-			수업이름::<%=or.getB_classname()%><br>
-			수강생 이메일::<%=or.getB_email() %><br><br>
+			<table class="classTab">
+					<tr>
+						<td>수업 번호</td>
+						<td><%=or.getB_productnumber()%></td>
+					</tr>
+					<tr>
+						<td>수업 이름</td>
+						<td><%=or.getB_classname()%></td>
+					</tr>
+					<tr>
+						<td>수강생 이메일</td>
+						<td><%=or.getB_email()%></td>
+					</tr>
+				</table>
 		<%}
-	}
-
-
-
-%>
+	}%>
 </div>
 <div id="About" class="tabcontent">
   <h3>내가 신청한 수업</h3>
   <p>
   	<% if(b == null){%>
-  			신청한 수업이 없습니다	
+  			<h4>신청한 수업이 없습니다.</h4>
 		<% }else{%>
 			<% for(int i = 0 ; i <productbuyList.size(); i++){
 				buyVO bb = (buyVO)productbuyList.get(i);%>
-				수업번호::<%=bb.getB_num() %><br>
-				수업이름::<a href ="/hmjm/Talent/Detail.jsp?p_num=<%=bb.getB_productnumber()%>"><%=bb.getB_classname() %></a>
-				<br><br>
-				<%}%>
-		<%}%>
+				
+				<table class="classTab">
+					<tr>
+						<td>수업 번호</td>
+						<td><%=bb.getB_num()%></td>
+					</tr>
+					<tr>
+						<td>수업 이름</td>
+						<td><a href ="/hmjm/Talent/Detail.jsp?p_num=<%=bb.getB_productnumber()%>"><%=bb.getB_classname()%></a></td>
+					</tr>
+				</table>
+				<%}
+			}%>
   
   </p>
 
 </div>
-			
+	<br><br>			
 
 	<jsp:include page="/Home/footer.jsp" />
 </body>
