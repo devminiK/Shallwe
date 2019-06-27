@@ -195,11 +195,12 @@ p{
 							if(p == null){ %>
 							<p>아직<br> 나의 수업이 없어요</p>
 							<%}else{
-							if(or ==null){ %>
+							if(or != null){ %>
 								<p>(<%=countOrder %>)건</p>
+								<button class="btn click" onClick="location.href='/hmjm/My/myClass.jsp?p_num=<%=or.getB_productnumber()%>'">리스트 보기</button>
 								<%}else{ %>
 									<p>(<%=countOrder %>)건</p>
-						<button class="btn click" onClick="location.href='/hmjm/My/myClass.jsp?p_num=<%=b.getB_productnumber()%>'">리스트 보기</button>
+						<button class="btn click" onClick="location.href='/hmjm/My/myClass.jsp?p_num=<%=or.getB_productnumber()%>'">리스트 보기</button>
 								<%}%>
 							<%}%>
 							<%}%>
