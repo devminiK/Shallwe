@@ -81,9 +81,9 @@
 /* Fading animation */
 .fade {
 	-webkit-animation-name: fade;
-	-webkit-animation-duration: 120s;
+	-webkit-animation-duration: 1200s;
 	animation-name: fade;
-	animation-duration: 120s;
+	animation-duration: 1200s;
 }
 
 @

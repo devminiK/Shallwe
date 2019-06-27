@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +62,7 @@
 	</tr> 
 	<tr height ="50">
 		<th >이 름</th>
-		<th><input type ="text" autofocus name="m_name"required/></th>
+		<th><input type ="text" autofocus name="m_name" required/></th>
 	</tr>
 	<tr height ="50">
 		<th>전화번호</th>

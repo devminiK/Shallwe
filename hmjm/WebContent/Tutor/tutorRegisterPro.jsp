@@ -66,7 +66,7 @@
 		
 		if(result){
 			session.setAttribute("registedTutor",t_email);
-			response.sendRedirect("../sessionTest.jsp");
+			response.sendRedirect("/hmjm/Tutor/Register/menu.jsp");
 		}else{%>
 		
 			<script>
