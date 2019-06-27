@@ -3,4 +3,7 @@
 <html>
 <h1>ShallWe</h1>
 <h1>CODE 500 ERROR x_x</h1>
+<%
+	response.setStatus(HttpServletResponse.SC_OK);
+%>
 </html>

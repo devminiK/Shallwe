@@ -3,4 +3,7 @@
 <html>
 <h1>ShallWe</h1>
 <h1>CODE 404 ERROR T_T</h1>
+<%
+	response.setStatus(HttpServletResponse.SC_OK);
+%>
 </html>
