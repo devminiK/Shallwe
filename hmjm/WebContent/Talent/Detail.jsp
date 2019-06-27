@@ -388,7 +388,7 @@ if(id!=null){
 	<br/>
 		<%}%>
 	<br/><br/>
-
+	<jsp:include page="/snsShare.jsp"/>
 	<jsp:include page="/Review/review.jsp?p_num=<%=num%>" />
 	<jsp:include page="/Home/footer.jsp" />
 </body>
