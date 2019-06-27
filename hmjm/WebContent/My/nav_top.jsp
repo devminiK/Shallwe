@@ -137,13 +137,15 @@ p{
 	
 	buyDAO buyer = buyDAO.getInstance();
 	buyVO b = buyer.getBuy(preUser);
-	buyVO o = buyer.getBuyOrder(preUser);//구매자 있는지 확인할 때
+	buyVO or = buyer.getBuyOrder(preUser);//구매자 있는지 확인할 때 
+	System.out.println(or+"----------------");
 	int count = 0;
 	int countp = 0;
 	int countOrder = 0;
 	count = buyer.buyCount2(preUser);
 	countOrder = buyer.buyCount3(preUser);
 	countp = product.getProductCount2(preUser);
+	System.out.println(countOrder+"=====");
 	
 %>
 <body id="main">
@@ -153,8 +155,11 @@ p{
   		<div class="nav_inner_colBox">
   			<%if (e == null) {%>
 				<%--등록한 이미지사진 불러오기 --%>
-				<img src="/hmjm/Images/TutorImg/user.png" width="50px" /><%=preUser%><br>
-				튜터: 미등록<br>
+				<img src="/hmjm/Images/TutorImg/user.png" width="100px" /><%=preUser%><br>
+				
+				<button class="btn click" 
+						onClick="location.href='/hmjm/Tutor/Register/menu.jsp'">튜터 미등록
+					</button>
 			<%} else {%>
 				<%--등록한 이미지사진 불러오기 --%>
 				<img id="userImg" src="/hmjm/Images/TutorImg/<%=e.getT_selfimg()%>"/>
@@ -189,7 +194,7 @@ p{
 							if(p == null){ %>
 							<p>아직<br> 나의 수업이 없어요</p>
 							<%}else{
-							if(b == null){ %>
+							if(or ==null){ %>
 								<p>(<%=countOrder %>)건</p>
 								<%}else{ %>
 									<p>(<%=countOrder %>)건</p>

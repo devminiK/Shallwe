@@ -25,8 +25,8 @@
 /* 좌측 아이콘 */
 .icon img {
 	float: left;
-	width: 90px; /*제대로 된 로고 넣으면 조정할것*/
-	height: 40px;
+	width: 100px; /*제대로 된 로고 넣으면 조정할것*/
+	
 	cursor: pointer;
 	/*가운데 정렬*/
 	margin-left:auto;
@@ -212,7 +212,7 @@
 			<div class="hd_column1">
 				<div class="icon">
 					<a href="/hmjm/Home/main.jsp"><img
-						src="/hmjm/Images/Icon/logo_dance.png" /></a>
+						src="/hmjm/Images/Icon/shallwe_logo.png" /></a>
 				</div>
 			</div>
 			<div class="hd_column2">
