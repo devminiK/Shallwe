@@ -10,6 +10,13 @@
 <meta charset="UTF-8">
 <title>세부 카테고리</title>
 <style type="text/css">
+* {box-sizing: border-box}
+#cateSub{
+	width:1200px;
+	box-sizing: border-box;
+	font-family: Verdana, sans-serif;
+	margin: 0 auto;
+}
 .pd_container {
 	background-color: #E1E1E1;
 	float: left;
@@ -88,7 +95,7 @@ a:hovor {
 	reviewDAO rdao = reviewDAO.getInstance();
 	
 %>
-<body>
+<body id="cateSub">
 <jsp:include page="/Home/header.jsp" />
 <jsp:include page="category.jsp" />
 <table style="width:100%">
