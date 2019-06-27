@@ -126,7 +126,8 @@
 	<div class="modalp"> 
     	<div class="modal-contentp"> 
         	<span class="close-buttonp">&times;</span> 
-            <h1>FAQ</h1>
+            <img src="/hmjm/Images/Icon/shallwe_logo.png" width="150px">
+            <br><br>
             <jsp:include page="sideContent.jsp"/>
             
 		</div> 
