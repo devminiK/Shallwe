@@ -99,8 +99,8 @@ a:hovor {
 }
 #userImg{
 	border-radius:50%;
-	width:100px;
-	height:100px;
+	width:90px;
+	height:90px;
 	overflow: hidden;
 	display: block;
 	margin: 0 auto;
@@ -125,6 +125,7 @@ p{
 </head>
 <%
 	request.setCharacterEncoding("utf-8");
+
 	String preUser =(String)session.getAttribute("loginId");//이메일 값
 	memberDAO manager = memberDAO.getInstance();
 	memberVO c = manager.getMember(preUser);
@@ -155,7 +156,7 @@ p{
   		<div class="nav_inner_colBox">
   			<%if (e == null) {%>
 				<%--등록한 이미지사진 불러오기 --%>
-				<img src="/hmjm/Images/TutorImg/user.png" width="100px" /><%=preUser%><br>
+				<img  id="userImg" src="/hmjm/Images/TutorImg/user.png"/><%=preUser%><br>
 				
 				<button class="btn click" 
 						onClick="location.href='/hmjm/Tutor/Register/menu.jsp'">튜터 미등록
