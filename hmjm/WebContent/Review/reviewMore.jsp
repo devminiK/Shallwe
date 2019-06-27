@@ -44,7 +44,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-
+<style>
+.review {
+	background-color: #beebed;
+}
+.star {
+	background-color: #bedced;
+}
+</style>
 <body align="center">
 <b>모든 리뷰: <%=rcount%>개</b>
 <p>평균점수: <%=avg%> / 5</p>
@@ -57,13 +64,15 @@
 	<table border="2" cellpadding="0" cellspacing="0" align="center"> 
 	<%for (int i = 0 ; i < articleList.size() ; i++) {
 		reviewVO article = (reviewVO)articleList.get(i);%>
-		<tr><td align="center"  width="50" ><%=number--%></td>
+		<tr class="review">
+			<td align="center"  width="50" ><%=number--%></td>
 		    <td align="left" width="375" colspan="3"><%=article.getR_re()%></td>
 		    <td align="center"  width="100"><%=article.getR_name()%></td>
 		    <td align="center"  width="100"><%=article.getR_reg()%></td>
 		</tr>
-			<!-- 점수에 따라 별 갯수 1~5개 -->
-		<tr><td align="center" width="150">커리큘럼<br/>
+			<%-- 점수에 따라 별 갯수 1~5개 --%>
+		<tr class="star">
+			<td align="center" width="150">커리큘럼<br/>
 			<%int curr = article.getR_s_curr();
 			for(int cu=0; cu<curr; cu++){%>	
 				<img src="/hmjm/Images/Icon/star_f.png">

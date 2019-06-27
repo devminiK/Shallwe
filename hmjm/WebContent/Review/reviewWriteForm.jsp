@@ -5,7 +5,14 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" src="script.js"></script>
 </head>
-
+<style>
+.reWrite {
+	background-color: #beebed;
+}
+.reStar {
+	background-color: #bedced;
+}
+</style>
 <% 
 	String id = (String)session.getAttribute("loginId");
 	int pnum = Integer.parseInt(request.getParameter("p_num"));
@@ -21,7 +28,7 @@
 <form method="post" name="writeform" action="/hmjm/Review/reviewWritePro.jsp?p_num=<%=pnum%>" onsubmit="return writeSave()">
 	<input type="hidden" name="r_num" value="<%=num%>">
 	<input type="hidden" name="pr_num" value="<%=pnum%>">
-<table style="width:800px" border="1" cellspacing="0" cellpadding="0" align="center">
+<table class="reWrite" style="width:800px" border="1" cellspacing="0" cellpadding="0" align="center">
 	<!-- 리뷰 작성자 이름은 아이디 자동입력 -->
 	<tr><td align="center">이 름</td>
     	<td><%=id%>
@@ -31,7 +38,7 @@
 	  	<td><textarea name="r_re" rows="7" cols="90"></textarea></td></tr>
 </table>
 <!-- 점수 5점 기본선택 -->
-<table style="width:800px" border="1" cellspacing="0" cellpadding="0" align="center">
+<table class="reStar" style="width:800px" border="1" cellspacing="0" cellpadding="0" align="center">
 	<tr><td align="center" width="160">커리큘럼<br/>
 					1<input type="radio" name="r_s_curr" value="1"/><br/>
 					2<input type="radio" name="r_s_curr" value="2"/><br/>

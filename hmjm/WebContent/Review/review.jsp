@@ -41,16 +41,19 @@
 %>
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-
+<style>
+.review {
+	background-color: #beebed;
+}
+.star {
+	background-color: #bedced;
+}
+</style>
 <body style="text-align: center;">
 	<p><%=dbPro.reviewCount(pnum)%>개 리뷰가 존재합니다.
 	</p>
@@ -59,7 +62,7 @@
 		평균점수:
 		<%
 		for (int i = 0; i < avg; i++) {
-	%>
+		%>
 		<span><img src="/hmjm/Images/Icon/star_f.png" /></span>
 		<%
 			}
@@ -78,20 +81,20 @@
 	<%
 		} else {
 	%>
-	<table border="2" width="900" cellpadding="0" cellspacing="0"
-		align="center">
+
+	<table border="2" width="900" cellpadding="0" cellspacing="0" align="center">
 		<%
 			for (int i = 0; i < articleList.size(); i++) {
 					reviewVO article = (reviewVO) articleList.get(i);
 		%>
-		<tr>
+		<tr class="review">
 			<td align="center" width="50"><%=number--%></td>
 			<td align="left" width="375" colspan="3"><%=article.getR_re()%></td>
 			<td align="center" width="100"><%=article.getR_name()%></td>
 			<td align="center" width="100"><%=article.getR_reg()%></td>
 		</tr>
 		<%-- 점수에 따라 별 갯수 1~5개 --%>
-		<tr>
+		<tr class="star">
 			<td align="center" width="150">커리큘럼<br /> <%
  	int curr = article.getR_s_curr();
  			for (int cu = 0; cu < curr; cu++) {
@@ -170,6 +173,7 @@
 		%>
 
 	</table>
+
 	<br />
 	<button type="button" class="btn btn-secondary"
 		onClick="window.open('/hmjm/Review/reviewMore.jsp?p_num=<%=pnum%>','_blank','toolbar=no,location=no,status=no,menubar=no,scrollbars=auto,resizable=no,directories=no,width=770,height=600')">더보기</button>
