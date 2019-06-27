@@ -70,13 +70,6 @@ a:hovor {
    color: black;
 }
 
-table {
-	width:1200px;
-	box-sizing: border-box;
-	font-family: Verdana, sans-serif;
-	margin: 0 auto;
-	display: table-cell;
-}
 </style>
 </head>
 

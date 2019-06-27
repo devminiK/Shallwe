@@ -53,11 +53,11 @@ body, html {
 }
 
 #Receive{
-	background-color: lightblue;
+	background-color: #beebed;
 }
 
 #Send {
-	background-color: lightgreen;
+	background-color: #bedced;
 }
 </style>
 <script>
@@ -79,8 +79,8 @@ body, html {
 </script>
 </head>
 <body id="menu">
-	<button class="tablink" onclick="openPage('Receive', this, '#1871ba')" id="defaultOpen">받은</button>
-	<button class="tablink" onclick="openPage('Send', this, '#2cf948')">보낸</button>
+	<button class="tablink" onclick="openPage('Receive', this, '#60a7e0')" id="defaultOpen">받은</button>
+	<button class="tablink" onclick="openPage('Send', this, '#80ed8f')">보낸</button>
 	<div>
 		<div id="Receive" class="tabcontent">
 			<jsp:include page="message.jsp"/>
