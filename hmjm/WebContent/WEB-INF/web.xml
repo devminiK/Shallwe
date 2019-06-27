@@ -5,6 +5,7 @@
 		<error-code>404</error-code>
 		<location>/hmjm/Error/code404.jsp</location>
 	</error-page>
+	
 	<error-page>
 		<error-code>500</error-code>
 		<location>/hmjm/Error/code500.jsp</location>

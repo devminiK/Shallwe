@@ -59,7 +59,7 @@
 		String login = article.getS_receive();
 		//새 쪽지 알림
 		int newm = article.getS_count();
-		if(newm == 1){%>
+		if(newm == 2){%>
 			<script>
 				alert("new message");
 			</script>

@@ -15,12 +15,9 @@ import hmjm.bean.product.productVO;
 import hmjm.bean.message.messageVO;
 import hmjm.bean.tutor.tutorVO;
 
-
 public class adminDAO {
 	private static adminDAO instance = new adminDAO();
-	public static adminDAO getInstance() {
-		return instance;
-	}
+	public static adminDAO getInstance() { return instance;	}
 	private adminDAO() {}
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
@@ -38,6 +35,7 @@ public class adminDAO {
 		return conn;
 	}
 	
+	/********** admin info start **********/
 	//admin login check
 	public boolean adminLoginCheck(String apw) {
 		boolean result = false;
@@ -46,7 +44,6 @@ public class adminDAO {
 			String sql = "select * from member where m_email='admin' and m_pw=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, apw);
-			//pstmt.setString(2, apw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = true;
@@ -60,6 +57,8 @@ public class adminDAO {
 		}
 		return result;
 	}
+	/********** admin info end **********/
+	
 	
 	/********** member info start **********/
 	//members list
@@ -93,8 +92,7 @@ public class adminDAO {
 	}
 	
 	//get member info
-	public memberVO getMember(int num)
-			throws Exception{
+	public memberVO getMember(int num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -104,7 +102,6 @@ public class adminDAO {
 			pstmt = conn.prepareStatement("select * from member where m_num= ?");
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
-
 			if(rs.next()) {
 				vo = new memberVO();
 				vo.setM_num(rs.getInt("m_num"));
@@ -126,8 +123,7 @@ public class adminDAO {
 	}
 	
 	//edit member info
-	public void updateMember(memberVO vo)
-			throws Exception {
+	public void updateMember(memberVO vo) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -149,8 +145,7 @@ public class adminDAO {
 	}
 	
 	//zero member
-	public void zeroMember(int num)
-			throws Exception {
+	public void zeroMember(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -167,8 +162,7 @@ public class adminDAO {
 	}
 	
 	//delete account
-	public void deleteAccount(int num)
-			throws Exception {
+	public void deleteAccount(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -271,8 +265,7 @@ public class adminDAO {
 	}
 	
 	//delete product
-	public void deleteProduct(int num)
-			throws Exception {
+	public void deleteProduct(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -287,9 +280,6 @@ public class adminDAO {
 			if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		}
 	}
-	//insert product
-	//update product
-	//get product detail
 	/********** product info end **********/
 	
 	
@@ -346,8 +336,7 @@ public class adminDAO {
 	}
 	
 	//delete message
-		public void deleteMsg(int num)
-				throws Exception {
+		public void deleteMsg(int num) throws Exception {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			try {
@@ -396,6 +385,7 @@ public class adminDAO {
 		}
 		return list;
 	}
+	
 	//count tutors
 	public int getTutorCount() throws Exception {
 		Connection conn = null;
@@ -419,9 +409,8 @@ public class adminDAO {
 		return x; 
 	}
 	
-	//delete account
-	public void deleteTutor(int num)
-			throws Exception {
+	//delete tutor
+	public void deleteTutor(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
