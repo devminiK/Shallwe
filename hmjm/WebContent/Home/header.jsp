@@ -23,10 +23,9 @@
 }
 
 /* 좌측 아이콘 */
-.icon img {
+.hd_icon img {
 	float: left;
-	width: 100px; /*제대로 된 로고 넣으면 조정할것*/
-	
+	width: 140px; /*제대로 된 로고 넣으면 조정할것*/
 	cursor: pointer;
 	/*가운데 정렬*/
 	margin-left:auto;
@@ -210,9 +209,9 @@
 	<div class="header_new">
 		<div class="row">
 			<div class="hd_column1">
-				<div class="icon">
-					<a href="/hmjm/Home/main.jsp"><img
-						src="/hmjm/Images/Icon/shallwe_logo.png" /></a>
+				<div class="hd_icon">
+					<a href="/hmjm/Home/main.jsp">
+					<img src="/hmjm/Images/Icon/shallwe_logo.png" /></a>
 				</div>
 			</div>
 			<div class="hd_column2">
