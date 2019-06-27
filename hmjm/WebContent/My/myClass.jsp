@@ -210,28 +210,24 @@ document.getElementById("defaultOpen").click();
 </div>
 <div id="About" class="tabcontent">
   <h3>내가 신청한 수업</h3>
-  <p>
+  
   	<% if(b == null){%>
   			<h4>신청한 수업이 없습니다.</h4>
 		<% }else{%>
 			<% for(int i = 0 ; i <productbuyList.size(); i++){
-				buyVO bb = (buyVO)productbuyList.get(i);%>
-				
-				<table class="classTab">
-					<tr>
-						<td>수업 번호</td>
-						<td><%=bb.getB_num()%></td>
-					</tr>
-					<tr>
-						<td>수업 이름</td>
-						<td><a href ="/hmjm/Talent/Detail.jsp?p_num=<%=bb.getB_productnumber()%>"><%=bb.getB_classname()%></a></td>
-					</tr>
-				</table>
+					buyVO bb = (buyVO)productbuyList.get(i);%>
+					<table class="classTab">
+						<tr> 
+							<td>수업 번호</td>
+							<td><%=bb.getB_num()%></td>
+						</tr>
+						<tr>
+							<td>수업 이름</td>
+							<td><a href ="/hmjm/Talent/Detail.jsp?p_num=<%=bb.getB_productnumber()%>"><%=bb.getB_classname()%></a></td>
+						</tr>
+					</table>
 				<%}
 			}%>
-  
-  </p>
-
 </div>
 	<br><br>			
 
