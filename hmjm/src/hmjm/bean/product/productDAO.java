@@ -35,7 +35,7 @@ public class productDAO {
 
 	
 	
-	//작성한 수업 등록 글 DB에 삽입_성민ok
+	// 상품 등록 1단계) Product Table에  정보 삽입
 	public void insertProduct(productVO product) {	    
 		String sql="";
 		try {

@@ -34,7 +34,7 @@ public class classtimeDAO {
 		return conn;
 	}
 
-	//삽입 -ok
+	// 상품 등록 2단계) Classtime Table에  정보 삽입
 	public void insertClasstime(classtimeVO classtime) {	    
 		String sql="";
 		try {
