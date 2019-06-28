@@ -315,6 +315,8 @@ ul {
 				<div class ="s">	
 					<h4>메모</h4>
 					<%=vo.getP_memo() %>
+					
+					
 				</div>
 			<%}%>
 
