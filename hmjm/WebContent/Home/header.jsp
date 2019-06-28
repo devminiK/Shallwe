@@ -233,7 +233,11 @@
 					</div>
 					
 					<div class="inner_category">
+						<% if (session.getAttribute("loginId") == null) {%>
+						<a href="/hmjm/Log/loginForm.jsp">튜터등록</a>
+						<%}else{%>
 						<a href="/hmjm/Tutor/Register/menu.jsp">튜터등록</a>
+						<%}%>
 					</div>
 					
 					<div class="inner_category">
