@@ -37,7 +37,8 @@ public class classimgDAO {	/*성민 작성*/
 		catch(Exception e){ e.printStackTrace(); }
 		return conn;
 	}
-	//(상품 등록 내에서)이미지 등록하기_ok(version1)
+	
+	// 상품 등록 3단계) Classimg Table에  정보 삽입
 	public void insertClassimg1(int classnum, String filename, String filerealname) {	      
 
 		String sql="";  

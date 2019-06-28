@@ -2,6 +2,7 @@
 <%@ page import="hmjm.bean.classtime.classtimeDAO"%>
 <%@ page import="hmjm.bean.product.*"%>
 <%--06.17 성민 작성 --%>
+<%--등록상품 리셋할경우, DB:product, classimg, classtime 모두 리셋해야함, 그렇지 않으면 nullpointerEeception --%>
 <!DOCTYPE html>
 <html>
 <%
@@ -99,9 +100,7 @@ td {
 		<div id="items">
 			<div id="row">
 				<div id="boxl">
-					<h2>
-						어디에서 <img class="icon" src="/hmjm/Images/Icon/mapmark.png" />
-					</h2>
+					<h2>어디에서 <img class="icon" src="/hmjm/Images/Icon/mapmark.png" /></h2>
 					<h2>배우고 싶으세요?</h2>
 					<h4>지역을 선택해주세요</h4>
 				</div>
@@ -110,43 +109,53 @@ td {
 						onsubmit="return chSave();">
 						<table border=2>
 							<tr>
-								<%--등록상품 리셋할경우, DB:product, classimg, classtime 모두 리셋해야함, 그렇지 않으면 nullpointerEeception --%>
-								<td>
-									<%--<div class="btn-group-toggle" data-toggle="buttons"> --%> <label
-									class="btn btn-primary"> <input type="checkbox"
-										name="reNum" value="101" /><span>강남(<%=ctdao.getRegionCount("101")%>)
-									</span>
-								</label>
+								<td><label class="btn btn-primary"> <input type="checkbox" name="reNum" value="101" />
+									<span>강남(<%=ctdao.getRegionCount("101")%>)</span>
+									</label>
 								</td>
-								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="102" /><span>신촌홍대(<%=ctdao.getRegionCount("102")%>)
-									</span>
-								</label></td>
-								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="103" /><span>건대(<%=ctdao.getRegionCount("103")%>)
-									</span></label></td>
+								<td><label class="btn btn-primary"><input type="checkbox" name="reNum" value="102" />
+									<span>신촌홍대(<%=ctdao.getRegionCount("102")%>)</span>
+									</label>
+								</td>
+								<td><label class="btn btn-primary"> 
+									<input type="checkbox" name="reNum" value="103" />
+									<span>건대(<%=ctdao.getRegionCount("103")%>)</span>
+									</label>
+								</td>
 							</tr>
 							<tr>
-								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="201" /><span>수원(<%=ctdao.getRegionCount("201")%>)
-									</span></label></td>
-								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="202" /><span>분당(<%=ctdao.getRegionCount("202")%>)
-									</span></label></td>
-								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="203" /><span>죽전(<%=ctdao.getRegionCount("203")%>)
-									</span></label></td>
+								<td><label class="btn btn-primary"> 
+									<input type="checkbox" name="reNum" value="201" />
+									<span>수원(<%=ctdao.getRegionCount("201")%>)</span>
+									</label>
+								</td>
+								<td><label class="btn btn-primary">
+								    <input type="checkbox" name="reNum" value="202" />
+								    <span>분당(<%=ctdao.getRegionCount("202")%>)</span>
+								    </label>
+								</td>
+								<td><label class="btn btn-primary"> 
+									<input type="checkbox" name="reNum" value="203" />
+									<span>죽전(<%=ctdao.getRegionCount("203")%>)</span>
+									</label>
+								</td>
 							</tr>
 							<tr>
-								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="301" /><span>부산서면(<%=ctdao.getRegionCount("301")%>)
-									</span></label></td>
-								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="302" /><span>부산해운대(<%=ctdao.getRegionCount("302")%>)
-									</span></label></td>
-								<td><label class="btn btn-primary"> <input
-										type="checkbox" name="reNum" value="303" /><span>부산사상(<%=ctdao.getRegionCount("303")%>)
-									</span></label></td>
+								<td><label class="btn btn-primary"> 
+									<input	type="checkbox" name="reNum" value="301" />
+									<span>부산서면(<%=ctdao.getRegionCount("301")%>)</span>
+									</label>
+								</td>
+								<td><label class="btn btn-primary"> 
+									<input type="checkbox" name="reNum" value="302" />
+									<span>부산해운대(<%=ctdao.getRegionCount("302")%>)</span>
+									</label>
+								</td>
+								<td><label class="btn btn-primary"> 
+									<input type="checkbox" name="reNum" value="303" />
+									<span>부산사상(<%=ctdao.getRegionCount("303")%>)</span>
+									</label>
+								</td>
 							</tr>
 						</table>
 						<div id="bot_btn">

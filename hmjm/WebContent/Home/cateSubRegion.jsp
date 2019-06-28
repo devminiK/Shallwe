@@ -104,7 +104,7 @@ a:hovor {
 			System.out.println("test지역번호:" + x);
 			System.out.println("test해당지역수업수:" + ctdao.getRegionCount(x));
 		}%>
-<table style="width:1200px">
+	<table style="width:1200px">
 		<%for (String x : eachReNum) {
 
 			String ern = x; //지역번호
