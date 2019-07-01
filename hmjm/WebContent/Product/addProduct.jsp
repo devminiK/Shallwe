@@ -105,9 +105,9 @@
 			
 	}
 	
-	/***************카테고리 정하기*************************/
+	/*카테고리 별 이름,value값  지정*/
 	function categoryChange(e) {
-		//상품이름	
+		 //상품이름	
 		  var good_a = ["포토샵", "일러스트레이터"];
 		  var good_b = ["프리미어", "에프터이펙트"];
 		  var good_c = ["영어", "중국어"];
@@ -134,7 +134,7 @@
 		    opt.innerHTML = d[x];
 		    target.appendChild(opt);
 		  } 	  
-		}
+	}
 </script>
 
 <style>
@@ -181,12 +181,12 @@ input[type=number] {
 			</div>
 			<div class="form-group row">
 			<label class="col-sm-2">카테고리</label>
-				<select onchange="categoryChange(this)">
-  					<option>카테고리를 선택해주세요</option>
-  					<option value="a">디자인</option>
-  					<option value="b">영상</option>
-  					<option value="c">외국어</option>
-				</select>
+			<select onchange="categoryChange(this)">
+  				<option>카테고리를 선택해주세요</option>
+  				<option value="a">디자인</option>
+  				<option value="b">영상</option>
+  				<option value="c">외국어</option>
+			</select>
 			<select id="p_category" name="p_category">
 					<option  value="" name="p_category">세부 카테고리를 선택해주세요</option>
 			</select>

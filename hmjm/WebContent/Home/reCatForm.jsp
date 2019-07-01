@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="hmjm.bean.classtime.classtimeDAO"%>
 <%@ page import="hmjm.bean.product.*"%>
+<%@ page import="hmjm.bean.product_cat_region.*"%>
 <%--06.17 성민 작성 --%>
 <%--등록상품 리셋할경우, DB:product, classimg, classtime 모두 리셋해야함, 그렇지 않으면 nullpointerEeception --%>
 <!DOCTYPE html>
@@ -9,6 +10,7 @@
 	request.setCharacterEncoding("UTF-8");
 	//지역별 카테고리 갯수를 가져오기위해함
 	classtimeDAO ctdao = classtimeDAO.getInstance();
+	productcatregionDAO pcrDAO = productcatregionDAO.getInstance();
 %>
 <head>
 <title>지역별 카테고리 검색</title>
@@ -108,55 +110,25 @@ td {
 					<form action="reCatPro.jsp" method="get"
 						onsubmit="return chSave();">
 						<table border=2>
-							<tr>
-								<td><label class="btn btn-primary"> <input type="checkbox" name="reNum" value="101" />
-									<span>강남(<%=ctdao.getRegionCount("101")%>)</span>
-									</label>
-								</td>
-								<td><label class="btn btn-primary"><input type="checkbox" name="reNum" value="102" />
-									<span>신촌홍대(<%=ctdao.getRegionCount("102")%>)</span>
-									</label>
-								</td>
-								<td><label class="btn btn-primary"> 
-									<input type="checkbox" name="reNum" value="103" />
-									<span>건대(<%=ctdao.getRegionCount("103")%>)</span>
-									</label>
-								</td>
-							</tr>
-							<tr>
-								<td><label class="btn btn-primary"> 
-									<input type="checkbox" name="reNum" value="201" />
-									<span>수원(<%=ctdao.getRegionCount("201")%>)</span>
-									</label>
-								</td>
-								<td><label class="btn btn-primary">
-								    <input type="checkbox" name="reNum" value="202" />
-								    <span>분당(<%=ctdao.getRegionCount("202")%>)</span>
-								    </label>
-								</td>
-								<td><label class="btn btn-primary"> 
-									<input type="checkbox" name="reNum" value="203" />
-									<span>죽전(<%=ctdao.getRegionCount("203")%>)</span>
-									</label>
-								</td>
-							</tr>
-							<tr>
-								<td><label class="btn btn-primary"> 
-									<input	type="checkbox" name="reNum" value="301" />
-									<span>부산서면(<%=ctdao.getRegionCount("301")%>)</span>
-									</label>
-								</td>
-								<td><label class="btn btn-primary"> 
-									<input type="checkbox" name="reNum" value="302" />
-									<span>부산해운대(<%=ctdao.getRegionCount("302")%>)</span>
-									</label>
-								</td>
-								<td><label class="btn btn-primary"> 
-									<input type="checkbox" name="reNum" value="303" />
-									<span>부산사상(<%=ctdao.getRegionCount("303")%>)</span>
-									</label>
-								</td>
-							</tr>
+						<%
+							int n=1;//증가할 숫자
+							int nfix=1;//고정숫자
+								
+							for(int i=1; i<=3;i++){
+								n+=100;
+								nfix+=100;%>
+								<tr>
+								<%for(;n<nfix+3;n++){
+									String strNum = Integer.toString(n);%>
+									<td><label class="btn btn-primary"> 
+										<input type="checkbox" name="reNum" value="<%=n%>" />
+										<span><%=pcrDAO.getRegionName(n)%>(<%=ctdao.getRegionCount(strNum)%>)</span>
+										</label>
+									</td>
+								<%}
+									n-=3;%>
+								</tr>
+							<%}%>					
 						</table>
 						<div id="bot_btn">
 							<input type="submit" class="btn btn-danger" value="선택지역 결과 보기" />

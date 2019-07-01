@@ -143,13 +143,10 @@
 		<span class="main_dot" onclick="currentSlide(3)"></span> 
 		<span class="main_dot" onclick="currentSlide(4)"></span>
 	</div>
-	
-	
 	<br>
 	
 	 <%--지역 카테고리 bar--%>
 	<jsp:include page="reCatForm.jsp"/>
-	
 	
 	<%--메인에 추천 상품 나열해줌 --%>
 	<jsp:include page="listProduct.jsp" />
